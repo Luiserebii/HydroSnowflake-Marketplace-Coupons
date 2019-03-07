@@ -20,8 +20,7 @@ const contracts = {
 function generateContractSources(contractInput) {
    
    let sources = {};
-   
-   for(var name in contractInput){
+   for(let name in contractInput){
       
       let pathArguments = contractInput[name];
       //These functions are unfortunately not-chainable
@@ -30,7 +29,6 @@ function generateContractSources(contractInput) {
 
       //Pass path.resolve params via array by apply()
       let contractPath = path.resolve.apply(null, pathArguments);
-      console.log(contractPath);
       let contractSource = fs.readFileSync(contractPath, 'utf8');
       
       //Finally, add it to our sources object!
@@ -42,12 +40,15 @@ function generateContractSources(contractInput) {
 }
 
 
-const input = {
-   sources: generateContractSources(contracts)
-};
-console.log(generateContractSources(contracts));
+let sourcesInput = generateContractSources(contracts);
 
-compileOutput = solc.compile(input, 1);
+const input = {
+   sources: sourcesInput
+};
+
+console.log(input);
+
+compileOutput = solc.compile(input);
 console.log(compileOutput);
 
 module.exports = compileOutput.contracts;
