@@ -5,14 +5,14 @@ const solc = require('solc');
 
 const contracts = {
 
-   'MyResolver.sol': [ 'contracts' ],
-   'SnowflakeResolver.sol': [ 'contracts' ],
+   "MyResolver.sol": [ "contracts" ],
+   "SnowflakeResolver.sol": [ "contracts" ],
 
-   'Ownable.sol': [ 'contracts', 'zeppelin', 'ownership' ],
+   "Ownable.sol": [ "contracts", "zeppelin", "ownership" ],
 
-   'HydroInterface.sol': [ 'contracts', 'interfaces' ],
-   'SnowflakeInterface.sol': [ 'contracts', 'interfaces' ],
-   'SnowflakeResolverInterface.sol': [ 'contracts', 'interfaces' ]
+   "HydroInterface.sol": [ "contracts", "interfaces" ],
+   "SnowflakeInterface.sol": [ "contracts", "interfaces" ],
+   "SnowflakeResolverInterface.sol": [ "contracts", "interfaces" ]
 
 }
 
@@ -31,9 +31,11 @@ function generateContractSources(contractInput) {
       let contractPath = path.resolve.apply(null, pathArguments);
       let contractSource = fs.readFileSync(contractPath, 'utf8');
       
-      //Finally, add it to our sources object!
-      sources[name] = contractSource;
-      
+      //Finally, add it to our sources object
+       
+      sources[name] = { content: contractSource };
+      //sources[name] = {  };
+
    }
    return sources;
 
@@ -43,12 +45,13 @@ function generateContractSources(contractInput) {
 let sourcesInput = generateContractSources(contracts);
 
 const input = {
+   language: "Solidity",
    sources: sourcesInput
 };
 
-console.log(input);
+//console.log(JSON.stringify(input));
 
-compileOutput = solc.compile(input);
+compileOutput = solc.compile(JSON.stringify(input));
 console.log(compileOutput);
 
 module.exports = compileOutput.contracts;
