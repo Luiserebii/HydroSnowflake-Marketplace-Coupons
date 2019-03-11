@@ -1,0 +1,520 @@
+{
+  "contractName": "OldClientRaindropInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "userName",
+          "type": "string"
+        }
+      ],
+      "name": "userNameTaken",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "userName",
+          "type": "string"
+        }
+      ],
+      "name": "getUserByName",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\ninterface OldClientRaindropInterface {\n    function userNameTaken(string calldata userName) external view returns (bool);\n    function getUserByName(string calldata userName) external view returns (string memory, address);\n}",
+  "sourcePath": "/home/luiserebii/hydro_bounty_unofficial/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/hydro_bounty_unofficial/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
+    "exportedSymbols": {
+      "OldClientRaindropInterface": [
+        6711
+      ]
+    },
+    "id": 6712,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6694,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:16"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 6711,
+        "linearizedBaseContracts": [
+          6711
+        ],
+        "name": "OldClientRaindropInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6701,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "userNameTaken",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6697,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6696,
+                  "name": "userName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6701,
+                  "src": "91:24:16",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6695,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "91:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "90:26:16"
+            },
+            "returnParameters": {
+              "id": 6700,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6699,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6701,
+                  "src": "140:4:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6698,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "140:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "139:6:16"
+            },
+            "scope": 6711,
+            "src": "68:78:16",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6710,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserByName",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6704,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6703,
+                  "name": "userName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6710,
+                  "src": "174:24:16",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6702,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "174:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "173:26:16"
+            },
+            "returnParameters": {
+              "id": 6709,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6706,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6710,
+                  "src": "223:13:16",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6705,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "223:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6708,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6710,
+                  "src": "238:7:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6707,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "238:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "222:24:16"
+            },
+            "scope": 6711,
+            "src": "151:96:16",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6712,
+        "src": "25:224:16"
+      }
+    ],
+    "src": "0:249:16"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/hydro_bounty_unofficial/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
+    "exportedSymbols": {
+      "OldClientRaindropInterface": [
+        6711
+      ]
+    },
+    "id": 6712,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6694,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:16"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 6711,
+        "linearizedBaseContracts": [
+          6711
+        ],
+        "name": "OldClientRaindropInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6701,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "userNameTaken",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6697,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6696,
+                  "name": "userName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6701,
+                  "src": "91:24:16",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6695,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "91:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "90:26:16"
+            },
+            "returnParameters": {
+              "id": 6700,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6699,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6701,
+                  "src": "140:4:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6698,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "140:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "139:6:16"
+            },
+            "scope": 6711,
+            "src": "68:78:16",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6710,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserByName",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6704,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6703,
+                  "name": "userName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6710,
+                  "src": "174:24:16",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6702,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "174:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "173:26:16"
+            },
+            "returnParameters": {
+              "id": 6709,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6706,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6710,
+                  "src": "223:13:16",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6705,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "223:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6708,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6710,
+                  "src": "238:7:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6707,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "238:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "222:24:16"
+            },
+            "scope": 6711,
+            "src": "151:96:16",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6712,
+        "src": "25:224:16"
+      }
+    ],
+    "src": "0:249:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.0-beta.0",
+  "updatedAt": "2019-03-11T23:50:45.677Z"
+}
