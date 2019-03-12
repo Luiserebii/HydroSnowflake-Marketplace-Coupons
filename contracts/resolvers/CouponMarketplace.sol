@@ -19,6 +19,13 @@ Simple Marketplace
   -[uint ---> Coupon]
      -Coupon = [Amount off, items applied to]
 
+Item Status:
+-------------
+-For Sale/Active
+-Purchased - Awaiting payment (Maybe not needed)
+-Complete
+
+
 */
 
     mapping(uint => string) public deliveryMethods;
@@ -176,6 +183,9 @@ Simple Marketplace
 
     function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return avaliableCoupons[id].tags[index]; }
 
+
+
+
 /*
 ===============================================================================================================================
     	END OF PUBLIC GETTER FUNCTIONS
@@ -183,13 +193,6 @@ Simple Marketplace
 */
 
 /*
-
-
-Item Status:
--------------
--For Sale/Active
--Purchased - Awaiting payment (Maybe not needed)
--Complete
 
 Functions:
 -----------
@@ -205,9 +208,55 @@ Functions:
 
 */
 
+    function addItemListing (
+        uint uuid,
+        uint quantity,
+        ItemType type,
+        ItemStatus status,
+        ItemCondition condition,
+        string memory title,
+        string memory description,
+        uint256 price,
+        uint[] delivery, //Simply holds the ID for the delivery method, done for saving space
+        uint[] tags,
+        uint returnPolicy
+    ) public onlyEINOwner returns (bool) {
+
+        //Add to itemListings
+        itemListings[nextItemListingID] = Item(uuid, quantity, type, status, condition, title, description, price, delivery, tags);
+        //advance item by one
+        nextItemListingID++;
+
+        return true;
+    }
 
 
+    //NOTE: This can be changed in a way that does not re-create an entirely new item on every call,
+    function updateItemListing (
+        uint id,
+        uint uuid,
+        uint quantity,
+        ItemType type,
+        ItemStatus status,
+        ItemCondition condition,
+        string memory title,
+        string memory description,
+        uint256 price,
+        uint[] delivery, //Simply holds the ID for the delivery method, done for saving space
+        uint[] tags,
+        uint returnPolicy
+    ) public onlyEINOwner returns (bool) {
 
+        //Update itemListing identified by ID
+        itemListings[id] = Item(uuid, quantity, type, status, condition, title, description, price, delivery, tags);
+        return true;
+    }
+
+    function deleteItemListing(uint id) public onlyEINOwner returns (bool) {
+        //Delete itemListing identified by ID
+        delete itemListings[id];
+        return true;
+    }
 
 
 
