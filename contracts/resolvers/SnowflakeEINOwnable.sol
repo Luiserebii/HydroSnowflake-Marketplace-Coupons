@@ -2,47 +2,46 @@ pragma solidity ^0.5.0;
 
 /**
 * @title SnowflakeEINOwnable
-* @dev The Ownable contract has an owner address, and provides basic authorization control
+* @dev The SnowflakeEINOwnable contract has an owner EIN, and provides basic authorization control
 * functions, this simplifies the implementation of "user permissions".
 */
-contract Ownable {
-    address private _owner;
+contract SnowflakeEINOwnable {
+    uint private _ownerEIN;
 
     event OwnershipTransferred(
-        address indexed previousOwner,
-        address indexed newOwner
+        uint indexed previousOwner,
+        uint indexed newOwner
     );
 
     /**
-    * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+    * @dev The SnowflakeEINOwnable constructor sets the original `owner` of the contract to the sender
     * account.
     */
-    constructor() public {
-        _owner = msg.sender;
-        emit OwnershipTransferred(address(0), _owner);
+    constructor(uint ein) public {
+        _ownerEIN = EIN;
+        //Since 0 likely represents someone's EIN, it can be confusing to specify 0, so commenting this out in the meantime
+        //emit OwnershipTransferred(0, _ownerEIN);
     }
 
     /**
-    * @return the address of the owner.
+    * @return the EIN of the owner.
     */
-    function owner() public view returns(address) {
-        return _owner;
+    function ownerEIN() public view returns(uint) {
+        return _ownerEIN;
     }
 
     /**
     * @dev Throws if called by any account other than the owner.
     */
-    modifier onlyOwner() {
-        require(isOwner());
+    modifier onlyEINOwner() {
+        require(isEINOwner());
         _;
     }
 
     /**
-    * @return true if `msg.sender` is the owner of the contract.
+    * @return true if address resolves to owner of the contract.
     */
-    function isOwner() public view returns(bool) {
-        return msg.sender == _owner;
-    }
+    function isEINOwner() public view returns(bool);
 
     /**
     * @dev Allows the current owner to relinquish control of the contract.
@@ -50,16 +49,16 @@ contract Ownable {
     * It will not be possible to call the functions with the `onlyOwner`
     * modifier anymore.
     */
-    function renounceOwnership() public onlyOwner {
+    /*function renounceOwnership() public onlyEINOwner {
         emit OwnershipTransferred(_owner, address(0));
         _owner = address(0);
-    }
+    }*/
 
     /**
     * @dev Allows the current owner to transfer control of the contract to a newOwner.
     * @param newOwner The address to transfer ownership to.
     */
-    function transferOwnership(address newOwner) public onlyOwner {
+    function transferOwnership(uint newOwner) public onlyEINOwner {
         _transferOwnership(newOwner);
     }
 
@@ -67,9 +66,9 @@ contract Ownable {
     * @dev Transfers control of the contract to a newOwner.
     * @param newOwner The address to transfer ownership to.
     */
-    function _transferOwnership(address newOwner) internal {
-        require(newOwner != address(0));
+    function _transferOwnership(uint newOwner) internal {
+        //require(newOwner != address(0));
         emit OwnershipTransferred(_owner, newOwner);
-        _owner = newOwner;
+        _ownerEIN = newOwner;
     }
 }
