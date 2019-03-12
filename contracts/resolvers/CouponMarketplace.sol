@@ -33,7 +33,7 @@ Item Status:
     mapping(uint => string) public itemTags;
     mapping(uint => ReturnPolicy) public returnPolicies;
 
-    mapping(uint => Coupon) public avaliableCoupons;
+    mapping(uint => Coupon) public availableCoupons;
 
     //uints to track next avaliable "ID" added to mappings
     //Reasoning on next > latest; avoiding writing if() statement to check if [0] has already been set
@@ -208,6 +208,14 @@ Functions:
 
 */
 
+
+/*
+==============================
+ItemListing add/update/delete
+==============================
+*/
+
+
     function addItemListing (
         uint uuid,
         uint quantity,
@@ -259,7 +267,105 @@ Functions:
     }
 
 
+/*
+==================================
+DeliveryMethods add/update/delete
+==================================
+*/
 
+    function addDeliveryMethod(string memory deliveryMethod) public onlyEINOwner returns (bool) {
+        //Add to deliveryMethods
+        deliveryMethods[nextDeliveryMethodID] = deliveryMethod;
+        //Advance delivery method by one
+        nextDeliveryMethodID++;
+
+        return true;
+    }
+
+    function updateDeliveryMethod(uint id, string memory deliveryMethod) public onlyEINOwner returns (bool) {
+        //Update deliveryMethods by ID
+        deliveryMethods[id] = deliveryMethod;
+        return true;
+    }
+
+    function deleteDeliveryMethod(uint id) public onlyEINOwner returns (bool) {
+
+        //Delete itemListing identified by ID
+        delete deliveryMethods[id];
+        return true;
+    }
+
+
+/*
+==============================
+ItemTags add/update/delete
+==============================
+*/
+
+    function addItemTag(string memory itemTag) public onlyEINOwner returns (bool) {
+        //Add to deliveryMethods
+        itemTags[nextItemTagID] = itemTag;
+        //Advance delivery method by one
+        nextItemTagID++;
+
+        return true;
+    }
+
+    function updateItemTag(uint id, string memory itemTag) public onlyEINOwner returns (bool) {
+        //Update deliveryMethods by ID
+        itemTags[id] = itemTag;
+        return true;
+    }
+
+    function deleteItemTag(uint id) public onlyEINOwner returns (bool) {
+
+        //Delete itemListing identified by ID
+        delete itemTags[id];
+        return true;
+    }
+
+
+/*
+===================================
+AvailableCoupons add/update/delete
+===================================
+*/
+
+    function addAvaliableCoupon(
+        uint256 amountOff,
+        uint[] itemsApplicable,
+        uint expirationDate
+
+    ) public onlyEINOwner returns (bool)
+        //Add to avaliableCoupons
+        avaliableCoupons[nextAvailableCouponID] = Coupon(amountOff, itemsApplicable, expirationDate);
+        //Advance nextAvailableCouponID by 1
+        nextAvailableCouponID++;
+
+        return true;
+    }
+
+    function updateAvaliableCoupon(
+        uint id,
+        uint256 amountOff,
+        uint[] itemsApplicable,
+        uint expirationDate
+
+    ) public onlyEINOwner returns (bool)
+        //Add to avaliableCoupons
+        avaliableCoupons[id] = Coupon(amountOff, itemsApplicable, expirationDate);
+
+        return true;
+    }
+
+   
+    function removeAvailableCoupon(uint id) public onlyEINOwner returns (bool) {
+    
+        //Delete availableCoupon by ID
+        delete availableCoupons[id];
+        return true
+
+    }
 
 
 }
