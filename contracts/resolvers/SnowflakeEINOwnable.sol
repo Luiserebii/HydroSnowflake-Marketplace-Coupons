@@ -18,7 +18,7 @@ contract SnowflakeEINOwnable {
     * account.
     */
     constructor(uint ein) public {
-        _ownerEIN = EIN;
+        _ownerEIN = ein;
         //Since 0 likely represents someone's EIN, it can be confusing to specify 0, so commenting this out in the meantime
         //emit OwnershipTransferred(0, _ownerEIN);
     }
@@ -68,7 +68,7 @@ contract SnowflakeEINOwnable {
     */
     function _transferOwnership(uint newOwner) internal {
         //require(newOwner != address(0));
-        emit OwnershipTransferred(_owner, newOwner);
+        emit OwnershipTransferred(_ownerEIN, newOwner);
         _ownerEIN = newOwner;
     }
 }
