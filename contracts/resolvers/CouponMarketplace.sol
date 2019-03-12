@@ -21,22 +21,32 @@ Simple Marketplace
 
 */
 
-    mapping(uint => string) public shippingMethods;
+    mapping(uint => string) public deliveryMethods;
     mapping(uint => Item) public itemListings;
     mapping(uint => string) public itemTags;
+    mapping(uint => ReturnPolicy) public returnPolicies;
 
+    mapping(uint => Coupon) public avaliableCoupons;
+
+    //uints to track next avaliable "ID" added to mappings
+    //Reasoning on next > latest; avoiding writing if() statement to check if [0] has already been set
+    uint public nextDeliveryMethodID,
+                nextItemListingsID,
+                nextItemTagsID,
+                nextReturnPoliciesID,
+                nextReturnPolicitsID;
 
     struct Item {
-
+        uint uuid,
+        ItemType type,
         ItemStatus status,
         ItemCondition condition,
         string title,    
         string description,
         uint256 price,
-        uint uuid,
-        uint[] shipping,
+        uint[] delivery,
         uint[] tags,
-        ReturnPolicy returnPolicy
+        uint returnPolicy
 
     }
 
@@ -46,16 +56,21 @@ Simple Marketplace
     enum ItemCondition { NEW, LIKE_NEW, VERY_GOOD, GOOD, ACCEPTABLE }
     
 
-    struct ShippingDetails {
+    struct DeliveryDetails {
         uint method,
         uint handlingTime,
         string trackingNumber
-
     }
 
     struct ReturnPolicy {
         bool returnsAccepted,
         uint timeLimit
+    }
+
+    struct Coupon {
+        uint256 amountOff,
+        uint[] itemsApplicable,
+        uint expirationDate
     }
 
     constructor(
@@ -69,7 +84,16 @@ Simple Marketplace
         _snowflakeName, _snowflakeDescription,
         _snowflakeAddress,
         _callOnAddition, _callOnRemoval
-    ) public {}
+    ) public {
+
+        //Initialize "latestID" vars
+        latestDeliveryMethodID = 0;
+        latestItemListingsID = 0;
+        latestItemTagsID,
+        latestReturnPoliciesID,
+        latestReturnPolicitsID;
+
+    }
 
     function isEINOwner() public returns(bool){
         //Grab an instance of IdentityRegistry to work with as defined in Snowflake
