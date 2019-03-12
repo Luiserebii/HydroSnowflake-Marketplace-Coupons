@@ -2,9 +2,22 @@ pragma solidity ^0.5.0;
 
 import "../SnowflakeResolver.sol";
 import "./SnowflakeEINOwnable.sol";
+import "../interfaces/IdentityRegistryInterface.sol";
 
 contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
 
+    constructor(
+        uint ein,
+        string memory _snowflakeName, string memory _snowflakeDescription,
+        address _snowflakeAddress,
+        bool _callOnAddition, bool _callOnRemoval
+    ) SnowflakeEINOwnable (
+        ein
+    ) SnowflakeResolver (
+        _snowflakeName, _snowflakeDescription,
+        _snowflakeAddress,
+        _callOnAddition, _callOnRemoval
+    ) public {}
 
     function isEINOwner() public view returns(bool){
         return true;
@@ -16,7 +29,7 @@ contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
     // returning false will disallow users from adding the contract as a resolver
     function onAddition(uint ein, uint allowance, bytes memory extraData) public returns (bool) {
         return true;
-    };
+    }
 
     // if callOnRemoval is true, onRemoval is called every time a user removes the contract as a resolver
     // this function **must** use the senderIsSnowflake modifier
@@ -24,7 +37,7 @@ contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
     // however, note that they can force remove the resolver, bypassing onRemoval
     function onRemoval(uint ein, bytes memory extraData) public returns (bool){
        return true;
-    };
+    }
 
 
 

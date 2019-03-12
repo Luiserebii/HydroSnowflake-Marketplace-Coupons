@@ -4,6 +4,8 @@ const Snowflake = artifacts.require('./Snowflake.sol')
 const ClientRaindrop = artifacts.require('./resolvers/ClientRaindrop/ClientRaindrop.sol')
 const OldClientRaindrop = artifacts.require('./_testing/OldClientRaindrop.sol')
 
+const CouponMarketplace = artifacts.require('./resolvers/CouponMarketplace.sol')
+
 async function initialize (owner, users) {
   const instances = {}
 
@@ -28,6 +30,9 @@ async function initialize (owner, users) {
     instances.Snowflake.address, instances.OldClientRaindrop.address, 0, 0, { from: owner }
   )
   await instances.Snowflake.setClientRaindropAddress(instances.ClientRaindrop.address, { from: owner })
+
+
+  instances.CouponMarketplace = await CouponMarketplace.new(1, "Test_Name", "Test_Desc", instances.Snowflake.address, false, false, {from: owner })
 
   return instances
 }
