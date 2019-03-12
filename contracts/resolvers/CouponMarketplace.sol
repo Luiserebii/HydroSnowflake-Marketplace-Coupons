@@ -21,21 +21,42 @@ Simple Marketplace
 
 */
 
+    mapping(uint => string) public shippingMethods;
+    mapping(uint => Item) public itemListings;
+    mapping(uint => string) public itemTags;
+
+
     struct Item {
 
         ItemStatus status,
         ItemCondition condition,
-        string name,    
+        string title,    
         string description,
         uint256 price,
         uint uuid,
-        
+        uint[] shipping,
+        uint[] tags,
+        ReturnPolicy returnPolicy
 
     }
 
+    enum ItemType { DIGITAL, PHYSICAL }
+    
     enum ItemStatus { ACTIVE, AWAITING_PAYMENT, COMPLETE }
     enum ItemCondition { NEW, LIKE_NEW, VERY_GOOD, GOOD, ACCEPTABLE }
+    
 
+    struct ShippingDetails {
+        uint method,
+        uint handlingTime,
+        string trackingNumber
+
+    }
+
+    struct ReturnPolicy {
+        bool returnsAccepted,
+        uint timeLimit
+    }
 
     constructor(
         uint ein,
