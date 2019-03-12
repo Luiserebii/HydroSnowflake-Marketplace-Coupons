@@ -40,9 +40,8 @@ async function initialize (owner, users) {
 
 async function deployCouponMarketplace (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false) {
 
-  const instances = {}
-  instances.CouponMarketplace = await CouponMarketplace.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, {from: owner })
-  return instances;
+  let cmpContract = await CouponMarketplace.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, {from: owner })
+  return cmpContract;
 
 }
 
