@@ -1,10 +1,17 @@
 const common = require('./common.js')
 const { sign, verifyIdentity } = require('./utilities')
+const util = require('util')
 
 let user
 let instances
 contract('Testing Coupon Marketplace', function (accounts) {
   const users = [
+    {
+      hydroID: 'sellerabc',
+      address: accounts[0],
+      recoveryAddress: accounts[0],
+      private: '0x2665671af93f210ddb5d5ffa16c77fcf961d52796f2b2d7afd32cc5d886350a8'
+    },
     {
       hydroID: 'abc',
       address: accounts[1],
@@ -29,10 +36,17 @@ contract('Testing Coupon Marketplace', function (accounts) {
     instances = await common.initialize(accounts[0], [])
   })
 
+  it('TEST', async () => { console.log(util.inspect(instances)) })
+
   describe('Testing Coupon Marketplace', async () => {
 
-      instances = await common.initialize(accounts[0], [])
-      user = {hydroID: 'testabc', address: accounts[0], recoveryAddress: accounts[0], private: '0x6bf410ff825d07346c110c5836b33ec76e7d1ee051283937392180b732aa3eff'}
+    it('deploy CouponMarketplace contract', async function () {
+      instances.CouponMarketplace = await common.deploy.couponMarketplace(users[0].address)
+    })
+
+    it('add seller identity to Identity Registry', async function () {
+
+      user = users[0]
       const timestamp = Math.round(new Date() / 1000) - 1
       const permissionString = web3.utils.soliditySha3(
         '0x19', '0x00', instances.IdentityRegistry.address,
@@ -58,7 +72,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         providers:           [instances.Snowflake.address],
         resolvers:           [instances.ClientRaindrop.address]
       })
-
+   })
 
 
     it('Deployer is EIN Owner', async function () {

@@ -32,11 +32,24 @@ async function initialize (owner, users) {
   await instances.Snowflake.setClientRaindropAddress(instances.ClientRaindrop.address, { from: owner })
 
 
-  instances.CouponMarketplace = await CouponMarketplace.new(1, "Test_Name", "Test_Desc", instances.Snowflake.address, false, false, {from: owner })
+  /*instances.CouponMarketplace = await CouponMarketplace.new(1, "Test_Name", "Test_Desc", instances.Snowflake.address, false, false, {from: owner })*/
 
   return instances
 }
 
+
+async function deployCouponMarketplace (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false) {
+
+  const instances = {}
+  instances.CouponMarketplace = await CouponMarketplace.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, {from: owner })
+  return instances;
+
+}
+
+
 module.exports = {
-  initialize: initialize
+  initialize: initialize,
+  deploy: {
+    couponMarketplace: deployCouponMarketplace
+  }
 }
