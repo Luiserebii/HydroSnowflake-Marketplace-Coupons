@@ -39,7 +39,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
   describe('Testing Coupon Marketplace', async () => {
 
     it('deploy CouponMarketplace contract', async function () {
-      instances.CouponMarketplace = await common.deploy.couponMarketplace(users[0].address)
+      instances.CouponMarketplace = await common.deploy.couponMarketplace(users[0].address, instances.Snowflake.address)
     })
 
     it('add seller identity to Identity Registry', async function () {
@@ -75,7 +75,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
     it('Deployer is EIN Owner', async function () {
 
-//      let isEINOwner = await instances.CouponMarketplace.CouponMarketplace.isEINOwner({ from: accounts[0] })
+      let isEINOwner = await instances.CouponMarketplace.isEINOwner({ from: accounts[0], gas: '3000000' })
 
 //        console.log(instances.CouponMarketplace)
   //    assert.equal(isEINOwner, true);
