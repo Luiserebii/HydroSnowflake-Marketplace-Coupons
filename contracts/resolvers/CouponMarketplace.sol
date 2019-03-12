@@ -7,6 +7,36 @@ import "../interfaces/SnowflakeInterface.sol";
 
 contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
 
+/*
+
+Simple Marketplace
+-------------------
+
+-Contract owner = seller
+-Contract owner = EIN
+-Items
+-Coupons
+  -[uint ---> Coupon]
+     -Coupon = [Amount off, items applied to]
+
+*/
+
+    struct Item {
+
+        ItemStatus status,
+        ItemCondition condition,
+        string name,    
+        string description,
+        uint256 price,
+        uint uuid,
+        
+
+    }
+
+    enum ItemStatus { ACTIVE, AWAITING_PAYMENT, COMPLETE }
+    enum ItemCondition { NEW, LIKE_NEW, VERY_GOOD, GOOD, ACCEPTABLE }
+
+
     constructor(
         uint ein,
         string memory _snowflakeName, string memory _snowflakeDescription,
@@ -53,17 +83,6 @@ contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
 
 
 /*
-
-Simple Marketplace
--------------------
-
--Contract owner = seller
--Contract owner = EIN
--Items
--Coupons
-  -[uint ---> Coupon]
-     -Coupon = [Amount off, items applied to]
-
 
 
 Item Status:
