@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 import "../SnowflakeResolver.sol";
 import "./SnowflakeEINOwnable.sol";
 import "../interfaces/IdentityRegistryInterface.sol";
-import "../interfaces/SnowflakeResolverInterface.sol";
+import "../interfaces/SnowflakeInterface.sol";
 
 contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
 
@@ -20,13 +20,17 @@ contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
         _callOnAddition, _callOnRemoval
     ) public {}
 
-    function isEINOwner() public view returns(bool){
+    function isEINOwner() public returns(bool){
         //Grab an instance of IdentityRegistry to work with as defined in Snowflake
-        IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(SnowflakeResolverInterface(snowflakeAddress).identityRegistryAddress());
+
+        SnowflakeInterface si = SnowflakeInterface(snowflakeAddress);
+        address iAdd = si.identityRegistryAddress();
+
+        IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(iAdd);
         //Ensure the address exists within the registry
         require(identityRegistry.hasIdentity(msg.sender), "Address non-existent in IdentityRegistry");
 
-        return identityRegistry.getEIN(msg.sender) == _ownerEIN;
+        return identityRegistry.getEIN(msg.sender) == ownerEIN();
     }
 
 

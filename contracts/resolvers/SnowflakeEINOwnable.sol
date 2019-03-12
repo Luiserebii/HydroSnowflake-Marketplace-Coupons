@@ -41,7 +41,8 @@ contract SnowflakeEINOwnable {
     /**
     * @return true if address resolves to owner of the contract.
     */
-    function isEINOwner() public view returns(bool);
+    // Removing pure to solve particular error; TODO: check later
+    function isEINOwner() public returns(bool);
 
     /**
     * @dev Allows the current owner to relinquish control of the contract.
