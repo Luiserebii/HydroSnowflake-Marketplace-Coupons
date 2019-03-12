@@ -37,16 +37,17 @@ Simple Marketplace
                 nextReturnPolicitsID;
 
     struct Item {
-        uint uuid,
-        ItemType type,
-        ItemStatus status,
-        ItemCondition condition,
-        string title,    
-        string description,
-        uint256 price,
-        uint[] delivery,
-        uint[] tags,
-        uint returnPolicy
+        uint uuid;
+        uint quantity;
+        ItemType type;
+        ItemStatus status;
+        ItemCondition condition;
+        string title;
+        string description;
+        uint256 price;
+        uint[] delivery;
+        uint[] tags;
+        uint returnPolicy;
 
     }
 
@@ -57,20 +58,20 @@ Simple Marketplace
     
 
     struct DeliveryDetails {
-        uint method,
-        uint handlingTime,
-        string trackingNumber
+        uint method;
+        uint handlingTime;
+        string trackingNumber;
     }
 
     struct ReturnPolicy {
-        bool returnsAccepted,
-        uint timeLimit
+        bool returnsAccepted;
+        uint timeLimit;
     }
 
     struct Coupon {
-        uint256 amountOff,
-        uint[] itemsApplicable,
-        uint expirationDate
+        uint256 amountOff;
+        uint[] itemsApplicable;
+        uint expirationDate;
     }
 
     constructor(
@@ -125,7 +126,49 @@ Simple Marketplace
     }
 
 
+    function getItem(uint id) public view returns (
+        uint uuid,
+        uint quantity,
+        ItemType type,
+        ItemStatus status,
+        ItemCondition condition,
+        string memory title,    
+        string memory description,
+        uint256 price,
+        uint returnPolicy
+    ){
 
+        Item item = itemListings[id];      
+        return (item.uuid, item.quantity, item.type, item.status, item.condition, item.title, item.description, item.price, item.returnPolicy);
+    }
+
+    function getDeliveryDetails(uint id) public view returns (
+        uint method,
+        uint handlingTime,
+        string memory trackingNumber
+    ){
+
+        DeliveryDetails dd = DeliveryDetails[id];
+        return (dd.method, dd.handlingTime, dd.trackingNumber);   
+    }
+
+    function getReturnPolicy(uint id) public view returns (
+        bool returnsAccepted,
+        uint timeLimit
+    ){
+
+        ReturnPolicy rp = ReturnPolicy[id];
+        return (rp.returnsAccepted, rp.timeLimit);
+    } 
+
+    function getCoupon(uint id) public view returns (
+        uint256 amountOff,
+        uint expirationDate
+    ){
+
+        Coupon c = Coupon[id];
+        return (c.amountOff, c.expirationDate);
+    }
 
 /*
 
