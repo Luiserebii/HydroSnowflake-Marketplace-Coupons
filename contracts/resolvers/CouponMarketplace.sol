@@ -45,7 +45,7 @@ Simple Marketplace
         string title;
         string description;
         uint256 price;
-        uint[] delivery;
+        uint[] delivery; //Simply holds the ID for the delivery method, done for saving space
         uint[] tags;
         uint returnPolicy;
 
@@ -126,6 +126,10 @@ Simple Marketplace
     }
 
 
+/*
+    Many of these getters may not be needed; check web3
+*/
+
     function getItem(uint id) public view returns (
         uint uuid,
         uint quantity,
@@ -142,14 +146,14 @@ Simple Marketplace
         return (item.uuid, item.quantity, item.type, item.status, item.condition, item.title, item.description, item.price, item.returnPolicy);
     }
 
-    function getDeliveryDetails(uint id) public view returns (
-        uint method,
-        uint handlingTime,
-        string memory trackingNumber
-    ){
+    function getItemDelivery(uint id, uint index) public view returns (uint) { return itemListings[id].delivery[index]; }
+    function getItemTag(uint id, uint index) public view returns (uint) { return itemListings[id].tags[index]; }
 
-        DeliveryDetails dd = DeliveryDetails[id];
-        return (dd.method, dd.handlingTime, dd.trackingNumber);   
+
+    function getDeliveryMethod(uint id) public view returns (
+        string method
+    ){
+        return (deliveryMethods[id]);   
     }
 
     function getReturnPolicy(uint id) public view returns (
@@ -157,7 +161,7 @@ Simple Marketplace
         uint timeLimit
     ){
 
-        ReturnPolicy rp = ReturnPolicy[id];
+        ReturnPolicy rp = returnPolicies[id];
         return (rp.returnsAccepted, rp.timeLimit);
     } 
 
@@ -166,9 +170,17 @@ Simple Marketplace
         uint expirationDate
     ){
 
-        Coupon c = Coupon[id];
+        Coupon c = avaliableCoupons[id];
         return (c.amountOff, c.expirationDate);
     }
+
+    function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return avaliableCoupons[id].tags[index]; }
+
+/*
+===============================================================================================================================
+    	END OF PUBLIC GETTER FUNCTIONS
+===============================================================================================================================
+*/
 
 /*
 
