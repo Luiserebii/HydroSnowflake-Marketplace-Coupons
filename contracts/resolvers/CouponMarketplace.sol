@@ -26,9 +26,34 @@ Item Status:
 -Complete
 
 
+Functions:
+-----------
+-List items
+-Remove item listing
+-Update item listing
+-Read item listing
+
+
+-Pay for thing
+   -Look for EIN in Identity Registry, I suppose?
+   -TransferHydroBalanceTo(EIN owner)
+
+
 ==================
 TODO: Add events
 ==================
+
+-----------------------------------------------------------------
+
+Index:
+--------
+
+   -Struct/Mapping defnitions and declarations
+   -Constructor
+   -Inheritance function overrides
+   -Public getter functions
+   -Add/Update/Delete functions
+
 
 */
 
@@ -122,6 +147,12 @@ TODO: Add events
         nextAvailableCouponsID = 0;
 
     }
+
+
+/* ======================================
+    Functions overridden via inheritance  
+   ======================================
+*/
 
 
     function isEINOwner() public returns(bool){
@@ -229,22 +260,6 @@ TODO: Add events
 ===============================================================================================================================
     	END OF PUBLIC GETTER FUNCTIONS
 ===============================================================================================================================
-*/
-
-/*
-
-Functions:
------------
--List items
--Remove item listing
--Update item listing
--Read item listing
-
-
--Pay for thing
-   -Look for EIN in Identity Registry, I suppose?
-   -TransferHydroBalanceTo(EIN owner)
-
 */
 
 
