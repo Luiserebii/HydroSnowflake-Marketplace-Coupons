@@ -185,7 +185,7 @@ TODO: Add events
         return (c.amountOff, c.expirationDate);
     }
 
-    function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return availableCoupons[id].tags[index]; }
+    function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return availableCoupons[id].itemsApplicable[index]; }
 
 
 
@@ -235,7 +235,7 @@ ItemListing add/update/delete
     ) public onlyEINOwner returns (bool) {
 
         //Add to itemListings
-        itemListings[nextItemListingsID] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags);
+        itemListings[nextItemListingsID] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
         //advance item by one
         nextItemListingsID++;
 
@@ -260,7 +260,7 @@ ItemListing add/update/delete
     ) public onlyEINOwner returns (bool) {
 
         //Update itemListing identified by ID
-        itemListings[id] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags);
+        itemListings[id] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
         return true;
     }
 
