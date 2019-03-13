@@ -26,6 +26,10 @@ Item Status:
 -Complete
 
 
+==================
+TODO: Add events
+==================
+
 */
 
     mapping(uint => string) public deliveryMethods;
@@ -324,6 +328,33 @@ ItemTags add/update/delete
         return true;
     }
 
+/*
+==============================
+ReturnPolicy add/update/delete
+==============================
+*/
+
+    function addReturnPolicy(bool returnsAccepted, uint timeLimit) public onlyEINOwner returns (bool) {
+        //Add to returnPolicies
+        returnPolicies[nextReturnPolicyID] = ReturnPolicy(returnsAccepted, timeLimit);
+        //Advance return policy ID by one
+        nextReturnPolicyID++;
+
+        return true;
+    }
+
+    function updateReturnPolicy(uint id, bool returnsAccepted, uint timeLimit) public onlyEINOwner returns (bool) {
+        //Update returnPolicies by ID
+        returnPolicies[id] = ReturnPolicy(returnsAccepted, timeLimit);
+        return true;
+    }
+
+    function deleteReturnPolicy(uint id) public onlyEINOwner returns (bool) {
+        //Delete Return Policy identified by ID
+        delete returnPolicies[id];
+        return true;
+    }
+
 
 /*
 ===================================
@@ -331,21 +362,21 @@ AvailableCoupons add/update/delete
 ===================================
 */
 
-    function addAvaliableCoupon(
+    function addAvailableCoupon(
         uint256 amountOff,
         uint[] itemsApplicable,
         uint expirationDate
 
     ) public onlyEINOwner returns (bool)
         //Add to avaliableCoupons
-        avaliableCoupons[nextAvailableCouponID] = Coupon(amountOff, itemsApplicable, expirationDate);
+        availableCoupons[nextAvailableCouponID] = Coupon(amountOff, itemsApplicable, expirationDate);
         //Advance nextAvailableCouponID by 1
         nextAvailableCouponID++;
 
         return true;
     }
 
-    function updateAvaliableCoupon(
+    function updateAvailableCoupon(
         uint id,
         uint256 amountOff,
         uint[] itemsApplicable,
@@ -353,13 +384,13 @@ AvailableCoupons add/update/delete
 
     ) public onlyEINOwner returns (bool)
         //Add to avaliableCoupons
-        avaliableCoupons[id] = Coupon(amountOff, itemsApplicable, expirationDate);
+        availableCoupons[id] = Coupon(amountOff, itemsApplicable, expirationDate);
 
         return true;
     }
 
    
-    function removeAvailableCoupon(uint id) public onlyEINOwner returns (bool) {
+    function deleteAvailableCoupon(uint id) public onlyEINOwner returns (bool) {
     
         //Delete availableCoupon by ID
         delete availableCoupons[id];
@@ -369,5 +400,6 @@ AvailableCoupons add/update/delete
 
 
 }
+
  
 
