@@ -32,22 +32,8 @@ TODO: Add events
 
 */
 
-    mapping(uint => string) public deliveryMethods;
-    mapping(uint => Item) public itemListings;
-    mapping(uint => string) public itemTags;
-    mapping(uint => ReturnPolicy) public returnPolicies;
 
-    mapping(uint => Coupon) public availableCoupons;
-
-    //uints to track next avaliable "ID" added to mappings
-    //Reasoning on next > latest; avoiding writing if() statement to check if [0] has already been set
-    uint public nextDeliveryMethodsID;
-    uint public nextItemListingsID;
-    uint public nextItemTagsID;
-    uint public nextReturnPoliciesID;
-    uint public nextAvailableCouponsID;
-
-    struct Item {
+   struct Item {
         uint uuid;
         uint quantity;
         ItemType itemType;
@@ -85,6 +71,36 @@ TODO: Add events
         uint expirationDate;
     }
 
+
+    /* Mappings and ID uints */
+
+    mapping(uint => Item) public itemListings;
+    mapping(uint => string) public itemTags;
+    mapping(uint => string) public deliveryMethods;  
+    mapping(uint => ReturnPolicy) public returnPolicies;
+    mapping(uint => Coupon) public availableCoupons;
+
+    //uints to track next avaliable "ID" added to mappings
+    //Reasoning on next > latest; avoiding writing if() statement to check if [0] has already been set
+    uint public nextDeliveryMethodsID;
+    uint public nextItemListingsID;
+    uint public nextItemTagsID;
+    uint public nextReturnPoliciesID;
+    uint public nextAvailableCouponsID;
+
+    /*-----------------------------------*/
+
+
+
+    /*
+     * =============
+     * Constructor:
+     * =============
+     *
+     * Intialize EIN of owner and SnowflakeResolver vars
+     *
+     *
+     */
     constructor(
         uint ein,
         string memory _snowflakeName, string memory _snowflakeDescription,
@@ -107,9 +123,9 @@ TODO: Add events
 
     }
 
+
     function isEINOwner() public returns(bool){
         //Grab an instance of IdentityRegistry to work with as defined in Snowflake
-
         SnowflakeInterface si = SnowflakeInterface(snowflakeAddress);
         address iAdd = si.identityRegistryAddress();
 
@@ -138,8 +154,34 @@ TODO: Add events
 
 
 /*
+    =================
+     Public Getters:
+    =================
+
+    Functions which simply take indicies and return their value; convenience functions for mapping/arrays
+
+
+
+
+    function getItem(uint id) public view returns (uint uuid, uint quantity, ItemType itemType, ItemStatus status, ItemCondition condition, string memory title, string memory description, uint256 price, uint returnPolicy);
+
+    function getItemDelivery(uint id, uint index) public view returns (uint);
+    function getItemTag(uint id, uint index) public view returns (uint);
+
+    //Returns delivery method at mapping ID (i.e. Fedex)
+    function getDeliveryMethod(uint id) public view returns (string memory method);
+    
+    function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit);
+    function getCoupon(uint id) public view returns (uint256 amountOff, uint expirationDate);
+    function getCouponItemApplicable(uint id, uint index) public view returns (uint);
+
+
+
     Many of these getters may not be needed; check web3
 */
+
+
+
 
     function getItem(uint id) public view returns (
         uint uuid,
@@ -158,28 +200,21 @@ TODO: Add events
     }
 
     function getItemDelivery(uint id, uint index) public view returns (uint) { return itemListings[id].delivery[index]; }
+
     function getItemTag(uint id, uint index) public view returns (uint) { return itemListings[id].tags[index]; }
 
 
-    function getDeliveryMethod(uint id) public view returns (
-        string memory method
-    ){
+    function getDeliveryMethod(uint id) public view returns (string memory method){
         return (deliveryMethods[id]);   
     }
 
-    function getReturnPolicy(uint id) public view returns (
-        bool returnsAccepted,
-        uint timeLimit
-    ){
+    function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit){
 
         ReturnPolicy memory rp = returnPolicies[id];
         return (rp.returnsAccepted, rp.timeLimit);
     } 
 
-    function getCoupon(uint id) public view returns (
-        uint256 amountOff,
-        uint expirationDate
-    ){
+    function getCoupon(uint id) public view returns (uint256 amountOff, uint expirationDate){
 
         Coupon memory c = availableCoupons[id];
         return (c.amountOff, c.expirationDate);
@@ -213,6 +248,21 @@ Functions:
 */
 
 
+/* =================================================
+
+    ADD/UPDATE/DELETE FUNCTIONS FOR:
+   ----------------------------------- 
+      -itemListings
+      -itemTags
+      -deliveryMethods
+      -returnPolicies
+      -availableCoupons
+
+   =================================================
+*/
+
+
+
 /*
 ==============================
 ItemListing add/update/delete
@@ -229,7 +279,7 @@ ItemListing add/update/delete
         string memory title,
         string memory description,
         uint256 price,
-        uint[] memory delivery, //Simply holds the ID for the delivery method, done for saving space
+        uint[] memory delivery, 
         uint[] memory tags,
         uint returnPolicy
     ) public onlyEINOwner returns (bool) {
@@ -243,7 +293,8 @@ ItemListing add/update/delete
     }
 
 
-    //NOTE: This can be changed in a way that does not re-create an entirely new item on every call,
+    //NOTE: This can be changed in a way that does not re-create an entirely new item on every call, but more complex that perhaps needed
+
     function updateItemListing (
         uint id,
         uint uuid,
@@ -254,7 +305,7 @@ ItemListing add/update/delete
         string memory title,
         string memory description,
         uint256 price,
-        uint[] memory delivery, //Simply holds the ID for the delivery method, done for saving space
+        uint[] memory delivery, 
         uint[] memory tags,
         uint returnPolicy
     ) public onlyEINOwner returns (bool) {
@@ -397,6 +448,15 @@ AvailableCoupons add/update/delete
         return true;
 
     }
+
+
+/* ====================================================
+
+       END OF ADD/UPDATE/DELETE FUNCTIONS
+
+   ====================================================
+*/
+
 
 
 }
