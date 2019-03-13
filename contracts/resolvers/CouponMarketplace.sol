@@ -41,16 +41,16 @@ TODO: Add events
 
     //uints to track next avaliable "ID" added to mappings
     //Reasoning on next > latest; avoiding writing if() statement to check if [0] has already been set
-    uint public nextDeliveryMethodID,
-                nextItemListingsID,
-                nextItemTagsID,
-                nextReturnPoliciesID,
-                nextReturnPolicitsID;
+    uint public nextDeliveryMethodsID;
+    uint public nextItemListingsID;
+    uint public nextItemTagsID;
+    uint public nextReturnPoliciesID;
+    uint public nextAvailableCouponsID;
 
     struct Item {
         uint uuid;
         uint quantity;
-        ItemType type;
+        ItemType itemType;
         ItemStatus status;
         ItemCondition condition;
         string title;
@@ -99,11 +99,11 @@ TODO: Add events
     ) public {
 
         //Initialize "latestID" vars
-        latestDeliveryMethodID = 0;
-        latestItemListingsID = 0;
-        latestItemTagsID,
-        latestReturnPoliciesID,
-        latestReturnPolicitsID;
+        nextDeliveryMethodsID = 0;
+        nextItemListingsID = 0;
+        nextItemTagsID = 0;
+        nextReturnPoliciesID = 0;
+        nextAvailableCouponsID = 0;
 
     }
 
@@ -144,7 +144,7 @@ TODO: Add events
     function getItem(uint id) public view returns (
         uint uuid,
         uint quantity,
-        ItemType type,
+        ItemType itemType,
         ItemStatus status,
         ItemCondition condition,
         string memory title,    
@@ -153,8 +153,8 @@ TODO: Add events
         uint returnPolicy
     ){
 
-        Item item = itemListings[id];      
-        return (item.uuid, item.quantity, item.type, item.status, item.condition, item.title, item.description, item.price, item.returnPolicy);
+        Item memory item = itemListings[id];      
+        return (item.uuid, item.quantity, item.itemType, item.status, item.condition, item.title, item.description, item.price, item.returnPolicy);
     }
 
     function getItemDelivery(uint id, uint index) public view returns (uint) { return itemListings[id].delivery[index]; }
@@ -162,7 +162,7 @@ TODO: Add events
 
 
     function getDeliveryMethod(uint id) public view returns (
-        string method
+        string memory method
     ){
         return (deliveryMethods[id]);   
     }
@@ -172,7 +172,7 @@ TODO: Add events
         uint timeLimit
     ){
 
-        ReturnPolicy rp = returnPolicies[id];
+        ReturnPolicy memory rp = returnPolicies[id];
         return (rp.returnsAccepted, rp.timeLimit);
     } 
 
@@ -181,11 +181,11 @@ TODO: Add events
         uint expirationDate
     ){
 
-        Coupon c = avaliableCoupons[id];
+        Coupon memory c = availableCoupons[id];
         return (c.amountOff, c.expirationDate);
     }
 
-    function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return avaliableCoupons[id].tags[index]; }
+    function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return availableCoupons[id].tags[index]; }
 
 
 
@@ -223,21 +223,21 @@ ItemListing add/update/delete
     function addItemListing (
         uint uuid,
         uint quantity,
-        ItemType type,
+        ItemType itemType,
         ItemStatus status,
         ItemCondition condition,
         string memory title,
         string memory description,
         uint256 price,
-        uint[] delivery, //Simply holds the ID for the delivery method, done for saving space
-        uint[] tags,
+        uint[] memory delivery, //Simply holds the ID for the delivery method, done for saving space
+        uint[] memory tags,
         uint returnPolicy
     ) public onlyEINOwner returns (bool) {
 
         //Add to itemListings
-        itemListings[nextItemListingID] = Item(uuid, quantity, type, status, condition, title, description, price, delivery, tags);
+        itemListings[nextItemListingsID] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags);
         //advance item by one
-        nextItemListingID++;
+        nextItemListingsID++;
 
         return true;
     }
@@ -248,19 +248,19 @@ ItemListing add/update/delete
         uint id,
         uint uuid,
         uint quantity,
-        ItemType type,
+        ItemType itemType,
         ItemStatus status,
         ItemCondition condition,
         string memory title,
         string memory description,
         uint256 price,
-        uint[] delivery, //Simply holds the ID for the delivery method, done for saving space
-        uint[] tags,
+        uint[] memory delivery, //Simply holds the ID for the delivery method, done for saving space
+        uint[] memory tags,
         uint returnPolicy
     ) public onlyEINOwner returns (bool) {
 
         //Update itemListing identified by ID
-        itemListings[id] = Item(uuid, quantity, type, status, condition, title, description, price, delivery, tags);
+        itemListings[id] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags);
         return true;
     }
 
@@ -279,9 +279,9 @@ DeliveryMethods add/update/delete
 
     function addDeliveryMethod(string memory deliveryMethod) public onlyEINOwner returns (bool) {
         //Add to deliveryMethods
-        deliveryMethods[nextDeliveryMethodID] = deliveryMethod;
+        deliveryMethods[nextDeliveryMethodsID] = deliveryMethod;
         //Advance delivery method by one
-        nextDeliveryMethodID++;
+        nextDeliveryMethodsID++;
 
         return true;
     }
@@ -308,9 +308,9 @@ ItemTags add/update/delete
 
     function addItemTag(string memory itemTag) public onlyEINOwner returns (bool) {
         //Add to deliveryMethods
-        itemTags[nextItemTagID] = itemTag;
+        itemTags[nextItemTagsID] = itemTag;
         //Advance delivery method by one
-        nextItemTagID++;
+        nextItemTagsID++;
 
         return true;
     }
@@ -336,9 +336,9 @@ ReturnPolicy add/update/delete
 
     function addReturnPolicy(bool returnsAccepted, uint timeLimit) public onlyEINOwner returns (bool) {
         //Add to returnPolicies
-        returnPolicies[nextReturnPolicyID] = ReturnPolicy(returnsAccepted, timeLimit);
+        returnPolicies[nextReturnPoliciesID] = ReturnPolicy(returnsAccepted, timeLimit);
         //Advance return policy ID by one
-        nextReturnPolicyID++;
+        nextReturnPoliciesID++;
 
         return true;
     }
@@ -364,14 +364,14 @@ AvailableCoupons add/update/delete
 
     function addAvailableCoupon(
         uint256 amountOff,
-        uint[] itemsApplicable,
+        uint[] memory itemsApplicable,
         uint expirationDate
 
-    ) public onlyEINOwner returns (bool)
+    ) public onlyEINOwner returns (bool) {
         //Add to avaliableCoupons
-        availableCoupons[nextAvailableCouponID] = Coupon(amountOff, itemsApplicable, expirationDate);
+        availableCoupons[nextAvailableCouponsID] = Coupon(amountOff, itemsApplicable, expirationDate);
         //Advance nextAvailableCouponID by 1
-        nextAvailableCouponID++;
+        nextAvailableCouponsID++;
 
         return true;
     }
@@ -379,10 +379,10 @@ AvailableCoupons add/update/delete
     function updateAvailableCoupon(
         uint id,
         uint256 amountOff,
-        uint[] itemsApplicable,
+        uint[] memory itemsApplicable,
         uint expirationDate
 
-    ) public onlyEINOwner returns (bool)
+    ) public onlyEINOwner returns (bool) {
         //Add to avaliableCoupons
         availableCoupons[id] = Coupon(amountOff, itemsApplicable, expirationDate);
 
@@ -394,7 +394,7 @@ AvailableCoupons add/update/delete
     
         //Delete availableCoupon by ID
         delete availableCoupons[id];
-        return true
+        return true;
 
     }
 
