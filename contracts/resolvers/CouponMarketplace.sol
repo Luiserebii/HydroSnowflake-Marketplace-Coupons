@@ -75,7 +75,7 @@ Index:
 
     enum ItemType { DIGITAL, PHYSICAL }
     
-    enum ItemStatus { ACTIVE, AWAITING_PAYMENT, COMPLETE }
+    enum ItemStatus { ACTIVE, INACTIVE }
     enum ItemCondition { NEW, LIKE_NEW, VERY_GOOD, GOOD, ACCEPTABLE }
     
 
@@ -97,6 +97,8 @@ Index:
     }
 
 
+    address private _paymentAddress;
+
     /* Mappings and ID uints */
 
     mapping(uint => Item) public itemListings;
@@ -112,6 +114,12 @@ Index:
     uint public nextItemTagsID;
     uint public nextReturnPoliciesID;
     uint public nextAvailableCouponsID;
+
+
+    //EIN to Coupon UUID mapping
+    // EIN => (couponID => bool)
+    mapping(uint => (uint => bool)) public userCoupons;
+
 
     /*-----------------------------------*/
 
@@ -144,7 +152,8 @@ Index:
         nextItemListingsID = 0;
         nextItemTagsID = 0;
         nextReturnPoliciesID = 0;
-        nextAvailableCouponsID = 0;
+        //In order to satisfy logic of "If a user passes 0 as the uuid for the coupon, the via should just conduct a transfer as normal as if no coupon were present.", we put this at 1
+        nextAvailableCouponsID = 1;
 
     }
 
@@ -206,6 +215,7 @@ Index:
     function getCoupon(uint id) public view returns (uint256 amountOff, uint expirationDate);
     function getCouponItemApplicable(uint id, uint index) public view returns (uint);
 
+    function isUserCouponOwner(uint id) public view returns (bool isValid);
 
 
     Many of these getters may not be needed; check web3
@@ -213,6 +223,10 @@ Index:
 
 
 
+
+    function paymentAddress() public view returns (address) {
+        return _paymentAddress;
+    }
 
     function getItem(uint id) public view returns (
         uint uuid,
@@ -253,6 +267,11 @@ Index:
 
     function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return availableCoupons[id].itemsApplicable[index]; }
 
+    function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid) {
+        return userCoupons[ein][couponID];
+    }
+
+
 
 
 
@@ -261,6 +280,29 @@ Index:
     	END OF PUBLIC GETTER FUNCTIONS
 ===============================================================================================================================
 */
+
+
+
+
+
+/*
+========================
+Only EIN Owner setters
+========================
+
+
+*/
+
+
+
+//TODO: Add event here
+function setPaymentAddress(address addr) public onlyEINOwner returns (bool) {
+    _paymentAddress = addr;
+    return true;
+}
+
+
+
 
 
 /* =================================================
@@ -471,6 +513,55 @@ AvailableCoupons add/update/delete
 
    ====================================================
 */
+
+
+/*
+
+-Pay for thing
+   -Look for EIN in Identity Registry, I suppose?
+   -TransferHydroBalanceTo(EIN owner)
+
+
+
+Buyers can purchase listed items at-price by by sending a transaction that:
+
+    Calls allow-and-call for the user on Snowflake
+        Sets an allowance equal to the price
+        Draws the corresponding allowance from the user
+        Transfers ownership of the item to the buyer
+    Transactions should be facilitated through a via contract which must be written as part of this task (instructions below); in most instances, the ‘via’ will do nothing; however, if the user has a “coupon,” the via will apply the coupon as part of the transaction. Coupons work as follows:
+
+
+Via contract to use coupons:
+
+    When a buyer is buying an item, the transfer function call on Snowflake should include the address of the via contract, and an extraData bytes parameter that will encode a function call. This bytes parameter should include the uuid of the user-owned coupon. The logic of the via contract will draw the apply the discount rate of the coupon to the item, and then transfer the coupon to a burner address. The user’s discount will be refunded to them while the seller receives the rest of the value of the transaction. Finally, ownership of the purchased item should be transferred to the user. All this should be achievable in one synchronous function-call. If a user passes 0 as the uuid for the coupon, the via should just conduct a transfer as normal as if no coupon were present.
+    The via contract will need to check to enforce that the user actually has the coupon they are trying to pass.
+
+
+
+
+
+*/
+
+
+
+    function purchaseItem(uint id, bytes memory data, address approvingAddress, uint8 v, bytes32 r, bytes32 s) public returns (bool) {
+
+        //Ensure the item exists, and that there is a price
+        require(itemListings[id].price > 0);
+
+        //Initialize Snowflake
+        SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
+
+        
+        //allowAndCallDelegated for the user
+        // - Take a destination address, an amount, data, an approving address, and three signature fields (v,r,s)
+        snowflake.allowAndCallDelegated(_paymentAddress, itemListings[id].price, data, approvingAddress, v, r, s);
+     
+
+        //Transfers ownership of the item to the buyer (!)
+
+    }
 
 
 
