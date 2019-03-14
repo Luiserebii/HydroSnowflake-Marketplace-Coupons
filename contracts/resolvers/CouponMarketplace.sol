@@ -4,6 +4,7 @@ import "../SnowflakeResolver.sol";
 import "./SnowflakeEINOwnable.sol";
 import "../interfaces/IdentityRegistryInterface.sol";
 import "../interfaces/SnowflakeInterface.sol";
+import "../interfaces/SnowflakeViaInterface.sol";
 
 contract CouponMarketplace is SnowflakeResolver, SnowflakeEINOwnable {
 
@@ -98,6 +99,7 @@ Index:
 
 
     address private _paymentAddress;
+    address private _MarketplaceCouponViaAddress;
 
     /* Mappings and ID uints */
 
@@ -130,7 +132,7 @@ Index:
      * Constructor:
      * =============
      *
-     * Intialize EIN of owner and SnowflakeResolver vars
+     * Initialize EIN of owner and SnowflakeResolver vars
      *
      *
      */
@@ -138,7 +140,9 @@ Index:
         uint ein,
         string memory _snowflakeName, string memory _snowflakeDescription,
         address _snowflakeAddress,
-        bool _callOnAddition, bool _callOnRemoval
+        bool _callOnAddition, bool _callOnRemoval,
+        address paymentAddress,
+        address MarketplaceCouponViaAddress
     ) SnowflakeEINOwnable (
         ein
     ) SnowflakeResolver (
@@ -154,6 +158,10 @@ Index:
         nextReturnPoliciesID = 0;
         //In order to satisfy logic of "If a user passes 0 as the uuid for the coupon, the via should just conduct a transfer as normal as if no coupon were present.", we put this at 1
         nextAvailableCouponsID = 1;
+
+        //Set contract-specific private/internal vars
+        _paymentAddress = paymentAddress;
+        _MarketplaceCouponViaAddress = MarketplaceCouponViaAddress;
 
     }
 
@@ -226,6 +234,10 @@ Index:
 
     function paymentAddress() public view returns (address) {
         return _paymentAddress;
+    }
+
+    function MarketplaceCouponViaAddress() public view returns (address) {
+        return _MarketplaceCouponViaAddress;
     }
 
     function getItem(uint id) public view returns (
@@ -556,8 +568,26 @@ Via contract to use coupons:
         
         //allowAndCallDelegated for the user
         // - Take a destination address, an amount, data, an approving address, and three signature fields (v,r,s)
-        snowflake.allowAndCallDelegated(_paymentAddress, itemListings[id].price, data, approvingAddress, v, r, s);
+        //snowflake.allowAndCallDelegated(_paymentAddress, itemListings[id].price, data, approvingAddress, v, r, s);
      
+        //using transferSnowflakeBalanceFromVia() instead
+
+
+/* Take an EIN (from), an address (via), an EIN (to), an amount, and data
+
+  -handleAllowance() and pass the EIN (from), and an amount
+  -_withdraw() and pass the EIN (from), the address (via), and amount
+  -Call snowflakeCall() from the via contract through the SnowflakeViaInterface, passing msg.sender, the EIN (from), the EIN (to), amount, and data
+*/
+
+        //Get EIN of user
+        IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress);
+        uint einTo = identityRegistry.getEIN(approvingAddress);
+
+        //bytes data; set snowflake stuff
+        bytes memory snowflakeCallData = ;
+
+        snowflake.transferSnowflakeBalanceFromVia(approvingAddress, _MarketplaceCouponViaAddress, einTo, itemListings[id].price, snowflakeCallData);
 
         //Transfers ownership of the item to the buyer (!)
 
