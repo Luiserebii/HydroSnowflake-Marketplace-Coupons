@@ -9,7 +9,9 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
 
     //We may need to define this in a seperate file... uncertain if this will quite work being in two different locations
-    enum CouponType { AMOUNT_OFF, PERCENTAGE_OFF, BUY_X_QTY_GET_Y_FREE , BUY_X_QTY_FOR_Y_AMNT }
+
+//   This is now defined within the CouponMarketplaceResolverInterface.sol, let's test this...
+//    enum CouponType { AMOUNT_OFF, PERCENTAGE_OFF, BUY_X_QTY_GET_Y_FREE , BUY_X_QTY_FOR_Y_AMNT }
     
     using SafeMath for uint256;
 
@@ -40,13 +42,13 @@ contract CouponMarketplaceVia is SnowflakeVia {
             //Get coupon info from our coupon marketplace resolver
             CouponMarketplaceResolverInterface couponMarketplace = CouponMarketplaceResolverInterface(resolver);
 
-            (CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate) = couponMarketplace.getCoupon(couponID); 
+            (CouponMarketplaceResolverInterface.CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate) = couponMarketplace.getCoupon(couponID); 
 
             //Ensure coupon is not expired
             require(now < expirationDate);
 
             //If couponType is amountOff...
-            if(couponType == CouponType.AMOUNT_OFF){
+            if(couponType == CouponMarketplaceResolverInterface.CouponType.AMOUNT_OFF){
                 total = _applyCouponAmountOff(total, amountOff);
                 amountRefund = amountOff;
             }
