@@ -582,10 +582,13 @@ Via contract to use coupons:
 
         //Get EIN of user
         IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress);
+        //Logic is einTo, since the results of the coupon refund will be sent to the user
         uint einTo = identityRegistry.getEIN(approvingAddress);
 
-        //bytes data; set snowflake stuff
-        bytes memory snowflakeCallData = ;
+        //bytes data; set snowflakeCall stuff
+        bytes memory snowflakeCallData;
+        string memory functionSignature = "function snowflakeCall(address, uint, uint, uint, bytes memory)";
+        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), einTo, itemListings[id].price, snowflakeCallData);
 
         snowflake.transferSnowflakeBalanceFromVia(approvingAddress, _MarketplaceCouponViaAddress, einTo, itemListings[id].price, snowflakeCallData);
 
