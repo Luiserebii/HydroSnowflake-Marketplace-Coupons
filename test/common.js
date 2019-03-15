@@ -38,7 +38,7 @@ async function initialize (owner, users) {
 }
 
 
-async function deployCouponMarketplace (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false, paymentAddress = owner, MarketplaceCouponViaAddress = '0x0') {
+async function deployCouponMarketplace (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false, paymentAddress = owner, MarketplaceCouponViaAddress = "0xcD01CD6B160D2BCbeE75b59c393D0017e6BBF427") {
 
   let cmpContract = await CouponMarketplace.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, paymentAddress, MarketplaceCouponViaAddress, {from: owner })
   return cmpContract;

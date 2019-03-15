@@ -21,7 +21,7 @@ contract CouponMarketplaceResolverInterface {
     function getCoupon(uint id) public view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);
     function getCouponItemApplicable(uint id, uint index) public view returns (uint);
 
-    function isUserCouponOwner(uint id) public view returns (bool isValid);
+    function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid);
 
 
 

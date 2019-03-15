@@ -596,18 +596,18 @@ Via contract to use coupons:
         //Get EIN of user
         IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress());
         //Logic is einFrom, since this is the buyer from which funds will head to our via contract
-        uint einFrom = identityRegistry.getEIN(approvingAddress);
-        uint einTo = ownerEIN(); //The seller
+//        uint einFrom = identityRegistry.getEIN(approvingAddress);
+//        uint einTo = ownerEIN(); //The seller
 
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
         string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint)";
-        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), einFrom, einTo, itemListings[id].price, couponID);
+        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), identityRegistry.getEIN(approvingAddress), ownerEIN(), itemListings[id].price, couponID);
 
 
 // function transferSnowflakeBalanceFromVia(uint einFrom, address via, uint einTo, uint amount, bytes memory _bytes)
 
-        snowflake.transferSnowflakeBalanceFromVia(einFrom, _MarketplaceCouponViaAddress, einTo, itemListings[id].price, snowflakeCallData);
+        snowflake.transferSnowflakeBalanceFromVia(identityRegistry.getEIN(approvingAddress), _MarketplaceCouponViaAddress, ownerEIN(), itemListings[id].price, snowflakeCallData);
 
         //Transfers ownership of the item to the buyer (!)
 
