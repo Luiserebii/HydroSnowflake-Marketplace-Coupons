@@ -4,7 +4,7 @@ const Snowflake = artifacts.require('./Snowflake.sol')
 const ClientRaindrop = artifacts.require('./resolvers/ClientRaindrop/ClientRaindrop.sol')
 const OldClientRaindrop = artifacts.require('./_testing/OldClientRaindrop.sol')
 
-const CouponMarketplace = artifacts.require('./resolvers/CouponMarketplace.sol')
+const CouponMarketplace = artifacts.require('./resolvers/CouponMarketplaceResolver.sol')
 
 async function initialize (owner, users) {
   const instances = {}
@@ -38,9 +38,9 @@ async function initialize (owner, users) {
 }
 
 
-async function deployCouponMarketplace (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false) {
+async function deployCouponMarketplace (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false, paymentAddress = owner, MarketplaceCouponViaAddress = '0x0') {
 
-  let cmpContract = await CouponMarketplace.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, {from: owner })
+  let cmpContract = await CouponMarketplace.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, paymentAddress, MarketplaceCouponViaAddress, {from: owner })
   return cmpContract;
 
 }
