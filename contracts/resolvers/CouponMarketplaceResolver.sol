@@ -5,6 +5,7 @@ import "./SnowflakeEINOwnable.sol";
 import "../interfaces/IdentityRegistryInterface.sol";
 import "../interfaces/SnowflakeInterface.sol";
 import "../interfaces/SnowflakeViaInterface.sol";
+import "../interfaces/CouponMarketplaceResolverInterface.sol";
 
 contract CouponMarketplaceResolver is SnowflakeResolver, SnowflakeEINOwnable, CouponMarketplaceResolverInterface {
 
@@ -74,11 +75,11 @@ Index:
 
     }
 
-    enum ItemType { DIGITAL, PHYSICAL }
+/*    enum ItemType { DIGITAL, PHYSICAL }
     
     enum ItemStatus { ACTIVE, INACTIVE }
     enum ItemCondition { NEW, LIKE_NEW, VERY_GOOD, GOOD, ACCEPTABLE }
-    
+*/    
 
     struct DeliveryDetails {
         uint method;
@@ -101,8 +102,9 @@ Index:
     }
 
     //percentage off not implemented, but here for future design convenience
+/*
     enum CouponType { AMOUNT_OFF, PERCENTAGE_OFF, BUY_X_QTY_GET_Y_FREE , BUY_X_QTY_FOR_Y_AMNT }
-
+*/
     address private _paymentAddress;
     address private _MarketplaceCouponViaAddress;
 
@@ -225,7 +227,7 @@ Index:
     function getDeliveryMethod(uint id) public view returns (string memory method);
     
     function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit);
-    function getCoupon(uint id) public view returns (uint256 amountOff, uint expirationDate);
+    function getCoupon(uint id) public view returns (CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
     function getCouponItemApplicable(uint id, uint index) public view returns (uint);
 
     function isUserCouponOwner(uint id) public view returns (bool isValid);
@@ -587,15 +589,19 @@ Via contract to use coupons:
 
         //Get EIN of user
         IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress);
-        //Logic is einTo, since the results of the coupon refund will be sent to the user
-        uint einTo = identityRegistry.getEIN(approvingAddress);
+        //Logic is einFrom, since this is the buyer from which funds will head to our via contract
+        uint einFrom = identityRegistry.getEIN(approvingAddress);
+        uint einTo = ownerEIN; //The seller
 
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
         string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint)";
-        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), einTo, itemListings[id].price, couponID);
+        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), einFrom, einTo, itemListings[id].price, couponID);
 
-        snowflake.transferSnowflakeBalanceFromVia(approvingAddress, _MarketplaceCouponViaAddress, einTo, itemListings[id].price, snowflakeCallData);
+
+// function transferSnowflakeBalanceFromVia(uint einFrom, address via, uint einTo, uint amount, bytes memory _bytes)
+
+        snowflake.transferSnowflakeBalanceFromVia(einFrom, _MarketplaceCouponViaAddress, einTo, itemListings[id].price, snowflakeCallData);
 
         //Transfers ownership of the item to the buyer (!)
 

@@ -4,6 +4,7 @@ import "./SnowflakeVia.sol";
 import "./interfaces/SnowflakeResolverInterface.sol";
 import "./zeppelin/math/SafeMath.sol";
 import "./interfaces/CouponMarketplaceResolverInterface.sol";
+import "./interfaces/SnowflakeInterface.sol";
 
 contract CouponMarketplaceVia is SnowflakeVia {
 
@@ -28,7 +29,10 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
 
     //Name of this function is perhaps a little misleading, since amount has already been transferred, we're just calcing coupon here
-    function processTransaction(address resolver, uint einSeller, uint einUser, uint amount, uint couponID) returns (bool) public senderIsSnowflake() {
+    function processTransaction(address resolver, uint einBuyer, uint einSeller, uint amount, uint couponID) returns (bool) public senderIsSnowflake() {
+
+        //Initialize Snowflake
+        SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
 
         //Declare our total
         uint total = amount;
@@ -57,9 +61,11 @@ contract CouponMarketplaceVia is SnowflakeVia {
             emit CouponProcessed(uint total, uint amountRefund, CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
        
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
+            snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
             
-
         }
+        //And now, just send our total charged to buyer addr via snowflake
+        snowflake.transferSnowflakeBalance(einSeller, total);
 
    }
 
