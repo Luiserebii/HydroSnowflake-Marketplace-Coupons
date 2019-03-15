@@ -18,18 +18,18 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
     // end recipient is an EIN
     function snowflakeCall(
-        address /* resolver */,
-        uint /* einFrom */,
-        uint /* einTo */,
-        uint /* amount */,
-        bytes memory /* snowflakeCallBytes */
+        address resolver,
+        uint einFrom,
+        uint einTo,
+        uint amount,
+        bytes memory snowflakeCallBytes 
     ) public senderIsSnowflake() {
-        address(this).call(snowflakeCallBytes)
+        address(this).call(snowflakeCallBytes);
     }
 
 
     //Name of this function is perhaps a little misleading, since amount has already been transferred, we're just calcing coupon here
-    function processTransaction(address resolver, uint einBuyer, uint einSeller, uint amount, uint couponID) returns (bool) public senderIsSnowflake() {
+    function processTransaction(address resolver, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake() returns (bool) {
 
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
@@ -46,7 +46,7 @@ contract CouponMarketplaceVia is SnowflakeVia {
             //Get coupon info from our coupon marketplace resolver
             CouponMarketplaceResolverInterface couponMarketplace = CouponMarketplaceResolverInterface(resolver);
 
-            (CouponMarketplaceResolverInterface.CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate) = couponMarketplace.getCoupon(couponID); 
+            (CouponMarketplaceResolverInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate) = couponMarketplace.getCoupon(couponID); 
 
             //Ensure coupon is not expired
             require(now < expirationDate);
@@ -58,7 +58,7 @@ contract CouponMarketplaceVia is SnowflakeVia {
             }
 
             //In an event, let's push the transaction or something
-            emit CouponProcessed(uint total, uint amountRefund, CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
+            emit CouponProcessed(total, amountRefund, couponType, title, description, amountOff, expirationDate);
        
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
             snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
@@ -69,7 +69,7 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
    }
 
-    function _applyCouponAmountOff(uint256 total, uint256 amountOff) returns (uint256) private {
+    function _applyCouponAmountOff(uint256 total, uint256 amountOff) private returns (uint256) {
         require(total >= amountOff, "Coupon amount is higher than total");
         uint256 newTotal = total.sub(amountOff);
     }
@@ -106,7 +106,7 @@ contract CouponMarketplaceVia is SnowflakeVia {
     }
 
     
-    event CouponProcessed(uint total, uint amountRefunded, CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
+    event CouponProcessed(uint total, uint amountRefunded, CouponMarketplaceResolverInterface.CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
 
 
 

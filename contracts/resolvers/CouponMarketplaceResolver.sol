@@ -93,9 +93,9 @@ Index:
     }
 
     struct Coupon {
-        CouponType couponType,
-        string title,
-        string description,
+        CouponType couponType;
+        string title;
+        string description;
         uint256 amountOff;
         uint[] itemsApplicable;
         uint expirationDate;
@@ -127,7 +127,7 @@ Index:
 
     //EIN to Coupon UUID mapping
     // EIN => (couponID => bool)
-    mapping(uint => (uint => bool)) public userCoupons;
+    mapping(uint => mapping(uint => bool)) public userCoupons;
 
 
     /*-----------------------------------*/
@@ -278,7 +278,7 @@ Index:
         return (rp.returnsAccepted, rp.timeLimit);
     } 
 
-    function getCoupon(uint id) public view returns (CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate){
+    function getCoupon(uint id) public view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate){
 
         Coupon memory c = availableCoupons[id];
         return (c.couponType, c.title, c.description, c.amountOff, c.expirationDate);
@@ -490,13 +490,16 @@ AvailableCoupons add/update/delete
 */
 
     function addAvailableCoupon(
+        CouponType couponType,
+        string memory title,
+        string memory description,
         uint256 amountOff,
         uint[] memory itemsApplicable,
         uint expirationDate
 
     ) public onlyEINOwner returns (bool) {
         //Add to avaliableCoupons
-        availableCoupons[nextAvailableCouponsID] = Coupon(amountOff, itemsApplicable, expirationDate);
+        availableCoupons[nextAvailableCouponsID] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
         //Advance nextAvailableCouponID by 1
         nextAvailableCouponsID++;
 
@@ -505,13 +508,16 @@ AvailableCoupons add/update/delete
 
     function updateAvailableCoupon(
         uint id,
+        CouponType couponType,
+        string memory title,
+        string memory description,
         uint256 amountOff,
         uint[] memory itemsApplicable,
         uint expirationDate
 
     ) public onlyEINOwner returns (bool) {
         //Add to avaliableCoupons
-        availableCoupons[id] = Coupon(amountOff, itemsApplicable, expirationDate);
+        availableCoupons[id] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
 
         return true;
     }
@@ -588,10 +594,10 @@ Via contract to use coupons:
 */
 
         //Get EIN of user
-        IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress);
+        IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress());
         //Logic is einFrom, since this is the buyer from which funds will head to our via contract
         uint einFrom = identityRegistry.getEIN(approvingAddress);
-        uint einTo = ownerEIN; //The seller
+        uint einTo = ownerEIN(); //The seller
 
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
