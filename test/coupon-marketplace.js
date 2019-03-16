@@ -4,6 +4,55 @@ const util = require('util')
 
 let user
 let instances
+
+
+/*
+
+1. Make CouponMarketPlaceVia (_snowflakeAddress)
+2. Make CouponMarketplaceResolver
+
+Pass: 
+EIN, "SnowflakeName", "Snowflake Description", SnowflakeAddress, false, false, paymentAddress, MarketplaceCouponViaAddress
+
+
+3. Add CouponMarketplaceResolver as provider for seller
+
+
+Test:
+
+Only seller can call add/update/delete
+
+Adding a listing
+   -Adding a listing (ensure it is correct, and thus readable)
+      -ID thing advances
+      -Readable post-addition
+
+   -Adding delivery methods
+   -Adding tags
+   -Adding a return policy
+   -Adding an avaliable coupon
+
+   -Updating a tag
+   -Updating return policy
+   -Updating coupon
+
+   -Removing an item
+      -No longer existing (check to see what compiler tells you with this stuff)
+
+
+   -Attached to listing:
+   -Updating listing with delivery methods, tags, return policy
+      -Test if expected
+
+
+-Second listing, third listing?
+
+
+*/
+
+
+
+
 contract('Testing Coupon Marketplace', function (accounts) {
   const users = [
     {
