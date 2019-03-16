@@ -73,12 +73,11 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
     it('deploy Coupon Marketplace Via contract', async function () {
       instances.CouponMarketplaceVia = await common.deploy.couponMarketplaceVia(seller.address, instances.Snowflake.address)
-      console.log(instances.CouponMarketplaceVia)
     })
 
 
     it('deploy Coupon Marketplace Resolver contract', async function () {
-      let ein = instances.IdentityRegistry.getEIN(seller.address)
+      let ein = await instances.IdentityRegistry.getEIN(seller.address)
 
       instances.CouponMarketplaceResolver = await common.deploy.couponMarketplaceResolver(
         seller.address,

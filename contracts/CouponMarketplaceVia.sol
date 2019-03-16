@@ -16,6 +16,10 @@ contract CouponMarketplaceVia is SnowflakeVia {
     
     using SafeMath for uint256;
 
+    constructor(address _snowflakeAddress) SnowflakeVia(_snowflakeAddress) public {
+        setSnowflakeAddress(_snowflakeAddress);
+    }
+
     // end recipient is an EIN
     function snowflakeCall(
         address resolver,
@@ -69,9 +73,10 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
    }
 
-    function _applyCouponAmountOff(uint256 total, uint256 amountOff) private returns (uint256) {
+    function _applyCouponAmountOff(uint256 total, uint256 amountOff) pure private returns (uint256) {
         require(total >= amountOff, "Coupon amount is higher than total");
         uint256 newTotal = total.sub(amountOff);
+        return newTotal;
     }
 
     // end recipient is an EIN, no from field
