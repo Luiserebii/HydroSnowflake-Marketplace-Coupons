@@ -23,13 +23,13 @@ contract CouponMarketplaceVia is SnowflakeVia {
         uint einTo,
         uint amount,
         bytes memory snowflakeCallBytes 
-    ) public senderIsSnowflake() {
+    ) public senderIsSnowflake {
         address(this).call(snowflakeCallBytes);
     }
 
 
     //Name of this function is perhaps a little misleading, since amount has already been transferred, we're just calcing coupon here
-    function processTransaction(address resolver, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake() returns (bool) {
+    function processTransaction(address resolver, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake returns (bool) {
 
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
@@ -76,32 +76,32 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
     // end recipient is an EIN, no from field
     function snowflakeCall(
-        address /* resolver */,
-        uint /* einTo */,
-        uint /* amount */,
-        bytes memory /* snowflakeCallBytes */
-    ) public senderIsSnowflake() {
+        address resolver,
+        uint einTo,
+        uint amount,
+        bytes memory snowflakeCallBytes
+    ) public senderIsSnowflake {
         revert("Not Implemented.");
     }
 
     // end recipient is an address
     function snowflakeCall(
-        address /* resolver */,
-        uint /* einFrom */,
-        address payable /* to */,
-        uint /* amount */,
-        bytes memory /* snowflakeCallBytes */
-    ) public senderIsSnowflake() {
+        address resolver,
+        uint einFrom,
+        address payable to,
+        uint amount ,
+        bytes memory snowflakeCallBytes
+    ) public senderIsSnowflake {
         revert("Not Implemented.");
     }
 
     // end recipient is an address, no from field
     function snowflakeCall(
-        address /* resolver */,
-        address payable /* to */,
-        uint /* amount */,
-        bytes memory /* snowflakeCallBytes */
-    ) public senderIsSnowflake() {
+        address resolver,
+        address payable to,
+        uint amount,
+        bytes memory snowflakeCallBytes
+    ) public senderIsSnowflake {
         revert("Not Implemented.");
     }
 

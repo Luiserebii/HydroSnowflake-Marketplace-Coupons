@@ -9,6 +9,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     {
       hydroID: 'sellerabc',
       address: accounts[0],
+      paymentAddress: accounts[0],
       recoveryAddress: accounts[0],
       private: '0x2665671af93f210ddb5d5ffa16c77fcf961d52796f2b2d7afd32cc5d886350a8'
     },
@@ -38,48 +39,65 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
   describe('Testing Coupon Marketplace', async () => {
 
-    it('deploy CouponMarketplace contract', async function () {
-      instances.CouponMarketplace = await common.deploy.couponMarketplace(users[0].address, instances.Snowflake.address)
-    })
+    let seller = users[0]
 
     it('add seller identity to Identity Registry', async function () {
 
-      user = users[0]
       const timestamp = Math.round(new Date() / 1000) - 1
       const permissionString = web3.utils.soliditySha3(
         '0x19', '0x00', instances.IdentityRegistry.address,
         'I authorize the creation of an Identity on my behalf.',
-        user.recoveryAddress,
-        user.address,
+        seller.recoveryAddress,
+        seller.address,
         { t: 'address[]', v: [instances.Snowflake.address] },
         { t: 'address[]', v: [] },
         timestamp
       )
 
-      const permission = await sign(permissionString, user.address, user.private)
+      const permission = await sign(permissionString, seller.address, seller.private)
 
       await instances.Snowflake.createIdentityDelegated(
-        user.recoveryAddress, user.address, [], user.hydroID, permission.v, permission.r, permission.s, timestamp
+        seller.recoveryAddress, seller.address, [], seller.hydroID, permission.v, permission.r, permission.s, timestamp
       )
 
-      user.identity = web3.utils.toBN(1)
+      seller.identity = web3.utils.toBN(1)
 
-      await verifyIdentity(user.identity, instances.IdentityRegistry, {
-        recoveryAddress:     user.recoveryAddress,
-        associatedAddresses: [user.address],
+      await verifyIdentity(seller.identity, instances.IdentityRegistry, {
+        recoveryAddress:     seller.recoveryAddress,
+        associatedAddresses: [seller.address],
         providers:           [instances.Snowflake.address],
         resolvers:           [instances.ClientRaindrop.address]
       })
-   })
+    })
+
+
+    it('deploy Coupon Marketplace Via contract', async function () {
+      instances.CouponMarketplaceVia = await common.deploy.couponMarketplaceVia(seller.address, instances.Snowflake.address)
+      console.log(instances.CouponMarketplaceVia)
+    })
+
+
+    it('deploy Coupon Marketplace Resolver contract', async function () {
+      let ein = instances.IdentityRegistry.getEIN(seller.address)
+
+      instances.CouponMarketplaceResolver = await common.deploy.couponMarketplaceResolver(
+        seller.address,
+        instances.Snowflake.address,
+        ein,
+        "Test-Marketplace-Resolver",
+        "A test Coupon Marketplace Resolver build on top of Hydro Snowflake", 
+        false, false,
+        seller.paymentAddress,
+        instances.CouponMarketplaceVia.address
+      )
+    })
 
 
     it('Deployer is EIN Owner', async function () {
+      let isEINOwner = await instances.CouponMarketplaceResolver.isEINOwner({ from: accounts[0], gas: '3000000' })
 
-      let isEINOwner = await instances.CouponMarketplace.isEINOwner({ from: accounts[0], gas: '3000000' })
-
-//        console.log(instances.CouponMarketplace)
-  //    assert.equal(isEINOwner, true);
     })
+
   
   })
 

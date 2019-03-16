@@ -159,10 +159,10 @@ Index:
     ) public {
 
         //Initialize "latestID" vars
-        nextDeliveryMethodsID = 0;
-        nextItemListingsID = 0;
-        nextItemTagsID = 0;
-        nextReturnPoliciesID = 0;
+        nextDeliveryMethodsID = 1;
+        nextItemListingsID = 1;
+        nextItemTagsID = 1;
+        nextReturnPoliciesID = 1;
         //In order to satisfy logic of "If a user passes 0 as the uuid for the coupon, the via should just conduct a transfer as normal as if no coupon were present.", we put this at 1
         nextAvailableCouponsID = 1;
 

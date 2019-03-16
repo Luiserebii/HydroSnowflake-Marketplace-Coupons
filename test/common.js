@@ -4,7 +4,8 @@ const Snowflake = artifacts.require('./Snowflake.sol')
 const ClientRaindrop = artifacts.require('./resolvers/ClientRaindrop/ClientRaindrop.sol')
 const OldClientRaindrop = artifacts.require('./_testing/OldClientRaindrop.sol')
 
-const CouponMarketplace = artifacts.require('./resolvers/CouponMarketplaceResolver.sol')
+const CouponMarketplaceResolver = artifacts.require('./resolvers/CouponMarketplaceResolver.sol')
+const CouponMarketplaceVia = artifacts.require('./CouponMarketplaceVia.sol')
 
 async function initialize (owner, users) {
   const instances = {}
@@ -38,17 +39,23 @@ async function initialize (owner, users) {
 }
 
 
-async function deployCouponMarketplace (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false, paymentAddress = owner, MarketplaceCouponViaAddress = "0xcD01CD6B160D2BCbeE75b59c393D0017e6BBF427") {
+async function deployCouponMarketplaceResolver (owner, snowflakeAddress, ein = 1, snowflakeName = "Test_Name", snowflakeDescription = "Test_Desc", callOnAddition = false, callOnRemoval = false, paymentAddress = owner, CouponMarketplaceViaAddress = "0xcD01CD6B160D2BCbeE75b59c393D0017e6BBF427") {
 
-  let cmpContract = await CouponMarketplace.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, paymentAddress, MarketplaceCouponViaAddress, {from: owner })
-  return cmpContract;
+  let cmprContract = await CouponMarketplaceResolver.new(ein, snowflakeName, snowflakeDescription, snowflakeAddress, callOnAddition, callOnRemoval, paymentAddress, CouponMarketplaceViaAddress, {from: owner })
+  return cmprContract
 
+}
+
+async function deployCouponMarketplaceVia (owner, snowflakeAddress) {
+  let cmpvContract = await CouponMarketplaceVia.new(snowflakeAddress, { from: owner })
+  return cmpvContract
 }
 
 
 module.exports = {
   initialize: initialize,
   deploy: {
-    couponMarketplace: deployCouponMarketplace
+    couponMarketplaceResolver: deployCouponMarketplaceResolver,
+    couponMarketplaceVia: deployCouponMarketplaceVia
   }
 }
