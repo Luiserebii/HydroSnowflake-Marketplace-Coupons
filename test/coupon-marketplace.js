@@ -349,10 +349,23 @@ contract('Testing Coupon Marketplace', function (accounts) {
       it('can remove', async function () {
 
         //Delete
-        await instances
+        await instances.CouponMarketplaceResolver.deleteItemListing(itemLID)
 
         //Grab
+        let itemLExisting = await instances.CouponMarketplaceResolver.itemListings.call(itemLID);
+
         //Check
+        assert.equal(0, itemLExisting.uuid);
+        assert.equal(0, itemLExisting.quantity);
+        assert.equal(0, itemLExisting.itemType);
+        assert.equal(0, itemLExisting.status);
+        assert.equal(0, itemLExisting.condition);
+        assert.equal('', itemLExisting.title);
+        assert.equal('', itemLExisting.description);
+        assert.equal(0, itemLExisting.price);
+        assert.equal(undefined, itemLExisting.delivery);
+        assert.equal(undefined, itemLExisting.tags);
+        assert.equal(0, itemLExisting.returnPolicy);
 
       })
       
