@@ -232,16 +232,62 @@ contract('Testing Coupon Marketplace', function (accounts) {
        
     })
     describe('ItemListings', async function () {
+      it('can add', async function () {
+        
+      })
+
+      it('can update', async function () {
+
+      })
+      it('can remove', async function () {
+
+      })
       
       
     })
     describe('ReturnPolicies', async function () {
+      let returnPolicyID;
+
+      it('can add', async function () {
+        returnPolicyID = parseInt(await instances.CouponMarketplaceResolver.nextReturnPoliciesID.call(), 10)
+        let newReturnPolicy = { returnsAccepted: true, timeLimit: 20000 };
+        //Add it
+        await instances.CouponMarketplaceResolver.addReturnPolicy(newReturnPolicy.returnsAccepted, newReturnPolicy.timeLimit, {from: seller.address})
+        //Ensure ID has advanced
+        let postAdditionID = parseInt(await instances.CouponMarketplaceResolver.nextReturnPoliciesID.call(), 10)
+        assert.equal(returnPolicyID + 1, postAdditionID)
+        //Ensure it exists
+        let returnPolicyExisting = await instances.CouponMarketplaceResolver.returnPolicies.call(returnPolicyID);
+
+        //Check over properties for equality:
+        assert.equal(newReturnPolicy.returnsAccepted, returnPolicyExisting[0])
+        assert.equal(newReturnPolicy.timeLimit, returnPolicyExisting[1])
+        console.log(returnPolicyExisting[1])
+
+      })
+
+      it('can update', async function () {
+
+      })
+      it('can remove', async function () {
+
+      })
       
       
     })
     describe('AvaliableCoupons', async function () {
-      
-      
+
+      it('can add', async function () {
+
+      })
+
+      it('can update', async function () {
+
+      })
+      it('can remove', async function () {
+
+      })
+            
     })
 
 
