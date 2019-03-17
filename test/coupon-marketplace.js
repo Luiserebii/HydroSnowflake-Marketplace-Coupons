@@ -96,7 +96,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     let seller = users[0]
 
     it('add seller identity to Identity Registry', async function () {
-
+/*
       const timestamp = Math.round(new Date() / 1000) - 1
       const permissionString = web3.utils.soliditySha3(
         '0x19', '0x00', instances.IdentityRegistry.address,
@@ -121,7 +121,9 @@ contract('Testing Coupon Marketplace', function (accounts) {
         associatedAddresses: [seller.address],
         providers:           [instances.Snowflake.address],
         resolvers:           [instances.ClientRaindrop.address]
-      })
+      })*/
+      await addToIdentityRegistry(seller);
+
     })
 
 
@@ -492,7 +494,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Get current
         let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
 
-console.log(util.inspect(acExisting))
+//console.log(util.inspect(acExisting))
 
         //Check over properties for equality
         assert.equal(newAC.couponType, acExisting.couponType);
@@ -523,7 +525,18 @@ console.log(util.inspect(acExisting))
             
     })
 
+    describe('Purchase Item', async function () {
 
+      let buyer = users[1]
+
+      it('add buyer to IdentityRegistry', async function () {
+        addToIdentityRegistry(buyer)
+      })
+
+
+
+
+    })
 
 
   
@@ -548,3 +561,42 @@ async function assertSolidityRevert(run, expectedErr = null){
 
   return err;
 }
+
+
+//Convenience function, assumes instances is set with loaded contracts
+async function addToIdentityRegistry(let userIdentity) {
+  await addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
+}
+
+//"Lower-level" convenience function
+async function addToIdentityRegistry(let userIdentity, let IdentityRegistryInstance, let SnowflakeInstance, let ClientRaindropInstance){
+
+      const timestamp = Math.round(new Date() / 1000) - 1
+      const permissionString = web3.utils.soliditySha3(
+        '0x19', '0x00', IdentityRegistryInstance.address,
+        'I authorize the creation of an Identity on my behalf.',
+        userIdentity.recoveryAddress,
+        userIdentity.address,
+        { t: 'address[]', v: [SnowflakeInstance.address] },
+        { t: 'address[]', v: [] },
+        timestamp
+      )
+
+      const permission = await sign(permissionString, userIdentity.address, userIdentity.private)
+
+      await SnowflakeInstance.createIdentityDelegated(
+        userIdentity.recoveryAddress, userIdentity.address, [], userIdentity.hydroID, permission.v, permission.r, permission.s, timestamp
+      )
+
+      userIdentity.identity = web3.utils.toBN(1)
+
+      await verifyIdentity(userIdentity.identity, IdentityRegistryInstance, {
+        recoveryAddress:     userIdentity.recoveryAddress,
+        associatedAddresses: [userIdentity.address],
+        providers:           [SnowflakeInstance.address],
+        resolvers:           [ClientRaindropInstance.address]
+      })
+
+}
+
+
