@@ -190,12 +190,15 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
     describe('ItemTags', async function () {
+      let listingID;
       
-      //Obtain current listing ID
-      let listingID = parseInt(await instances.CouponMarketplaceResolver.nextItemTagsID.call(), 10)
-
       it('can add', async function () {
+
+        //Obtain current listing ID
+        listingID = parseInt(await instances.CouponMarketplaceResolver.nextItemTagsID.call(), 10)
         let newItemTag = "TestTagA";
+
+ 
 
         //Add it
         await instances.CouponMarketplaceResolver.addItemTag(newItemTag, {from: seller.address})
@@ -203,7 +206,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let postAdditionID = parseInt(await instances.CouponMarketplaceResolver.nextItemTagsID.call(), 10)
         assert.equal(listingID + 1, postAdditionID)
         //Ensure it exists
-        let itemTagExisting = await instances.CouponMarketplaceResolver.itemTags.call(listingID);
+        let itemTagExisting = await instances.CouponMarketplaceResolver.itemTags.call(listingID)
         //console.log(newItemTag + "  ----  " + itemTagExisting);
         assert.equal(newItemTag, itemTagExisting);
 
