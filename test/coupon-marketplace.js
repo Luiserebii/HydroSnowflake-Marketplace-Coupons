@@ -2,6 +2,8 @@ const common = require('./common.js')
 const { sign, verifyIdentity } = require('./utilities')
 const util = require('util')
 
+const BN = web3.utils.BN
+
 let user
 let instances
 
@@ -262,14 +264,32 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Check over properties for equality:
         assert.equal(newReturnPolicy.returnsAccepted, returnPolicyExisting[0])
         assert.equal(newReturnPolicy.timeLimit, returnPolicyExisting[1])
-        console.log(returnPolicyExisting[1])
 
       })
 
       it('can update', async function () {
 
+        let newReturnPolicy = { returnsAccepted: false, timeLimit: 50 }; 
+        let returnPolicy = await instances.CouponMarketplaceResolver.returnPolicies.call(returnPolicyID)
+        //Update the item tag at listingID
+        await instances.CouponMarketplaceResolver.updateReturnPolicy(returnPolicyID, newReturnPolicy.returnsAccepted, newReturnPolicy.timeLimit, {from: seller.address})
+        
+        let currReturnPolicy = await instances.CouponMarketplaceResolver.returnPolicies.call(returnPolicyID)
+        assert.equal(newReturnPolicy.returnsAccepted, currReturnPolicy[0])
+        assert.equal(newReturnPolicy.timeLimit, currReturnPolicy[1])
+ 
       })
       it('can remove', async function () {
+
+        await instances.CouponMarketplaceResolver.deleteReturnPolicy(returnPolicyID, {from: seller.address})
+        let currReturnPolicy = await instances.CouponMarketplaceResolver.returnPolicies.call(returnPolicyID)
+
+        //Test to see that this doesn't exist (i.e. returns default, since mapping)
+
+        //check over properties for equality:
+        assert.equal(false, currReturnPolicy[0]);
+        assert.isTrue(currReturnPolicy[1].eq(new BN(0)));
+       
 
       })
       
