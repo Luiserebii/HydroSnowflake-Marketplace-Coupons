@@ -142,9 +142,53 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
     it('Deployer is EIN Owner', async function () {
-      let isEINOwner = await instances.CouponMarketplaceResolver.isEINOwner({ from: accounts[0], gas: '3000000' })
-
+      let isEINOwner = await instances.CouponMarketplaceResolver.isEINOwner.call({ from: accounts[0]})
+      assert.isTrue(isEINOwner);
     })
+
+   
+    describe('Only EIN Owner can...', async function () {
+
+     describe('call add/update/delete functions [NOTE: using ItemTag functions]', async function () {
+        //An arbitary account
+        const nonOwner = accounts[1];
+
+        //addItemTag test for failure
+        it('addItemTag', async function () {
+          await assertSolidityRevert(
+            async function(){ 
+              await instances.CouponMarketplaceResolver.addItemTag("Test_Item_Tag", {from: nonOwner}) 
+            }
+          )
+        })
+
+        //updateItemTag test for failure
+        it('updateItemTag', async function () {
+          await assertSolidityRevert(
+            async function(){ 
+              await instances.CouponMarketplaceResolver.updateItemTag(1, "Test_Item_Tag", {from: nonOwner}) 
+            }
+          )
+        })
+
+        //deleteItemTag test for failure
+        it('deleteItemTag', async function () {
+          await assertSolidityRevert(
+            async function(){ 
+              await instances.CouponMarketplaceResolver.deleteItemTag(1, {from: nonOwner})
+            }
+          )
+        })
+        /* NOTE: In order to avoid a sludge of tests, we will make the assumption that all add/update/delete functions have the correct modifier specified; we use several of a few simply for peace-of-mind value, though this may be unnecessary/superfluous to some extent
+ 
+        */
+      })
+      //End of add/update/delete functions
+      
+      
+    })
+
+
 
   
   })
@@ -152,3 +196,19 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
 })
+
+
+//Simply function to test for Solidity revert errors; optionally takes an "expectedErr" which simply looks for a string within
+// This function has limits, however; if a function can potentially return two or more reverts, we can't quite test for each of them through expectedErr and apply if/and/or logic
+async function assertSolidityRevert(run, expectedErr = null){
+  let err;
+  try {
+    await run();
+  } catch(_e) {
+    err = _e.message;
+  }
+  assert.isTrue(err.includes('VM Exception while processing transaction: revert'));
+  if(expectedErr != null) assert.isTrue(err.includes(expectedErr));
+
+  return err;
+}
