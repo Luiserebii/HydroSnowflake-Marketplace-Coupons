@@ -3,6 +3,9 @@ const { sign, verifyIdentity } = require('./utilities')
 const util = require('util')
 
 const BN = web3.utils.BN
+const allEnums = require('../enum_mappings/enums.js')
+const enums = allEnums.CouponMarketPlaceResolverInterface;
+
 
 let user
 let instances
@@ -290,22 +293,64 @@ contract('Testing Coupon Marketplace', function (accounts) {
         assert.equal(false, currReturnPolicy[0]);
         assert.isTrue(currReturnPolicy[1].eq(new BN(0)));
        
-
       })
       
       
     })
-    describe('AvaliableCoupons', async function () {
+    describe('AvailableCoupons', async function () {
+      let acID;
 
       it('can add', async function () {
+        acID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
+        let newAC = { 
+          couponType: enums.CouponType.AMOUNT_OFF,
+          title: '50 HYDRO Test Discount!' ,
+          description: 'A small little discount for you to cherish for a while during its highly transient existence',
+          amountOff: 50,
+          itemsApplicable: {},
+          expirationDate: 1571312124
+        }
+/*
+        //Add it
+        await instances.CouponMarketplaceResolver.addAvailableCoupon(
+          newAC.couponType,
+          newAC.title,
+          newAC.description,
+          newAC.amountOff,
+          newAC.itemsApplicable,
+          newAC.expirationDate,
+          {from: seller.address}
+        );
 
+        //Ensure ID has advanced
+        let postAdditionID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
+        assert.equal(acID + 1, postAdditionID)
+
+        //Ensure it exists
+        let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
+
+        //Check over vals
+        //TODO: I wonder if it is a good idea to place these property titles into an array and sort of do a template literal loop magic here...? Hmm...
+        //assert.equal(newAC.couponType, acExisting.couponType);
+        assert.equal(newAC.title, acExisting.title);
+        assert.equal(newAC.description, acExisting.description);
+        //assert.equal(newAC.amountOff, acExisting.amountOff);
+        assert.equal(newAC.itemsApplicable, acExisting.itemsApplicable);
+        //assert.equal(newAC.expirationDate, acExisting.expirationDate);
+*/
       })
 
       it('can update', async function () {
 
+        //Update
+        //Check over properties for equality
+
       })
       it('can remove', async function () {
 
+        //Delete
+        //Grab
+        //Check for default/equality
       })
             
     })

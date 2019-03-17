@@ -4,7 +4,7 @@ General file to define enums within contracts; utility for working with values p
 
 */
 
-const cmprI;
+const cmprI = {};
 
 cmprI.ItemType = { DIGITAL: 0, PHYSICAL: 1 }
 cmprI.ItemStats = { ACTIVE: 0, INACTIVE: 1 }
@@ -14,7 +14,7 @@ cmprI.CouponType = { AMOUNT_OFF: 0, PERCENTAGE_OFF: 1, BUY_X_QTY_GET_Y_FREE: 2, 
 
 const enums = {
 
-  "CouponMarketPlaceResolverInterface": cmprI
+  CouponMarketPlaceResolverInterface: cmprI
 
 }
 
