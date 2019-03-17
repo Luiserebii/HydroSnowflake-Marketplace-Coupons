@@ -22,10 +22,10 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
     // end recipient is an EIN
     function snowflakeCall(
-        address resolver,
-        uint einFrom,
-        uint einTo,
-        uint amount,
+        address /* resolver */,
+        uint /* einFrom */,
+        uint /* einTo */,
+        uint /* amount */,
         bytes memory snowflakeCallBytes 
     ) public senderIsSnowflake {
         address(this).call(snowflakeCallBytes);
@@ -81,31 +81,31 @@ contract CouponMarketplaceVia is SnowflakeVia {
 
     // end recipient is an EIN, no from field
     function snowflakeCall(
-        address resolver,
-        uint einTo,
-        uint amount,
-        bytes memory snowflakeCallBytes
+        address /* resolver */,
+        uint /* einTo */,
+        uint /* amount */,
+        bytes memory /* snowflakeCallBytes */
     ) public senderIsSnowflake {
         revert("Not Implemented.");
     }
 
     // end recipient is an address
     function snowflakeCall(
-        address resolver,
-        uint einFrom,
-        address payable to,
-        uint amount ,
-        bytes memory snowflakeCallBytes
+        address /* resolver */,
+        uint /* einFrom */,
+        address payable /* to */,
+        uint /* amount */,
+        bytes memory /* snowflakeCallBytes */
     ) public senderIsSnowflake {
         revert("Not Implemented.");
     }
 
     // end recipient is an address, no from field
     function snowflakeCall(
-        address resolver,
-        address payable to,
-        uint amount,
-        bytes memory snowflakeCallBytes
+        address /* resolver */,
+        address payable /* to */,
+        uint /* amount */,
+        bytes memory /* snowflakeCallBytes */
     ) public senderIsSnowflake {
         revert("Not Implemented.");
     }

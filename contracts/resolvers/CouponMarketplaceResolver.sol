@@ -195,7 +195,7 @@ Index:
     // if callOnAddition is true, onAddition is called every time a user adds the contract as a resolver
     // this implementation **must** use the senderIsSnowflake modifier
     // returning false will disallow users from adding the contract as a resolver
-    function onAddition(uint ein, uint allowance, bytes memory extraData) public returns (bool) {
+    function onAddition(uint /* ein */, uint /* allowance */, bytes memory /* extraData */) public returns (bool) {
         return true;
     }
 
@@ -203,7 +203,7 @@ Index:
     // this function **must** use the senderIsSnowflake modifier
     // returning false soft prevents users from removing the contract as a resolver
     // however, note that they can force remove the resolver, bypassing onRemoval
-    function onRemoval(uint ein, bytes memory extraData) public returns (bool){
+    function onRemoval(uint /* ein */, bytes memory /* extraData*/) public returns (bool){
        return true;
     }
 

@@ -149,7 +149,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
    
     describe('Only EIN Owner can...', async function () {
 
-     describe('call add/update/delete functions [NOTE: using ItemTag functions]', async function () {
+      describe('call add/update/delete functions [NOTE: using ItemTag functions]', async function () {
         //An arbitary account
         const nonOwner = accounts[1];
 
@@ -185,8 +185,51 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
       //End of add/update/delete functions
       
+    })
+    //End of "Only EIN Owner can..."
+
+
+    describe('ItemTags', async function () {
+      
+      it('can add', async function () {
+        let newItemTag = "TestTagA";
+
+        //Obtain current listing ID
+        let currID = instances.CouponMarketplaceResolver.nextItemTagsID;
+        //Add it
+        await instances.CouponMarketplaceResolver.addItemTag(newItemTag, {from: seller})
+        //Ensure ID has advanced
+        let postAdditionID = instances.CouponMarketplaceResolver.nextItemTagsID
+        assert.equal(currID + 1, postAdditionID)
+        //Ensure it exists
+        let itemTagExisting = instances.CouponMarketplaceResolver.getItemTag(currID).call();
+        console.log(newItemTag + "  ----  " + itemTagExisting);
+        assert.equal(newItemTag, itemTagExisting);
+
+      })
+
+      it('can update', async function () {
+        await instances.CouponMarketplaceResolver.updateItemTag(1, "TestTagAAA", {from: seller})
+      })
+
+      it('can remove', async function () {
+        await instances.CouponMarketplaceResolver.deleteItemTag(1, {from: seller})
+      })
+       
+    })
+    describe('ItemListings', async function () {
+      
       
     })
+    describe('ReturnPolicies', async function () {
+      
+      
+    })
+    describe('AvaliableCoupons', async function () {
+      
+      
+    })
+
 
 
 
