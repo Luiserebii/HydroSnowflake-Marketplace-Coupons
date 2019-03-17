@@ -307,10 +307,9 @@ contract('Testing Coupon Marketplace', function (accounts) {
           title: '50 HYDRO Test Discount!' ,
           description: 'A small little discount for you to cherish for a while during its highly transient existence',
           amountOff: 50,
-          itemsApplicable: {},
+          itemsApplicable: [], itemsApplicableExpected: undefined,
           expirationDate: 1571312124
         }
-/*
         //Add it
         await instances.CouponMarketplaceResolver.addAvailableCoupon(
           newAC.couponType,
@@ -331,13 +330,19 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //Check over vals
         //TODO: I wonder if it is a good idea to place these property titles into an array and sort of do a template literal loop magic here...? Hmm...
-        //assert.equal(newAC.couponType, acExisting.couponType);
+        assert.equal(newAC.couponType, acExisting.couponType);
         assert.equal(newAC.title, acExisting.title);
         assert.equal(newAC.description, acExisting.description);
-        //assert.equal(newAC.amountOff, acExisting.amountOff);
-        assert.equal(newAC.itemsApplicable, acExisting.itemsApplicable);
-        //assert.equal(newAC.expirationDate, acExisting.expirationDate);
-*/
+        assert.equal(newAC.amountOff, acExisting.amountOff);
+        /*=======
+           NOTE:
+          =======
+
+          A blank input array will work in passing [], however when being read, will returned undefined; therefore, we cannot simply check it against our initially set []. I added a little "expected" value set to undefined to keep the syntax/design consistent, but this exception is incredibly important to note, took me a while to figure out!
+
+        */
+        assert.equal(newAC.itemsApplicableExpected, acExisting.itemsApplicable);
+        assert.equal(newAC.expirationDate, acExisting.expirationDate);
       })
 
       it('can update', async function () {
