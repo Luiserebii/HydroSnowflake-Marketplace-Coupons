@@ -224,7 +224,10 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('can remove', async function () {
 
-        await instances.CouponMarketplaceResolver.deleteItemTag(1, {from: seller.address})
+        await instances.CouponMarketplaceResolver.deleteItemTag(listingID, {from: seller.address})
+        let currItemTag = await instances.CouponMarketplaceResolver.itemTags.call(listingID)
+        //Test to see that this doesn't exist (i.e. returns nothing, since mapping)
+        assert.equal(currItemTag, "");
       })
        
     })
