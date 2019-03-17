@@ -237,8 +237,63 @@ contract('Testing Coupon Marketplace', function (accounts) {
        
     })
     describe('ItemListings', async function () {
+      let itemLID;
+  
+      it('get nextItemListingID', async function () {
+        itemLID = parseInt(await instances.CouponMarketplaceResolver.nextItemListingsID.call(), 10)
+      })
+
       it('can add', async function () {
-        
+
+        let newItemL = {
+          uuid: 7329140802,
+          quantity: 1,
+          itemType: enums.ItemType.DIGITAL,
+          status: enums.ItemStatus.INACTIVE,
+          condition: enums.ItemCondition.GOOD,
+          title: "Test Item",
+          description: "An item you should probably buy",
+          price: 8000,
+          delivery: [],
+          tags: [],
+          returnPolicy: 0
+        }
+
+        //Add it
+        await instances.CouponMarketplaceResolver.addItemListing(
+          newItemL.uuid,
+          newItemL.quantity,
+          newItemL.itemType,
+          newItemL.status,
+          newItemL.condition,
+          newItemL.title,
+          newItemL.description,
+          newItemL.price,
+          newItemL.delivery,
+          newItemL.tags,
+          newItemL.returnPolicy
+        )
+
+        //Ensure ID has advanced
+        let currID = await instances.CouponMarketplaceResolver.nextItemListingsID.call()
+        assert.equal(itemLID + 1, currID)
+
+        //Ensure it exists 
+        let itemLExisting = await instances.CouponMarketplaceResolver.itemListings.call(itemLID);
+
+        //Check over properties for equality:
+        assert.equal(newItemL.uuid, itemLExisting.uuid);
+        assert.equal(newItemL.quantity, itemLExisting.quantity);
+        assert.equal(newItemL.itemType, itemLExisting.itemType);
+        assert.equal(newItemL.status, itemLExisting.status);
+        assert.equal(newItemL.condition, itemLExisting.condition);
+        assert.equal(newItemL.title, itemLExisting.title);
+        assert.equal(newItemL.description, itemLExisting.description);
+        assert.equal(newItemL.price, itemLExisting.price);
+        assert.equal(newItemL.delivery, itemLExisting.delivery);
+        assert.equal(newItemL.tags, itemLExisting.tags);
+        assert.equal(newItemL.returnPolicy, itemLExisting.returnPolicy);
+
       })
 
       it('can update', async function () {
@@ -389,8 +444,6 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
 
         //Check for default/equality
-        //console.log("MY DEFAULTS:   ")
-       // console.log(util.inspect(acExisting))
         assert.equal(0, acExisting.couponType);
         assert.equal('', acExisting.title);
         assert.equal('', acExisting.description);
