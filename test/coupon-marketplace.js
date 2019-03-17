@@ -492,6 +492,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Get current
         let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
 
+console.log(util.inspect(acExisting))
+
         //Check over properties for equality
         assert.equal(newAC.couponType, acExisting.couponType);
         assert.equal(newAC.title, acExisting.title);
