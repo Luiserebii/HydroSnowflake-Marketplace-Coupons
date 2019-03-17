@@ -347,15 +347,57 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('can update', async function () {
 
-        //Update
-        //Check over properties for equality
+        let newAC = { 
+          couponType: enums.CouponType.PERCENTAGE_OFF,
+          title: '20% OFF Test Discount!' ,
+          description: 'A HUGE LITTLE discount for you to cherish for a while during its highly transient existence',
+          amountOff: 20,
+          itemsApplicable: [1,2,3], itemsApplicableExpected: [1,2,3],
+          expirationDate: 1591312124
+        }
 
+        //Update
+        await instances.CouponMarketplaceResolver.updateAvailableCoupon(
+          acID,
+          newAC.couponType,
+          newAC.title,
+          newAC.description,
+          newAC.amountOff,
+          newAC.itemsApplicable,
+          newAC.expirationDate,
+          {from: seller.address}
+        );
+
+        //Get current
+        let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
+
+        //Check over properties for equality
+        assert.equal(newAC.couponType, acExisting.couponType);
+        assert.equal(newAC.title, acExisting.title);
+        assert.equal(newAC.description, acExisting.description);
+        assert.equal(newAC.amountOff, acExisting.amountOff);
+        assert.equal(newAC.itemsApplicableExpected, acExisting.itemsApplicable);
+        assert.equal(newAC.expirationDate, acExisting.expirationDate);
+ 
       })
       it('can remove', async function () {
 
         //Delete
+        await instances.CouponMarketplaceResolver.deleteAvailableCoupon(acID, {from: seller.address});
+
         //Grab
+        let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
+
         //Check for default/equality
+        //console.log("MY DEFAULTS:   ")
+       // console.log(util.inspect(acExisting))
+        assert.equal(0, acExisting.couponType);
+        assert.equal('', acExisting.title);
+        assert.equal('', acExisting.description);
+        assert.equal(0, acExisting.amountOff);
+        assert.equal(undefined, acExisting.itemsApplicable);
+        assert.equal(0, acExisting.expirationDate);
+ 
       })
             
     })
