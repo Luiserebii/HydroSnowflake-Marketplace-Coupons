@@ -198,8 +198,6 @@ contract('Testing Coupon Marketplace', function (accounts) {
         listingID = parseInt(await instances.CouponMarketplaceResolver.nextItemTagsID.call(), 10)
         let newItemTag = "TestTagA";
 
- 
-
         //Add it
         await instances.CouponMarketplaceResolver.addItemTag(newItemTag, {from: seller.address})
         //Ensure ID has advanced
@@ -213,7 +211,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
 
       it('can update', async function () {
-/*
+
         let newItemTag = "TestTagAAA"
         let itemTag = await instances.CouponMarketplaceResolver.itemTags.call(listingID)
         //Update the item tag at listingID
@@ -222,9 +220,10 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let currItemTag = await instances.CouponMarketplaceResolver.itemTags.call(listingID)
         assert.notEqual(itemTag, currItemTag)
         assert.equal(newItemTag, currItemTag)
-*/      })
+      })
 
       it('can remove', async function () {
+
         await instances.CouponMarketplaceResolver.deleteItemTag(1, {from: seller.address})
       })
        
