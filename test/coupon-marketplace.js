@@ -62,6 +62,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
   const users = [
     {
       hydroID: 'sellerabc',
+      ein: 1,
       address: accounts[0],
       paymentAddress: accounts[0],
       recoveryAddress: accounts[0],
@@ -69,12 +70,14 @@ contract('Testing Coupon Marketplace', function (accounts) {
     },
     {
       hydroID: 'abc',
+      ein: 2,
       address: accounts[1],
       recoveryAddress: accounts[1],
       private: '0x6bf410ff825d07346c110c5836b33ec76e7d1ee051283937392180b732aa3aff'
     },
     {
       hydroID: 'xyz',
+      ein: 3,
       address: accounts[2],
       recoveryAddress: accounts[2],
       private: '0xccc3c84f02b038a5d60d93977ab11eb57005f368b5f62dad29486edeb4566954'
@@ -565,13 +568,12 @@ async function assertSolidityRevert(run, expectedErr = null){
 
 //Convenience function, assumes instances is set with loaded contracts
 async function addToIdentityRegistrySimple(userIdentity) {
-  console.log("INSTANCES: " + instances)
   await addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
 }
 
 //"Lower-level" convenience function
 async function addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
-console.log("2 INSTANCES: " + instances)
+
       const timestamp = Math.round(new Date() / 1000) - 1
       const permissionString = web3.utils.soliditySha3(
         '0x19', '0x00', IdentityRegistryInstance.address,
@@ -588,8 +590,8 @@ console.log("2 INSTANCES: " + instances)
       await SnowflakeInstance.createIdentityDelegated(
         userIdentity.recoveryAddress, userIdentity.address, [], userIdentity.hydroID, permission.v, permission.r, permission.s, timestamp
       )
-
-      userIdentity.identity = web3.utils.toBN(1)
+      console.log("EIN:    " + userIdentity.ein)
+      userIdentity.identity = web3.utils.toBN(userIdentity.ein)
 
       await verifyIdentity(userIdentity.identity, IdentityRegistryInstance, {
         recoveryAddress:     userIdentity.recoveryAddress,
