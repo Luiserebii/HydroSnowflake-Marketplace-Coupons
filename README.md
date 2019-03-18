@@ -1,6 +1,6 @@
 # Hydro Snowflake - Marketplace Coupons
-[![Build Status](https://travis-ci.org/hydrogen-dev/smart-contracts.svg?branch=master)](https://travis-ci.org/hydrogen-dev/smart-contracts)
-[![Coverage Status](https://coveralls.io/repos/github/hydrogen-dev/smart-contracts/badge.svg?branch=master)](https://coveralls.io/github/hydrogen-dev/smart-contracts?branch=master)
+[![Build Status](https://travis-ci.org/Luiserebii/HydroSnowflake-Marketplace-Coupons.svg?branch=master)](https://travis-ci.org/Luiserebii/HydroSnowflake-Marketplace-Coupons)
+[![Coverage Status](https://coveralls.io/repos/github/Luiserebii/HydroSnowflake-Marketplace-Coupons/badge.svg?branch=master)](https://coveralls.io/github/Luiserebii/HydroSnowflake-Marketplace-Coupons?branch=master)
 
 ## Introduction
 Snowflake is an [ERC-1484 `Provider`](https://erc1484.org/) that provides on-/off-chain identity management. For more details, see [our whitepaper](https://github.com/hydrogen-dev/hydro-docs/tree/master/Snowflake).
