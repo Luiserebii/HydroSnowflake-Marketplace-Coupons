@@ -99,34 +99,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     let seller = users[0]
 
     it('add seller identity to Identity Registry', async function () {
-/*
-      const timestamp = Math.round(new Date() / 1000) - 1
-      const permissionString = web3.utils.soliditySha3(
-        '0x19', '0x00', instances.IdentityRegistry.address,
-        'I authorize the creation of an Identity on my behalf.',
-        seller.recoveryAddress,
-        seller.address,
-        { t: 'address[]', v: [instances.Snowflake.address] },
-        { t: 'address[]', v: [] },
-        timestamp
-      )
-
-      const permission = await sign(permissionString, seller.address, seller.private)
-
-      await instances.Snowflake.createIdentityDelegated(
-        seller.recoveryAddress, seller.address, [], seller.hydroID, permission.v, permission.r, permission.s, timestamp
-      )
-
-      seller.identity = web3.utils.toBN(1)
-
-      await verifyIdentity(seller.identity, instances.IdentityRegistry, {
-        recoveryAddress:     seller.recoveryAddress,
-        associatedAddresses: [seller.address],
-        providers:           [instances.Snowflake.address],
-        resolvers:           [instances.ClientRaindrop.address]
-      })*/
       await addToIdentityRegistrySimple(seller);
-
     })
 
 
@@ -276,7 +249,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
           newItemL.price,
           newItemL.delivery,
           newItemL.tags,
-          newItemL.returnPolicy
+          newItemL.returnPolicy,
+          {from: seller.address}
         )
 
         //Ensure ID has advanced
@@ -330,7 +304,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
           newItemL.price,
           newItemL.delivery,
           newItemL.tags,
-          newItemL.returnPolicy
+          newItemL.returnPolicy,
+          {from: seller.address}
         )
 
         //Get current
@@ -536,7 +511,47 @@ contract('Testing Coupon Marketplace', function (accounts) {
         await addToIdentityRegistrySimple(buyer)
       })
 
+      it('add item', async function () {
+        /* Perhaps try to refactor the things below into some sort of object, and the .addItemListing below into some sort of Factory pattern so we just need to pass the object? Shorten the code, mainly*/
+        let newItemL = {
+          uuid: 7329140802,
+          quantity: 1,
+          itemType: enums.ItemType.DIGITAL,
+          status: enums.ItemStatus.INACTIVE,
+          condition: enums.ItemCondition.GOOD,
+          title: "Test Item",
+          description: "An item you should probably buy",
+          price: 8000,
+          delivery: [], deliveryExpected: undefined,
+          tags: [], tagsExpected: undefined,
+          returnPolicy: 0
+        }
 
+        //Add it
+        await instances.CouponMarketplaceResolver.addItemListing(
+          newItemL.uuid,
+          newItemL.quantity,
+          newItemL.itemType,
+          newItemL.status,
+          newItemL.condition,
+          newItemL.title,
+          newItemL.description,
+          newItemL.price,
+          newItemL.delivery,
+          newItemL.tags,
+          newItemL.returnPolicy,
+          {from: seller.address}
+        )
+      })
+
+      it('buyer purchases item (no coupon)', async function () {
+//        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
+        let res = await instances.CouponMarketplaceResolver.purchaseItem(1, buyer.address, 0, {from: buyer.address})
+        console.log(util.inspect(res))
+      })
+      
+      
+      
 
 
     })
