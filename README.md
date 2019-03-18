@@ -7,21 +7,24 @@ Snowflake is an [ERC-1484 `Provider`](https://erc1484.org/) that provides on-/of
 
 This project is essentially a chain of smart contracts built on top of the Hydro Snowflake protocol, aiming to provide a marketplace platform for sellers to launch their own stores and sell to users. Coupons are also featured, allowing users to use globally defined coupons guaranteed to expire within a certain time period, or assigning coupons per Snowflake EIN, manageable via multiple addresses.
 
+The marketplace itself is a Snowflake Resolver contract, which interacts with a Snowflake Via contract to handle the transaction (and thus coupon discount) logic. 
+
+This project is still under development, and dramatic changes will likely occur quickly. 
+
 ##
-[Try the demo front-end](https://hydroblockchain.github.io/snowflake-dashboard/)!
+[Try the Snowflake Dashboard demo front-end (requires Metamask)](https://hydroblockchain.github.io/snowflake-dashboard/)!
 
 ## Testing With Truffle
 - This folder has a suite of tests created through [Truffle](https://github.com/trufflesuite/truffle).
 - To run these tests:
-  - Clone this repo: `git clone https://github.com/Luiserebii/`
-  - Navigate to `smart-contracts/snowflake`
+  - Clone this repo: `git clone https://github.com/Luiserebii/HydroSnowflake-Marketplace-Coupons`
   - Run `npm install`
   - Build dependencies with `npm run build`
   - Spin up a development blockchain: `npm run chain`
   - In another terminal tab, run the test suite: `npm test`
 
 ## Mirror
-A Mirror of this repository is available at: https://serebii.io:2501/Luiserebii/HydroSnowflake-Marketplace-Coupons
+A mirror of this repository is available at: https://serebii.io:2501/Luiserebii/HydroSnowflake-Marketplace-Coupons
 
 ## Copyright & License
-Copyright 2018 The Hydrogen Technology Corporation under the GNU General Public License v3.0.
+© The Hydrogen Technology Corporation 2018, under the GNU General Public License v3.0.
