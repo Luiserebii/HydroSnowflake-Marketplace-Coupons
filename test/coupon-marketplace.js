@@ -511,6 +511,17 @@ contract('Testing Coupon Marketplace', function (accounts) {
         await addToIdentityRegistrySimple(buyer)
       })
 
+      it('add CouponMarketplaceResolver as resolver for buyer', async function () {
+        await instances.Snowflake.addResolver(
+          instances.CouponMarketplaceResolver.address,
+          true,
+          200,
+          "0x00aaff", //arbitrary bytes here
+          {from: buyer.address}
+        )
+ 
+      })
+
       it('add item', async function () {
         /* Perhaps try to refactor the things below into some sort of object, and the .addItemListing below into some sort of Factory pattern so we just need to pass the object? Shorten the code, mainly*/
         let newItemL = {
@@ -521,7 +532,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
           condition: enums.ItemCondition.GOOD,
           title: "Test Item",
           description: "An item you should probably buy",
-          price: 8000,
+          price: 80,
           delivery: [], deliveryExpected: undefined,
           tags: [], tagsExpected: undefined,
           returnPolicy: 0

@@ -592,18 +592,17 @@ Via contract to use coupons:
   -_withdraw() and pass the EIN (from), the address (via), and amount
   -Call snowflakeCall() from the via contract through the SnowflakeViaInterface, passing msg.sender, the EIN (from), the EIN (to), amount, and data
 */
-
         //Get EIN of user
         IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress());
         //Logic is einFrom, since this is the buyer from which funds will head to our via contract
 //        uint einFrom = identityRegistry.getEIN(approvingAddress);
 //        uint einTo = ownerEIN(); //The seller
 
+
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
         string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint)";
         snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), identityRegistry.getEIN(approvingAddress), ownerEIN(), itemListings[id].price, couponID);
-
 
 // function transferSnowflakeBalanceFromVia(uint einFrom, address via, uint einTo, uint amount, bytes memory _bytes)
 
