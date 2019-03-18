@@ -122,7 +122,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         providers:           [instances.Snowflake.address],
         resolvers:           [instances.ClientRaindrop.address]
       })*/
-      await addToIdentityRegistry(seller);
+      await addToIdentityRegistrySimple(seller);
 
     })
 
@@ -530,7 +530,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
       let buyer = users[1]
 
       it('add buyer to IdentityRegistry', async function () {
-        addToIdentityRegistry(buyer)
+        await addToIdentityRegistrySimple(buyer)
       })
 
 
@@ -564,13 +564,14 @@ async function assertSolidityRevert(run, expectedErr = null){
 
 
 //Convenience function, assumes instances is set with loaded contracts
-async function addToIdentityRegistry(let userIdentity) {
+async function addToIdentityRegistrySimple(userIdentity) {
+  console.log("INSTANCES: " + instances)
   await addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
 }
 
 //"Lower-level" convenience function
-async function addToIdentityRegistry(let userIdentity, let IdentityRegistryInstance, let SnowflakeInstance, let ClientRaindropInstance){
-
+async function addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
+console.log("2 INSTANCES: " + instances)
       const timestamp = Math.round(new Date() / 1000) - 1
       const permissionString = web3.utils.soliditySha3(
         '0x19', '0x00', IdentityRegistryInstance.address,
