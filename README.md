@@ -9,7 +9,7 @@ This project is essentially a chain of smart contracts built on top of the Hydro
 
 The marketplace itself is a Snowflake Resolver contract, which interacts with a Snowflake Via contract to handle the transaction (and thus coupon discount) logic. 
 
-This project is still under development, and dramatic changes will likely occur quickly. 
+This project is still under development, and dramatic changes will likely occur quickly. The full scope of the prospective completed project [can be viewed here](https://github.com/HydroBlockchain/hcdp/issues/255)
 
 ##
 [Try the Snowflake Dashboard demo front-end (requires Metamask)](https://hydroblockchain.github.io/snowflake-dashboard/)!
