@@ -1,7 +1,7 @@
 {
-  "name": "snowflake",
+  "name": "snowflake-marketplace-coupons",
   "version": "1.0.0",
-  "description": "Hydro Snowflake identity protocol",
+  "description": "Coupon Marketplace smart contract built on top of Hydro Snowflake.",
   "scripts": {
     "build": "npm run buidl",
     "buidl": "rm -rf build/ && npx truffle compile",
