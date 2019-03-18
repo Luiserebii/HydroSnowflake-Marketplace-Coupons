@@ -573,7 +573,7 @@ Via contract to use coupons:
     function purchaseItem(uint id, /*bytes memory data,*/ address approvingAddress, uint couponID) public returns (bool) {
 
         //Ensure the item exists, and that there is a price
-        require(itemListings[id].price > 0);
+        require(itemListings[id].price > 0, 'item does not exist, or has a price below 0. The price in question is: ');
 
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);

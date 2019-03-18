@@ -546,7 +546,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('buyer purchases item (no coupon)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
-        let res = await instances.CouponMarketplaceResolver.purchaseItem(1, buyer.address, 0, {from: buyer.address})
+        let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, 0, {from: buyer.address})
         console.log(util.inspect(res))
       })
       
