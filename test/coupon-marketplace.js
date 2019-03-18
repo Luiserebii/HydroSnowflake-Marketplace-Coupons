@@ -511,6 +511,11 @@ contract('Testing Coupon Marketplace', function (accounts) {
         await addToIdentityRegistrySimple(buyer)
       })
 
+      it('add allowance for Snowflake address', async function () {
+        //approveAndCall(address _spender, uint256 _value, bytes memory _extraData)
+        await instances.HydroToken.approveAndCall(instances.Snowflake.address, 750, "0x")
+      })
+
       it('add CouponMarketplaceResolver as resolver for buyer', async function () {
         await instances.Snowflake.addResolver(
           instances.CouponMarketplaceResolver.address,
