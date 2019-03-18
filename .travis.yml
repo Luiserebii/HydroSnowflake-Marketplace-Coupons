@@ -14,5 +14,5 @@ script:
   - npm run chain &
   - nyc npm test
 
-after_success:
+after_script:
   - npm run coverage
