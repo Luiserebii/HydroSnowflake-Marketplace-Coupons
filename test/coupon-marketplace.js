@@ -513,11 +513,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('add allowance for Snowflake address', async function () {
         //approveAndCall(address _spender, uint256 _value, bytes memory _extraData)
-        console.log(await instances.HydroToken.balanceOf.call(buyer.address))
         await instances.HydroToken.approveAndCall(instances.Snowflake.address, 750, "0x", {from: buyer.address})
-         let thing = await instances.Snowflake.deposits.call(buyer.ein);
-        console.log("||AMOUNT DEPOSITED UNDER OUR EIN:" + thing);
-      })
+     })
 
       it('add CouponMarketplaceResolver as resolver for buyer', async function () {
         await instances.Snowflake.addResolver(
@@ -564,16 +561,51 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
 
       it('buyer purchases item (no coupon)', async function () {
-        let thing = await instances.Snowflake.deposits.call(buyer.ein);
-        console.log("AMOUNT DEPOSITED UNDER OUR EIN:" + thing);
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
         let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, 0, {from: buyer.address})
-        console.log(util.inspect(res))
+        console.log(util.inspect(res.receipt.logs))
       })
-      
-      
-      
 
+    })
+
+
+    describe('Purchase Item (with a coupon)', async function () {
+
+      let buyer = users[1]
+      let couponID
+
+      it('add coupon', async function () {
+
+        // Grab our next avaiable coupon ID
+        couponID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
+
+        let newAC = { 
+          couponType: enums.CouponType.AMOUNT_OFF,
+          title: '50 HYDRO Test Discount!' ,
+          description: 'A small little discount for you to cherish for a while during its highly transient existence',
+          amountOff: 50,
+          itemsApplicable: [2], itemsApplicableExpected: undefined,
+          expirationDate: 1571312124
+        }
+
+        //Add it
+        await instances.CouponMarketplaceResolver.addAvailableCoupon(
+          newAC.couponType,
+          newAC.title,
+          newAC.description,
+          newAC.amountOff,
+          newAC.itemsApplicable,
+          newAC.expirationDate,
+          {from: seller.address}
+        );
+
+       })
+
+      it('buyer purchases item (50 HYDRO)', async function () {
+//        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
+         //TODO: Swap out the hard-coded 2 for something else, read from next ID and go off of there
+        let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, couponID, {from: buyer.address})
+      })
 
     })
 
@@ -626,7 +658,7 @@ async function addToIdentityRegistry(userIdentity, IdentityRegistryInstance, Sno
       await SnowflakeInstance.createIdentityDelegated(
         userIdentity.recoveryAddress, userIdentity.address, [], userIdentity.hydroID, permission.v, permission.r, permission.s, timestamp
       )
-      console.log("EIN:    " + userIdentity.ein)
+      //console.log("EIN:    " + userIdentity.ein)
       userIdentity.identity = web3.utils.toBN(userIdentity.ein)
 
       await verifyIdentity(userIdentity.identity, IdentityRegistryInstance, {
