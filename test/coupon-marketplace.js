@@ -563,7 +563,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
       it('buyer purchases item (no coupon)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
         let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, 0, {from: buyer.address})
-        console.log(util.inspect(res.receipt.logs))
+//        console.log(util.inspect(res.receipt.logs))
       })
 
     })
@@ -578,6 +578,19 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         // Grab our next avaiable coupon ID
         couponID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
+
+/*
+
+  TODO: Listing ideas for refactoring here:
+
+1. Seperate config files for example objects like avaliable coupons, like an array of these
+2. refactor the passing of these params by creating helper functions that return the arguments below from an object (e.g. ...addAvaliableCoupon( await parseAvaliableCoupon(newAC) , {from: seller.address} )), something like this
+3. Need to find a way to organize "steps", there is disorganization in that some things, such as users being added to IdentityRegistry being done once in a previous test and sort of assumed to carry forward
+
+
+
+*/
+
 
         let newAC = { 
           couponType: enums.CouponType.AMOUNT_OFF,
@@ -603,7 +616,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('buyer purchases item (50 HYDRO)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
-         //TODO: Swap out the hard-coded 2 for something else, read from next ID and go off of there
+         //TODO: Swap out the hard-coded 2 for something else, read from next ID and go off of therei
+
         let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, couponID, {from: buyer.address})
       })
 
