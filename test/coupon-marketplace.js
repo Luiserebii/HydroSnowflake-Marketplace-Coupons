@@ -91,7 +91,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
   ]
 
   it('common contracts deployed', async () => {
-    instances = await common.initialize(accounts[0], [])
+    instances = await common.initialize(accounts[0], users.slice(0,3))
   })
 
   describe('Testing Coupon Marketplace', async () => {
@@ -513,7 +513,10 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('add allowance for Snowflake address', async function () {
         //approveAndCall(address _spender, uint256 _value, bytes memory _extraData)
-        await instances.HydroToken.approveAndCall(instances.Snowflake.address, 750, "0x")
+        console.log(await instances.HydroToken.balanceOf.call(buyer.address))
+        await instances.HydroToken.approveAndCall(instances.Snowflake.address, 750, "0x", {from: buyer.address})
+         let thing = await instances.Snowflake.deposits.call(buyer.ein);
+        console.log("||AMOUNT DEPOSITED UNDER OUR EIN:" + thing);
       })
 
       it('add CouponMarketplaceResolver as resolver for buyer', async function () {
@@ -561,6 +564,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
 
       it('buyer purchases item (no coupon)', async function () {
+        let thing = await instances.Snowflake.deposits.call(buyer.ein);
+        console.log("AMOUNT DEPOSITED UNDER OUR EIN:" + thing);
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
         let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, 0, {from: buyer.address})
         console.log(util.inspect(res))
