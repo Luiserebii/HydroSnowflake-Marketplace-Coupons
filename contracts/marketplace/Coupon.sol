@@ -1,6 +1,7 @@
 pragma solidity ^0.5.0;
 
 import '../zeppelin/token/ERC721/ERC721Full.sol';
+import '../interfaces/marketplace/CouponInterface.sol';
 
 /*
 
@@ -25,25 +26,35 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Coupon is ERC721Full {
+contract Coupon is ERC721Full, CouponInterface {
 
+
+    //Mapping connecting ERC721 coupons to actual struct objects
+    mapping(uint => Coupon) public availableCoupons;
 
     constructor(string memory name, string memory symbol) public ERC721Full(name symbol){
         //stuff here
     }
 
+    struct Coupon {
+        CouponType couponType;
+        string title;
+        string description;
+        uint256 amountOff;
+        uint[] itemsApplicable;
+        uint expirationDate;
+    }
     
 
+    function getCoupon(uint id) public view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate){
 
+        Coupon memory c = availableCoupons[id];
+        return (c.couponType, c.title, c.description, c.amountOff, c.expirationDate);
+    }
 
-
-
-
-
-
-
-
-
+    function getCouponItemApplicable(uint id, uint index) public view returns (uint) { 
+        return availableCoupons[id].itemsApplicable[index]; 
+    }
 
 
 
