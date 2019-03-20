@@ -32,7 +32,7 @@ contract Coupon is ERC721Full, CouponInterface {
     //Mapping connecting ERC721 coupons to actual struct objects
     mapping(uint => Coupon) public availableCoupons;
 
-    constructor(string memory name, string memory symbol) public ERC721Full(name symbol){
+    constructor(string memory name, string memory symbol) public ERC721Full(name, symbol){
         //stuff here
     }
 

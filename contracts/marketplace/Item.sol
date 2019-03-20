@@ -20,7 +20,7 @@ contract Item is ERC721Full, ItemInterface {
     //Mapping connecting ERC721 items to actual struct objects
     mapping(uint => Item) public itemListings;
 
-    constructor(string memory name, string memory symbol) public ERC721Full(name symbol){
+    constructor(string memory name, string memory symbol) public ERC721Full(name, symbol){
         //stuff here
     }
 

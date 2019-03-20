@@ -9,7 +9,7 @@ interface ItemInterface {
     enum ItemStatus { ACTIVE, INACTIVE }
     enum ItemCondition { NEW, LIKE_NEW, VERY_GOOD, GOOD, ACCEPTABLE }
 
-    function getItem(uint id) public view returns (
+    function getItem(uint id) external view returns (
         uint uuid,
         uint quantity,
         ItemType itemType,
@@ -21,8 +21,8 @@ interface ItemInterface {
         uint returnPolicy
     );
 
-    function getItemDelivery(uint id, uint index) public view returns (uint);
-    function getItemTag(uint id, uint index) public view returns (uint); 
+    function getItemDelivery(uint id, uint index) external view returns (uint);
+    function getItemTag(uint id, uint index) external view returns (uint); 
 
 
 
