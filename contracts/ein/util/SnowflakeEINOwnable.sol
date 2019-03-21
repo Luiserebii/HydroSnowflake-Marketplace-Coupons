@@ -20,7 +20,8 @@ contract SnowflakeEINOwnable {
     constructor(uint ein) public {
         _ownerEIN = ein;
         //Since 0 likely represents someone's EIN, it can be confusing to specify 0, so commenting this out in the meantime
-        //emit OwnershipTransferred(0, _ownerEIN);
+        //CORRECTION: 0 is actually guaranteed to be no one's EIN, so this is ok! :D And even better, we can use this fact to use EIN 0 as a null/empty/burner EIN
+        emit OwnershipTransferred(0, _ownerEIN);
     }
 
     /**
@@ -50,10 +51,10 @@ contract SnowflakeEINOwnable {
     * It will not be possible to call the functions with the `onlyOwner`
     * modifier anymore.
     */
-    /*function renounceOwnership() public onlyEINOwner {
-        emit OwnershipTransferred(_owner, address(0));
-        _owner = address(0);
-    }*/
+    function renounceOwnership() public onlyEINOwner {
+        emit OwnershipTransferred(_owner, 0);
+        _owner = 0;
+    }
 
     /**
     * @dev Allows the current owner to transfer control of the contract to a newOwner.

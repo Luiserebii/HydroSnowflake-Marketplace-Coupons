@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
 import "../SnowflakeResolver.sol";
-import "./SnowflakeEINOwnable.sol";
+import "../ein/util/SnowflakeEINOwnable.sol";
 import "../interfaces/IdentityRegistryInterface.sol";
 import "../interfaces/SnowflakeInterface.sol";
 import "../interfaces/SnowflakeViaInterface.sol";
