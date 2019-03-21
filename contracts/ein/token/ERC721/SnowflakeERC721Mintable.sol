@@ -8,6 +8,9 @@ import "../../access/roles/MinterRole.sol";
  * @dev Snowflake ERC721 minting logic
  */
 contract SnowflakeERC721Mintable is SnowflakeERC721, MinterRole {
+
+    constructor (address _snowflakeAddress) MinterRole(_snowflakeAddress) public {}
+
     /**
      * @dev Function to mint tokens
      * @param to The EIN that will receive the minted tokens.
