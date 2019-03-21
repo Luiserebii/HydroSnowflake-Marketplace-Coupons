@@ -1,11 +1,11 @@
 pragma solidity ^0.5.2;
 
 /**
- * @title ERC721 token receiver interface
+ * @title Snowflake ERC721 token receiver interface
  * @dev Interface for any contract that wants to support safeTransfers
- * from ERC721 asset contracts.
+ * from Snowflake ERC721 asset contracts.
  */
-contract IERC721Receiver {
+contract SnowflakeERC721ReceiverInterface {
     /**
      * @notice Handle the receipt of an NFT
      * @dev The ERC721 smart contract calls this function on the recipient
@@ -14,12 +14,12 @@ contract IERC721Receiver {
      * returned can be obtained as `this.onERC721Received.selector`. This
      * function MAY throw to revert and reject the transfer.
      * Note: the ERC721 contract address is always the message sender.
-     * @param operator The address which called `safeTransferFrom` function
-     * @param from The address which previously owned the token
+     * @param operator The EIN which called `safeTransferFrom` function
+     * @param from The EIN which previously owned the token
      * @param tokenId The NFT identifier which is being transferred
      * @param data Additional data with no specified format
      * @return bytes4 `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
      */
-    function onERC721Received(address operator, address from, uint256 tokenId, bytes memory data)
+    function onERC721Received(uint256 einOperator, uint256 einFrom, uint256 tokenId, bytes memory data)
     public returns (bytes4);
 }

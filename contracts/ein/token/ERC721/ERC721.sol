@@ -1,39 +1,37 @@
 pragma solidity ^0.5.2;
 
-import "./IERC721.sol";
-import "./IERC721Receiver.sol";
-import "../../math/SafeMath.sol";
-import "../../utils/Address.sol";
-import "../../drafts/Counters.sol";
-import "../../introspection/ERC165.sol";
+import "./SnowflakeERC721Interface.sol";
+import "./SnowflakeERC721ReceiverInterface.sol";
+import "../../zeppelin/math/SafeMath.sol";
+import "../../zeppelin/drafts/Counters.sol";
+import "../../zeppelin/introspection/ERC165.sol";
 
 /**
  * @title Snowflake ERC721 Non-Fungible Token Standard basic implementation
  * @dev see https://eips.ethereum.org/EIPS/eip-721
  */
-contract SnowflakeEINERC721 is ERC165, IERC721 {
+contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
     using SafeMath for uint256;
-    using Address for address;
     using Counters for Counters.Counter;
 
     // Equals to `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
     // which can be also obtained as `IERC721Receiver(0).onERC721Received.selector`
-    bytes4 private constant _ERC721_RECEIVED = 0x150b7a02;
+    // bytes4 private constant _ERC721_RECEIVED = 0x150b7a02;
 
     // Mapping from token ID to owner
-    mapping (uint256 => address) private _tokenOwner;
+    mapping (uint256 => uint256) private _tokenOwner;
 
     // Mapping from token ID to approved address
-    mapping (uint256 => address) private _tokenApprovals;
+    mapping (uint256 => uint256) private _tokenApprovals;
 
     // Mapping from owner to number of owned token
-    mapping (address => Counters.Counter) private _ownedTokensCount;
+    mapping (uint256 => Counters.Counter) private _ownedTokensCount;
 
     // Mapping from owner to operator approvals
-    mapping (address => mapping (address => bool)) private _operatorApprovals;
+    mapping (uint256 => mapping (uint256 => bool)) private _operatorApprovals;
 
-    bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
-    /*
+    //bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
+    /*NOTE: ALL OF THIS IS INVALIDATED DUE TO CHANGES:
      * 0x80ac58cd ===
      *     bytes4(keccak256('balanceOf(address)')) ^
      *     bytes4(keccak256('ownerOf(uint256)')) ^
@@ -44,6 +42,7 @@ contract SnowflakeEINERC721 is ERC165, IERC721 {
      *     bytes4(keccak256('transferFrom(address,address,uint256)')) ^
      *     bytes4(keccak256('safeTransferFrom(address,address,uint256)')) ^
      *     bytes4(keccak256('safeTransferFrom(address,address,uint256,bytes)'))
+     *  =========================================== END OF EVAL
      */
 
     constructor () public {
