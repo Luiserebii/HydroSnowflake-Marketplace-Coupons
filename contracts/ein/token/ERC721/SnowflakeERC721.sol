@@ -16,7 +16,10 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
 
     // Equals to `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
     // which can be also obtained as `IERC721Receiver(0).onERC721Received.selector`
-    // bytes4 private constant _ERC721_RECEIVED = 0x150b7a02;
+
+    //*EDITED TO*: onERC721Received(uint256,uint256,uint256,bytes) 
+
+    bytes4 private constant _ERC721_RECEIVED = 0x494114c2;
 
     // Mapping from token ID to owner
     mapping (uint256 => uint256) private _tokenOwner;
@@ -30,7 +33,8 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
     // Mapping from owner to operator approvals
     mapping (uint256 => mapping (uint256 => bool)) private _operatorApprovals;
 
-    //bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
+    bytes4 private constant _INTERFACE_ID_ERC721 = 0x4872420e;
+    //This *NEW* value calculated under this logic: https://gist.github.com/Luiserebii/28c0e9c6bf2a8257868e1a1bcc030c4d
     /*NOTE: ALL OF THIS IS INVALIDATED DUE TO CHANGES:
      * 0x80ac58cd ===
      *     bytes4(keccak256('balanceOf(address)')) ^
@@ -52,35 +56,35 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
 
     /**
      * @dev Gets the balance of the specified address
-     * @param owner address to query the balance of
+     * @param owner uint256 to query the balance of
      * @return uint256 representing the amount owned by the passed address
      */
-    function balanceOf(address owner) public view returns (uint256) {
-        require(owner != address(0));
+    function balanceOf(uint256 owner) public view returns (uint256) {
+        require(owner != 0);
         return _ownedTokensCount[owner].current();
     }
 
     /**
      * @dev Gets the owner of the specified token ID
      * @param tokenId uint256 ID of the token to query the owner of
-     * @return address currently marked as the owner of the given token ID
+     * @return uint256 currently marked as the owner of the given token ID
      */
-    function ownerOf(uint256 tokenId) public view returns (address) {
-        address owner = _tokenOwner[tokenId];
-        require(owner != address(0));
+    function ownerOf(uint256 tokenId) public view returns (uint256) {
+        uint256 owner = _tokenOwner[tokenId];
+        require(owner != 0);
         return owner;
     }
 
     /**
-     * @dev Approves another address to transfer the given token ID
-     * The zero address indicates there is no approved address.
-     * There can only be one approved address per token at a given time.
+     * @dev Approves another EIN to transfer the given token ID
+     * The zero EIN indicates there is no approved EIN.
+     * There can only be one approved EIN per token at a given time.
      * Can only be called by the token owner or an approved operator.
-     * @param to address to be approved for the given token ID
+     * @param to uint256 to be approved for the given token ID
      * @param tokenId uint256 ID of the token to be approved
      */
-    function approve(address to, uint256 tokenId) public {
-        address owner = ownerOf(tokenId);
+    function approve(uint256 to, uint256 tokenId) public {
+        uint256 owner = ownerOf(tokenId);
         require(to != owner);
         require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
 
@@ -94,7 +98,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @param tokenId uint256 ID of the token to query the approval of
      * @return address currently approved for the given token ID
      */
-    function getApproved(uint256 tokenId) public view returns (address) {
+    function getApproved(uint256 tokenId) public view returns (uint256) {
         require(_exists(tokenId));
         return _tokenApprovals[tokenId];
     }
@@ -105,7 +109,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @param to operator address to set the approval
      * @param approved representing the status of the approval to be set
      */
-    function setApprovalForAll(address to, bool approved) public {
+    function setApprovalForAll(uint256 to, bool approved) public {
         require(to != msg.sender);
         _operatorApprovals[msg.sender][to] = approved;
         emit ApprovalForAll(msg.sender, to, approved);
@@ -117,7 +121,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @param operator operator address which you want to query the approval of
      * @return bool whether the given operator is approved by the given owner
      */
-    function isApprovedForAll(address owner, address operator) public view returns (bool) {
+    function isApprovedForAll(uint256 owner, uint256 operator) public view returns (bool) {
         return _operatorApprovals[owner][operator];
     }
 
@@ -129,40 +133,40 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @param to address to receive the ownership of the given token ID
      * @param tokenId uint256 ID of the token to be transferred
      */
-    function transferFrom(address from, address to, uint256 tokenId) public {
+    function transferFrom(uint256 from, uint256 to, uint256 tokenId) public {
         require(_isApprovedOrOwner(msg.sender, tokenId));
 
         _transferFrom(from, to, tokenId);
     }
 
     /**
-     * @dev Safely transfers the ownership of a given token ID to another address
-     * If the target address is a contract, it must implement `onERC721Received`,
+     * @dev Safely transfers the ownership of a given token ID to another EIN
+     * If the target EIN is a contract, it must implement `onERC721Received`,
      * which is called upon a safe transfer, and return the magic value
      * `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`; otherwise,
      * the transfer is reverted.
      * Requires the msg.sender to be the owner, approved, or operator
-     * @param from current owner of the token
-     * @param to address to receive the ownership of the given token ID
+     * @param from uint256 current owner of the token
+     * @param to uint256 to receive the ownership of the given token ID
      * @param tokenId uint256 ID of the token to be transferred
      */
-    function safeTransferFrom(address from, address to, uint256 tokenId) public {
+    function safeTransferFrom(uint256 from, uint256 to, uint256 tokenId) public {
         safeTransferFrom(from, to, tokenId, "");
     }
 
     /**
-     * @dev Safely transfers the ownership of a given token ID to another address
-     * If the target address is a contract, it must implement `onERC721Received`,
+     * @dev Safely transfers the ownership of a given token ID to another EIN
+     * If the target EIN is a contract, it must implement `onERC721Received`,
      * which is called upon a safe transfer, and return the magic value
      * `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`; otherwise,
      * the transfer is reverted.
      * Requires the msg.sender to be the owner, approved, or operator
      * @param from current owner of the token
-     * @param to address to receive the ownership of the given token ID
+     * @param to uint256 to receive the ownership of the given token ID
      * @param tokenId uint256 ID of the token to be transferred
      * @param _data bytes data to send along with a safe transfer check
      */
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public {
+    function safeTransferFrom(uint256 from, uint256 to, uint256 tokenId, bytes memory _data) public {
         transferFrom(from, to, tokenId);
         require(_checkOnERC721Received(from, to, tokenId, _data));
     }
@@ -173,19 +177,19 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @return bool whether the token exists
      */
     function _exists(uint256 tokenId) internal view returns (bool) {
-        address owner = _tokenOwner[tokenId];
-        return owner != address(0);
+        uint256 owner = _tokenOwner[tokenId];
+        return owner != 0;
     }
 
     /**
      * @dev Returns whether the given spender can transfer a given token ID
-     * @param spender address of the spender to query
+     * @param spender uint256 of the spender to query
      * @param tokenId uint256 ID of the token to be transferred
      * @return bool whether the msg.sender is approved for the given token ID,
      * is an operator of the owner, or is the owner of the token
      */
-    function _isApprovedOrOwner(address spender, uint256 tokenId) internal view returns (bool) {
-        address owner = ownerOf(tokenId);
+    function _isApprovedOrOwner(uint256 spender, uint256 tokenId) internal view returns (bool) {
+        uint256 owner = ownerOf(tokenId);
         return (spender == owner || getApproved(tokenId) == spender || isApprovedForAll(owner, spender));
     }
 
@@ -195,14 +199,14 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @param to The address that will own the minted token
      * @param tokenId uint256 ID of the token to be minted
      */
-    function _mint(address to, uint256 tokenId) internal {
-        require(to != address(0));
+    function _mint(uint256 to, uint256 tokenId) internal {
+        require(to != 0);
         require(!_exists(tokenId));
 
         _tokenOwner[tokenId] = to;
         _ownedTokensCount[to].increment();
 
-        emit Transfer(address(0), to, tokenId);
+        emit Transfer(0, to, tokenId);
     }
 
     /**
@@ -212,15 +216,15 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @param owner owner of the token to burn
      * @param tokenId uint256 ID of the token being burned
      */
-    function _burn(address owner, uint256 tokenId) internal {
+    function _burn(uint256 owner, uint256 tokenId) internal {
         require(ownerOf(tokenId) == owner);
 
         _clearApproval(tokenId);
 
         _ownedTokensCount[owner].decrement();
-        _tokenOwner[tokenId] = address(0);
+        _tokenOwner[tokenId] = 0;
 
-        emit Transfer(owner, address(0), tokenId);
+        emit Transfer(owner, 0, tokenId);
     }
 
     /**
@@ -236,12 +240,12 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @dev Internal function to transfer ownership of a given token ID to another address.
      * As opposed to transferFrom, this imposes no restrictions on msg.sender.
      * @param from current owner of the token
-     * @param to address to receive the ownership of the given token ID
+     * @param to uint256 to receive the ownership of the given token ID
      * @param tokenId uint256 ID of the token to be transferred
      */
-    function _transferFrom(address from, address to, uint256 tokenId) internal {
+    function _transferFrom(uint256 from, uint256 to, uint256 tokenId) internal {
         require(ownerOf(tokenId) == from);
-        require(to != address(0));
+        require(to != 0);
 
         _clearApproval(tokenId);
 
@@ -254,15 +258,15 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
     }
 
     /**
-     * @dev Internal function to invoke `onERC721Received` on a target address
+     * @dev Internal function to invoke `onERC721Received` on a target EIN
      * The call is not executed if the target address is not a contract
-     * @param from address representing the previous owner of the given token ID
-     * @param to target address that will receive the tokens
+     * @param from uint256 representing the previous owner of the given token ID
+     * @param to target uint256 that will receive the tokens
      * @param tokenId uint256 ID of the token to be transferred
      * @param _data bytes optional data to send along with the call
      * @return bool whether the call correctly returned the expected magic value
      */
-    function _checkOnERC721Received(address from, address to, uint256 tokenId, bytes memory _data)
+    function _checkOnERC721Received(uint256 from, uint256 to, uint256 tokenId, bytes memory _data)
         internal returns (bool)
     {
         if (!to.isContract()) {
@@ -278,8 +282,8 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      * @param tokenId uint256 ID of the token to be transferred
      */
     function _clearApproval(uint256 tokenId) private {
-        if (_tokenApprovals[tokenId] != address(0)) {
-            _tokenApprovals[tokenId] = address(0);
+        if (_tokenApprovals[tokenId] != 0) {
+            _tokenApprovals[tokenId] = 0;
         }
     }
 }
