@@ -1,5 +1,6 @@
 pragma solidity ^0.5.0;
 
+import "./EINOwnable.sol";
 import "../../snowflake_custom/SnowflakeReader.sol";
 
 /**

@@ -1,8 +1,16 @@
 pragma solidity ^0.5.2;
 
 import "../Roles.sol";
+import "../../../snowflake_custom/SnowflakeReader.sol";
 
-contract MinterRole {
+
+/*
+ * =========================
+ * NOTE ABOUT THIS CONTRACT: This is a more of a "SnowflakeMinterRole" contract
+ * =========================
+ */
+
+contract MinterRole is SnowflakeReader {
     using Roles for Roles.Role;
 
     event MinterAdded(uint256 indexed account);
@@ -12,12 +20,12 @@ contract MinterRole {
 
     //TODO: Merge in msg.sender idea somehow in a good way; Identity Registry link, perhaps?
 
-    constructor () internal {
-        _addMinter(msg.sender);
+    constructor (address _snowflakeAddress) SnowflakeReader(_snowflakeAddress) public {
+        _addMinter(getEIN(msg.sender));
     }
 
     modifier onlyMinter() {
-        require(isMinter(msg.sender));
+        require(isMinter(getEIN(msg.sender)));
         _;
     }
 
@@ -30,7 +38,7 @@ contract MinterRole {
     }
 
     function renounceMinter() public {
-        _removeMinter(msg.sender);
+        _removeMinter(getEIN(msg.sender));
     }
 
     function _addMinter(uint256 account) internal {
