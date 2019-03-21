@@ -1,7 +1,7 @@
 pragma solidity ^0.5.2;
 
 import "./SnowflakeERC721.sol";
-import "../../zeppelin/access/roles/MinterRole.sol";
+import "../../access/roles/MinterRole.sol";
 
 /**
  * @title SnowflakeERC721Mintable
