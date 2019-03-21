@@ -5,10 +5,12 @@ import "../Roles.sol";
 contract MinterRole {
     using Roles for Roles.Role;
 
-    event MinterAdded(address indexed account);
-    event MinterRemoved(address indexed account);
+    event MinterAdded(uint256 indexed account);
+    event MinterRemoved(uint256 indexed account);
 
     Roles.Role private _minters;
+
+    //TODO: Merge in msg.sender idea somehow in a good way; Identity Registry link, perhaps?
 
     constructor () internal {
         _addMinter(msg.sender);
@@ -19,11 +21,11 @@ contract MinterRole {
         _;
     }
 
-    function isMinter(address account) public view returns (bool) {
+    function isMinter(uint256 account) public view returns (bool) {
         return _minters.has(account);
     }
 
-    function addMinter(address account) public onlyMinter {
+    function addMinter(uint256 account) public onlyMinter {
         _addMinter(account);
     }
 
@@ -31,12 +33,12 @@ contract MinterRole {
         _removeMinter(msg.sender);
     }
 
-    function _addMinter(address account) internal {
+    function _addMinter(uint256 account) internal {
         _minters.add(account);
         emit MinterAdded(account);
     }
 
-    function _removeMinter(address account) internal {
+    function _removeMinter(uint256 account) internal {
         _minters.remove(account);
         emit MinterRemoved(account);
     }
