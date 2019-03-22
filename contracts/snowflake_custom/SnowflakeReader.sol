@@ -15,7 +15,7 @@ contract SnowflakeReader {
         snowflakeAddress = _snowflakeAddress;
     }
 
-    function getEIN(address einAddress) internal {
+    function getEIN(address einAddress) internal returns (uint256 ein) {
         //Grab an instance of IdentityRegistry to work with as defined in Snowflake
         SnowflakeInterface si = SnowflakeInterface(snowflakeAddress);
         address iAdd = si.identityRegistryAddress();

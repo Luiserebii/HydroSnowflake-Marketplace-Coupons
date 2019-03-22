@@ -272,10 +272,10 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
     function _checkOnERC721Received(uint256 from, uint256 to, uint256 tokenId, bytes memory _data)
         internal returns (bool)
     {
-        if (!to.isContract()) {
+/*        if (!to.isContract()) {
             return true;
         }
-
+*/
         bytes4 retval = SnowflakeERC721ReceiverInterface(to).onERC721Received(getEIN(msg.sender), from, tokenId, _data);
         return (retval == _ERC721_RECEIVED);
     }

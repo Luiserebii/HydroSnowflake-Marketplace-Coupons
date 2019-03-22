@@ -151,7 +151,7 @@ Index:
         address paymentAddress,
         address MarketplaceCouponViaAddress
     ) SnowflakeEINOwnable (
-        ein
+        ein, _snowflakeAddress
     ) SnowflakeResolver (
         _snowflakeName, _snowflakeDescription,
         _snowflakeAddress,
