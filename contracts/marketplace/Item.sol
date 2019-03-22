@@ -1,6 +1,8 @@
 pragma solidity ^0.5.0;
 
-import '../zeppelin/token/ERC721/ERC721Full.sol';
+import '../ein/token/ERC721/SnowflakeERC721.sol';
+import '../ein/token/ERC721/SnowflakeERC721Burnable.sol';
+import '../ein/token/ERC721/SnowflakeERC721Mintable.sol';
 import '../interfaces/marketplace/ItemInterface.sol';
 
 /*
@@ -14,13 +16,13 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Item is ERC721Full, ItemInterface {
+contract Item is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, ItemInterface {
 
 
     //Mapping connecting ERC721 items to actual struct objects
     mapping(uint => Item) public itemListings;
 
-    constructor(string memory name, string memory symbol) public ERC721Full(name, symbol){
+    constructor(_snowflakeAddress) SnowflakeERC721(_snowflakeAddress) SnowflakeERC721Burnable(_snowflakeAddress) SnowflakeERC721Mintable(_snowflakeAddress) public {
         //stuff here
     }
 

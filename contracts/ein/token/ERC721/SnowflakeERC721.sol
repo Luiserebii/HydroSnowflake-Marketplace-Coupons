@@ -5,12 +5,13 @@ import "./SnowflakeERC721ReceiverInterface.sol";
 import "../../zeppelin/math/SafeMath.sol";
 import "../../zeppelin/drafts/Counters.sol";
 import "../../zeppelin/introspection/ERC165.sol";
+import "../../../snowflake_custom/SnowflakeReader.sol";
 
 /**
  * @title Snowflake ERC721 Non-Fungible Token Standard basic implementation
  * @dev see https://eips.ethereum.org/EIPS/eip-721
  */
-contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
+contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
     using SafeMath for uint256;
     using Counters for Counters.Counter;
 
@@ -49,7 +50,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface {
      *  =========================================== END OF EVAL
      */
 
-    constructor () public {
+    constructor (address _snowflakeAddress) public SnowflakeReader(_snowflakeAddress) {
         // register the supported interfaces to conform to ERC721 via ERC165
         _registerInterface(_INTERFACE_ID_ERC721);
     }

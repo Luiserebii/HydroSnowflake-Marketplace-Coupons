@@ -7,12 +7,15 @@ import "./SnowflakeERC721.sol";
  * @dev Snowflake ERC721 Token that can be irreversibly burned (destroyed).
  */
 contract SnowflakeERC721Burnable is SnowflakeERC721 {
+
+    constructor(address _snowflakeAddress) public SnowflakeERC721(_snowflakeAddress) {}
+
     /**
      * @dev Burns a specific Snowflake ERC721 token.
      * @param tokenId uint256 id of the Snowflake ERC721 token to be burned.
      */
     function burn(uint256 tokenId) public {
-        require(_isApprovedOrOwner(msg.sender, tokenId));
+        require(_isApprovedOrOwner(getEIN(msg.sender), tokenId));
         _burn(tokenId);
     }
 }
