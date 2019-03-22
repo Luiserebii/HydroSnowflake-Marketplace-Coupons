@@ -2,9 +2,9 @@ pragma solidity ^0.5.2;
 
 import "./SnowflakeERC721Interface.sol";
 import "./SnowflakeERC721ReceiverInterface.sol";
-import "../../zeppelin/math/SafeMath.sol";
-import "../../zeppelin/drafts/Counters.sol";
-import "../../zeppelin/introspection/ERC165.sol";
+import "../../../zeppelin/math/SafeMath.sol";
+import "../../../zeppelin/drafts/Counters.sol";
+import "../../../zeppelin/introspection/ERC165.sol";
 import "../../../snowflake_custom/SnowflakeReader.sol";
 
 /**
@@ -50,7 +50,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
      *  =========================================== END OF EVAL
      */
 
-    constructor (address _snowflakeAddress) public SnowflakeReader(_snowflakeAddress) {
+    constructor (address _snowflakeAddress) SnowflakeReader(_snowflakeAddress) public {
         // register the supported interfaces to conform to ERC721 via ERC165
         _registerInterface(_INTERFACE_ID_ERC721);
     }
@@ -95,10 +95,10 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
     }
 
     /**
-     * @dev Gets the approved address for a token ID, or zero if no address set
+     * @dev Gets the approved EIN for a token ID, or zero if no EIN set
      * Reverts if the token ID does not exist.
      * @param tokenId uint256 ID of the token to query the approval of
-     * @return address currently approved for the given token ID
+     * @return EIN currently approved for the given token ID
      */
     function getApproved(uint256 tokenId) public view returns (uint256) {
         require(_exists(tokenId));
@@ -108,7 +108,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
     /**
      * @dev Sets or unsets the approval of a given operator
      * An operator is allowed to transfer all tokens of the sender on their behalf
-     * @param to operator address to set the approval
+     * @param to operator EIN to set the approval
      * @param approved representing the status of the approval to be set
      */
     function setApprovalForAll(uint256 to, bool approved) public {
@@ -120,8 +120,8 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
 
     /**
      * @dev Tells whether an operator is approved by a given owner
-     * @param owner owner address which you want to query the approval of
-     * @param operator operator address which you want to query the approval of
+     * @param owner owner EIN which you want to query the approval of
+     * @param operator operator EIN which you want to query the approval of
      * @return bool whether the given operator is approved by the given owner
      */
     function isApprovedForAll(uint256 owner, uint256 operator) public view returns (bool) {
@@ -276,7 +276,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
             return true;
         }
 
-        bytes4 retval = IERC721Receiver(to).onERC721Received(getEIN(msg.sender), from, tokenId, _data);
+        bytes4 retval = SnowflakeERC721ReceiverInterface(to).onERC721Received(getEIN(msg.sender), from, tokenId, _data);
         return (retval == _ERC721_RECEIVED);
     }
 

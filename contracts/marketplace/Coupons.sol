@@ -26,7 +26,7 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Coupon is ERC721Full, CouponInterface {
+contract Coupons is ERC721Full, CouponInterface {
 
 
     //Mapping connecting ERC721 coupons to actual struct objects

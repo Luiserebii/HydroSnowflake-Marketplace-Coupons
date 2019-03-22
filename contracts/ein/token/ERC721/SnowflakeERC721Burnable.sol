@@ -8,7 +8,7 @@ import "./SnowflakeERC721.sol";
  */
 contract SnowflakeERC721Burnable is SnowflakeERC721 {
 
-    constructor(address _snowflakeAddress) public SnowflakeERC721(_snowflakeAddress) {}
+    constructor(address _snowflakeAddress) SnowflakeERC721(_snowflakeAddress) public {}
 
     /**
      * @dev Burns a specific Snowflake ERC721 token.

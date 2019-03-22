@@ -1,6 +1,6 @@
 pragma solidity ^0.5.2;
 
-import "../../zeppelin/introspection/IERC165.sol";
+import "../../../zeppelin/introspection/IERC165.sol";
 
 /**
  * @title Snowflake ERC721 Non-Fungible Token Standard basic interface
@@ -15,7 +15,7 @@ contract SnowflakeERC721Interface is IERC165 {
     event ApprovalForAll(uint256 indexed einOwner, uint256 indexed einOperator, bool approved);
 
     function balanceOf(uint einOwner) public view returns (uint256 balance);
-    function ownerOf(uint256 tokenId) public view returns (address einOwner);
+    function ownerOf(uint256 tokenId) public view returns (uint256 einOwner);
 
     function approve(uint256 einTo, uint256 tokenId) public;
     function getApproved(uint256 tokenId) public view returns (uint256 einOperator);

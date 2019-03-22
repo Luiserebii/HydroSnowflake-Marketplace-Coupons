@@ -52,8 +52,8 @@ contract EINOwnable {
     * modifier anymore.
     */
     function renounceOwnership() public onlyEINOwner {
-        emit OwnershipTransferred(_owner, 0);
-        _owner = 0;
+        emit OwnershipTransferred(_ownerEIN, 0);
+        _ownerEIN = 0;
     }
 
     /**
