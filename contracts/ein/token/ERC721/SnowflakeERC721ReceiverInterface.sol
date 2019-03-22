@@ -14,8 +14,8 @@ contract SnowflakeERC721ReceiverInterface {
      * returned can be obtained as `this.onERC721Received.selector`. This
      * function MAY throw to revert and reject the transfer.
      * Note: the ERC721 contract address is always the message sender.
-     * @param operator The EIN which called `safeTransferFrom` function
-     * @param from The EIN which previously owned the token
+     * @param einOperator The EIN which called `safeTransferFrom` function
+     * @param einFrom The EIN which previously owned the token
      * @param tokenId The NFT identifier which is being transferred
      * @param data Additional data with no specified format
      * @return bytes4 `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
