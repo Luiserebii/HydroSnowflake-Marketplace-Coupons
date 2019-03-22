@@ -86,8 +86,9 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
      */
     function approve(uint256 to, uint256 tokenId) public {
         uint256 owner = ownerOf(tokenId);
+        uint256 sender = getEIN(msg.sender);
         require(to != owner);
-        require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
+        require(sender == owner || isApprovedForAll(owner, sender));
 
         _tokenApprovals[tokenId] = to;
         emit Approval(owner, to, tokenId);
@@ -111,9 +112,10 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
      * @param approved representing the status of the approval to be set
      */
     function setApprovalForAll(uint256 to, bool approved) public {
-        require(to != msg.sender);
-        _operatorApprovals[msg.sender][to] = approved;
-        emit ApprovalForAll(msg.sender, to, approved);
+        uint256 sender = getEIN(msg.sender);
+        require(to != sender);
+        _operatorApprovals[sender][to] = approved;
+        emit ApprovalForAll(sender, to, approved);
     }
 
     /**
@@ -135,7 +137,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
      * @param tokenId uint256 ID of the token to be transferred
      */
     function transferFrom(uint256 from, uint256 to, uint256 tokenId) public {
-        require(_isApprovedOrOwner(msg.sender, tokenId));
+        require(_isApprovedOrOwner(getEIN(msg.sender), tokenId));
 
         _transferFrom(from, to, tokenId);
     }
@@ -274,7 +276,7 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
             return true;
         }
 
-        bytes4 retval = IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, _data);
+        bytes4 retval = IERC721Receiver(to).onERC721Received(getEIN(msg.sender), from, tokenId, _data);
         return (retval == _ERC721_RECEIVED);
     }
 
