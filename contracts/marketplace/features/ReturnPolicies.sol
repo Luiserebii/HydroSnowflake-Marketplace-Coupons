@@ -35,7 +35,7 @@ ReturnPolicy add/update/delete
 ==============================
 */
 
-    function addReturnPolicy(bool returnsAccepted, uint timeLimit) public onlyEINOwner returns (bool) {
+    function _addReturnPolicy(bool returnsAccepted, uint timeLimit) internal returns (bool) {
         //Add to returnPolicies
         returnPolicies[nextReturnPoliciesID] = ReturnPolicy(returnsAccepted, timeLimit);
         //Advance return policy ID by one
@@ -44,13 +44,13 @@ ReturnPolicy add/update/delete
         return true;
     }
 
-    function updateReturnPolicy(uint id, bool returnsAccepted, uint timeLimit) public onlyEINOwner returns (bool) {
+    function _updateReturnPolicy(uint id, bool returnsAccepted, uint timeLimit) internal returns (bool) {
         //Update returnPolicies by ID
         returnPolicies[id] = ReturnPolicy(returnsAccepted, timeLimit);
         return true;
     }
 
-    function deleteReturnPolicy(uint id) public onlyEINOwner returns (bool) {
+    function _deleteReturnPolicy(uint id) internal returns (bool) {
         //Delete Return Policy identified by ID
         delete returnPolicies[id];
         return true;

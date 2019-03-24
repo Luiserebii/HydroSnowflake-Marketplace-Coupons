@@ -26,7 +26,7 @@ DeliveryMethods add/update/delete
 ==================================
 */
 
-    function addDeliveryMethod(string memory deliveryMethod) public onlyEINOwner returns (bool) {
+    function _addDeliveryMethod(string memory deliveryMethod) internal returns (bool) {
         //Add to deliveryMethods
         deliveryMethods[nextDeliveryMethodsID] = deliveryMethod;
         //Advance delivery method by one
@@ -35,13 +35,13 @@ DeliveryMethods add/update/delete
         return true;
     }
 
-    function updateDeliveryMethod(uint id, string memory deliveryMethod) public onlyEINOwner returns (bool) {
+    function _updateDeliveryMethod(uint id, string memory deliveryMethod) internal returns (bool) {
         //Update deliveryMethods by ID
         deliveryMethods[id] = deliveryMethod;
         return true;
     }
 
-    function deleteDeliveryMethod(uint id) public onlyEINOwner returns (bool) {
+    function _deleteDeliveryMethod(uint id) internal returns (bool) {
 
         //Delete itemListing identified by ID
         delete deliveryMethods[id];

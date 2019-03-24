@@ -78,7 +78,7 @@ ItemListing add/update/delete
 */
 
 
-    function addItemListing (
+    function _addItemListing (
         uint uuid,
         uint quantity,
         ItemType itemType,
@@ -90,7 +90,7 @@ ItemListing add/update/delete
         uint[] memory delivery,
         uint[] memory tags,
         uint returnPolicy
-    ) public onlyEINOwner returns (bool) {
+    ) internal returns (bool) {
 
         //Add to itemListings
         itemListings[nextItemListingsID] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
@@ -103,7 +103,7 @@ ItemListing add/update/delete
 
     //NOTE: This can be changed in a way that does not re-create an entirely new item on every call, but more complex that perhaps needed
 
-    function updateItemListing (
+    function _updateItemListing (
         uint id,
         uint uuid,
         uint quantity,
@@ -116,7 +116,7 @@ ItemListing add/update/delete
         uint[] memory delivery,
         uint[] memory tags,
         uint returnPolicy
-    ) public onlyEINOwner returns (bool) {
+    ) internal returns (bool) {
 
         //Update itemListing identified by ID
         itemListings[id] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
@@ -124,7 +124,7 @@ ItemListing add/update/delete
     }
 
 
-    function deleteItemListing(uint id) public onlyEINOwner returns (bool) {
+    function _deleteItemListing(uint id) internal returns (bool) {
         //Delete itemListing identified by ID
         delete itemListings[id];
         return true;

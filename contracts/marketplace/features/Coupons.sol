@@ -69,7 +69,7 @@ AvailableCoupons add/update/delete
 ===================================
 */
 
-    function addAvailableCoupon(
+    function _addAvailableCoupon(
         CouponType couponType,
         string memory title,
         string memory description,
@@ -77,7 +77,7 @@ AvailableCoupons add/update/delete
         uint[] memory itemsApplicable,
         uint expirationDate
 
-    ) public onlyEINOwner returns (bool) {
+    ) internal returns (bool) {
         //Add to avaliableCoupons
         availableCoupons[nextAvailableCouponsID] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
         //Advance nextAvailableCouponID by 1
@@ -86,7 +86,7 @@ AvailableCoupons add/update/delete
         return true;
     }
 
-    function updateAvailableCoupon(
+    function _updateAvailableCoupon(
         uint id,
         CouponType couponType,
         string memory title,
@@ -95,7 +95,7 @@ AvailableCoupons add/update/delete
         uint[] memory itemsApplicable,
         uint expirationDate
 
-    ) public onlyEINOwner returns (bool) {
+    ) internal returns (bool) {
         //Add to avaliableCoupons
         availableCoupons[id] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
 
@@ -103,7 +103,7 @@ AvailableCoupons add/update/delete
     }
 
 
-    function deleteAvailableCoupon(uint id) public onlyEINOwner returns (bool) {
+    function _deleteAvailableCoupon(uint id) internal returns (bool) {
 
         //Delete availableCoupon by ID
         delete availableCoupons[id];

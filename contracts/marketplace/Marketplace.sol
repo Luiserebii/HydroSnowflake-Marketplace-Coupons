@@ -1,10 +1,10 @@
 pragma solidity ^0.5.0;
 
-import "./Coupons.sol";
-import "./Items.sol";
-import "./ItemTags.sol";
-import "./Delivery.sol";
-import "./ReturnPolicies.sol";
+import "./features/Coupons.sol";
+import "./features/Items.sol";
+import "./features/ItemTags.sol";
+import "./features/Delivery.sol";
+import "./features/ReturnPolicies.sol";
 
 contract Marketplace is Coupons, Items, ItemTags, Delivery, ReturnPolicies {
 
