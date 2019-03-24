@@ -1,6 +1,8 @@
 pragma solidity ^0.5.0;
 
-import '../zeppelin/token/ERC721/ERC721Full.sol';
+import '../ein/token/ERC721/SnowflakeERC721.sol';
+import '../ein/token/ERC721/SnowflakeERC721Burnable.sol';
+import '../ein/token/ERC721/SnowflakeERC721Mintable.sol';
 import '../interfaces/marketplace/CouponInterface.sol';
 
 /*
@@ -26,7 +28,7 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Coupons is ERC721Full, CouponInterface {
+contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, CouponInterface {
 
     //ID, starting at 1, connecting the mappings
     uint public nextAvailableCouponsID;
@@ -34,7 +36,7 @@ contract Coupons is ERC721Full, CouponInterface {
     //Mapping connecting ERC721 coupons to actual struct objects
     mapping(uint => Coupon) public availableCoupons;
 
-    constructor(string memory name, string memory symbol) public ERC721Full(name, symbol){
+    constructor(address _snowflakeAddress) SnowflakeERC721Burnable(_snowflakeAddress) SnowflakeERC721Mintable(_snowflakeAddress) public {
         //stuff here
         nextAvailableCouponsID = 1;
     }

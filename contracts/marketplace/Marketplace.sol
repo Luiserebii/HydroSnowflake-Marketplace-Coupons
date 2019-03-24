@@ -1,11 +1,15 @@
 pragma solidity ^0.5.0;
 
-contract Marketplace {
+import "./Coupons.sol";
+import "./Items.sol";
+import "./ItemTags.sol";
+import "./Delivery.sol";
+import "./ReturnPolicies.sol";
 
+contract Marketplace is Coupons, Items, ItemTags, Delivery, ReturnPolicies {
 
 
     address private _paymentAddress;
-
 
     //EIN to Coupon UUID mapping
     // EIN => (couponID => bool)
@@ -22,15 +26,13 @@ contract Marketplace {
         return _paymentAddress;
     }
 
-
     function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid) {
         return userCoupons[ein][couponID];
     }
 
 
-
     //TODO: Add event here
-    function setPaymentAddress(address addr) public onlyEINOwner returns (bool) {
+    function _setPaymentAddress(address addr) internal  returns (bool) {
         _paymentAddress = addr;
         return true;
     }
