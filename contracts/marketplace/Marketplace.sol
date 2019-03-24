@@ -12,9 +12,9 @@ contract Marketplace {
     mapping(uint => mapping(uint => bool)) public userCoupons;
 
 
-
-
-
+    function paymentAddress() public view returns (address) {
+        return _paymentAddress;
+    }
 
 
 
@@ -27,19 +27,15 @@ contract Marketplace {
 
 
 
+    uint public nextDeliveryMethodsID;
+
     struct DeliveryDetails {
         uint method;
         uint handlingTime;
         string trackingNumber;
     }
 
-    struct ReturnPolicy {
-        bool returnsAccepted;
-        uint timeLimit;
-    }
-    mapping(uint => string) public itemTags;
     mapping(uint => string) public deliveryMethods;
-    mapping(uint => ReturnPolicy) public returnPolicies;
 
 
 

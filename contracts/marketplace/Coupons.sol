@@ -36,6 +36,7 @@ contract Coupons is ERC721Full, CouponInterface {
 
     constructor(string memory name, string memory symbol) public ERC721Full(name, symbol){
         //stuff here
+        nextAvailableCouponsID = 1;
     }
 
     struct Coupon {
@@ -57,6 +58,61 @@ contract Coupons is ERC721Full, CouponInterface {
     function getCouponItemApplicable(uint id, uint index) public view returns (uint) { 
         return availableCoupons[id].itemsApplicable[index]; 
     }
+
+
+
+/*
+===================================
+AvailableCoupons add/update/delete
+===================================
+*/
+
+    function addAvailableCoupon(
+        CouponType couponType,
+        string memory title,
+        string memory description,
+        uint256 amountOff,
+        uint[] memory itemsApplicable,
+        uint expirationDate
+
+    ) public onlyEINOwner returns (bool) {
+        //Add to avaliableCoupons
+        availableCoupons[nextAvailableCouponsID] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
+        //Advance nextAvailableCouponID by 1
+        nextAvailableCouponsID++;
+
+        return true;
+    }
+
+    function updateAvailableCoupon(
+        uint id,
+        CouponType couponType,
+        string memory title,
+        string memory description,
+        uint256 amountOff,
+        uint[] memory itemsApplicable,
+        uint expirationDate
+
+    ) public onlyEINOwner returns (bool) {
+        //Add to avaliableCoupons
+        availableCoupons[id] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
+
+        return true;
+    }
+
+
+    function deleteAvailableCoupon(uint id) public onlyEINOwner returns (bool) {
+
+        //Delete availableCoupon by ID
+        delete availableCoupons[id];
+        return true;
+
+    }
+
+
+
+
+
 
 
 
