@@ -1,9 +1,9 @@
 pragma solidity ^0.5.0;
 
-import '../ein/token/ERC721/SnowflakeERC721.sol';
-import '../ein/token/ERC721/SnowflakeERC721Burnable.sol';
-import '../ein/token/ERC721/SnowflakeERC721Mintable.sol';
-import '../interfaces/marketplace/CouponInterface.sol';
+import '../../ein/token/ERC721/SnowflakeERC721.sol';
+import '../../ein/token/ERC721/SnowflakeERC721Burnable.sol';
+import '../../ein/token/ERC721/SnowflakeERC721Mintable.sol';
+import '../../interfaces/marketplace/CouponInterface.sol';
 
 /*
 

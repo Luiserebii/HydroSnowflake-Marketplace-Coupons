@@ -1,6 +1,8 @@
 pragma solidity ^0.5.0;
 
+import "../ein/util/SnowflakeEINOwnable.sol";
 import "./Marketplace.sol";
+
 
 contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
 
@@ -128,7 +130,7 @@ AvailableCoupons add/update/delete
         uint expirationDate
 
     ) public onlyEINOwner returns (bool) {
-        return _addAvaliableCoupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
+        return _addAvailableCoupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
     }
 
 
