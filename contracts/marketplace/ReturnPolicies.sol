@@ -21,6 +21,14 @@ contract ReturnPolicies {
         uint timeLimit;
     }
 
+
+    function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit){
+
+        ReturnPolicy memory rp = returnPolicies[id];
+        return (rp.returnsAccepted, rp.timeLimit);
+    }
+
+
 /*
 ==============================
 ReturnPolicy add/update/delete
