@@ -60,6 +60,8 @@ Index:
 */
 
 
+
+//(MOVED TO ITEMS.SOL)
    struct Item {
         uint uuid;
         uint quantity;
@@ -74,7 +76,7 @@ Index:
         uint returnPolicy;
 
     }
-
+//========================
 /*    enum ItemType { DIGITAL, PHYSICAL }
     
     enum ItemStatus { ACTIVE, INACTIVE }
@@ -91,7 +93,7 @@ Index:
         bool returnsAccepted;
         uint timeLimit;
     }
-
+//(MOVED TO COUPONS.SOL)
     struct Coupon {
         CouponType couponType;
         string title;
@@ -100,30 +102,47 @@ Index:
         uint[] itemsApplicable;
         uint expirationDate;
     }
-
+//==========================
     //percentage off not implemented, but here for future design convenience
 /*
     enum CouponType { AMOUNT_OFF, PERCENTAGE_OFF, BUY_X_QTY_GET_Y_FREE , BUY_X_QTY_FOR_Y_AMNT }
 */
+
+
+
     address private _paymentAddress;
+
+
+//=======      [A NATIVE VAR]               =============================
     address private _MarketplaceCouponViaAddress;
-
+//================================================
     /* Mappings and ID uints */
-
+    //(MOVED TO ITEMS.SOL)
     mapping(uint => Item) public itemListings;
+    //============
+
     mapping(uint => string) public itemTags;
     mapping(uint => string) public deliveryMethods;  
     mapping(uint => ReturnPolicy) public returnPolicies;
-    mapping(uint => Coupon) public availableCoupons;
 
+//(MOVED TO COUPONS.SOL)
+    mapping(uint => Coupon) public availableCoupons;
+//==============
     //uints to track next avaliable "ID" added to mappings
     //Reasoning on next > latest; avoiding writing if() statement to check if [0] has already been set
+
     uint public nextDeliveryMethodsID;
+
+    //(MOVED)
     uint public nextItemListingsID;
+    //==================
+
     uint public nextItemTagsID;
     uint public nextReturnPoliciesID;
-    uint public nextAvailableCouponsID;
 
+    //(MOVED)
+    uint public nextAvailableCouponsID;
+    //============================
 
     //EIN to Coupon UUID mapping
     // EIN => (couponID => bool)
@@ -246,7 +265,7 @@ Index:
     function MarketplaceCouponViaAddress() public view returns (address) {
         return _MarketplaceCouponViaAddress;
     }
-
+//(MOVED TO ITEMS.SOL)
     function getItem(uint id) public view returns (
         uint uuid,
         uint quantity,
@@ -266,7 +285,7 @@ Index:
     function getItemDelivery(uint id, uint index) public view returns (uint) { return itemListings[id].delivery[index]; }
 
     function getItemTag(uint id, uint index) public view returns (uint) { return itemListings[id].tags[index]; }
-
+//================================
 
     function getDeliveryMethod(uint id) public view returns (string memory method){
         return (deliveryMethods[id]);   
@@ -277,7 +296,7 @@ Index:
         ReturnPolicy memory rp = returnPolicies[id];
         return (rp.returnsAccepted, rp.timeLimit);
     } 
-
+//(MOVED TO COUPONS.SOL)
     function getCoupon(uint id) public view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate){
 
         Coupon memory c = availableCoupons[id];
@@ -285,7 +304,7 @@ Index:
     }
 
     function getCouponItemApplicable(uint id, uint index) public view returns (uint) { return availableCoupons[id].itemsApplicable[index]; }
-
+//==========================
     function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid) {
         return userCoupons[ein][couponID];
     }

@@ -18,6 +18,8 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 
 contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, ItemInterface {
 
+    //ID, starting at 1
+    uint public nextItemListingsID;
 
     //Mapping connecting ERC721 items to actual struct objects
     mapping(uint => Item) public itemListings;

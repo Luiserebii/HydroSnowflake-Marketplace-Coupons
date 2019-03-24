@@ -28,6 +28,8 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 
 contract Coupons is ERC721Full, CouponInterface {
 
+    //ID, starting at 1, connecting the mappings
+    uint public nextAvailableCouponsID;
 
     //Mapping connecting ERC721 coupons to actual struct objects
     mapping(uint => Coupon) public availableCoupons;
