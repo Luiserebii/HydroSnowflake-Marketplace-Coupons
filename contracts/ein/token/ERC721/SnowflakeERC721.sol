@@ -50,9 +50,13 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
      *  =========================================== END OF EVAL
      */
 
-    constructor (address _snowflakeAddress) SnowflakeReader(_snowflakeAddress) public {
-        // register the supported interfaces to conform to ERC721 via ERC165
-        _registerInterface(_INTERFACE_ID_ERC721);
+    constructor (address _snowflakeAddress) public {
+        _constructSnowflakeERC721(_snowflakeAddress);
+    }
+
+    function _constructSnowflakeERC721(address _snowflakeAddress) internal {
+         // register the supported interfaces to conform to ERC721 via ERC165
+        _registerInterface(_INTERFACE_ID_ERC721);       
     }
 
     /**

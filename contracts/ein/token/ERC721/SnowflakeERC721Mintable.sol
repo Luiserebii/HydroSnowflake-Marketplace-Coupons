@@ -9,7 +9,13 @@ import "../../access/roles/MinterRole.sol";
  */
 contract SnowflakeERC721Mintable is SnowflakeERC721, MinterRole {
 
-    constructor (address _snowflakeAddress) MinterRole(_snowflakeAddress) public {}
+    constructor (address _snowflakeAddress) public {
+        _constructSnowflakeERC721Mintable(_snowflakeAddress);
+    }
+
+    function _constructSnowflakeERC721Mintable(address _snowflakeAddress) internal {
+        _constructMinterRole(_snowflakeAddress);
+    }
 
     /**
      * @dev Function to mint tokens
