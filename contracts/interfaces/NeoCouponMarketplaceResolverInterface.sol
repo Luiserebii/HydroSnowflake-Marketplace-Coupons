@@ -7,6 +7,8 @@ import "./marketplace/ItemInterface.sol";
 
 interface NeoCouponMarketplaceResolverInterface {
 
+//This should likely go in their respective feature interfaces
+/*
     function getItem(uint id) public view returns (uint uuid, uint quantity, ItemInterface.ItemType itemType, ItemInterface.ItemStatus status, ItemInterface.ItemCondition condition, string memory title, string memory description, uint256 price, uint returnPolicy);
 
     function getItemDelivery(uint id, uint index) public view returns (uint);
@@ -18,7 +20,8 @@ interface NeoCouponMarketplaceResolverInterface {
     function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit);
     function getCoupon(uint id) public view returns (CouponInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);
     function getCouponItemApplicable(uint id, uint index) public view returns (uint);
-
-    function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid);
-
+*/
+    //This should be moved to MarketplaceInterface.sol
+    //function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid);
+    function purchaseItem(uint id, address approvingAddress, uint couponID) external returns (bool);
 }
