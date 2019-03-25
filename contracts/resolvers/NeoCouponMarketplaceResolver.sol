@@ -80,8 +80,10 @@ Index:
         _callOnAddition, _callOnRemoval
     ) public {
 
+        //Parent constructing
+        _constructSnowflakeEINMarketplace(ein, patmentAddress, _snowflakeAddress;
+
         //Set contract-specific private/internal vars
-        _paymentAddress = paymentAddress;
         _MarketplaceCouponViaAddress = MarketplaceCouponViaAddress;
 
     }

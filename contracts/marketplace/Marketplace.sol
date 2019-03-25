@@ -16,7 +16,18 @@ contract Marketplace is Coupons, Items, ItemTags, Delivery, ReturnPolicies {
     mapping(uint => mapping(uint => bool)) public userCoupons;
 
 
-    constructor(address paymentAddress) public {
+    constructor(address paymentAddress, address _snowflakeAddress) public { 
+        _constructMarketplace(paymentAddress, _snowflakeAddress);
+    }
+
+    function _constructMarketplace(address paymentAddress, address _snowflakeAddress) internal {
+        //Constructing parent contracts
+        _constructCoupons(_snowflakeAddress);
+        _constructItems(_snowflakeAddress);
+        _constructItemTags();
+        _constructDelivery();
+        _constructReturnPolicies();
+
         //Set contract-specific private/internal vars
         _paymentAddress = paymentAddress;
     }

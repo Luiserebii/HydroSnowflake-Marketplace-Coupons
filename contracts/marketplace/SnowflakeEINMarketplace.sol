@@ -7,8 +7,18 @@ import "./Marketplace.sol";
 contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
 
 
-    function setPaymentAddress(address addr) public onlyEINOwner returns (bool) {
-        return _setPaymentAddress(addr);
+    _constructor(address paymentAddress, address _snowflakeAddress) public {
+        _constructSnowflakeEINMarketplace(paymentAddress, _snowflakeAddress);
+    
+    }    
+
+    function _constructSnowflakeEINMarketplace(uint ein, address paymentAddress, address _snowflakeAddress) internal {
+        _constructMarketplace(paymentAddress);
+        _constructSnowflakeEINOwnable(ein, _snowflakeAddress);
+    }
+
+    function setPaymentAddress(address paymentAddress) public onlyEINOwner returns (bool) {
+        return _setPaymentAddress(paymentAddress);
     }
 
 /*
