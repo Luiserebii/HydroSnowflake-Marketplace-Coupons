@@ -12,6 +12,11 @@ contract SnowflakeReader {
     address public snowflakeAddress;
 
     constructor(address _snowflakeAddress) public {
+        _constructSnowflakeReader(_snowflakeAddress);
+    }
+
+    //Function to avoid double-constructor in inheriting, sort of a work-around
+    function _constructSnowflakeReader(address _snowflakeAddress) internal {
         snowflakeAddress = _snowflakeAddress;
     }
 

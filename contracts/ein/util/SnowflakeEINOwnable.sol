@@ -8,7 +8,7 @@ import "../../snowflake_custom/SnowflakeReader.sol";
 * @dev The SnowflakeEINOwnable contract has an owner EIN, and provides basic authorization control
 * functions, this simplifies the implementation of "user permissions".
 *
-* This extneds the EINOwnable contract and provides the EIN authentication used through Snowflake (uses the abstraction Snowflake provides; the minor disadvantage is that this is indirectly connected to the IdentityRegistry, but could arugably be good design)
+* This extends the EINOwnable contract and provides the EIN authentication used through Snowflake (uses the abstraction Snowflake provides; the minor disadvantage is that this is indirectly connected to the IdentityRegistry, but could arugably be good design)
 */
 contract SnowflakeEINOwnable is EINOwnable, SnowflakeReader {
 
@@ -16,7 +16,10 @@ contract SnowflakeEINOwnable is EINOwnable, SnowflakeReader {
     * @dev The SnowflakeEINOwnable constructor sets the original `owner` of the contract to the sender
     * account.
     */
-    constructor(uint ein, address _snowflakeAddress) EINOwnable(constructorEINOwnable(msg.sender)) SnowflakeReader(_snowflakeAddress) public {}
+    constructor(uint ein, address _snowflakeAddress) public {
+       _constructEINOwnable(constructorEINOwnable(msg.sender)); 
+       _constructSnowflakeReader(_snowflakeAddress);       
+    }
 
 
     /**

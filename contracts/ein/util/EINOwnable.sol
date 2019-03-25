@@ -18,6 +18,10 @@ contract EINOwnable {
     * account.
     */
     constructor(uint ein) public {
+        _constructEINOwnable(ein);
+    }
+
+    function _constructEINOwnable(uint ein) internal {
         _ownerEIN = ein;
         //Since 0 likely represents someone's EIN, it can be confusing to specify 0, so commenting this out in the meantime
         //CORRECTION: 0 is actually guaranteed to be no one's EIN, so this is ok! :D And even better, we can use this fact to use EIN 0 as a null/empty/burner EIN

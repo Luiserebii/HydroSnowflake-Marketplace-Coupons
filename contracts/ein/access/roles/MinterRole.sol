@@ -20,8 +20,12 @@ contract MinterRole is SnowflakeReader {
 
     //TODO: Merge in msg.sender idea somehow in a good way; Identity Registry link, perhaps?
 
-    constructor (address _snowflakeAddress) /*SnowflakeReader(_snowflakeAddress)*/ public {
-        snowflakeAddress = _snowflakeAddress;
+    constructor (address _snowflakeAddress) public {
+        _constructMinterRole(_snowflakeAddress);
+    }
+  
+    function _constructMinterRole(address _snowflakeAddress) internal {
+        _constructSnowflakeReader();
         _addMinter(getEIN(msg.sender));
     }
 
