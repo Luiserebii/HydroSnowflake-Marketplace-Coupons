@@ -7,8 +7,8 @@ import "./Marketplace.sol";
 contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
 
 
-    _constructor(address paymentAddress, address _snowflakeAddress) public {
-        _constructSnowflakeEINMarketplace(paymentAddress, _snowflakeAddress);
+    constructor(uint ein, address paymentAddress, address _snowflakeAddress) public {
+        _constructSnowflakeEINMarketplace(ein, paymentAddress, _snowflakeAddress);
     
     }    
 

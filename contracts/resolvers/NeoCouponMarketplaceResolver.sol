@@ -1,14 +1,14 @@
 pragma solidity ^0.5.0;
 
-import "../marketplace/SnowflakeEINMarketplace.sol"
+import "../marketplace/SnowflakeEINMarketplace.sol";
 import "../SnowflakeResolver.sol";
 import "../ein/util/SnowflakeEINOwnable.sol";
 import "../interfaces/IdentityRegistryInterface.sol";
 import "../interfaces/SnowflakeInterface.sol";
 import "../interfaces/SnowflakeViaInterface.sol";
-import "../interfaces/CouponMarketplaceResolverInterface.sol";
+import "../interfaces/NeoCouponMarketplaceResolverInterface.sol";
 
-contract NeoCouponMarketplaceResolver is SnowflakeResolver, SnowflakeEINMarketplace, CouponMarketplaceResolverInterface {
+contract NeoCouponMarketplaceResolver is SnowflakeResolver, SnowflakeEINMarketplace, NeoCouponMarketplaceResolverInterface {
 
 /*
 
@@ -81,7 +81,7 @@ Index:
     ) public {
 
         //Parent constructing
-        _constructSnowflakeEINMarketplace(ein, patmentAddress, _snowflakeAddress;
+        _constructSnowflakeEINMarketplace(ein, paymentAddress, _snowflakeAddress);
 
         //Set contract-specific private/internal vars
         _MarketplaceCouponViaAddress = MarketplaceCouponViaAddress;

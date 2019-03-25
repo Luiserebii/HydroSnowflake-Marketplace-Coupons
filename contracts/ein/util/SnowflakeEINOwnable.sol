@@ -17,10 +17,13 @@ contract SnowflakeEINOwnable is EINOwnable, SnowflakeReader {
     * account.
     */
     constructor(uint ein, address _snowflakeAddress) public {
-       _constructEINOwnable(constructorEINOwnable(msg.sender)); 
-       _constructSnowflakeReader(_snowflakeAddress);       
+        _constructSnowflakeEINOwnable(ein, _snowflakeAddress);
     }
 
+    function _constructSnowflakeEINOwnable(uint ein, address _snowflakeAddress) internal {
+        _constructEINOwnable(constructorEINOwnable(msg.sender)); 
+        _constructSnowflakeReader(_snowflakeAddress);       
+    }
 
     /**
     * @return true if address resolves to owner of the contract.

@@ -12,7 +12,7 @@ contract SnowflakeERC721Burnable is SnowflakeERC721 {
         _constructSnowflakeERC721Burnable(_snowflakeAddress);
     }
   
-    _constructSnowflakeERC721Burnable(address _snowflakeAddress){
+    function _constructSnowflakeERC721Burnable(address _snowflakeAddress) internal {
         _constructSnowflakeERC721(_snowflakeAddress);
     }
 
