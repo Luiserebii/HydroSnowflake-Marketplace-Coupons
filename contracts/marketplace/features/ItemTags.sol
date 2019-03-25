@@ -12,6 +12,10 @@ contract ItemTags {
 
     
     constructor() public {
+        _constructItemTags();
+    }
+
+    function _constructItemTags() internal {
         nextItemTagsID = 1;
     }
 

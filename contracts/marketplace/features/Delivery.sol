@@ -11,9 +11,12 @@ contract Delivery {
     mapping(uint => string) public deliveryMethods;
 
     constructor() public {
-        nextDeliveryMethodsID = 1;
+        _constructDelivery();
     }
 
+    function _constructDelivery() internal {
+        nextDeliveryMethodsID = 1;
+    }
 
     function getDeliveryMethod(uint id) public view returns (string memory method){
         return (deliveryMethods[id]);

@@ -12,6 +12,10 @@ contract ReturnPolicies {
 
     
     constructor() public {
+        _constructReturnPolicies();
+    }
+
+    function _constructReturnPolicies() internal {
         nextReturnPoliciesID = 1;
     }
 

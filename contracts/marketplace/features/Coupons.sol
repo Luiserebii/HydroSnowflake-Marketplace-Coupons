@@ -36,10 +36,20 @@ contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Min
     //Mapping connecting ERC721 coupons to actual struct objects
     mapping(uint => Coupon) public availableCoupons;
 
-    constructor(address _snowflakeAddress) SnowflakeERC721Burnable(_snowflakeAddress) SnowflakeERC721Mintable(_snowflakeAddress) public {
-        //stuff here
-        nextAvailableCouponsID = 1;
+    constructor(address _snowflakeAddress) public {
+        _constructCoupons(_snowflakeAddress);
     }
+
+    function _constructCoupons(address _snowflakeAddress) internal {
+        //Constructor functions of inherited contracts
+        _constructSnowflakeERC721Burnable(_snowflakeAddress);
+        _constructSnowflakeERC721Mintable(_snowflakeAddress);
+
+        //Actual constructor logic
+        nextAvailableCouponsID = 1;
+
+    }
+
 
     struct Coupon {
         CouponType couponType;
