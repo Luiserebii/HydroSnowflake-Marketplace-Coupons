@@ -1,26 +1,24 @@
 pragma solidity ^0.5.0;
 
-import "../marketplace/features/Coupons.sol";
-import "../marketplace/features/Items.sol";
-import "../marketplace/features/ItemTags.sol";
-import "../marketplace/features/Delivery.sol";
-import "../marketplace/features/ReturnPolicies.sol";
+import "./marketplace/CouponInterface.sol";
+import "./marketplace/ItemInterface.sol";
 
+//We may just need to make this an abstract contract instead of an interface to give access to these enums, see: https://gist.github.com/Luiserebii/18a2bed267992dff8bc85703ca8fe3f3
 
 interface NeoCouponMarketplaceResolverInterface {
 
-    function getItem(uint id) external view returns (uint uuid, uint quantity, ItemType itemType, ItemStatus status, ItemCondition condition, string memory title, string memory description, uint256 price, uint returnPolicy);
+    function getItem(uint id) public view returns (uint uuid, uint quantity, ItemInterface.ItemType itemType, ItemInterface.ItemStatus status, ItemInterface.ItemCondition condition, string memory title, string memory description, uint256 price, uint returnPolicy);
 
-    function getItemDelivery(uint id, uint index) external view returns (uint);
-    function getItemTag(uint id, uint index) external view returns (uint);
+    function getItemDelivery(uint id, uint index) public view returns (uint);
+    function getItemTag(uint id, uint index) public view returns (uint);
 
     //Returns delivery method at mapping ID (i.e. Fedex)
-    function getDeliveryMethod(uint id) external view returns (string memory method);
+    function getDeliveryMethod(uint id) public view returns (string memory method);
     
-    function getReturnPolicy(uint id) external view returns (bool returnsAccepted, uint timeLimit);
-    function getCoupon(uint id) external view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);
-    function getCouponItemApplicable(uint id, uint index) external view returns (uint);
+    function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit);
+    function getCoupon(uint id) public view returns (CouponInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);
+    function getCouponItemApplicable(uint id, uint index) public view returns (uint);
 
-    function isUserCouponOwner(uint ein, uint couponID) external view returns (bool isValid);
+    function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid);
 
 }

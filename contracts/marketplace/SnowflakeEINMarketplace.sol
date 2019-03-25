@@ -13,7 +13,7 @@ contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
     }    
 
     function _constructSnowflakeEINMarketplace(uint ein, address paymentAddress, address _snowflakeAddress) internal {
-        _constructMarketplace(paymentAddress);
+        _constructMarketplace(paymentAddress, _snowflakeAddress);
         _constructSnowflakeEINOwnable(ein, _snowflakeAddress);
     }
 

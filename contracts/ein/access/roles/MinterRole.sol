@@ -25,7 +25,7 @@ contract MinterRole is SnowflakeReader {
     }
   
     function _constructMinterRole(address _snowflakeAddress) internal {
-        _constructSnowflakeReader();
+        _constructSnowflakeReader(_snowflakeAddress);
         _addMinter(getEIN(msg.sender));
     }
 
