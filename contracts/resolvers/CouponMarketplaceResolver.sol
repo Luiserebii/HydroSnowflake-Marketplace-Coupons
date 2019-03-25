@@ -163,14 +163,13 @@ Index:
      *
      */
     constructor(
-        uint ein,
         string memory _snowflakeName, string memory _snowflakeDescription,
         address _snowflakeAddress,
         bool _callOnAddition, bool _callOnRemoval,
         address paymentAddress,
         address MarketplaceCouponViaAddress
     ) SnowflakeEINOwnable (
-        ein, _snowflakeAddress
+        _snowflakeAddress
     ) SnowflakeResolver (
         _snowflakeName, _snowflakeDescription,
         _snowflakeAddress,

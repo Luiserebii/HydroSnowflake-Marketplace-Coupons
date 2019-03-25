@@ -68,7 +68,6 @@ Index:
      *
      */
     constructor(
-        uint ein,
         string memory _snowflakeName, string memory _snowflakeDescription,
         address _snowflakeAddress,
         bool _callOnAddition, bool _callOnRemoval,
@@ -81,7 +80,7 @@ Index:
     ) public {
 
         //Parent constructing
-        _constructSnowflakeEINMarketplace(ein, paymentAddress, _snowflakeAddress);
+        _constructSnowflakeEINMarketplace(paymentAddress, _snowflakeAddress);
 
         //Set contract-specific private/internal vars
         _MarketplaceCouponViaAddress = MarketplaceCouponViaAddress;
