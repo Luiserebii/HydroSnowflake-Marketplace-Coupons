@@ -8,6 +8,9 @@ import "../interfaces/SnowflakeInterface.sol";
 import "../interfaces/SnowflakeViaInterface.sol";
 import "../interfaces/NeoCouponMarketplaceResolverInterface.sol";
 
+import "../marketplace/features/CouponFeature.sol";
+import "../marketplace/features/ItemFeature.sol";
+
 contract NeoCouponMarketplaceResolver is SnowflakeResolver, SnowflakeEINMarketplace, NeoCouponMarketplaceResolverInterface {
 
 /*
@@ -149,8 +152,17 @@ Via contract to use coupons:
 
     function purchaseItem(uint id, /*bytes memory data,*/ address approvingAddress, uint couponID) public returns (bool) {
 
+        //allowAndCallDelegated for the user
+        // - Take a destination address, an amount, data, an approving address, and three signature fields (v,r,s)
+        //snowflake.allowAndCallDelegated(_paymentAddress, itemListings[id].price, data, approvingAddress, v, r, s);
+
+        //using transferSnowflakeBalanceFromVia() instead
+
+        ItemFeature itemFeature = ItemFeature(ItemFeatureAddress);
+        CouponFeature couponFeature = CouponFeature(CouponFeatureAddress);
+
         //Ensure the item exists, and that there is a price
-        require(itemListings[id].price > 0, 'item does not exist, or has a price below 0. The price in question is: ');
+        require(itemFeature.itemListings[id].price > 0, "item does not exist, or has a price below 0. The price in question is: ");
 
     /* Take an EIN (from), an address (via), an EIN (to), an amount, and data
 
@@ -170,16 +182,18 @@ Via contract to use coupons:
         string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint)";
         snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), getEIN(approvingAddress), ownerEIN(), itemListings[id].price, couponID);
 
-        //Give allowance for item to CouponMarketplaceVia
+        //Allowance for item to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
+        //Allowance for coupon to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
 
         //If there is a coupon,
         //   Grant allowance to Via
-        if(couponID != 0){
+        //if(couponID != 0){
             //Ensure coupon is owned
             //(!!!IMPORTANT!!! Ohhh, you know, I don't this is quite possible like this... ownerOf makes it unclear as to which (Coupon, or Item) it'll return, I think... hmmm, darn. Seperate contract? Perhaps create on deployment?)
-            require(ownerOf(id) == getEIN(approvingAddress), 'Approving address is not the owner of this coupon');
+       //     require(couponFeature.ownerOf(id) == getEIN(approvingAddress), "Approving address is not the owner of this coupon");
             
-        }
+            
+       // }
 
 
 

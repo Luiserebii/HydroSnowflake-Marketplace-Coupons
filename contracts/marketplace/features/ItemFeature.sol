@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "../ein/util/SnowflakeEINOwnable.sol";
+import "../../ein/util/SnowflakeEINOwnable.sol";
 import "./Items.sol";
 
 
@@ -13,7 +13,7 @@ contract ItemFeature is Items, SnowflakeEINOwnable {
     }    
 
     function _constructItemFeature(address _snowflakeAddress) internal {
-        _constructItems(paymentAddress, _snowflakeAddress);
+        _constructItems(_snowflakeAddress);
         _constructSnowflakeEINOwnable(_snowflakeAddress);
     }
 

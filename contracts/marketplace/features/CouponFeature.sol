@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "../ein/util/SnowflakeEINOwnable.sol";
+import "../../ein/util/SnowflakeEINOwnable.sol";
 import "./Coupons.sol";
 
 

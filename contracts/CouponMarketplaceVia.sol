@@ -5,8 +5,18 @@ import "./interfaces/SnowflakeResolverInterface.sol";
 import "./zeppelin/math/SafeMath.sol";
 import "./interfaces/CouponMarketplaceResolverInterface.sol";
 import "./interfaces/SnowflakeInterface.sol";
+import "./resolvers/NeoCouponMarketplaceResolverAddress.sol";
+import "./ein/util/SnowflakeEINOwnable.sol";
 
-contract CouponMarketplaceVia is SnowflakeVia {
+
+import "./interfaces/marketplace/CouponInterface.sol";
+import "./interfaces/marketplace/ItemInterface.sol";
+
+import "../marketplace/features/CouponFeature.sol";
+import "../marketplace/features/ItemFeature.sol";
+
+
+contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 
 
     //We may need to define this in a seperate file... uncertain if this will quite work being in two different locations
@@ -16,8 +26,15 @@ contract CouponMarketplaceVia is SnowflakeVia {
     
     using SafeMath for uint256;
 
+    address public NeoCouponMarketplaceResolverAddress;
+
     constructor(address _snowflakeAddress) SnowflakeVia(_snowflakeAddress) public {
+        //Constructing parents
+        _constructSnowflakeEINOwnable(_snowflakeAddress);
+ 
+        //Regular constructor
         setSnowflakeAddress(_snowflakeAddress);
+        
     }
 
     // end recipient is an EIN
@@ -35,6 +52,10 @@ contract CouponMarketplaceVia is SnowflakeVia {
     //Name of this function is perhaps a little misleading, since amount has already been transferred, we're just calcing coupon here
     function processTransaction(address resolver, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake returns (bool) {
 
+        //Initialize NeoCouponMarketplaceResolverAddress
+        NeoCouponMarketplaceResolver mktResolver = NeoCouponMarketplaceResolver(NeoCouponMarketplaceResolverAddress);
+        ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress);
+
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
 
@@ -47,30 +68,44 @@ contract CouponMarketplaceVia is SnowflakeVia {
             uint amountRefund;
             //TODO: Break this out into its own function thingie
 
-            //Get coupon info from our coupon marketplace resolver
-            CouponMarketplaceResolverInterface couponMarketplace = CouponMarketplaceResolverInterface(resolver);
+            //Get coupon info from our coupon feature contract
+            CouponFeature couponFeature = CouponFeature(mktResolver.CouponFeatureAddress);
 
-            (CouponMarketplaceResolverInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate) = couponMarketplace.getCoupon(couponID); 
+            (CouponInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate) = couponFeature.getCoupon(couponID); 
 
             //Ensure coupon is not expired
-            require(now < expirationDate);
+            require(now < expirationDate, "Coupon is expired!");
 
             //If couponType is amountOff...
-            if(couponType == CouponMarketplaceResolverInterface.CouponType.AMOUNT_OFF){
+            if(couponType == couponFeature.CouponType.AMOUNT_OFF){
                 total = _applyCouponAmountOff(total, amountOff);
                 amountRefund = amountOff;
             }
 
             //In an event, let's push the transaction or something
             emit CouponProcessed(total, amountRefund, couponType, title, description, amountOff, expirationDate);
-       
+
+            //Send coupon to burner address
+            couponFeature.burnAddress(couponID);
+
+            //Send item to buyer
+            itemFeature.transferFromAddress(einSeller, einBuyer);
+
+            //Send our total charged to buyer addr via snowflake
+            snowflake.transferSnowflakeBalance(einSeller, total);
+      
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
             snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
             
-        }
-        //And now, just send our total charged to buyer addr via snowflake
-        snowflake.transferSnowflakeBalance(einSeller, total);
+        } else {
 
+            //Send item to buyer
+            itemFeature.transferFromAddress(einSeller, einBuyer);
+
+            //Send our total charged to buyer addr via snowflake
+            snowflake.transferSnowflakeBalance(einSeller, total);
+
+        }
    }
 
     function _applyCouponAmountOff(uint256 total, uint256 amountOff) pure private returns (uint256) {
@@ -109,6 +144,11 @@ contract CouponMarketplaceVia is SnowflakeVia {
     ) public senderIsSnowflake {
         revert("Not Implemented.");
     }
+
+    function setNeoCouponMarketplaceResolverAddress(_NeoCouponMarketplaceResolverAddress) public onlyEINOwner returns (bool) {
+        NeoCouponMarketplaceResolverAddress = _NeoCouponMarketplaceResolverAddress;
+        return true;
+}
 
     
     event CouponProcessed(uint total, uint amountRefunded, CouponMarketplaceResolverInterface.CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
