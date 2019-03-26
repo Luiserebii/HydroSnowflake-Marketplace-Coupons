@@ -89,6 +89,7 @@ ItemListing add/update/delete
 
 
     function _addItemListing (
+        uint256 ein,
         uint uuid,
         uint quantity,
         ItemType itemType,
@@ -101,6 +102,9 @@ ItemListing add/update/delete
         uint[] memory tags,
         uint returnPolicy
     ) internal returns (bool) {
+
+        //Mint it as an ERC721 owned by the creator
+        _mint(ein, nextItemListingsID);
 
         //Add to itemListings
         itemListings[nextItemListingsID] = Item(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
@@ -137,6 +141,10 @@ ItemListing add/update/delete
     function _deleteItemListing(uint id) internal returns (bool) {
         //Delete itemListing identified by ID
         delete itemListings[id];
+
+        //Finally, burn it
+        _burn(id);
+
         return true;
     }
 

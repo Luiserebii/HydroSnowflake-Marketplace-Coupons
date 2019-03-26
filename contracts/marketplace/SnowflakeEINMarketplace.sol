@@ -29,6 +29,7 @@ ItemListing add/update/delete
 
 
     function addItemListing (
+        uint256 ein,
         uint uuid,
         uint quantity,
         ItemType itemType,
@@ -41,7 +42,7 @@ ItemListing add/update/delete
         uint[] memory tags,
         uint returnPolicy
     ) public onlyEINOwner returns (bool) {
-       return _addItemListing(uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
+       return _addItemListing(ein, uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
     }
 
 
@@ -132,6 +133,7 @@ AvailableCoupons add/update/delete
 
 
    function addAvailableCoupon(
+        uint256 ein,
         CouponType couponType,
         string memory title,
         string memory description,
@@ -140,7 +142,7 @@ AvailableCoupons add/update/delete
         uint expirationDate
 
     ) public onlyEINOwner returns (bool) {
-        return _addAvailableCoupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
+        return _addAvailableCoupon(ein, couponType, title, description, amountOff, itemsApplicable, expirationDate);
     }
 
 

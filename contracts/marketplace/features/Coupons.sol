@@ -85,6 +85,7 @@ AvailableCoupons add/update/delete
 */
 
     function _addAvailableCoupon(
+        uint256 ein,
         CouponType couponType,
         string memory title,
         string memory description,
@@ -93,6 +94,10 @@ AvailableCoupons add/update/delete
         uint expirationDate
 
     ) internal returns (bool) {
+
+        //Mint it as an ERC721 owned by the creator
+        _mint(ein, nextAvailableCouponsID);
+
         //Add to avaliableCoupons
         availableCoupons[nextAvailableCouponsID] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
         //Advance nextAvailableCouponID by 1
@@ -119,9 +124,13 @@ AvailableCoupons add/update/delete
 
 
     function _deleteAvailableCoupon(uint id) internal returns (bool) {
-
+i
         //Delete availableCoupon by ID
         delete availableCoupons[id];
+
+        //Finally, burn it
+        _burn(id); 
+
         return true;
 
     }
