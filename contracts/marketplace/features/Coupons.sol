@@ -124,7 +124,7 @@ AvailableCoupons add/update/delete
 
 
     function _deleteAvailableCoupon(uint id) internal returns (bool) {
-i
+
         //Delete availableCoupon by ID
         delete availableCoupons[id];
 
