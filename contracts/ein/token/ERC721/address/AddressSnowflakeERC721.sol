@@ -1,6 +1,6 @@
 pragma solidity ^0.5.2;
 
-import "./SnowflakeERC721.sol";
+import "../SnowflakeERC721.sol";
 
 /**
  * @title Address Snowflake ERC721; Non-Fungible Token Standard basic implementation, but with address owning
@@ -60,7 +60,7 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
      * @param tokenId uint256 ID of the token to be transferred
      */
     function transferFromAddress(uint256 from, uint256 to, uint256 tokenId) public {
-        require(_isApprovedOrOwnerAddress(msg.sender, tokenId));
+        require(_isApprovedAddress(msg.sender, tokenId));
 
         _transferFromAddress(from, to, tokenId);
     }
