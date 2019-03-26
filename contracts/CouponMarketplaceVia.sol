@@ -8,7 +8,6 @@ import "./interfaces/SnowflakeInterface.sol";
 import "./resolvers/NeoCouponMarketplaceResolver.sol";
 import "./ein/util/SnowflakeEINOwnable.sol";
 
-
 import "./interfaces/marketplace/CouponInterface.sol";
 import "./interfaces/marketplace/ItemInterface.sol";
 
@@ -50,11 +49,12 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 
 
     //Name of this function is perhaps a little misleading, since amount has already been transferred, we're just calcing coupon here
-    function processTransaction(address resolver, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake returns (bool) {
+    //TODO: Should we have the NeoCouponMarketplaceResolverAddress exist, or just take the address resolver passed here? Completely forgot we were give this, and now this param is being unused
+    function processTransaction(address resolver, uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake returns (bool) {
 
         //Initialize NeoCouponMarketplaceResolverAddress
         NeoCouponMarketplaceResolver mktResolver = NeoCouponMarketplaceResolver(NeoCouponMarketplaceResolverAddress);
-        ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress);
+        ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress());
 
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
@@ -69,7 +69,8 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             //TODO: Break this out into its own function thingie
 
             //Get coupon info from our coupon feature contract
-            CouponFeature couponFeature = CouponFeature(mktResolver.CouponFeatureAddress);
+               //Personal note; supposedly, these ()s are needed. Wait, is this always true when calling outside of contract? I swear that I've accessed some directly...?
+            CouponFeature couponFeature = CouponFeature(mktResolver.CouponFeatureAddress());
 
             (CouponInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate) = couponFeature.getCoupon(couponID); 
 
@@ -77,7 +78,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             require(now < expirationDate, "Coupon is expired!");
 
             //If couponType is amountOff...
-            if(couponType == couponFeature.CouponType.AMOUNT_OFF){
+            if(couponType == CouponInterface.CouponType.AMOUNT_OFF){
                 total = _applyCouponAmountOff(total, amountOff);
                 amountRefund = amountOff;
             }
@@ -89,7 +90,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             couponFeature.burnAddress(couponID);
 
             //Send item to buyer
-            itemFeature.transferFromAddress(einSeller, einBuyer);
+            itemFeature.transferFromAddress(einSeller, einBuyer, itemID);
 
             //Send our total charged to buyer addr via snowflake
             snowflake.transferSnowflakeBalance(einSeller, total);
@@ -100,7 +101,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
         } else {
 
             //Send item to buyer
-            itemFeature.transferFromAddress(einSeller, einBuyer);
+            itemFeature.transferFromAddress(einSeller, einBuyer, itemID);
 
             //Send our total charged to buyer addr via snowflake
             snowflake.transferSnowflakeBalance(einSeller, total);
@@ -151,7 +152,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 }
 
     
-    event CouponProcessed(uint total, uint amountRefunded, CouponMarketplaceResolverInterface.CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
+    event CouponProcessed(uint total, uint amountRefunded, CouponInterface.CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
 
 
 
