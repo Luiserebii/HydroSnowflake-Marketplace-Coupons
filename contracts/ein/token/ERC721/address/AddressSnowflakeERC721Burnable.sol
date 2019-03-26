@@ -20,7 +20,7 @@ contract AddressSnowflakeERC721Burnable is AddressSnowflakeERC721 {
      * @dev Burns a specific Snowflake ERC721 token.
      * @param tokenId uint256 id of the Snowflake ERC721 token to be burned.
      */
-    function burn(uint256 tokenId) public {
+    function burnAddress(uint256 tokenId) public {
         require(_isApprovedAddress(msg.sender, tokenId));
         _burn(tokenId);
     }

@@ -3,6 +3,7 @@ pragma solidity ^0.5.0;
 import '../../ein/token/ERC721/SnowflakeERC721.sol';
 import '../../ein/token/ERC721/SnowflakeERC721Burnable.sol';
 import '../../ein/token/ERC721/SnowflakeERC721Mintable.sol';
+import '../../ein/token/ERC721/address/AddressSnowflakeERC721.sol';
 import '../../interfaces/marketplace/ItemInterface.sol';
 
 /*
@@ -16,7 +17,7 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, ItemInterface {
+contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSnowflakeERC721, ItemInterface {
 
     //ID, starting at 1
     uint public nextItemListingsID;
@@ -33,6 +34,7 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
         _constructSnowflakeERC721(_snowflakeAddress);
         _constructSnowflakeERC721Burnable(_snowflakeAddress);
         _constructSnowflakeERC721Mintable(_snowflakeAddress);
+        _constructAddressSnowflakeERC721(_snowflakeAddress);
 
         //Actual Item constructing
         nextItemListingsID = 1;

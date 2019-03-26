@@ -3,6 +3,10 @@ pragma solidity ^0.5.0;
 import '../../ein/token/ERC721/SnowflakeERC721.sol';
 import '../../ein/token/ERC721/SnowflakeERC721Burnable.sol';
 import '../../ein/token/ERC721/SnowflakeERC721Mintable.sol';
+
+import '../../ein/token/ERC721/address/AddressSnowflakeERC721.sol';
+import '../../ein/token/ERC721/address/AddressSnowflakeERC721Burnable.sol';
+
 import '../../interfaces/marketplace/CouponInterface.sol';
 
 /*
@@ -28,7 +32,7 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, CouponInterface {
+contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSnowflakeERC721Burnable, CouponInterface {
 
     //ID, starting at 1, connecting the mappings
     uint public nextAvailableCouponsID;
@@ -44,6 +48,7 @@ contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Min
         //Constructor functions of inherited contracts
         _constructSnowflakeERC721Burnable(_snowflakeAddress);
         _constructSnowflakeERC721Mintable(_snowflakeAddress);
+        _constructAddressSnowflakeERC721Burnable(_snowflakeAddress);
 
         //Actual constructor logic
         nextAvailableCouponsID = 1;
