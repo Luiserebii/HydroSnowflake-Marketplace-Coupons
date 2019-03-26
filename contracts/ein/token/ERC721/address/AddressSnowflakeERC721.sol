@@ -33,7 +33,7 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
     function approveAddress(address to, uint256 tokenId) public {
         uint256 owner = ownerOf(tokenId);
         uint256 sender = getEIN(msg.sender);
-        require(to != owner);
+        //require(to != owner);  <--- We likely don't need this, let's just let any address be a potential approved one
         require(sender == owner || isApprovedForAll(owner, sender));
 
         _tokenApprovalsAddress[tokenId] = to;
@@ -48,7 +48,7 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
      */
     function getApprovedAddress(uint256 tokenId) public view returns (address) {
         require(_exists(tokenId));
-        return _tokenApprovals[tokenId];
+        return _tokenApprovalsAddress[tokenId];
     }
 
     /**
@@ -92,7 +92,7 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
      * @param tokenId uint256 ID of the token to be transferred
      * @param _data bytes data to send along with a safe transfer check
      */
-    function safeTransferFrom(uint256 from, uint256 to, uint256 tokenId, bytes memory _data) public {
+    function safeTransferFromAddress(uint256 from, uint256 to, uint256 tokenId, bytes memory _data) public {
         transferFromAddress(from, to, tokenId);
         require(_checkOnERC721Received(from, to, tokenId, _data));
     }
@@ -117,16 +117,20 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
      * @param owner owner of the token to burn
      * @param tokenId uint256 ID of the token being burned
      */
-    function _burn(uint256 owner, uint256 tokenId) internal {
+    function _burnAddress(uint256 owner, uint256 tokenId) internal {
+
+        //The way this is written, this is technically done twice, not sure if this is the best design?
         require(ownerOf(tokenId) == owner);
 
-        _clearApproval(tokenId);
+//        _clearApproval(tokenId);
         _clearApprovalAddress(tokenId);
-
+/*
         _ownedTokensCount[owner].decrement();
         _tokenOwner[tokenId] = 0;
 
-        emit Transfer(owner, 0, tokenId);
+        emit Transfer(owner, 0, tokenId);*/
+        _burn(owner, tokenId);
+
     }
 
     /**
@@ -134,8 +138,8 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
      * Reverts if the token does not exist
      * @param tokenId uint256 ID of the token being burned
      */
-    function _burn(uint256 tokenId) internal {
-        _burn(ownerOf(tokenId), tokenId);
+    function _burnAddress(uint256 tokenId) internal {
+        _burnAddress(ownerOf(tokenId), tokenId);
     }
 
     /**
@@ -150,13 +154,15 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
         require(to != 0);
 
         _clearApprovalAddress(tokenId);
-
+/*
         _ownedTokensCount[from].decrement();
         _ownedTokensCount[to].increment();
 
         _tokenOwner[tokenId] = to;
 
-        emit Transfer(from, to, tokenId);
+        emit Transfer(from, to, tokenId);*/
+        _transferFrom(from, to, tokenId);
+
     }
 
     /**
@@ -184,8 +190,12 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
      * @param tokenId uint256 ID of the token to be transferred
      */
     function _clearApprovalAddress(uint256 tokenId) private {
-        if (_tokenApprovalsAddress[tokenId] != 0) {
-            _tokenApprovalsAddress[tokenId] = 0;
+        if (_tokenApprovalsAddress[tokenId] != address(0)) {
+            _tokenApprovalsAddress[tokenId] = address(0);
         }
     }
+
+    //Move this to an interface
+    event ApprovalAddress(uint256 owner, address to, uint256 tokenId);
+
 }
