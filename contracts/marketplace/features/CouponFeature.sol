@@ -7,8 +7,8 @@ import "./Coupons.sol";
 contract CouponFeature is Coupons, SnowflakeEINOwnable {
 
 
-    constructor(address paymentAddress, address _snowflakeAddress) public {
-        _constructCouponFeature(paymentAddress, _snowflakeAddress);
+    constructor(address _snowflakeAddress) public {
+        _constructCouponFeature(_snowflakeAddress);
     
     }    
 

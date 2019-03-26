@@ -152,17 +152,16 @@ Via contract to use coupons:
 
     function purchaseItem(uint id, /*bytes memory data,*/ address approvingAddress, uint couponID) public returns (bool) {
 
-        //allowAndCallDelegated for the user
-        // - Take a destination address, an amount, data, an approving address, and three signature fields (v,r,s)
-        //snowflake.allowAndCallDelegated(_paymentAddress, itemListings[id].price, data, approvingAddress, v, r, s);
-
-        //using transferSnowflakeBalanceFromVia() instead
-
+        //Initialize itemFeature here (as is necessary to check the require as early as possible)   
         ItemFeature itemFeature = ItemFeature(ItemFeatureAddress);
-        CouponFeature couponFeature = CouponFeature(CouponFeatureAddress);
+        //CouponFeature couponFeature = CouponFeature(CouponFeatureAddress);
 
         //Ensure the item exists, and that there is a price
         require(itemFeature.itemListings[id].price > 0, "item does not exist, or has a price below 0. The price in question is: ");
+
+        //Initialize Snowflake
+        SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
+
 
     /* Take an EIN (from), an address (via), an EIN (to), an amount, and data
 
@@ -180,7 +179,7 @@ Via contract to use coupons:
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
         string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint)";
-        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), getEIN(approvingAddress), ownerEIN(), itemListings[id].price, couponID);
+        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), getEIN(approvingAddress), ownerEIN(), itemFeature.itemListings[id].price, couponID);
 
         //Allowance for item to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
         //Allowance for coupon to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
@@ -202,7 +201,7 @@ Via contract to use coupons:
         //
 
 
-        snowflake.transferSnowflakeBalanceFromVia(getEIN(approvingAddress), _MarketplaceCouponViaAddress, ownerEIN(), itemListings[id].price, snowflakeCallData);
+        snowflake.transferSnowflakeBalanceFromVia(getEIN(approvingAddress), _MarketplaceCouponViaAddress, ownerEIN(), itemFeature.itemListings[id].price, snowflakeCallData);
 
         //Transfers ownership of the item to the buyer (!)
 

@@ -5,15 +5,15 @@ import "./interfaces/SnowflakeResolverInterface.sol";
 import "./zeppelin/math/SafeMath.sol";
 import "./interfaces/CouponMarketplaceResolverInterface.sol";
 import "./interfaces/SnowflakeInterface.sol";
-import "./resolvers/NeoCouponMarketplaceResolverAddress.sol";
+import "./resolvers/NeoCouponMarketplaceResolver.sol";
 import "./ein/util/SnowflakeEINOwnable.sol";
 
 
 import "./interfaces/marketplace/CouponInterface.sol";
 import "./interfaces/marketplace/ItemInterface.sol";
 
-import "../marketplace/features/CouponFeature.sol";
-import "../marketplace/features/ItemFeature.sol";
+import "./marketplace/features/CouponFeature.sol";
+import "./marketplace/features/ItemFeature.sol";
 
 
 contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
@@ -145,7 +145,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
         revert("Not Implemented.");
     }
 
-    function setNeoCouponMarketplaceResolverAddress(_NeoCouponMarketplaceResolverAddress) public onlyEINOwner returns (bool) {
+    function setNeoCouponMarketplaceResolverAddress(address _NeoCouponMarketplaceResolverAddress) public onlyEINOwner returns (bool) {
         NeoCouponMarketplaceResolverAddress = _NeoCouponMarketplaceResolverAddress;
         return true;
 }
