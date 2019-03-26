@@ -71,6 +71,12 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
         return (item.uuid, item.quantity, item.itemType, item.status, item.condition, item.title, item.description, item.price, item.returnPolicy);
     }
 
+    //This is simply more for convenience than not
+    function getItemPrice(uint id) public view returns (uint256) {
+        return itemListings[id].price;
+    }
+
+
     function getItemDelivery(uint id, uint index) public view returns (uint) { 
         return itemListings[id].delivery[index]; 
     }

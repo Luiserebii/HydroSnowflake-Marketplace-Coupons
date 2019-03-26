@@ -7,9 +7,11 @@ import "../interfaces/IdentityRegistryInterface.sol";
 import "../interfaces/SnowflakeInterface.sol";
 import "../interfaces/SnowflakeViaInterface.sol";
 import "../interfaces/NeoCouponMarketplaceResolverInterface.sol";
+import "../interfaces/marketplace/ItemInterface.sol";
 
 import "../marketplace/features/CouponFeature.sol";
 import "../marketplace/features/ItemFeature.sol";
+
 
 contract NeoCouponMarketplaceResolver is SnowflakeResolver, SnowflakeEINMarketplace, NeoCouponMarketplaceResolverInterface {
 
@@ -156,8 +158,10 @@ Via contract to use coupons:
         ItemFeature itemFeature = ItemFeature(ItemFeatureAddress);
         //CouponFeature couponFeature = CouponFeature(CouponFeatureAddress);
 
+        uint256 price = itemFeature.getItemPrice(id);
+
         //Ensure the item exists, and that there is a price
-        require(itemFeature.itemListings[id].price > 0, "item does not exist, or has a price below 0. The price in question is: ");
+        require(price > 0, "item does not exist, or has a price below 0. The price in question is: ");
 
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
@@ -179,7 +183,7 @@ Via contract to use coupons:
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
         string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint)";
-        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), getEIN(approvingAddress), ownerEIN(), itemFeature.itemListings[id].price, couponID);
+        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), getEIN(approvingAddress), ownerEIN(), price, couponID);
 
         //Allowance for item to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
         //Allowance for coupon to CouponMarketplaceVia MUST BE DONE FROM FRONT-END

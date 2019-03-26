@@ -20,11 +20,11 @@ interface ItemInterface {
         uint256 price,
         uint returnPolicy
     );
+ 
+    //For convenience, so as not to return the whole tuple
+    function getItemPrice(uint id) external view returns (uint256);
 
     function getItemDelivery(uint id, uint index) external view returns (uint);
     function getItemTag(uint id, uint index) external view returns (uint); 
-
-
-
 
 }
