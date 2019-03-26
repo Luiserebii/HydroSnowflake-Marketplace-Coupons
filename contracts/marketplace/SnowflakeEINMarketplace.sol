@@ -7,13 +7,13 @@ import "./Marketplace.sol";
 contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
 
 
-    constructor(address paymentAddress, address _snowflakeAddress) public {
-        _constructSnowflakeEINMarketplace(paymentAddress, _snowflakeAddress);
+    constructor(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) public {
+        _constructSnowflakeEINMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress, _snowflakeAddress);
     
     }    
 
-    function _constructSnowflakeEINMarketplace(address paymentAddress, address _snowflakeAddress) internal {
-        _constructMarketplace(paymentAddress, _snowflakeAddress);
+    function _constructSnowflakeEINMarketplace(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) internal {
+        _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress,_snowflakeAddress);
         _constructSnowflakeEINOwnable(_snowflakeAddress);
     }
 
@@ -21,51 +21,15 @@ contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
         return _setPaymentAddress(paymentAddress);
     }
 
-/*
-==============================
-ItemListing add/update/delete
-==============================
-*/
-
-
-    function addItemListing (
-        uint256 ein,
-        uint uuid,
-        uint quantity,
-        ItemType itemType,
-        ItemStatus status,
-        ItemCondition condition,
-        string memory title,
-        string memory description,
-        uint256 price,
-        uint[] memory delivery,
-        uint[] memory tags,
-        uint returnPolicy
-    ) public onlyEINOwner returns (bool) {
-       return _addItemListing(ein, uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
+    //Exposing functions to work with onlyEINOwner to set CouponFeatureAddress
+    function setCouponFeatureAddress(address _CouponFeatureAddress) public onlyEINOwner returns (bool) {
+        return _setCouponFeatureAddress(_CouponFeatureAddress);
     }
 
-
-    function updateItemListing (
-        uint id,
-        uint uuid,
-        uint quantity,
-        ItemType itemType,
-        ItemStatus status,
-        ItemCondition condition,
-        string memory title,
-        string memory description,
-        uint256 price,
-        uint[] memory delivery,
-        uint[] memory tags,
-        uint returnPolicy
-    ) public onlyEINOwner returns (bool) {
-       return _updateItemListing(id, uuid, quantity, itemType, status, condition, title, description, price, delivery, tags, returnPolicy);
+    function setItemFeatureAddress(address _ItemFeatureAddress) public onlyEINOwner returns (bool) {
+        return _setItemFeatureAddress(_ItemFeatureAddress);
     }
 
-    function deleteItemListing(uint id) public onlyEINOwner returns (bool) {
-        return _deleteItemListing(id);
-    }
 
 
 /*
@@ -123,46 +87,6 @@ ReturnPolicy add/update/delete
         return _deleteReturnPolicy(id);
     }
 
-
-/*
-===================================
-AvailableCoupons add/update/delete
-===================================
-*/
-
-
-
-   function addAvailableCoupon(
-        uint256 ein,
-        CouponType couponType,
-        string memory title,
-        string memory description,
-        uint256 amountOff,
-        uint[] memory itemsApplicable,
-        uint expirationDate
-
-    ) public onlyEINOwner returns (bool) {
-        return _addAvailableCoupon(ein, couponType, title, description, amountOff, itemsApplicable, expirationDate);
-    }
-
-
-    function updateAvailableCoupon(
-        uint id,
-        CouponType couponType,
-        string memory title,
-        string memory description,
-        uint256 amountOff,
-        uint[] memory itemsApplicable,
-        uint expirationDate
-
-    ) public onlyEINOwner returns (bool) {
-        return _updateAvailableCoupon(id, couponType, title, description, amountOff, itemsApplicable, expirationDate);
-    }
-
-
-    function deleteAvailableCoupon(uint id) public onlyEINOwner returns (bool) {
-       return _deleteAvailableCoupon(id);
-    }
 
 
 /* ====================================================

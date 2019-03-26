@@ -72,7 +72,8 @@ Index:
         address _snowflakeAddress,
         bool _callOnAddition, bool _callOnRemoval,
         address paymentAddress,
-        address MarketplaceCouponViaAddress
+        address MarketplaceCouponViaAddress,
+        address _CouponFeatureAddress, address _ItemFeatureAddress
     ) SnowflakeResolver (
         _snowflakeName, _snowflakeDescription,
         _snowflakeAddress,
@@ -80,7 +81,7 @@ Index:
     ) public {
 
         //Parent constructing
-        _constructSnowflakeEINMarketplace(paymentAddress, _snowflakeAddress);
+        _constructSnowflakeEINMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress, _snowflakeAddress);
 
         //Set contract-specific private/internal vars
         _MarketplaceCouponViaAddress = MarketplaceCouponViaAddress;
@@ -151,38 +152,43 @@ Via contract to use coupons:
         //Ensure the item exists, and that there is a price
         require(itemListings[id].price > 0, 'item does not exist, or has a price below 0. The price in question is: ');
 
-        //Initialize Snowflake
-        SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
+    /* Take an EIN (from), an address (via), an EIN (to), an amount, and data
 
-        
-        //allowAndCallDelegated for the user
-        // - Take a destination address, an amount, data, an approving address, and three signature fields (v,r,s)
-        //snowflake.allowAndCallDelegated(_paymentAddress, itemListings[id].price, data, approvingAddress, v, r, s);
-     
-        //using transferSnowflakeBalanceFromVia() instead
-
-
-/* Take an EIN (from), an address (via), an EIN (to), an amount, and data
-
-  -handleAllowance() and pass the EIN (from), and an amount
-  -_withdraw() and pass the EIN (from), the address (via), and amount
-  -Call snowflakeCall() from the via contract through the SnowflakeViaInterface, passing msg.sender, the EIN (from), the EIN (to), amount, and data
+          -handleAllowance() and pass the EIN (from), and an amount
+          -_withdraw() and pass the EIN (from), the address (via), and amount
+          -Call snowflakeCall() from the via contract through the SnowflakeViaInterface, passing msg.sender, the EIN (from), the EIN (to), amount, and data
 */
+
         //Get EIN of user
-        IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(snowflake.identityRegistryAddress());
         //Logic is einFrom, since this is the buyer from which funds will head to our via contract
-//        uint einFrom = identityRegistry.getEIN(approvingAddress);
-//        uint einTo = ownerEIN(); //The seller
+            //uint einFrom = identityRegistry.getEIN(approvingAddress);
+            //uint einTo = ownerEIN(); //The seller
 
 
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
         string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint)";
-        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), identityRegistry.getEIN(approvingAddress), ownerEIN(), itemListings[id].price, couponID);
+        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), getEIN(approvingAddress), ownerEIN(), itemListings[id].price, couponID);
 
-// function transferSnowflakeBalanceFromVia(uint einFrom, address via, uint einTo, uint amount, bytes memory _bytes)
+        //Give allowance for item to CouponMarketplaceVia
 
-        snowflake.transferSnowflakeBalanceFromVia(identityRegistry.getEIN(approvingAddress), _MarketplaceCouponViaAddress, ownerEIN(), itemListings[id].price, snowflakeCallData);
+        //If there is a coupon,
+        //   Grant allowance to Via
+        if(couponID != 0){
+            //Ensure coupon is owned
+            //(!!!IMPORTANT!!! Ohhh, you know, I don't this is quite possible like this... ownerOf makes it unclear as to which (Coupon, or Item) it'll return, I think... hmmm, darn. Seperate contract? Perhaps create on deployment?)
+            require(ownerOf(id) == getEIN(approvingAddress), 'Approving address is not the owner of this coupon');
+            
+        }
+
+
+
+        // 
+        //  function transferSnowflakeBalanceFromVia(uint einFrom, address via, uint einTo, uint amount, bytes memory _bytes)
+        //
+
+
+        snowflake.transferSnowflakeBalanceFromVia(getEIN(approvingAddress), _MarketplaceCouponViaAddress, ownerEIN(), itemListings[id].price, snowflakeCallData);
 
         //Transfers ownership of the item to the buyer (!)
 
