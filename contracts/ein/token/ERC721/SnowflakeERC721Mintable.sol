@@ -1,13 +1,13 @@
 pragma solidity ^0.5.2;
 
 import "./SnowflakeERC721.sol";
-import "../../access/roles/MinterRole.sol";
+import "../../access/roles/SnowflakeMinterRole.sol";
 
 /**
  * @title SnowflakeERC721Mintable
  * @dev Snowflake ERC721 minting logic
  */
-contract SnowflakeERC721Mintable is SnowflakeERC721, MinterRole {
+contract SnowflakeERC721Mintable is SnowflakeERC721, SnowflakeMinterRole {
 
     constructor (address _snowflakeAddress) public {
         _constructSnowflakeERC721Mintable(_snowflakeAddress);

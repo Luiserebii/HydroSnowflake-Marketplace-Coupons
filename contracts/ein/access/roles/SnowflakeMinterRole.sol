@@ -10,13 +10,13 @@ import "../../../snowflake_custom/SnowflakeReader.sol";
  * =========================
  */
 
-contract MinterRole is SnowflakeReader {
+contract SnowflakeMinterRole is SnowflakeReader {
     using Roles for Roles.Role;
 
     event MinterAdded(uint256 indexed account);
     event MinterRemoved(uint256 indexed account);
 
-    Roles.Role private _minters;
+    Roles.Role private _einMinters;
 
     //TODO: Merge in msg.sender idea somehow in a good way; Identity Registry link, perhaps?
 
@@ -35,7 +35,7 @@ contract MinterRole is SnowflakeReader {
     }
 
     function isMinter(uint256 account) public view returns (bool) {
-        return _minters.has(account);
+        return _einMinters.has(account);
     }
 
     function addMinter(uint256 account) public onlyMinter {
@@ -47,12 +47,12 @@ contract MinterRole is SnowflakeReader {
     }
 
     function _addMinter(uint256 account) internal {
-        _minters.add(account);
+        _einMinters.add(account);
         emit MinterAdded(account);
     }
 
     function _removeMinter(uint256 account) internal {
-        _minters.remove(account);
+        _einMinters.remove(account);
         emit MinterRemoved(account);
     }
 }
