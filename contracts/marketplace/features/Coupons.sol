@@ -6,6 +6,8 @@ import '../../ein/token/ERC721/SnowflakeERC721Mintable.sol';
 
 import '../../ein/token/ERC721/address/AddressSnowflakeERC721.sol';
 import '../../ein/token/ERC721/address/AddressSnowflakeERC721Burnable.sol';
+import '../../ein/token/ERC721/address/AddressSnowflakeERC721Mintable.sol';
+
 
 import '../../interfaces/marketplace/CouponInterface.sol';
 
@@ -32,7 +34,7 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSnowflakeERC721Burnable, CouponInterface {
+contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSnowflakeERC721Burnable, AddressSnowflakeERC721Mintable, CouponInterface {
 
     //ID, starting at 1, connecting the mappings
     uint public nextAvailableCouponsID;

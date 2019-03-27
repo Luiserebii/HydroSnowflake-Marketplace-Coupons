@@ -44,11 +44,11 @@ Coupon generation function should take the following parameters:
 
     //For manual logic here, perhaps we should add an optional bytes data parameter? 
     //This would just be ABI-encoded params
-    function distributeCoupon(uint256 couponID, bytes data) public onlyCouponFeature returns (bool) {
+    function distributeCoupon(uint256 couponID, bytes memory data) public onlyCouponFeature returns (bool) {
         return _distributeCoupon(couponID, data);
     }
     
-    function _distributeCoupon(uint256 couponID, bytes /*/data*/) internal returns (bool) {
+    function _distributeCoupon(uint256 couponID, bytes memory /*/data*/) internal returns (bool) {
         CouponFeature couponFeature = CouponFeature(CouponFeatureAddress);
         //sample distribution of coupon to EIN 10
         uint256 arbitraryEIN = 10;

@@ -38,7 +38,7 @@ contract SnowflakeMinterRole is SnowflakeReader {
         return _einMinters.has(account);
     }
 
-    function addSnowflakeMinter(uint256 account) public onlyMinter {
+    function addSnowflakeMinter(uint256 account) public onlySnowflakeMinter {
         _addSnowflakeMinter(account);
     }
 

@@ -14,7 +14,7 @@ contract AddressSnowflakeERC721Mintable is AddressSnowflakeERC721, MinterRole {
     }
 
     function _constructAddressSnowflakeERC721Mintable(address _snowflakeAddress) internal {
-        _constructMinterRole(_snowflakeAddress);
+        _constructAddressSnowflakeERC721(_snowflakeAddress);
     }
 
     /**
