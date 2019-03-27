@@ -1,6 +1,6 @@
 pragma solidity ^0.5.2;
 
-import "../../../zeppelin/access/Roles.sol";
+import "../EINRoles.sol";
 import "../../../snowflake_custom/SnowflakeReader.sol";
 
 
@@ -11,12 +11,12 @@ import "../../../snowflake_custom/SnowflakeReader.sol";
  */
 
 contract SnowflakeMinterRole is SnowflakeReader {
-    using Roles for Roles.Role;
+    using EINRoles for EINRoles.EINRole;
 
     event SnowflakeMinterAdded(uint256 indexed account);
     event SnowflakeMinterRemoved(uint256 indexed account);
 
-    Roles.Role private _einMinters;
+    EINRoles.EINRole private _einMinters;
 
     //TODO: Merge in msg.sender idea somehow in a good way; Identity Registry link, perhaps?
 
