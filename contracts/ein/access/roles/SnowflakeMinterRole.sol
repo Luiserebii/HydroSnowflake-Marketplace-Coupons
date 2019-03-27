@@ -13,46 +13,46 @@ import "../../../snowflake_custom/SnowflakeReader.sol";
 contract SnowflakeMinterRole is SnowflakeReader {
     using Roles for Roles.Role;
 
-    event MinterAdded(uint256 indexed account);
-    event MinterRemoved(uint256 indexed account);
+    event SnowflakeMinterAdded(uint256 indexed account);
+    event SnowflakeMinterRemoved(uint256 indexed account);
 
     Roles.Role private _einMinters;
 
     //TODO: Merge in msg.sender idea somehow in a good way; Identity Registry link, perhaps?
 
     constructor (address _snowflakeAddress) public {
-        _constructMinterRole(_snowflakeAddress);
+        _constructSnowflakeMinterRole(_snowflakeAddress);
     }
   
-    function _constructMinterRole(address _snowflakeAddress) internal {
+    function _constructSnowflakeMinterRole(address _snowflakeAddress) internal {
         _constructSnowflakeReader(_snowflakeAddress);
-        _addMinter(getEIN(msg.sender));
+        _addSnowflakeMinter(getEIN(msg.sender));
     }
 
-    modifier onlyMinter() {
-        require(isMinter(getEIN(msg.sender)));
+    modifier onlySnowflakeMinter() {
+        require(isSnowflakeMinter(getEIN(msg.sender)));
         _;
     }
 
-    function isMinter(uint256 account) public view returns (bool) {
+    function isSnowflakeMinter(uint256 account) public view returns (bool) {
         return _einMinters.has(account);
     }
 
-    function addMinter(uint256 account) public onlyMinter {
-        _addMinter(account);
+    function addSnowflakeMinter(uint256 account) public onlyMinter {
+        _addSnowflakeMinter(account);
     }
 
-    function renounceMinter() public {
-        _removeMinter(getEIN(msg.sender));
+    function renounceSnowflakeMinter() public {
+        _removeSnowflakeMinter(getEIN(msg.sender));
     }
 
-    function _addMinter(uint256 account) internal {
+    function _addSnowflakeMinter(uint256 account) internal {
         _einMinters.add(account);
-        emit MinterAdded(account);
+        emit SnowflakeMinterAdded(account);
     }
 
-    function _removeMinter(uint256 account) internal {
+    function _removeSnowflakeMinter(uint256 account) internal {
         _einMinters.remove(account);
-        emit MinterRemoved(account);
+        emit SnowflakeMinterRemoved(account);
     }
 }
