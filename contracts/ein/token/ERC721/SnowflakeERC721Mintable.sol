@@ -23,7 +23,7 @@ contract SnowflakeERC721Mintable is SnowflakeERC721, SnowflakeMinterRole {
      * @param tokenId The token id to mint.
      * @return A boolean that indicates if the operation was successful.
      */
-    function mint(uint256 to, uint256 tokenId) public onlyMinter returns (bool) {
+    function mint(uint256 to, uint256 tokenId) public onlySnowflakeMinter returns (bool) {
         _mint(to, tokenId);
         return true;
     }

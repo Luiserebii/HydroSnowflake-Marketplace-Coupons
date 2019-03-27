@@ -1,8 +1,8 @@
 pragma solidity ^0.5.0;
 
+import "../../../ein/util/SnowflakeEINOwnable.sol";
 
-
-contract DistributionAddress {
+contract CouponDistribution is SnowflakeEINOwnable {
 
 /*
 
@@ -15,11 +15,42 @@ Coupon generation function should take the following parameters:
 
 */    
     
+    address public CouponFeatureAddress;
+
+
+    constructor(address _CouponFeatureAddress, address _snowflakeAddress) public {
+        _constructCouponDistribution(_CouponFeatureAddress, _snowflakeAddress);
+    }
+
+    function _constructCouponDistribution(address _CouponFeatureAddress, address _snowflakeAddress) internal returns (bool) {
+
+        _constructSnowflakeEINOwnable(_snowflakeAddress);
+
+        //Actual internal construction
+        CouponFeatureAddress = _CouponFeatureAddress;
+    }
+
+    //Function for the owner to switch the address of the CouponFeature, which is why this contract is SnowflakeEINOwnable
+    function setCouponFeatureAddress(address _CouponFeatureAddress) public onlyEINOwner returns (bool) {
+        CouponFeatureAddress = _CouponFeatureAddress;
+    }
+
+
+    function distributeCoupons() public returns (bool) {
+        return _distributeCoupons();
+    }
     
+    function _distributeCoupons() internal returns (bool) {
+        
+        
+    }   
     
+
     
-    
-    
+    modifier onlyCouponFeature() {
+        require(msg.sender == CouponFeatureAddress);
+        _;
+    }
     
     
     
