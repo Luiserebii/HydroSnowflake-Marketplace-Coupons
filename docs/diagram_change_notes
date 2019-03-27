@@ -1,0 +1,35 @@
+
+-"SnowflakeReader" is the same
+-"EINOwnable" is the same
+-"SnowflakeEINOwnable" is the same
+-"SnowflakeERC721Burnable" is the same
+
+========
+CHANGES:
+========
+
+
+-NAME CHANGE: "MinterRole" changed to "SnowflakeMinterRole" (this one is for EINs as minters)
+-RELATION: Update "SnowflakeERC721Mintable" <--- "SnowflakeMinterRole"
+-RELATION: "AddressSnowflakeERC721" <--- "SnowflakeERC721"
+
+
+
+
+===========
+ADDITIONS:
+===========
+
+address/
+
+
+"AddressSnowflakeERC721" - Address Snowflake ERC721; Non-Fungible Token Standard basic implementation, but with address owning. In order to differentiate functions such "approve" and "transfer", the suffix "Address" has been added; thus, "approveAddress()" and "transferFromAddress" are expected to be the same implementation as their regularly named functions, simply meant for a token that can have addresses potentially approve tokens.
+
+"AddressSnowflakeERC721Burnable" - Snowflake ERC721 Token that can be irreversibly burned (destroyed). 
+
+Similar to its regular counterpart, it exposes the _burnAddress() function as:
+
+function burnAddress(uint256 tokenId) public;
+
+
+
