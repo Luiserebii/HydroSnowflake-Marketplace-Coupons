@@ -1,6 +1,6 @@
 pragma solidity ^0.5.2;
 
-import "../Roles.sol";
+import "../../../zeppelin/access/Roles.sol";
 import "../../../snowflake_custom/SnowflakeReader.sol";
 
 

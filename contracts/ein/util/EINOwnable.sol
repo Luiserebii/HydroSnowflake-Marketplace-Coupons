@@ -73,7 +73,7 @@ contract EINOwnable {
     * @param newOwner The address to transfer ownership to.
     */
     function _transferOwnership(uint newOwner) internal {
-        //require(newOwner != address(0));
+        require(newOwner != 0);
         emit OwnershipTransferred(_ownerEIN, newOwner);
         _ownerEIN = newOwner;
     }
