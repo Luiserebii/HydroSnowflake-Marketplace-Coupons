@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 import "../../../ein/util/SnowflakeEINOwnable.sol";
 import "../../../interfaces/marketplace/features/coupon_distribution/CouponDistributionInterface.sol";
 import "../CouponFeature.sol";
-import "../../../interfaces/marketplace/MarketplaceInterface.sol";
+import "../../../interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol";
 
 contract CouponDistribution is CouponDistributionInterface, SnowflakeEINOwnable {
 
@@ -21,19 +21,19 @@ Coupon generation function should take the following parameters:
 
 */    
     
-    address public MarketplaceAddress;
+    address public SnowflakeEINMarketplaceAddress;
 
 
-    constructor(address _MarketplaceAddress, address _snowflakeAddress) public {
-        _constructCouponDistribution(_MarketplaceAddress, _snowflakeAddress);
+    constructor(address _SnowflakeEINMarketplaceAddress, address _snowflakeAddress) public {
+        _constructCouponDistribution(_SnowflakeEINMarketplaceAddress, _snowflakeAddress);
     }
 
-    function _constructCouponDistribution(address _MarketplaceAddress, address _snowflakeAddress) internal returns (bool) {
+    function _constructCouponDistribution(address _SnowflakeEINMarketplaceAddress, address _snowflakeAddress) internal returns (bool) {
 
         _constructSnowflakeEINOwnable(_snowflakeAddress);
 
         //Actual internal construction
-        MarketplaceAddress = _MarketplaceAddress;
+        SnowflakeEINMarketplaceAddress = _SnowflakeEINMarketplaceAddress;
     }
 
     //Function for the owner to switch the address of the CouponFeature, which is why this contract is SnowflakeEINOwnable
@@ -45,12 +45,12 @@ Coupon generation function should take the following parameters:
 
     //For manual logic here, perhaps we should add an optional bytes data parameter? 
     //This would just be ABI-encoded params
-    function distributeCoupon(uint256 couponID, bytes memory data) public onlyCouponFeature returns (bool) {
+    function distributeCoupon(uint256 couponID, bytes memory data) public onlySnowflakeEINMarketplace returns (bool) {
         return _distributeCoupon(couponID, data);
     }
     
     function _distributeCoupon(uint256 couponID, bytes memory /*/data*/) internal returns (bool) {
-        Marketplace marketplace = MarketplaceInterface(MarketplaceAddress);
+        SnowflakeEINMarketplaceInterface marketplace = SnowflakeEINMarketplaceInterface(MarketplaceAddress);
         //sample distribution of coupon to EIN 10
         uint256 arbitraryEIN = 10;
         marketplace.giveUserCoupon(arbitraryEIN, couponID);
@@ -69,8 +69,8 @@ Coupon generation function should take the following parameters:
 
 
     
-    modifier onlyCouponFeature() {
-        require(msg.sender == CouponFeatureAddress, "Error [CouponDistribution.sol]: Sender is not CouponFeature contract");
+    modifier onlySnowflakeEINMarketplace() {
+        require(msg.sender == SnowflakeEINMarketplaceAddress, "Error [CouponDistribution.sol]: Sender is not SnowflakeEINMarketplace address, as defined within the contract");
         _;
     }
     
