@@ -2,9 +2,9 @@ pragma solidity ^0.5.0;
 
 import "../ein/util/SnowflakeEINOwnable.sol";
 import "./Marketplace.sol";
+import "../interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol";
 
-
-contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
+contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable, SnowflakeEINMarketplaceInterface {
 
 
     constructor(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) public {

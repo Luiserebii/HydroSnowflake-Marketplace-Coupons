@@ -1,12 +1,11 @@
 pragma solidity ^0.5.0;
 
-//import "./features/CouponFeature.sol";
-//import "./features/ItemFeature.sol";
 import "./features/ItemTags.sol";
 import "./features/Delivery.sol";
 import "./features/ReturnPolicies.sol";
+import "../interfaces/marketplace/MarketplaceInterface.sol";
 
-contract Marketplace is ItemTags, Delivery, ReturnPolicies {
+contract Marketplace is ItemTags, Delivery, ReturnPolicies, MarketplaceInterface {
 
     address private _paymentAddress;
     address public CouponFeatureAddress;
