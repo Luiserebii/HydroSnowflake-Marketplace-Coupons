@@ -11,8 +11,12 @@ CHANGES:
 
 -NAME CHANGE: "MinterRole" changed to "SnowflakeMinterRole" (this one is for EINs as minters)
 -RELATION: Update "SnowflakeERC721Mintable" <--- "SnowflakeMinterRole"
+   -Thus, change onlyMinter in description to onlySnowflakeMinter
 -RELATION: "AddressSnowflakeERC721" <--- "SnowflakeERC721"
-
+-RELATION: "Items" <--- "AddressSnowflakeERC721"
+   -Idea is, now Addresses will have ability to be allowed to send tokens on the behalf of a user; great for smart contracts!
+-RELATION: "Coupons" <--- "AddressSnowflakeERC721Burnable, AddressSnowflakeERC721Mintable"
+   -Idea is, now Addresses will have the ability to burn/mint tokens, in this case, coupons; great for smart contracts!
 
 
 
@@ -25,11 +29,53 @@ address/
 
 "AddressSnowflakeERC721" - Address Snowflake ERC721; Non-Fungible Token Standard basic implementation, but with address owning. In order to differentiate functions such "approve" and "transfer", the suffix "Address" has been added; thus, "approveAddress()" and "transferFromAddress" are expected to be the same implementation as their regularly named functions, simply meant for a token that can have addresses potentially approve tokens.
 
+----------------
+
 "AddressSnowflakeERC721Burnable" - Snowflake ERC721 Token that can be irreversibly burned (destroyed). 
 
 Similar to its regular counterpart, it exposes the _burnAddress() function as:
 
 function burnAddress(uint256 tokenId) public;
+
+----------------
+
+"AddressSnowflakeERC721Mintable" - Snowflake ERC721 minting logic.
+
+Similar to its regular counterpart, it exposes the _mint() function as:
+
+function mintAddress(uint256 to, uint256 tokenId) public onlyMinter returns (bool);
+
+(Uses regular Zeppelin MinterRole file for onlyMinter() modifier)
+
+
+
+marketplace/features/
+
+"CouponFeature" - Simply exposes the add/update/delete functionality while extending SnowflakeEINOwnable:
+
+function addAvailableCoupon(...) public onlyEINOwner returns (bool);
+
+The idea is to provide the needed layer to finish off CouponFeature as a contract deployed in of itself; in other words, the marketplace will need to keep a reference to this contract, as it will have its own Address, and not exist as a property of Marketplace.
+
+-----------------
+
+"ItemFeature" - exactly like the above
+
+
+
+
+
+
+
+
+
+
+
+zeppelin/
+
+
+"MinterRole.sol" - The regular MinterRole file, for addresses
+
 
 
 
