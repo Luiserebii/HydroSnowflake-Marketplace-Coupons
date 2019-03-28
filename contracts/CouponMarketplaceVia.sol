@@ -50,7 +50,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 
     //Name of this function is perhaps a little misleading, since amount has already been transferred, we're just calcing coupon here
     //TODO: Should we have the NeoCouponMarketplaceResolverAddress exist, or just take the address resolver passed here? Completely forgot we were give this, and now this param is being unused
-    function processTransaction(address resolver, uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake returns (bool) {
+    function processTransaction(/*address resolver, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake returns (bool) {
 
         //Initialize NeoCouponMarketplaceResolverAddress
         NeoCouponMarketplaceResolver mktResolver = NeoCouponMarketplaceResolver(NeoCouponMarketplaceResolverAddress);

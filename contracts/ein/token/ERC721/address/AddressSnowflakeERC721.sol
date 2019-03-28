@@ -105,7 +105,7 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
      * is an operator of the owner, or is the owner of the token
      */
     function _isApprovedAddress(address spender, uint256 tokenId) internal view returns (bool) {
-        uint256 owner = ownerOf(tokenId);
+        /*uint256 owner = ownerOf(tokenId);*/
         return (getApprovedAddress(tokenId) == spender /*|| isApprovedForAll(owner, spender)*/);
     }
 
