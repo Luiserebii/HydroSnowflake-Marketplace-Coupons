@@ -3,6 +3,8 @@ pragma solidity ^0.5.0;
 import "../ein/util/SnowflakeEINOwnable.sol";
 import "./Marketplace.sol";
 import "../interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol";
+import "../interfaces/marketplace/CouponInterface.sol";
+import "../interfaces/marketplace/features/coupon_distribution/CouponDistributionInterface.sol";
 
 contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable, SnowflakeEINMarketplaceInterface {
 
@@ -21,6 +23,16 @@ contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable, SnowflakeE
         return _setPaymentAddress(paymentAddress);
     }
 
+
+    function distributeCoupon(uint id) public onlyEINOwner returns (bool) {
+        //We only need to read from the Coupons, so CouponsInterface is apporpriate here
+        CouponInterface coupons = CouponsInterface(CouponFeatureAddress);
+        //Grab our distribution address, as defined within the coupon, and access it
+        address distributionAddress = coupons.getCouponDistributionAddress(id);
+        CouponDistributionInterface couponDistribution = CouponDistributionInterface(distributionAddress);
+        //Call the distribute coupon function it has with our coupon ID, and let it execute!
+        couponDistribution.distributeCoupon(id);
+    }
 
     //Here, we expose the functionality of _giveUserCoupon() and force a CouponDistribution contract to be the only one to actually use this function and give a user a coupon
     function giveUserCoupon(uint ein, uint couponID) public onlyCouponDistribution returns (bool) {

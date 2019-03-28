@@ -65,6 +65,7 @@ contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Min
         uint256 amountOff;
         uint[] itemsApplicable;
         uint expirationDate;
+        address couponDistribution;
     }
     
 
@@ -76,6 +77,10 @@ contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Min
 
     function getCouponItemApplicable(uint id, uint index) public view returns (uint) { 
         return availableCoupons[id].itemsApplicable[index]; 
+    }
+
+    function getCouponDistributionAddress(uint id) public view returns (address) {
+        return availableCoupons[id].couponDistribution;
     }
 
 
@@ -93,7 +98,8 @@ AvailableCoupons add/update/delete
         string memory description,
         uint256 amountOff,
         uint[] memory itemsApplicable,
-        uint expirationDate
+        uint expirationDate,
+        address couponDistribution
 
     ) internal returns (bool) {
 
@@ -101,7 +107,7 @@ AvailableCoupons add/update/delete
         _mint(ein, nextAvailableCouponsID);
 
         //Add to avaliableCoupons
-        availableCoupons[nextAvailableCouponsID] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
+        availableCoupons[nextAvailableCouponsID] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate, couponDistribution);
         //Advance nextAvailableCouponID by 1
         nextAvailableCouponsID++;
 
@@ -115,11 +121,12 @@ AvailableCoupons add/update/delete
         string memory description,
         uint256 amountOff,
         uint[] memory itemsApplicable,
-        uint expirationDate
+        uint expirationDate,
+        address couponDistribution
 
     ) internal returns (bool) {
         //Add to avaliableCoupons
-        availableCoupons[id] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate);
+        availableCoupons[id] = Coupon(couponType, title, description, amountOff, itemsApplicable, expirationDate, couponDistribution);
 
         return true;
     }

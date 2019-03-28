@@ -9,5 +9,6 @@ interface CouponInterface {
 
     function getCoupon(uint id) external view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);
     function getCouponItemApplicable(uint id, uint index) external view returns (uint);
+    function getCouponDistributionAddress(uint id) public view returns (address);
 
 }

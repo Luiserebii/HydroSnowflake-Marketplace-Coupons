@@ -32,10 +32,11 @@ AvailableCoupons add/update/delete
         string memory description,
         uint256 amountOff,
         uint[] memory itemsApplicable,
-        uint expirationDate
+        uint expirationDate,
+        address couponDistribution
 
     ) public onlyEINOwner returns (bool) {
-        return _addAvailableCoupon(ein, couponType, title, description, amountOff, itemsApplicable, expirationDate);
+        return _addAvailableCoupon(ein, couponType, title, description, amountOff, itemsApplicable, expirationDate, couponDistribution);
     }
 
 
@@ -46,10 +47,11 @@ AvailableCoupons add/update/delete
         string memory description,
         uint256 amountOff,
         uint[] memory itemsApplicable,
-        uint expirationDate
+        uint expirationDate,
+        address couponDistribution
 
     ) public onlyEINOwner returns (bool) {
-        return _updateAvailableCoupon(id, couponType, title, description, amountOff, itemsApplicable, expirationDate);
+        return _updateAvailableCoupon(id, couponType, title, description, amountOff, itemsApplicable, expirationDate, couponDistribution);
     }
 
 

@@ -58,12 +58,18 @@ Coupon generation function should take the following parameters:
    }   
 
     //Same set of functions as above, simply without data param    
-    function distributeCoupon(uint256 couponID) public onlyCouponFeature returns (bool) {
+    function distributeCoupon(uint256 couponID) public onlySnowflakeEINMarketplace returns (bool) {
         return _distributeCoupon(couponID);
     }
     
     function _distributeCoupon(uint256 couponID) internal returns (bool) {
-        return false;
+        SnowflakeEINMarketplaceInterface marketplace = SnowflakeEINMarketplaceInterface(MarketplaceAddress);
+        //sample distribution of coupon to EINs 1-5
+        for(uint i = 0; i < 5; i++){
+            marketplace.giveUserCoupon(i+1, couponID);
+        }
+        return true; 
+        
     }   
     
 
