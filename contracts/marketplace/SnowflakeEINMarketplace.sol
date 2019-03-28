@@ -21,6 +21,13 @@ contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
         return _setPaymentAddress(paymentAddress);
     }
 
+
+    //Here, we expose the functionality of _giveUserCoupon() and force a CouponDistribution contract to be the only one to actually use this function and give a user a coupon
+    function giveUserCoupon(uint ein, uint couponID) public onlyCouponDistribution returns (bool) {
+        return _giveUserCoupon(ein, couponID);
+    }
+
+
     //Exposing functions to work with onlyEINOwner to set CouponFeatureAddress
     function setCouponFeatureAddress(address _CouponFeatureAddress) public onlyEINOwner returns (bool) {
         return _setCouponFeatureAddress(_CouponFeatureAddress);
@@ -28,6 +35,10 @@ contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable {
 
     function setItemFeatureAddress(address _ItemFeatureAddress) public onlyEINOwner returns (bool) {
         return _setItemFeatureAddress(_ItemFeatureAddress);
+    }
+
+    function setCouponDistributionAddress(address _CouponDistributionAddress) public onlyEINOwner returns (bool) {
+        return _setCouponDistributionAddress(_CouponDistributionAddress);
     }
 
 

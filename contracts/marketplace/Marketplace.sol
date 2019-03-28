@@ -11,6 +11,7 @@ contract Marketplace is ItemTags, Delivery, ReturnPolicies {
     address private _paymentAddress;
     address public CouponFeatureAddress;
     address public ItemFeatureAddress;
+    address public CouponDistributionAddress;
   
 
     //EIN to Coupon UUID mapping
@@ -45,6 +46,13 @@ contract Marketplace is ItemTags, Delivery, ReturnPolicies {
     }
 
 
+
+    function _giveUserCoupon(uint ein, uint couponID) internal returns (bool) {
+        userCoupons[ein][couponID] = true;
+        return true;
+    }
+     
+
     //TODO: Add event here
     function _setPaymentAddress(address addr) internal returns (bool) {
         _paymentAddress = addr;
@@ -61,8 +69,16 @@ contract Marketplace is ItemTags, Delivery, ReturnPolicies {
         return true;
     }
 
+    function _setCouponDistributionAddress(address _CouponDistributionAddress) internal returns (bool) {
+        CouponDistributionAddress = _CouponDistributionAddress;
+        return true;
+    }
 
 
+    modifier onlyCouponDistribution() {
+        require(msg.sender == CouponDistributionAddress);
+        _;
+    }
 
 
 
