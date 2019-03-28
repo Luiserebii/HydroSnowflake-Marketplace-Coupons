@@ -37,8 +37,8 @@ Coupon generation function should take the following parameters:
     }
 
     //Function for the owner to switch the address of the CouponFeature, which is why this contract is SnowflakeEINOwnable
-    function setCouponFeatureAddress(address _CouponFeatureAddress) public onlyEINOwner returns (bool) {
-        CouponFeatureAddress = _CouponFeatureAddress;
+    function setSnowflakeEINMarketplaceAddress(address _SnowflakeEINMarketplaceAddress) public onlyEINOwner returns (bool) {
+        SnowflakeEINMarketplaceAddress = _SnowflakeEINMarketplaceAddress;
     }
 
     /*==== Distribution Logic ====*/
@@ -50,7 +50,7 @@ Coupon generation function should take the following parameters:
     }
     
     function _distributeCoupon(uint256 couponID, bytes memory /*/data*/) internal returns (bool) {
-        SnowflakeEINMarketplaceInterface marketplace = SnowflakeEINMarketplaceInterface(MarketplaceAddress);
+        SnowflakeEINMarketplaceInterface marketplace = SnowflakeEINMarketplaceInterface(SnowflakeEINMarketplaceAddress);
         //sample distribution of coupon to EIN 10
         uint256 arbitraryEIN = 10;
         marketplace.giveUserCoupon(arbitraryEIN, couponID);
@@ -63,7 +63,7 @@ Coupon generation function should take the following parameters:
     }
     
     function _distributeCoupon(uint256 couponID) internal returns (bool) {
-        SnowflakeEINMarketplaceInterface marketplace = SnowflakeEINMarketplaceInterface(MarketplaceAddress);
+        SnowflakeEINMarketplaceInterface marketplace = SnowflakeEINMarketplaceInterface(SnowflakeEINMarketplaceAddress);
         //sample distribution of coupon to EINs 1-5
         for(uint i = 0; i < 5; i++){
             marketplace.giveUserCoupon(i+1, couponID);

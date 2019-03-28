@@ -18,11 +18,11 @@ contract Marketplace is ItemTags, Delivery, ReturnPolicies, MarketplaceInterface
     mapping(uint => mapping(uint => bool)) public userCoupons;
 
 
-    constructor(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) public { 
-        _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress, _snowflakeAddress);
+    constructor(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress/*, address _snowflakeAddress*/) public { 
+        _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress/*, _snowflakeAddress*/);
     }
 
-    function _constructMarketplace(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) internal {
+    function _constructMarketplace(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress/*, address _snowflakeAddress*/) internal {
         //Constructing parent contracts
         _constructItemTags();
         _constructDelivery();
@@ -32,7 +32,7 @@ contract Marketplace is ItemTags, Delivery, ReturnPolicies, MarketplaceInterface
         _paymentAddress = paymentAddress;
         CouponFeatureAddress = _CouponFeatureAddress;
         ItemFeatureAddress = _ItemFeatureAddress;
-
+        
     }
 
 

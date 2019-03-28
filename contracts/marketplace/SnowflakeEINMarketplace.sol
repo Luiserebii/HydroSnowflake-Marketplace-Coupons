@@ -15,7 +15,7 @@ contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable, SnowflakeE
     }    
 
     function _constructSnowflakeEINMarketplace(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) internal {
-        _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress,_snowflakeAddress);
+        _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress/*,_snowflakeAddress*/);
         _constructSnowflakeEINOwnable(_snowflakeAddress);
     }
 
@@ -26,7 +26,7 @@ contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable, SnowflakeE
 
     function distributeCoupon(uint id) public onlyEINOwner returns (bool) {
         //We only need to read from the Coupons, so CouponsInterface is apporpriate here
-        CouponInterface coupons = CouponsInterface(CouponFeatureAddress);
+        CouponInterface coupons = CouponInterface(CouponFeatureAddress);
         //Grab our distribution address, as defined within the coupon, and access it
         address distributionAddress = coupons.getCouponDistributionAddress(id);
         CouponDistributionInterface couponDistribution = CouponDistributionInterface(distributionAddress);
