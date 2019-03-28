@@ -18,7 +18,15 @@ CHANGES:
 -RELATION: "Coupons" <--- "AddressSnowflakeERC721Burnable, AddressSnowflakeERC721Mintable"
    -Idea is, now Addresses will have the ability to burn/mint tokens, in this case, coupons; great for smart contracts!
 
+-PROPERTY: "Marketplace" now holds the addresses of the independently deployed contracts:
 
+   address public CouponFeatureAddress;
+   address public ItemFeatureAddress;
+
+-DELETIONS: "Marketplace" does not contain the exposing of item/coupon add/update/delete functions.
+
+-UPDATE: "purchaseItems()" simply matching newer Via implementation
+-UPDATE: "CouponMarketplaceVia" finished with desired functionality
 
 ===========
 ADDITIONS:
