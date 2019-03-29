@@ -4,12 +4,14 @@
  * 
  *
  */
-
+const common = require('../common.js')
 
 const allEnums = require('../../enum_mappings/enums.js')
 const enums = allEnums.CouponMarketPlaceResolverInterface;
+const accounts = web3.eth.getAccounts();
 
-
+//console.log(web3);
+//console.log("ACCOUNTS:" + accounts);
 const TestData = {
 
   'users': [
@@ -85,8 +87,14 @@ const TestData = {
   ],
 
   'returnPolicies': [
-    { returnsAccepted: true, timeLimit: 20000 },
-    { returnsAccepted: false, timeLimit: 50 }
+    { 
+      returnsAccepted: true,
+      timeLimit: 20000
+    },
+    { 
+      returnsAccepted: false,
+      timeLimit: 50
+    }
   ],
 
   'availableCoupons': [

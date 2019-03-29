@@ -6,7 +6,11 @@
  * 
  */
 
-const testdata = require('./test-data.js')
+const common = require('../common.js')
+const { sign, verifyIdentity } = require('../utilities')
+
+const TestData = require('./test-data.js')
+
 const util = require('util')
 
 const BN = web3.utils.BN
@@ -17,7 +21,7 @@ const enums = allEnums.CouponMarketPlaceResolverInterface;
 class MarketplaceAPI {
 
 
-  async function assertSolidityRevert(run, expectedErr = null){
+  static async assertSolidityRevert(run, expectedErr = null) {
     let err;
     try {
       await run();
@@ -39,12 +43,12 @@ class MarketplaceAPI {
 
   
   //Convenience function, assumes instances is set with loaded contracts
-  async function addToIdentityRegistrySimple(userIdentity) {
+  static async addToIdentityRegistrySimple(userIdentity) {
     await addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
   }
 
   //"Lower-level" convenience function
-  async function addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
+  static async addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
 
     const timestamp = Math.round(new Date() / 1000) - 1
     const permissionString = web3.utils.soliditySha3(
@@ -74,6 +78,19 @@ class MarketplaceAPI {
 
   }
 
+
+
+
+  // Idea is to provide a nice function to determine equality
+  // between returned struct from web3, and ours;
+  // Since the returned object contains a strange
+  // mixture where values are represented as both
+  // '1': __, '2': __, __:__, __:__ (as in, keys are shown alongside values, and numerical mapping to values; values are repeated)
+  static structIsEqual(intObj, retObj) {
+    intObj.forEach((key) => {
+      assert.equal(intObj[key] == retObj);
+    });
+  }
 
   /*
     =========================

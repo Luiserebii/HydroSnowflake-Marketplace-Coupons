@@ -94,7 +94,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     instances = await common.initialize(accounts[0], users.slice(0,3))
   })
 
-  describe('Testing Coupon Marketplace', async () => {
+  describe.skip('Testing Coupon Marketplace', async () => {
 
     let seller = users[0]
 
