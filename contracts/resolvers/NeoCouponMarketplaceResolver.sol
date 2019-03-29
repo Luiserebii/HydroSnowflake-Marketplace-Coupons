@@ -60,7 +60,7 @@ Index:
 
 */
 
-    address private _MarketplaceCouponViaAddress;
+    address private _CouponMarketplaceViaAddress;
 
 
     /*
@@ -77,7 +77,7 @@ Index:
         address _snowflakeAddress,
         bool _callOnAddition, bool _callOnRemoval,
         address paymentAddress,
-        address MarketplaceCouponViaAddress,
+        address CouponMarketplaceViaAddress,
         address _CouponFeatureAddress, address _ItemFeatureAddress
     ) SnowflakeResolver (
         _snowflakeName, _snowflakeDescription,
@@ -89,14 +89,14 @@ Index:
         _constructSnowflakeEINMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress, _snowflakeAddress);
 
         //Set contract-specific private/internal vars
-        _MarketplaceCouponViaAddress = MarketplaceCouponViaAddress;
+        _CouponMarketplaceViaAddress = CouponMarketplaceViaAddress;
 
     }
 
 
 
-    function MarketplaceCouponViaAddress() public view returns (address) {
-        return _MarketplaceCouponViaAddress;
+    function CouponMarketplaceViaAddress() public view returns (address) {
+        return _CouponMarketplaceViaAddress;
     }
 
 
@@ -205,7 +205,7 @@ Via contract to use coupons:
         //
 
 
-        snowflake.transferSnowflakeBalanceFromVia(getEIN(approvingAddress), _MarketplaceCouponViaAddress, ownerEIN(), price, snowflakeCallData);
+        snowflake.transferSnowflakeBalanceFromVia(getEIN(approvingAddress), _CouponMarketplaceViaAddress, ownerEIN(), price, snowflakeCallData);
 
         //Transfers ownership of the item to the buyer (!)
 

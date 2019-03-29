@@ -1,9 +1,9 @@
-const common = require('./common.js')
-const { sign, verifyIdentity } = require('./utilities')
+const common = require('../common.js')
+const { sign, verifyIdentity } = require('../utilities')
 const util = require('util')
 
 const BN = web3.utils.BN
-const allEnums = require('../enum_mappings/enums.js')
+const allEnums = require('../../enum_mappings/enums.js')
 const enums = allEnums.CouponMarketPlaceResolverInterface;
 
 
