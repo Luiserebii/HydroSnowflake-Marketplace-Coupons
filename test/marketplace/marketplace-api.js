@@ -30,6 +30,13 @@ class MarketplaceAPI {
     return err;
   }
 
+
+  /*
+    =======================
+      Identity Registry 
+    =======================
+  */
+
   
   //Convenience function, assumes instances is set with loaded contracts
   async function addToIdentityRegistrySimple(userIdentity) {
@@ -66,6 +73,36 @@ class MarketplaceAPI {
    })
 
   }
+
+
+  /*
+    =========================
+      Item Listings to Args
+    =========================
+
+  */
+
+  //Actually, to convert to args:
+  //
+  //  ...Object.values()
+  //  As values() should return an array of the object
+
+  /*
+    ===========================
+      Return Policies to Args
+    ===========================
+
+  */
+
+  /*
+    =============================
+      Available Coupons to Args
+    ============================
+
+  */
+
+
+
 
 
 }

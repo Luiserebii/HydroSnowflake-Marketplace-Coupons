@@ -65,8 +65,8 @@ const TestData = {
       title: "Test Item",
       description: "An item you should probably buy",
       price: 8000,
-      delivery: [], deliveryExpected: undefined,
-      tags: [], tagsExpected: undefined,
+      delivery: [],
+      tags: [],
       returnPolicy: 0
     },  
     {
@@ -78,8 +78,8 @@ const TestData = {
       title: "Test IMPROVED Item",
       description: "An item you should ***DEFINITELY*** buy",
       price: 10000,
-      delivery: [], deliveryExpected: undefined,
-      tags: [], tagsExpected: undefined,
+      delivery: [],
+      tags: [],
       returnPolicy: 1
     }
   ],
