@@ -101,7 +101,7 @@ class MarketplaceAPI {
 
   //Actually, to convert to args:
   //
-  //  ...Object.values()
+  //  ...Object.values(myObj)
   //  As values() should return an array of the object
 
   /*

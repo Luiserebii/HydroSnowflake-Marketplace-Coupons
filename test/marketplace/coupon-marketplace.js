@@ -118,16 +118,20 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
     it('deploy ItemFeature contract', async function () {
       instances.ItemFeature = await ItemFeature.new(instances.Snowflake.address, { from: seller.address })
+      //Let's assert that this is loaded in
+      //Truthiness of null/undefined is false
+      assert.ok(instances.ItemFeature)
     })
 
     it('deploy CouponFeature contract', async function () {
       instances.CouponFeature = await CouponFeature.new(instances.Snowflake.address, { from: seller.address })
-
+      assert.ok(instances.CouponFeature)
     })
 
 
     it('deploy Coupon Marketplace Via contract', async function () {
       instances.CouponMarketplaceVia = await common.deploy.couponMarketplaceVia(seller.address, instances.Snowflake.address)
+      assert.ok(instances.CouponMarketplaceVia)
     })
 
 
@@ -144,6 +148,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         instances.CouponFeature.address,
         instances.ItemFeature.address
       )
+      assert.ok(instances.CouponMarketplaceResolver)
     })
 
     it('deploy Coupon Distribution contract', async function () {
@@ -151,6 +156,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         instances.CouponMarketplaceResolver.address,
         instances.Snowflake.address
       )
+      assert.ok(instances.CouponDistribution)
     })
 
 
@@ -244,51 +250,31 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
        
     })
-    describe.skip('ItemListings', async function () {
+    describe('ItemListings', async function () {
       let itemLID;
   
       it('get nextItemListingID', async function () {
-        itemLID = parseInt(await instances.CouponMarketplaceResolver.nextItemListingsID.call(), 10)
+        itemLID = parseInt(await instances.ItemFeature.nextItemListingsID.call(), 10)
       })
 
       it('can add', async function () {
 
-        let newItemL = {
-          uuid: 7329140802,
-          quantity: 1,
-          itemType: enums.ItemType.DIGITAL,
-          status: enums.ItemStatus.INACTIVE,
-          condition: enums.ItemCondition.GOOD,
-          title: "Test Item",
-          description: "An item you should probably buy",
-          price: 8000,
-          delivery: [], deliveryExpected: undefined,
-          tags: [], tagsExpected: undefined,
-          returnPolicy: 0
-        }
-
+        let newItemL = Test.itemListings[0]; 
+        console.log("newItemL:    \n\n");
+        console.log(util.inspect(newItemL))
         //Add it
-        await instances.CouponMarketplaceResolver.addItemListing(
-          newItemL.uuid,
-          newItemL.quantity,
-          newItemL.itemType,
-          newItemL.status,
-          newItemL.condition,
-          newItemL.title,
-          newItemL.description,
-          newItemL.price,
-          newItemL.delivery,
-          newItemL.tags,
-          newItemL.returnPolicy,
+        await instances.ItemFeature.addItemListing(
+          await instances.ItemFeature.ownerEIN.call(),
+          ...Object.values(newItemL),   
           {from: seller.address}
         )
 
         //Ensure ID has advanced
-        let currID = await instances.CouponMarketplaceResolver.nextItemListingsID.call()
+        let currID = await instances.ItemListings.nextItemListingsID.call()
         assert.equal(itemLID + 1, currID)
 
         //Ensure it exists 
-        let itemLExisting = await instances.CouponMarketplaceResolver.itemListings.call(itemLID);
+        let itemLExisting = await instances.ItemListings.itemListings.call(itemLID);
 
         //Check over properties for equality:
         assert.equal(newItemL.uuid, itemLExisting.uuid);
@@ -305,7 +291,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       })
 
-      it('can update', async function () {
+      it.skip('can update', async function () {
 
         let newItemL = {
           uuid: 7329140802,
@@ -356,7 +342,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
       })
-      it('can remove', async function () {
+      it.skip('can remove', async function () {
 
         //Delete
         await instances.CouponMarketplaceResolver.deleteItemListing(itemLID)

@@ -25,7 +25,7 @@ ItemListing add/update/delete
 
 
     function addItemListing (
-        uint256 ein,
+        uint256 ein, //The EIN to mint to (ERC721 mint(to, ___))
         uint uuid,
         uint quantity,
         ItemType itemType,
