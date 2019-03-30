@@ -275,7 +275,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //Ensure it exists 
         let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
-
+        //console.log(itemLExisting)
         //Check over properties for equality:
         assert.equal(newItemL.uuid, itemLExisting.uuid);
         assert.equal(newItemL.quantity, itemLExisting.quantity);
@@ -285,10 +285,9 @@ contract('Testing Coupon Marketplace', function (accounts) {
         assert.equal(newItemL.title, itemLExisting.title);
         assert.equal(newItemL.description, itemLExisting.description);
         assert.equal(newItemL.price, itemLExisting.price);
-        assert.equal(newItemL.deliveryExpected, itemLExisting.delivery);
-        assert.equal(newItemL.tagsExpected, itemLExisting.tags);
         assert.equal(newItemL.returnPolicy, itemLExisting.returnPolicy);
-
+        //Note that this function will not encompass the delivery and tags arrs
+        MarketplaceAPI.structIsEqual(newItemL, itemLExisting)
       })
 
       it.skip('can update', async function () {

@@ -86,10 +86,14 @@ class MarketplaceAPI {
   // Since the returned object contains a strange
   // mixture where values are represented as both
   // '1': __, '2': __, __:__, __:__ (as in, keys are shown alongside values, and numerical mapping to values; values are repeated)
+  //[] values are ignored, since arrays will not appear in returned structs
   /*static*/ structIsEqual(intObj, retObj) {
-    intObj.forEach((key) => {
-      assert.equal(intObj[key] == retObj);
-    });
+    for(let key in intObj) {
+      //[] == [] is false, so we try this as a hack workaround
+      if(typeof intObj[key] != "object"){
+        assert.equal(intObj[key], retObj[key], `Key: ${key} used to compare values (Internal Obj) ${intObj[key]} and (Returned Obj) ${retObj[key]} `);
+      }
+    }
   }
 
   /*
