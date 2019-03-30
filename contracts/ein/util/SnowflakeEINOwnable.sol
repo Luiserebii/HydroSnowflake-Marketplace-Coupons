@@ -21,8 +21,8 @@ contract SnowflakeEINOwnable is EINOwnable, SnowflakeReader {
     }
 */
     function _constructSnowflakeEINOwnable(address _snowflakeAddress) internal {
-        _constructEINOwnable(constructorEINOwnable(msg.sender)); 
-        _constructSnowflakeReader(_snowflakeAddress);       
+       _constructSnowflakeReader(_snowflakeAddress);       
+       _constructEINOwnable(constructorEINOwnable(msg.sender));
     }
 
     /**

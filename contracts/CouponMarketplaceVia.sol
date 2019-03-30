@@ -32,7 +32,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
         _constructSnowflakeEINOwnable(_snowflakeAddress);
  
         //Regular constructor
-        setSnowflakeAddress(_snowflakeAddress);
+        //setSnowflakeAddress(_snowflakeAddress);
         
     }
 
