@@ -73,13 +73,23 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
   const users = [
     {
+      hydroID: 'sellerabc',
+      ein: 1,
+      address: accounts[0],
+      paymentAddress: accounts[0],
+      recoveryAddress: accounts[0],
+      private: '0x2665671af93f210ddb5d5ffa16c77fcf961d52796f2b2d7afd32cc5d886350a8'
+    },
+    {
       hydroID: 'abc',
+      ein: 2,
       address: accounts[1],
       recoveryAddress: accounts[1],
       private: '0x6bf410ff825d07346c110c5836b33ec76e7d1ee051283937392180b732aa3aff'
     },
     {
       hydroID: 'xyz',
+      ein: 3,
       address: accounts[2],
       recoveryAddress: accounts[2],
       private: '0xccc3c84f02b038a5d60d93977ab11eb57005f368b5f62dad29486edeb4566954'
@@ -92,6 +102,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     }
   ]
 
+ 
   it('common contracts deployed', async () => {
     instances = await common.initialize(accounts[0], users.slice(0,3))
   })
@@ -101,7 +112,6 @@ contract('Testing Coupon Marketplace', function (accounts) {
     let seller = users[0]
 
     it('add seller identity to Identity Registry', async function () {
-      console.log(instances)
       await MarketplaceAPI.addToIdentityRegistry(seller, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop);
     })
 

@@ -24,7 +24,6 @@ async function initialize (owner, users) {
       { from: owner }
     )
   }
-
   instances.IdentityRegistry = await IdentityRegistry.new({ from: owner })
 
   instances.Snowflake = await Snowflake.new(
@@ -32,12 +31,10 @@ async function initialize (owner, users) {
   )
 
   instances.OldClientRaindrop = await OldClientRaindrop.new({ from: owner })
-
   instances.ClientRaindrop = await ClientRaindrop.new(
     instances.Snowflake.address, instances.OldClientRaindrop.address, 0, 0, { from: owner }
-  )
+  )  
   await instances.Snowflake.setClientRaindropAddress(instances.ClientRaindrop.address, { from: owner })
-
 
   /*instances.CouponMarketplace = await CouponMarketplace.new(1, "Test_Name", "Test_Desc", instances.Snowflake.address, false, false, {from: owner })*/
 
