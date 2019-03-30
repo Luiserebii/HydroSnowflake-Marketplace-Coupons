@@ -13,7 +13,7 @@ import "../marketplace/features/CouponFeature.sol";
 import "../marketplace/features/ItemFeature.sol";
 
 
-contract NeoCouponMarketplaceResolver is SnowflakeResolver, SnowflakeEINMarketplace, NeoCouponMarketplaceResolverInterface {
+contract CouponMarketplaceResolver is SnowflakeResolver, SnowflakeEINMarketplace, NeoCouponMarketplaceResolverInterface {
 
 /*
 

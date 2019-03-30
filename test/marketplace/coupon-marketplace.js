@@ -13,7 +13,7 @@ const enums = allEnums.CouponMarketPlaceResolverInterface;
 const ItemFeature = common.ItemFeature
 const CouponFeature = common.CouponFeature
 const CouponDistribution = common.CouponDistribution
-const NeoCouponMarketplaceResolver = common.NeoCouponMarketplaceResolver
+const CouponMarketplaceResolver = common.CouponMarketplaceResolver
 
 
 
@@ -134,7 +134,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     it('deploy Coupon Marketplace Resolver contract', async function () {
 //      let ein = await instances.IdentityRegistry.getEIN(seller.address)
 
-      instances.NeoCouponMarketplaceResolver = await NeoCouponMarketplaceResolver.new(
+      instances.CouponMarketplaceResolver = await CouponMarketplaceResolver.new(
         "Test-Marketplace-Resolver",
         "A test Coupon Marketplace Resolver built on top of Hydro Snowflake", 
         instances.Snowflake.address,
@@ -148,14 +148,14 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
     it('deploy Coupon Distribution contract', async function () {
       instances.CouponDistribution = await CouponDistribution.new(
-        instances.NeoCouponMarketplaceResolver.address,
+        instances.CouponMarketplaceResolver.address,
         instances.Snowflake.address
       )
     })
 
 
     it('Deployer is EIN Owner', async function () {
-      let isEINOwner = await instances.NeoCouponMarketplaceResolver.isEINOwner.call({ from: accounts[0]})
+      let isEINOwner = await instances.CouponMarketplaceResolver.isEINOwner.call({ from: accounts[0]})
       assert.isTrue(isEINOwner);
     })
 
@@ -170,7 +170,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         it('addItemTag', async function () {
           await assertSolidityRevert(
             async function(){ 
-              await instances.NeoCouponMarketplaceResolver.addItemTag("Test_Item_Tag", {from: nonOwner}) 
+              await instances.CouponMarketplaceResolver.addItemTag("Test_Item_Tag", {from: nonOwner}) 
             }
           )
         })
@@ -179,7 +179,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         it('updateItemTag', async function () {
           await assertSolidityRevert(
             async function(){ 
-              await instances.NeoCouponMarketplaceResolver.updateItemTag(1, "Test_Item_Tag", {from: nonOwner}) 
+              await instances.CouponMarketplaceResolver.updateItemTag(1, "Test_Item_Tag", {from: nonOwner}) 
             }
           )
         })
@@ -188,7 +188,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         it('deleteItemTag', async function () {
           await assertSolidityRevert(
             async function(){ 
-              await instances.NeoCouponMarketplaceResolver.deleteItemTag(1, {from: nonOwner})
+              await instances.CouponMarketplaceResolver.deleteItemTag(1, {from: nonOwner})
             }
           )
         })

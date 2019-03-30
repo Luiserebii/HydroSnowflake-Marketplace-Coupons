@@ -5,7 +5,7 @@ import "./interfaces/SnowflakeResolverInterface.sol";
 import "./zeppelin/math/SafeMath.sol";
 import "./interfaces/CouponMarketplaceResolverInterface.sol";
 import "./interfaces/SnowflakeInterface.sol";
-import "./resolvers/NeoCouponMarketplaceResolver.sol";
+import "./resolvers/CouponMarketplaceResolver.sol";
 import "./ein/util/SnowflakeEINOwnable.sol";
 
 import "./interfaces/marketplace/CouponInterface.sol";
@@ -25,7 +25,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
     
     using SafeMath for uint256;
 
-    address public NeoCouponMarketplaceResolverAddress;
+    address public CouponMarketplaceResolverAddress;
 
     constructor(address _snowflakeAddress) SnowflakeVia(_snowflakeAddress) public {
         //Constructing parents
@@ -53,7 +53,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
     function processTransaction(/*address resolver, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) public senderIsSnowflake returns (bool) {
 
         //Initialize NeoCouponMarketplaceResolverAddress
-        NeoCouponMarketplaceResolver mktResolver = NeoCouponMarketplaceResolver(NeoCouponMarketplaceResolverAddress);
+        CouponMarketplaceResolver mktResolver = CouponMarketplaceResolver(CouponMarketplaceResolverAddress);
         ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress());
 
         //Initialize Snowflake
@@ -146,8 +146,8 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
         revert("Not Implemented.");
     }
 
-    function setNeoCouponMarketplaceResolverAddress(address _NeoCouponMarketplaceResolverAddress) public onlyEINOwner returns (bool) {
-        NeoCouponMarketplaceResolverAddress = _NeoCouponMarketplaceResolverAddress;
+    function setCouponMarketplaceResolverAddress(address _CouponMarketplaceResolverAddress) public onlyEINOwner returns (bool) {
+        CouponMarketplaceResolverAddress = _CouponMarketplaceResolverAddress;
         return true;
 }
 

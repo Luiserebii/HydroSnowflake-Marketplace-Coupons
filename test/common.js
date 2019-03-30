@@ -4,7 +4,7 @@ const Snowflake = artifacts.require('./Snowflake.sol')
 const ClientRaindrop = artifacts.require('./resolvers/ClientRaindrop/ClientRaindrop.sol')
 const OldClientRaindrop = artifacts.require('./_testing/OldClientRaindrop.sol')
 
-const NeoCouponMarketplaceResolver = artifacts.require('./resolvers/NeoCouponMarketplaceResolver.sol')
+const CouponMarketplaceResolver = artifacts.require('./resolvers/CouponMarketplaceResolver.sol')
 const CouponMarketplaceVia = artifacts.require('./CouponMarketplaceVia.sol')
 
 const ItemFeature = artifacts.require('./marketplace/features/ItemFeature.sol')
@@ -63,6 +63,6 @@ module.exports = {
   },
   'ItemFeature': ItemFeature,
   'CouponFeature': CouponFeature,
-  'NeoCouponMarketplaceResolver': NeoCouponMarketplaceResolver,
+  'CouponMarketplaceResolver': CouponMarketplaceResolver,
   'CouponDistribution': CouponDistribution
 }
