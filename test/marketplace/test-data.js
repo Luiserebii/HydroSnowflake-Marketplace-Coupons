@@ -8,42 +8,9 @@ const common = require('../common.js')
 
 const allEnums = require('../../enum_mappings/enums.js')
 const enums = allEnums.CouponMarketPlaceResolverInterface;
-const accounts = web3.eth.getAccounts();
 
-//console.log(web3);
-//console.log("ACCOUNTS:" + accounts);
+
 const TestData = {
-
-  'users': [
-    {
-      hydroID: 'sellerabc',
-      ein: 1,
-      address: accounts[0],
-      paymentAddress: accounts[0],
-      recoveryAddress: accounts[0],
-      private: '0x2665671af93f210ddb5d5ffa16c77fcf961d52796f2b2d7afd32cc5d886350a8'
-    },
-    {
-      hydroID: 'abc',
-      ein: 2,
-      address: accounts[1],
-      recoveryAddress: accounts[1],
-      private: '0x6bf410ff825d07346c110c5836b33ec76e7d1ee051283937392180b732aa3aff'
-    },
-    {
-      hydroID: 'xyz',
-      ein: 3,
-      address: accounts[2],
-      recoveryAddress: accounts[2],
-      private: '0xccc3c84f02b038a5d60d93977ab11eb57005f368b5f62dad29486edeb4566954'
-    },
-    {
-      public: accounts[3]
-    },
-    {
-      public: accounts[4]
-    }
-  ],
 
   'itemTags': [
     [

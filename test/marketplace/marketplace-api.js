@@ -43,9 +43,9 @@ class MarketplaceAPI {
 
   
   //Convenience function, assumes instances is set with loaded contracts
-  /*static*/ async addToIdentityRegistrySimple(userIdentity) {
+  /*static*/ /*async addToIdentityRegistrySimple(userIdentity) {
     await this.addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
-  }
+  }*/
 
   //"Lower-level" convenience function
   /*static*/ async addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){

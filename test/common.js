@@ -63,5 +63,9 @@ module.exports = {
   deploy: {
     couponMarketplaceResolver: deployCouponMarketplaceResolver,
     couponMarketplaceVia: deployCouponMarketplaceVia
-  }
+  },
+  'ItemFeature': ItemFeature,
+  'CouponFeature': CouponFeature,
+  'NeoCouponMarketplaceResolver': NeoCouponMarketplaceResolver,
+  'CouponDistribution': CouponDistribution
 }

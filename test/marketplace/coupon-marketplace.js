@@ -2,15 +2,20 @@ const common = require('../common')
 const mapi = require('./marketplace-api')
 const MarketplaceAPI = new mapi()
 const TestData = require('./test-data')
-console.log(common)
-console.log(MarketplaceAPI)
+//console.log(common)
 const { sign, verifyIdentity } = require('../utilities')
 const util = require('util')
-
 
 const BN = web3.utils.BN
 const allEnums = require('../../enum_mappings/enums.js')
 const enums = allEnums.CouponMarketPlaceResolverInterface;
+
+const ItemFeature = common.ItemFeature
+const CouponFeature = common.CouponFeature
+const CouponDistribution = common.CouponDistribution
+const NeoCouponMarketplaceResolver = common.NeoCouponMarketplaceResolver
+
+
 
 
 let user
@@ -65,25 +70,16 @@ Adding a listing
 
 
 contract('Testing Coupon Marketplace', function (accounts) {
+
   const users = [
     {
-      hydroID: 'sellerabc',
-      ein: 1,
-      address: accounts[0],
-      paymentAddress: accounts[0],
-      recoveryAddress: accounts[0],
-      private: '0x2665671af93f210ddb5d5ffa16c77fcf961d52796f2b2d7afd32cc5d886350a8'
-    },
-    {
       hydroID: 'abc',
-      ein: 2,
       address: accounts[1],
       recoveryAddress: accounts[1],
       private: '0x6bf410ff825d07346c110c5836b33ec76e7d1ee051283937392180b732aa3aff'
     },
     {
       hydroID: 'xyz',
-      ein: 3,
       address: accounts[2],
       recoveryAddress: accounts[2],
       private: '0xccc3c84f02b038a5d60d93977ab11eb57005f368b5f62dad29486edeb4566954'
@@ -105,16 +101,17 @@ contract('Testing Coupon Marketplace', function (accounts) {
     let seller = users[0]
 
     it('add seller identity to Identity Registry', async function () {
-      await MarketplaceAPI.addToIdentityRegistrySimple(seller);
+      console.log(instances)
+      await MarketplaceAPI.addToIdentityRegistry(seller, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop);
     })
 
 
     it('deploy ItemFeature contract', async function () {
-      instances.ItemFeature = await ItemFeature.new(snowflakeAddress, { from: owner })
+      instances.ItemFeature = await ItemFeature.new(instances.Snowflake.address, { from: seller.address })
     })
 
     it('deploy CouponFeature contract', async function () {
-      instances.CouponFeature = await CouponFeature.new(snowflakeAddress, { from: owner })
+      instances.CouponFeature = await CouponFeature.new(instances.Snowflake.address, { from: seller.address })
 
     })
 
