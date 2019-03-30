@@ -75,6 +75,13 @@ contract Coupons is SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSno
         return (c.couponType, c.title, c.description, c.amountOff, c.expirationDate);
     }
 
+    function getCouponSimple(uint id) public view returns (CouponType couponType, uint256 amountOff, uint expirationDate){
+
+        Coupon memory c = availableCoupons[id];
+        return (c.couponType, c.amountOff, c.expirationDate);
+    }
+
+
     function getCouponItemApplicable(uint id, uint index) public view returns (uint) { 
         return availableCoupons[id].itemsApplicable[index]; 
     }

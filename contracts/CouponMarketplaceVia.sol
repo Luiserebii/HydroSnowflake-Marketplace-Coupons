@@ -72,7 +72,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
                //Personal note; supposedly, these ()s are needed. Wait, is this always true when calling outside of contract? I swear that I've accessed some directly...?
             CouponFeature couponFeature = CouponFeature(mktResolver.CouponFeatureAddress());
 
-            (CouponInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate) = couponFeature.getCoupon(couponID); 
+            (CouponInterface.CouponType couponType, uint256 amountOff, uint expirationDate) = couponFeature.getCouponSimple(couponID); 
 
             //Ensure coupon is not expired
             require(now < expirationDate, "Coupon is expired!");
@@ -82,9 +82,9 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
                 total = _applyCouponAmountOff(total, amountOff);
                 amountRefund = amountOff;
             }
-
+/*
             //In an event, let's push the transaction or something
-            emit CouponProcessed(total, amountRefund, couponType, title, description, amountOff, expirationDate);
+            emit CouponProcessed(total, amountRefund, couponType, amountOff, expirationDate);
 
             //Send coupon to burner address
             couponFeature.burnAddress(couponID);
@@ -97,7 +97,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
       
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
             snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
-            
+  */          
         } else {
 
             //Send item to buyer
@@ -152,7 +152,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 }
 
     
-    event CouponProcessed(uint total, uint amountRefunded, CouponInterface.CouponType couponType, string title, string description, uint256 amountOff, uint expirationDate);
+    event CouponProcessed(uint total, uint amountRefunded, CouponInterface.CouponType couponType, uint256 amountOff, uint expirationDate);
 
 
 
