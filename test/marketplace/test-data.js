@@ -14,6 +14,9 @@ const TestData = {
 
   'itemTags': [
     [
+      "TestTagA",
+      "TestTagB",
+      "TestTagC",
       "crypto",
       "software",
       "stickers",

@@ -160,7 +160,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     })
 
    
-    describe.skip('Only EIN Owner can...', async function () {
+    describe('Only EIN Owner can...', async function () {
 
       describe('call add/update/delete functions [NOTE: using ItemTag functions]', async function () {
         //An arbitary account
