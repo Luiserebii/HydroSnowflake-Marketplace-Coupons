@@ -155,7 +155,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
     it('Deployer is EIN Owner', async function () {
-      let isEINOwner = await instances.CouponMarketplaceResolver.isEINOwner.call({ from: accounts[0]})
+      let isEINOwner = await instances.NeoCouponMarketplaceResolver.isEINOwner.call({ from: accounts[0]})
       assert.isTrue(isEINOwner);
     })
 
@@ -170,7 +170,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         it('addItemTag', async function () {
           await assertSolidityRevert(
             async function(){ 
-              await instances.CouponMarketplaceResolver.addItemTag("Test_Item_Tag", {from: nonOwner}) 
+              await instances.NeoCouponMarketplaceResolver.addItemTag("Test_Item_Tag", {from: nonOwner}) 
             }
           )
         })
@@ -179,7 +179,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         it('updateItemTag', async function () {
           await assertSolidityRevert(
             async function(){ 
-              await instances.CouponMarketplaceResolver.updateItemTag(1, "Test_Item_Tag", {from: nonOwner}) 
+              await instances.NeoCouponMarketplaceResolver.updateItemTag(1, "Test_Item_Tag", {from: nonOwner}) 
             }
           )
         })
@@ -188,7 +188,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         it('deleteItemTag', async function () {
           await assertSolidityRevert(
             async function(){ 
-              await instances.CouponMarketplaceResolver.deleteItemTag(1, {from: nonOwner})
+              await instances.NeoCouponMarketplaceResolver.deleteItemTag(1, {from: nonOwner})
             }
           )
         })
