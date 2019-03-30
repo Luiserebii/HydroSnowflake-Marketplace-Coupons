@@ -12,7 +12,7 @@ const enums = allEnums.CouponMarketPlaceResolverInterface;
 
 const TestData = {
 
-  'itemTags': [
+  'itemTags': 
     [
       "TestTagA",
       "TestTagB",
@@ -25,7 +25,7 @@ const TestData = {
       "shirts",
       "backpacks"
     ]
-  ],
+  ,
 
   'itemListings': [
     {

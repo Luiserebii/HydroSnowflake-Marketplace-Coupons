@@ -1,7 +1,7 @@
 const common = require('../common')
 const mapi = require('./marketplace-api')
 const MarketplaceAPI = new mapi()
-const TestData = require('./test-data')
+const Test = require('./test-data')
 //console.log(common)
 const { sign, verifyIdentity } = require('../utilities')
 const util = require('util')
@@ -202,14 +202,14 @@ contract('Testing Coupon Marketplace', function (accounts) {
     //End of "Only EIN Owner can..."
 
 
-    describe.skip('ItemTags', async function () {
+    describe('ItemTags', async function () {
       let listingID;
       
       it('can add', async function () {
 
         //Obtain current listing ID
         listingID = parseInt(await instances.CouponMarketplaceResolver.nextItemTagsID.call(), 10)
-        let newItemTag = "TestTagA";
+        let newItemTag = Test.itemTags[0];
 
         //Add it
         await instances.CouponMarketplaceResolver.addItemTag(newItemTag, {from: seller.address})
@@ -225,7 +225,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('can update', async function () {
 
-        let newItemTag = "TestTagAAA"
+        let newItemTag = Test.itemTags[1];
         let itemTag = await instances.CouponMarketplaceResolver.itemTags.call(listingID)
         //Update the item tag at listingID
         await instances.CouponMarketplaceResolver.updateItemTag(listingID, newItemTag, {from: seller.address})
@@ -381,12 +381,12 @@ contract('Testing Coupon Marketplace', function (accounts) {
       
       
     })
-    describe.skip('ReturnPolicies', async function () {
+    describe('ReturnPolicies', async function () {
       let returnPolicyID;
 
       it('can add', async function () {
         returnPolicyID = parseInt(await instances.CouponMarketplaceResolver.nextReturnPoliciesID.call(), 10)
-        let newReturnPolicy = { returnsAccepted: true, timeLimit: 20000 };
+        let newReturnPolicy = Test.returnPolicies[0];
         //Add it
         await instances.CouponMarketplaceResolver.addReturnPolicy(newReturnPolicy.returnsAccepted, newReturnPolicy.timeLimit, {from: seller.address})
         //Ensure ID has advanced
@@ -403,7 +403,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('can update', async function () {
 
-        let newReturnPolicy = { returnsAccepted: false, timeLimit: 50 }; 
+        let newReturnPolicy = Test.returnPolicies[1]; 
         let returnPolicy = await instances.CouponMarketplaceResolver.returnPolicies.call(returnPolicyID)
         //Update the item tag at listingID
         await instances.CouponMarketplaceResolver.updateReturnPolicy(returnPolicyID, newReturnPolicy.returnsAccepted, newReturnPolicy.timeLimit, {from: seller.address})
