@@ -260,8 +260,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
       it('can add', async function () {
 
         let newItemL = Test.itemListings[0]; 
-        console.log("newItemL:    \n\n");
-        console.log(util.inspect(newItemL))
+        //console.log("newItemL:    \n\n");
+        //console.log(util.inspect(newItemL))
         //Add it
         await instances.ItemFeature.addItemListing(
           await instances.ItemFeature.ownerEIN.call(),
@@ -270,11 +270,11 @@ contract('Testing Coupon Marketplace', function (accounts) {
         )
 
         //Ensure ID has advanced
-        let currID = await instances.ItemListings.nextItemListingsID.call()
+        let currID = await instances.ItemFeature.nextItemListingsID.call()
         assert.equal(itemLID + 1, currID)
 
         //Ensure it exists 
-        let itemLExisting = await instances.ItemListings.itemListings.call(itemLID);
+        let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
 
         //Check over properties for equality:
         assert.equal(newItemL.uuid, itemLExisting.uuid);
@@ -308,7 +308,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         }
 
         //Update
-        await instances.CouponMarketplaceResolver.updateItemListing(
+        await instances.ItemFeature.updateItemListing(
           itemLID,
           newItemL.uuid,
           newItemL.quantity,
@@ -325,7 +325,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         )
 
         //Get current
-        let itemLExisting = await instances.CouponMarketplaceResolver.itemListings.call(itemLID);
+        let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
 
         //Check over properties for equality
         assert.equal(newItemL.uuid, itemLExisting.uuid);
@@ -345,10 +345,10 @@ contract('Testing Coupon Marketplace', function (accounts) {
       it.skip('can remove', async function () {
 
         //Delete
-        await instances.CouponMarketplaceResolver.deleteItemListing(itemLID)
+        await instances.ItemFeature.deleteItemListing(itemLID)
 
         //Grab
-        let itemLExisting = await instances.CouponMarketplaceResolver.itemListings.call(itemLID);
+        let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
 
         //Check
         assert.equal(0, itemLExisting.uuid);
