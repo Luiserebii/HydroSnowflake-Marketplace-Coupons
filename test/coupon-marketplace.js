@@ -1,10 +1,6 @@
 const common = require('../common.js')
-const MarketplaceAPI = require('./marketplace-api')
-const TestData = require('./test-data')
-
 const { sign, verifyIdentity } = require('../utilities')
 const util = require('util')
-
 
 const BN = web3.utils.BN
 const allEnums = require('../../enum_mappings/enums.js')
@@ -98,22 +94,12 @@ contract('Testing Coupon Marketplace', function (accounts) {
     instances = await common.initialize(accounts[0], users.slice(0,3))
   })
 
-  describe('Testing Coupon Marketplace', async () => {
+  describe.skip('Testing Coupon Marketplace', async () => {
 
     let seller = users[0]
 
     it('add seller identity to Identity Registry', async function () {
       await addToIdentityRegistrySimple(seller);
-    })
-
-
-    it('deploy ItemFeature contract', async function () {
-      instances.ItemFeature = await ItemFeature.new(snowflakeAddress, { from: owner })
-    })
-
-    it('deploy CouponFeature contract', async function () {
-      instances.CouponFeature = await CouponFeature.new(snowflakeAddress, { from: owner })
-
     })
 
 
@@ -123,24 +109,17 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
     it('deploy Coupon Marketplace Resolver contract', async function () {
-//      let ein = await instances.IdentityRegistry.getEIN(seller.address)
+      let ein = await instances.IdentityRegistry.getEIN(seller.address)
 
-      instances.NeoCouponMarketplaceResolver = await NeoCouponMarketplaceResolver.new(
-        "Test-Marketplace-Resolver",
-        "A test Coupon Marketplace Resolver built on top of Hydro Snowflake", 
+      instances.CouponMarketplaceResolver = await common.deploy.couponMarketplaceResolver(
+        seller.address,
         instances.Snowflake.address,
+        ein,
+        "Test-Marketplace-Resolver",
+        "A test Coupon Marketplace Resolver build on top of Hydro Snowflake", 
         false, false,
         seller.paymentAddress,
-        instances.CouponMarketplaceVia.address,
-        instances.CouponFeature.address,
-        instances.ItemFeature.address
-      )
-    })
-
-    it('deploy Coupon Distribution contract', async function () {
-      instances.CouponDistribution = await CouponDistribution.new(
-        instances.NeoCouponMarketplaceResolver.address,
-        instances.Snowflake.address
+        instances.CouponMarketplaceVia.address
       )
     })
 
@@ -151,7 +130,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     })
 
    
-    describe.skip('Only EIN Owner can...', async function () {
+    describe('Only EIN Owner can...', async function () {
 
       describe('call add/update/delete functions [NOTE: using ItemTag functions]', async function () {
         //An arbitary account
@@ -193,7 +172,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     //End of "Only EIN Owner can..."
 
 
-    describe.skip('ItemTags', async function () {
+    describe('ItemTags', async function () {
       let listingID;
       
       it('can add', async function () {
@@ -235,7 +214,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
        
     })
-    describe.skip('ItemListings', async function () {
+    describe('ItemListings', async function () {
       let itemLID;
   
       it('get nextItemListingID', async function () {
@@ -372,7 +351,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
       
       
     })
-    describe.skip('ReturnPolicies', async function () {
+    describe('ReturnPolicies', async function () {
       let returnPolicyID;
 
       it('can add', async function () {
@@ -419,7 +398,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
       
       
     })
-    describe.skip('AvailableCoupons', async function () {
+    describe('AvailableCoupons', async function () {
       let acID;
 
       it('can add', async function () {
@@ -524,7 +503,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
             
     })
 
-    describe.skip('Purchase Item', async function () {
+    describe('Purchase Item', async function () {
 
       let buyer = users[1]
 
@@ -590,7 +569,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     })
 
 
-    describe.skip('Purchase Item (with a coupon)', async function () {
+    describe('Purchase Item (with a coupon)', async function () {
 
       let buyer = users[1]
       let couponID
@@ -668,7 +647,7 @@ async function assertSolidityRevert(run, expectedErr = null){
   return err;
 }
 
-/*
+
 //Convenience function, assumes instances is set with loaded contracts
 async function addToIdentityRegistrySimple(userIdentity) {
   await addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
@@ -705,4 +684,4 @@ async function addToIdentityRegistry(userIdentity, IdentityRegistryInstance, Sno
 
 }
 
-*/
+
