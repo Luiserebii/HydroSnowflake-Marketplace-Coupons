@@ -10,11 +10,11 @@ contract ReturnPolicies {
     //Struct
     mapping(uint => ReturnPolicy) public returnPolicies;
 
-    
+/*    
     constructor() public {
         _constructReturnPolicies();
     }
-
+*/
     function _constructReturnPolicies() internal {
         nextReturnPoliciesID = 1;
     }

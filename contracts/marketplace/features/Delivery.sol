@@ -9,11 +9,11 @@ contract Delivery {
 
     //Struct
     mapping(uint => string) public deliveryMethods;
-
+/*
     constructor() public {
         _constructDelivery();
     }
-
+*/
     function _constructDelivery() internal {
         nextDeliveryMethodsID = 1;
     }

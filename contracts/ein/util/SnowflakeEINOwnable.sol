@@ -16,10 +16,10 @@ contract SnowflakeEINOwnable is EINOwnable, SnowflakeReader {
     * @dev The SnowflakeEINOwnable constructor sets the original `owner` of the contract to the sender
     * account.
     */
-    constructor(address _snowflakeAddress) public {
+/*    constructor(address _snowflakeAddress) public {
         _constructSnowflakeEINOwnable(_snowflakeAddress);
     }
-
+*/
     function _constructSnowflakeEINOwnable(address _snowflakeAddress) internal {
         _constructEINOwnable(constructorEINOwnable(msg.sender)); 
         _constructSnowflakeReader(_snowflakeAddress);       

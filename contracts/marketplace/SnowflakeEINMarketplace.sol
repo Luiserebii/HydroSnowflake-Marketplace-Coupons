@@ -8,12 +8,12 @@ import "../interfaces/marketplace/features/coupon_distribution/CouponDistributio
 
 contract SnowflakeEINMarketplace is Marketplace, SnowflakeEINOwnable, SnowflakeEINMarketplaceInterface {
 
-
+/*
     constructor(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) public {
         _constructSnowflakeEINMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress, _snowflakeAddress);
     
     }    
-
+*/
     function _constructSnowflakeEINMarketplace(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress, address _snowflakeAddress) internal {
         _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress/*,_snowflakeAddress*/);
         _constructSnowflakeEINOwnable(_snowflakeAddress);

@@ -13,10 +13,10 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
     // Mapping from token ID to approved address
     mapping (uint256 => address) private _tokenApprovalsAddress;
 
-    constructor (address _snowflakeAddress) public {
+/*    constructor (address _snowflakeAddress) public {
         _constructAddressSnowflakeERC721(_snowflakeAddress);
     }
-
+*/
     function _constructAddressSnowflakeERC721(address _snowflakeAddress) internal {
         _constructSnowflakeERC721(_snowflakeAddress);
     }

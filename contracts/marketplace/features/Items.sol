@@ -24,11 +24,11 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
 
     //Mapping connecting ERC721 items to actual struct objects
     mapping(uint => Item) public itemListings;
-
+/*
     constructor(address _snowflakeAddress) public {
         _constructItems(_snowflakeAddress);
     }
-
+*/
     function _constructItems(address _snowflakeAddress) internal {
 
         _constructSnowflakeERC721(_snowflakeAddress);

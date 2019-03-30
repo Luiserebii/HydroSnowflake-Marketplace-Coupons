@@ -17,11 +17,11 @@ contract Marketplace is ItemTags, Delivery, ReturnPolicies, MarketplaceInterface
     // EIN => (couponID => bool)
     mapping(uint => mapping(uint => bool)) public userCoupons;
 
-
-    constructor(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress/*, address _snowflakeAddress*/) public { 
-        _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress/*, _snowflakeAddress*/);
+/*
+    constructor(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress) public { 
+        _constructMarketplace(paymentAddress, _CouponFeatureAddress, _ItemFeatureAddress);
     }
-
+*/
     function _constructMarketplace(address paymentAddress, address _CouponFeatureAddress, address _ItemFeatureAddress/*, address _snowflakeAddress*/) internal {
         //Constructing parent contracts
         _constructItemTags();

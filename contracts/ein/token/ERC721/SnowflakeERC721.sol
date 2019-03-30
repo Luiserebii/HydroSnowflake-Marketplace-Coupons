@@ -49,11 +49,11 @@ contract SnowflakeERC721 is ERC165, SnowflakeERC721Interface, SnowflakeReader {
      *     bytes4(keccak256('safeTransferFrom(address,address,uint256,bytes)'))
      *  =========================================== END OF EVAL
      */
-
+/*
     constructor (address _snowflakeAddress) public {
         _constructSnowflakeERC721(_snowflakeAddress);
     }
-
+*/
     function _constructSnowflakeERC721(address _snowflakeAddress) internal {
         _constructSnowflakeReader(_snowflakeAddress);
 

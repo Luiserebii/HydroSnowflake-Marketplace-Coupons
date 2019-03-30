@@ -34,18 +34,18 @@ ERC 721 ---> Coupon Interface ---> Coupon contract (w/ data + function implement
 */
 
 
-contract Coupons is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSnowflakeERC721Burnable, AddressSnowflakeERC721Mintable, CouponInterface {
+contract Coupons is SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSnowflakeERC721Burnable, AddressSnowflakeERC721Mintable, CouponInterface {
 
     //ID, starting at 1, connecting the mappings
     uint public nextAvailableCouponsID;
 
     //Mapping connecting ERC721 coupons to actual struct objects
     mapping(uint => Coupon) public availableCoupons;
-
+/*
     constructor(address _snowflakeAddress) public {
         _constructCoupons(_snowflakeAddress);
     }
-
+*/
     function _constructCoupons(address _snowflakeAddress) internal {
         //Constructor functions of inherited contracts
         _constructSnowflakeERC721Burnable(_snowflakeAddress);

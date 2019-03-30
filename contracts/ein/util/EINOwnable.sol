@@ -17,10 +17,10 @@ contract EINOwnable {
     * @dev The SnowflakeEINOwnable constructor sets the original `owner` of the contract to the sender
     * account.
     */
-    constructor(uint ein) public {
+/*    constructor(uint ein) public {
         _constructEINOwnable(ein);
     }
-
+*/
     function _constructEINOwnable(uint ein) internal {
         _ownerEIN = ein;
         //Since 0 likely represents someone's EIN, it can be confusing to specify 0, so commenting this out in the meantime

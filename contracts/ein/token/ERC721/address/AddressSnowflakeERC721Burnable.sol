@@ -8,10 +8,10 @@ import "./AddressSnowflakeERC721.sol";
  */
 contract AddressSnowflakeERC721Burnable is AddressSnowflakeERC721 {
 
-    constructor(address _snowflakeAddress) public {
+/*    constructor(address _snowflakeAddress) public {
         _constructAddressSnowflakeERC721Burnable(_snowflakeAddress);
     }
-  
+  */
     function _constructAddressSnowflakeERC721Burnable(address _snowflakeAddress) internal {
         _constructAddressSnowflakeERC721(_snowflakeAddress);
     }

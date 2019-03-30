@@ -10,11 +10,11 @@ contract ItemTags {
     //Struct
     mapping(uint => string) public itemTags;
 
-    
+/*    
     constructor() public {
         _constructItemTags();
     }
-
+*/
     function _constructItemTags() internal {
         nextItemTagsID = 1;
     }

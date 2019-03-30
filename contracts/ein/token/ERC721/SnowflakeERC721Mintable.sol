@@ -9,10 +9,10 @@ import "../../access/roles/SnowflakeMinterRole.sol";
  */
 contract SnowflakeERC721Mintable is SnowflakeERC721, SnowflakeMinterRole {
 
-    constructor (address _snowflakeAddress) public {
+/*    constructor (address _snowflakeAddress) public {
         _constructSnowflakeERC721Mintable(_snowflakeAddress);
     }
-
+*/
     function _constructSnowflakeERC721Mintable(address _snowflakeAddress) internal {
         _constructSnowflakeERC721(_snowflakeAddress);
         _constructSnowflakeMinterRole(_snowflakeAddress);

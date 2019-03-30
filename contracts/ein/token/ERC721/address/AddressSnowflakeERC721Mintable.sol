@@ -9,10 +9,10 @@ import "../../../../zeppelin/access/roles/MinterRole.sol";
  */
 contract AddressSnowflakeERC721Mintable is AddressSnowflakeERC721, MinterRole {
 
-    constructor (address _snowflakeAddress) public {
+/*    constructor (address _snowflakeAddress) public {
         _constructAddressSnowflakeERC721Mintable(_snowflakeAddress);
     }
-
+*/
     function _constructAddressSnowflakeERC721Mintable(address _snowflakeAddress) internal {
         _constructAddressSnowflakeERC721(_snowflakeAddress);
     }
