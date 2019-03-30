@@ -21,7 +21,7 @@ const enums = allEnums.CouponMarketPlaceResolverInterface;
 class MarketplaceAPI {
 
 
-  static async assertSolidityRevert(run, expectedErr = null) {
+  /*static*/ async assertSolidityRevert(run, expectedErr = null) {
     let err;
     try {
       await run();
@@ -43,12 +43,12 @@ class MarketplaceAPI {
 
   
   //Convenience function, assumes instances is set with loaded contracts
-  static async addToIdentityRegistrySimple(userIdentity) {
-    await addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
+  /*static*/ async addToIdentityRegistrySimple(userIdentity) {
+    await this.addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
   }
 
   //"Lower-level" convenience function
-  static async addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
+  /*static*/ async addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
 
     const timestamp = Math.round(new Date() / 1000) - 1
     const permissionString = web3.utils.soliditySha3(
@@ -86,7 +86,7 @@ class MarketplaceAPI {
   // Since the returned object contains a strange
   // mixture where values are represented as both
   // '1': __, '2': __, __:__, __:__ (as in, keys are shown alongside values, and numerical mapping to values; values are repeated)
-  static structIsEqual(intObj, retObj) {
+  /*static*/ structIsEqual(intObj, retObj) {
     intObj.forEach((key) => {
       assert.equal(intObj[key] == retObj);
     });

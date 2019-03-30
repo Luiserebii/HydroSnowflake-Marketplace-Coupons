@@ -1,7 +1,9 @@
-const common = require('../common.js')
-const MarketplaceAPI = require('./marketplace-api')
+const common = require('../common')
+const mapi = require('./marketplace-api')
+const MarketplaceAPI = new mapi()
 const TestData = require('./test-data')
-
+console.log(common)
+console.log(MarketplaceAPI)
 const { sign, verifyIdentity } = require('../utilities')
 const util = require('util')
 
@@ -103,7 +105,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     let seller = users[0]
 
     it('add seller identity to Identity Registry', async function () {
-      await addToIdentityRegistrySimple(seller);
+      await MarketplaceAPI.addToIdentityRegistrySimple(seller);
     })
 
 
