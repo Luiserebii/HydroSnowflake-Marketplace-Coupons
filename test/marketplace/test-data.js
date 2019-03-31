@@ -37,7 +37,7 @@ const TestData = {
       title: "Test Item",
       description: "An item you should probably buy",
       price: 8000,
-      delivery: [],
+      delivery: [1,2],
       tags: [],
       returnPolicy: 0
     },  

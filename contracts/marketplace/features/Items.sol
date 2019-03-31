@@ -76,6 +76,7 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
         return itemListings[id].price;
     }
 
+    //Arguably, these functions below could be refactored via enums, but probably overkill
 
     function getItemDelivery(uint id, uint index) public view returns (uint) { 
         return itemListings[id].delivery[index]; 
@@ -83,6 +84,14 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
 
     function getItemTag(uint id, uint index) public view returns (uint) {
         return itemListings[id].tags[index];
+    }
+
+    function getItemDeliveryLength(uint id) public view returns (uint) {
+        return itemListings[id].delivery.length;
+    }
+
+    function getItemTagsLength(uint id) public view returns (uint) {
+        return itemListings[id].tags.length;
     }
 
 

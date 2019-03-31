@@ -277,17 +277,30 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
         //console.log(itemLExisting)
         //Check over properties for equality:
-        assert.equal(newItemL.uuid, itemLExisting.uuid);
-        assert.equal(newItemL.quantity, itemLExisting.quantity);
-        assert.equal(newItemL.itemType, itemLExisting.itemType);
-        assert.equal(newItemL.status, itemLExisting.status);
-        assert.equal(newItemL.condition, itemLExisting.condition);
-        assert.equal(newItemL.title, itemLExisting.title);
-        assert.equal(newItemL.description, itemLExisting.description);
-        assert.equal(newItemL.price, itemLExisting.price);
-        assert.equal(newItemL.returnPolicy, itemLExisting.returnPolicy);
         //Note that this function will not encompass the delivery and tags arrs
         MarketplaceAPI.structIsEqual(newItemL, itemLExisting)
+        let deliveryLength = await instances.ItemFeature.getItemDeliveryLength.call(currID)
+        let deliveryArr;
+
+        if(deliveryLength != 0) {
+          for(let i = 0; i < deliveryLength; i++) {
+            deliveryArr.push(await instances.ItemFeature.getItemDelivery.call(currID, i));
+          }
+        }
+        console.log(deliveryArr)
+
+        /*
+            HOW TO PROCEED:
+               -Create functions to getLength of arrs in structs
+               -Perhaps minimize it by adding an enum to determine which length to get
+               -Test getting them in web3
+               -Create a function to iterate over these arrs (length - 1 until < length, something like this), convert to actual array
+               -compare arrays
+
+        */
+        
+
+
       })
 
       it.skip('can update', async function () {
