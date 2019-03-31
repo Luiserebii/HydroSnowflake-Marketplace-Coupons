@@ -82,7 +82,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
                 total = _applyCouponAmountOff(total, amountOff);
                 amountRefund = amountOff;
             }
-/*
+
             //In an event, let's push the transaction or something
             emit CouponProcessed(total, amountRefund, couponType, amountOff, expirationDate);
 
@@ -97,7 +97,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
       
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
             snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
-  */          
+            
         } else {
 
             //Send item to buyer
