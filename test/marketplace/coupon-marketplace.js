@@ -376,16 +376,17 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('can add', async function () {
 
-        acID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
+        acID = parseInt(await instances.CouponFeature.nextAvailableCouponsID.call(), 10)
         let newAC = Test.availableCoupons[0];
         //Add it
-        await instances.CouponMarketplaceResolver.addAvailableCoupon(
-          ...Object.values(newAC)
+        await instances.CouponFeature.addAvailableCoupon(
+          await instances.CouponFeature.ownerEIN.call(),
+          ...Object.values(newAC),
           {from: seller.address}
         );
 
         //Ensure ID has advanced
-        let postAdditionID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
+        let postAdditionID = parseInt(await instances.CouponFeature.nextAvailableCouponsID.call(), 10)
         assert.equal(acID + 1, postAdditionID)
 
         //Test for equality
@@ -397,9 +398,9 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let newAC = Test.avaliableCoupons[1];
  
         //Update
-        await instances.CouponMarketplaceResolver.updateAvailableCoupon(
+        await instances.CouponFeature.updateAvailableCoupon(
           acID,
-          ...Object.values(newAC)
+          ...Object.values(newAC),
          {from: seller.address}
         );
 
@@ -410,19 +411,12 @@ contract('Testing Coupon Marketplace', function (accounts) {
       it('can remove', async function () {
 
         //Delete
-        await instances.CouponMarketplaceResolver.deleteAvailableCoupon(acID, {from: seller.address});
+        await instances.CouponFeature.deleteAvailableCoupon(acID, {from: seller.address});
 
         //Grab
-        let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
+        let acExisting = await instances.CouponFeature.availableCoupons.call(acID);
 
         //Check for default/equality
-        assert.equal(0, acExisting.couponType);
-        assert.equal('', acExisting.title);
-        assert.equal('', acExisting.description);
-        assert.equal(0, acExisting.amountOff);
-        assert.equal(undefined, acExisting.itemsApplicable);
-        assert.equal(0, acExisting.expirationDate);
-
         assert.ok(await MarketplaceAPI.couponStructIsEqual(instances.CouponFeature, acID,
         {
           couponType: 0,

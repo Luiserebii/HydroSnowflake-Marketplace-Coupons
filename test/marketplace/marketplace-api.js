@@ -140,8 +140,8 @@ class MarketplaceAPI {
    }
 
   async couponStructIsEqual(Coupons, id, intObj) {
-    assert.ok(this.structIsEqual(intObj, await Coupons.avaliableCoupons.call(id)));
-    let itemsApplicable = await.this.getCouponItemsApplicable(Coupons, id);
+    assert.ok(this.structIsEqual(intObj, await Coupons.availableCoupons.call(id)));
+    let itemsApplicable = await this.getCouponItemsApplicable(Coupons, id);
     this.arrIsEqualBN(itemsApplicable, intObj.itemsApplicable);
     return true;
   }
