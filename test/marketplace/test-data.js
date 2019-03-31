@@ -73,7 +73,7 @@ const TestData = {
       title: '50 HYDRO Test Discount!' ,
       description: 'A small little discount for you to cherish for a while during its highly transient existence',
       amountOff: 50,
-      itemsApplicable: [], itemsApplicableExpected: undefined,
+      itemsApplicable: [],
       expirationDate: 1571312124
     }, 
     { 
@@ -81,7 +81,7 @@ const TestData = {
       title: '20% OFF Test Discount!' ,
       description: 'A HUGE LITTLE discount for you to cherish for a while during its highly transient existence',
       amountOff: 20,
-      itemsApplicable: [1,2,3], itemsApplicableExpected: [1,2,3],
+      itemsApplicable: [1,2,3],
       expirationDate: 1591312124
     }
   ]

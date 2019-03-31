@@ -109,9 +109,12 @@ class MarketplaceAPI {
    }
 
    async itemStructIsEqual(Items, id, intObj) {
+      //Compare the values we can read via a straight-forward call
       assert.ok(this.structIsEqual(intObj, await Items.itemListings.call(id)));
+      //Grab the struct arrays that aren't returned
       let delivery = await this.getItemDelivery(Items, id);
       let itemTags = await this.getItemTags(Items, id);
+      //As both are uints, we compare taking returned BN.js object into account
       this.arrIsEqualBN(delivery, intObj.delivery);
       this.arrIsEqualBN(itemTags, intObj.itemTags);
       return true;
@@ -124,7 +127,24 @@ class MarketplaceAPI {
     ============
   */
 
+   async getCouponItemsApplicable(Coupons, id) {
+     let length = await Coupons.getCouponItemsApplicableLength.call(id);
+     let arr = [];
 
+     if(length != 0) {
+       for(let i = 0; i < length; i++) {
+         arr.push(await Coupons.getCouponItemApplicable.call(id, i));
+       }
+     }
+     return arr;
+   }
+
+  async couponStructIsEqual(Coupons, id, intObj) {
+    assert.ok(this.structIsEqual(intObj, await Coupons.avaliableCoupons.call(id)));
+    let itemsApplicable = await.this.getCouponItemsApplicable(Coupons, id);
+    this.arrIsEqualBN(itemsApplicable, intObj.itemsApplicable);
+    return true;
+  }
 
 
   // Idea is to provide a nice function to determine equality
