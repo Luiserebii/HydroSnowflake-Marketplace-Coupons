@@ -269,6 +269,9 @@ contract('Testing Coupon Marketplace', function (accounts) {
           {from: seller.address}
         )
 
+        console.log("ASS")
+        console.log(util.inspect(newItemL))
+
         //Ensure ID has advanced
         let currID = await instances.ItemFeature.nextItemListingsID.call()
         assert.equal(itemLID + 1, currID)
@@ -279,12 +282,14 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Check over properties for equality:
         //Note that this function will not encompass the delivery and tags arrs
         MarketplaceAPI.structIsEqual(newItemL, itemLExisting)
-        let deliveryLength = await instances.ItemFeature.getItemDeliveryLength.call(currID)
-        let deliveryArr;
+        let deliveryLength = await instances.ItemFeature.getItemDeliveryLength.call(itemLID)
+        console.log("DELIVERY LENGTH:  " + deliveryLength)
+        let deliveryArr = [];
 
         if(deliveryLength != 0) {
           for(let i = 0; i < deliveryLength; i++) {
-            deliveryArr.push(await instances.ItemFeature.getItemDelivery.call(currID, i));
+            deliveryArr.push(await instances.ItemFeature.getItemDelivery.call(itemLID, i));
+          console.log("i is: " + i);
           }
         }
         console.log(deliveryArr)
