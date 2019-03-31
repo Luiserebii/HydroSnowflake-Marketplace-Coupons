@@ -78,6 +78,31 @@ class MarketplaceAPI {
 
   }
 
+  /*
+    ==========
+      Items
+    ==========
+  */
+
+   async getItemDelivery(Items, id) {
+     let deliveryLength = await Items.getItemDeliveryLength.call(id)
+     let deliveryArr = [];
+
+     if(deliveryLength != 0) {
+       for(let i = 0; i < deliveryLength; i++) {
+         deliveryArr.push(await Items.getItemDelivery.call(id, i));
+       }
+     }
+     return deliveryArr;
+   }
+
+
+  /*
+    ============
+      Coupons
+    ============
+  */
+
 
 
 
