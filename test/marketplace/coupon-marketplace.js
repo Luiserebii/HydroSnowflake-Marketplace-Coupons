@@ -395,7 +395,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('can update', async function () {
 
-        let newAC = Test.avaliableCoupons[1];
+        let newAC = Test.availableCoupons[1];
  
         //Update
         await instances.CouponFeature.updateAvailableCoupon(
