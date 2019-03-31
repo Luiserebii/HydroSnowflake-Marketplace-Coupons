@@ -274,109 +274,55 @@ contract('Testing Coupon Marketplace', function (accounts) {
         assert.equal(itemLID + 1, currID)
 
         //Ensure it exists 
-        let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
+        assert.ok(await instances.ItemFeature.itemListings.call(itemLID));
+
         //Check over properties for equality:
-        //Note that this function will not encompass the delivery and tags arrs
-        MarketplaceAPI.structIsEqual(newItemL, itemLExisting)
-
-        //console.log("Testing API")
-
-        var testBN = new BN(2)
-        console.log("YOUR TYPE IS  " + typeof testBN)
-
-        await MarketplaceAPI.itemStructIsEqual(instances.ItemFeature, itemLID, newItemL);
-
-       
-
-        /*
-            HOW TO PROCEED:
-               -Create functions to getLength of arrs in structs
-               -Perhaps minimize it by adding an enum to determine which length to get
-               -Test getting them in web3
-               -Create a function to iterate over these arrs (length - 1 until < length, something like this), convert to actual array
-               -compare arrays
-
-        */
-        
+        assert.ok(await MarketplaceAPI.itemStructIsEqual(instances.ItemFeature, itemLID, newItemL));
 
 
       })
 
-      it.skip('can update', async function () {
+      it('can update', async function () {
 
-        let newItemL = {
-          uuid: 7329140802,
-          quantity: 10,
-          itemType: enums.ItemType.DIGITAL,
-          status: enums.ItemStatus.ACTIVE,
-          condition: enums.ItemCondition.NEW,
-          title: "Test IMPROVED Item",
-          description: "An item you should ***DEFINITELY*** buy",
-          price: 10000,
-          delivery: [], deliveryExpected: undefined,
-          tags: [], tagsExpected: undefined,
-          returnPolicy: 1
-        }
-
+        let newItemL = Test.itemListings[1]; 
         //Update
         await instances.ItemFeature.updateItemListing(
           itemLID,
-          newItemL.uuid,
-          newItemL.quantity,
-          newItemL.itemType,
-          newItemL.status,
-          newItemL.condition,
-          newItemL.title,
-          newItemL.description,
-          newItemL.price,
-          newItemL.delivery,
-          newItemL.tags,
-          newItemL.returnPolicy,
+          ...Object.values(newItemL), 
           {from: seller.address}
         )
 
-        //Get current
-        let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
-
         //Check over properties for equality
-        assert.equal(newItemL.uuid, itemLExisting.uuid);
-        assert.equal(newItemL.quantity, itemLExisting.quantity);
-        assert.equal(newItemL.itemType, itemLExisting.itemType);
-        assert.equal(newItemL.status, itemLExisting.status);
-        assert.equal(newItemL.condition, itemLExisting.condition);
-        assert.equal(newItemL.title, itemLExisting.title);
-        assert.equal(newItemL.description, itemLExisting.description);
-        assert.equal(newItemL.price, itemLExisting.price);
-        assert.equal(newItemL.deliveryExpected, itemLExisting.delivery);
-        assert.equal(newItemL.tagsExpected, itemLExisting.tags);
-        assert.equal(newItemL.returnPolicy, itemLExisting.returnPolicy);
-
-
+        assert.ok(await MarketplaceAPI.itemStructIsEqual(instances.ItemFeature, itemLID, newItemL))
       })
-      it.skip('can remove', async function () {
+
+      it('can remove', async function () {
 
         //Delete
         await instances.ItemFeature.deleteItemListing(itemLID)
 
-        //Grab
-        let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
+        //Check if empty
+        //TODO: Factor out empty data sets like this elsewhere
+        assert.ok(await MarketplaceAPI.itemStructIsEqual(instances.ItemFeature, itemLID,
+        {
+          uuid: 0,
+          quantity: 0,
+          itemType: 0,
+          status: 0,
+          condition: 0,
+          title: "",
+          description: "",
+          price: 0,
+          delivery: undefined,
+          tags: undefined,
+          returnPolicy: 0
+        }
+        ))
 
-        //Check
-        assert.equal(0, itemLExisting.uuid);
-        assert.equal(0, itemLExisting.quantity);
-        assert.equal(0, itemLExisting.itemType);
-        assert.equal(0, itemLExisting.status);
-        assert.equal(0, itemLExisting.condition);
-        assert.equal('', itemLExisting.title);
-        assert.equal('', itemLExisting.description);
-        assert.equal(0, itemLExisting.price);
-        assert.equal(undefined, itemLExisting.delivery);
-        assert.equal(undefined, itemLExisting.tags);
-        assert.equal(0, itemLExisting.returnPolicy);
+
 
       })
-      
-      
+            
     })
     describe('ReturnPolicies', async function () {
       let returnPolicyID;

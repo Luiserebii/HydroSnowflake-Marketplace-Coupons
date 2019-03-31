@@ -113,7 +113,8 @@ class MarketplaceAPI {
       let delivery = await this.getItemDelivery(Items, id);
       let itemTags = await this.getItemTags(Items, id);
       this.arrIsEqualBN(delivery, intObj.delivery);
-      this.arrIsEqualBN(itemTags, intObj.itemTags)
+      this.arrIsEqualBN(itemTags, intObj.itemTags);
+      return true;
    }
   
 
@@ -145,8 +146,8 @@ class MarketplaceAPI {
 
 
   arrIsEqualBN(a, b) {
-    console.log("THIS IS A: " + a)
-    console.log("THIS IS B: " + b)
+    //console.log("THIS IS A: " + a)
+    //console.log("THIS IS B: " + b)
 
     if(a != undefined && b != undefined) {
       assert.equal(a.length, b.length)
@@ -168,10 +169,8 @@ class MarketplaceAPI {
         //Logically both must be undefined, so this should result in true
         assert.equal(a, b);
       }
-      
+      return true; 
     }
-
-
   }
 
 
