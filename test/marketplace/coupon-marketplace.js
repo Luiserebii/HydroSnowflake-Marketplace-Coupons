@@ -275,13 +275,13 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //Ensure it exists 
         let itemLExisting = await instances.ItemFeature.itemListings.call(itemLID);
-        //console.log(itemLExisting)
         //Check over properties for equality:
         //Note that this function will not encompass the delivery and tags arrs
         MarketplaceAPI.structIsEqual(newItemL, itemLExisting)
-        console.log("Testing API")
-        console.log(await MarketplaceAPI.getItemDelivery(instances.ItemFeature, itemLID))
 
+        //console.log("Testing API")
+
+        await MarketplaceAPI.itemStructIsEqual(instances.ItemFeature, itemLID, newItemL);
 
         /*
             HOW TO PROCEED:

@@ -96,6 +96,26 @@ class MarketplaceAPI {
      return deliveryArr;
    }
 
+    async getItemTags(Items, id) {
+     let tagsLength = await Items.getItemTagsLength.call(id)
+     let tagsArr = [];
+
+     if(tagsLength != 0) {
+       for(let i = 0; i < tagsLength; i++) {
+         deliveryArr.push(await Items.getItemTag.call(id, i));
+       }
+     }
+     return tagsArr;
+   }
+
+   async itemStructIsEqual(Items, id, intObj) {
+      assert.ok(this.structIsEqual(intObj, await Items.itemListings.call(id)));
+      let delivery = await this.getItemDelivery(Items, id);
+      let itemTags = await this.getItemTags(Items, id);
+      assert.deepEqual(delivery, intObj.delivery);
+      assert.deepEqual(itemTags, intObj.itemTags)
+   }
+  
 
   /*
     ============
@@ -119,6 +139,7 @@ class MarketplaceAPI {
         assert.equal(intObj[key], retObj[key], `Key: ${key} used to compare values (Internal Obj) ${intObj[key]} and (Returned Obj) ${retObj[key]} `);
       }
     }
+    return true;
   }
 
   /*
