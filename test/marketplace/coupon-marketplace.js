@@ -371,27 +371,16 @@ contract('Testing Coupon Marketplace', function (accounts) {
       
       
     })
-    describe.skip('AvailableCoupons', async function () {
+    describe('AvailableCoupons', async function () {
       let acID;
 
       it('can add', async function () {
+
         acID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
-        let newAC = { 
-          couponType: enums.CouponType.AMOUNT_OFF,
-          title: '50 HYDRO Test Discount!' ,
-          description: 'A small little discount for you to cherish for a while during its highly transient existence',
-          amountOff: 50,
-          itemsApplicable: [], itemsApplicableExpected: undefined,
-          expirationDate: 1571312124
-        }
+        let newAC = Test.availableCoupons[0];
         //Add it
         await instances.CouponMarketplaceResolver.addAvailableCoupon(
-          newAC.couponType,
-          newAC.title,
-          newAC.description,
-          newAC.amountOff,
-          newAC.itemsApplicable,
-          newAC.expirationDate,
+          ...Object.values(newAC)
           {from: seller.address}
         );
 
@@ -399,61 +388,23 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let postAdditionID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
         assert.equal(acID + 1, postAdditionID)
 
-        //Ensure it exists
-        let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
-
-        //Check over vals
-        //TODO: I wonder if it is a good idea to place these property titles into an array and sort of do a template literal loop magic here...? Hmm...
-        assert.equal(newAC.couponType, acExisting.couponType);
-        assert.equal(newAC.title, acExisting.title);
-        assert.equal(newAC.description, acExisting.description);
-        assert.equal(newAC.amountOff, acExisting.amountOff);
-        /*=======
-           NOTE:
-          =======
-
-          A blank input array will work in passing [], however when being read, will returned undefined; therefore, we cannot simply check it against our initially set []. I added a little "expected" value set to undefined to keep the syntax/design consistent, but this exception is incredibly important to note, took me a while to figure out!
-
-        */
-        assert.equal(newAC.itemsApplicableExpected, acExisting.itemsApplicable);
-        assert.equal(newAC.expirationDate, acExisting.expirationDate);
+        //Test for equality
+        assert.ok(await MarketplaceAPI.couponStructIsEqual(instances.CouponFeature, acID, newAC));
       })
 
       it('can update', async function () {
 
-        let newAC = { 
-          couponType: enums.CouponType.PERCENTAGE_OFF,
-          title: '20% OFF Test Discount!' ,
-          description: 'A HUGE LITTLE discount for you to cherish for a while during its highly transient existence',
-          amountOff: 20,
-          itemsApplicable: [1,2,3], itemsApplicableExpected: [1,2,3],
-          expirationDate: 1591312124
-        }
-
+        let newAC = Test.avaliableCoupons[1];
+ 
         //Update
         await instances.CouponMarketplaceResolver.updateAvailableCoupon(
           acID,
-          newAC.couponType,
-          newAC.title,
-          newAC.description,
-          newAC.amountOff,
-          newAC.itemsApplicable,
-          newAC.expirationDate,
-          {from: seller.address}
+          ...Object.values(newAC)
+         {from: seller.address}
         );
 
-        //Get current
-        let acExisting = await instances.CouponMarketplaceResolver.availableCoupons.call(acID);
-
-//console.log(util.inspect(acExisting))
-
         //Check over properties for equality
-        assert.equal(newAC.couponType, acExisting.couponType);
-        assert.equal(newAC.title, acExisting.title);
-        assert.equal(newAC.description, acExisting.description);
-        assert.equal(newAC.amountOff, acExisting.amountOff);
-        assert.equal(newAC.itemsApplicableExpected, acExisting.itemsApplicable);
-        assert.equal(newAC.expirationDate, acExisting.expirationDate);
+        assert.ok(await MarketplaceAPI.couponStructIsEqual(instances.CouponFeature, acID, newAC));
  
       })
       it('can remove', async function () {
@@ -471,6 +422,18 @@ contract('Testing Coupon Marketplace', function (accounts) {
         assert.equal(0, acExisting.amountOff);
         assert.equal(undefined, acExisting.itemsApplicable);
         assert.equal(0, acExisting.expirationDate);
+
+        assert.ok(await MarketplaceAPI.couponStructIsEqual(instances.CouponFeature, acID,
+        {
+          couponType: 0,
+          title: '' ,
+          description: '',
+          amountOff: 0,
+          itemsApplicable: undefined,
+          expirationDate: 0
+        }
+        ))
+
  
       })
             
