@@ -112,8 +112,8 @@ class MarketplaceAPI {
       assert.ok(this.structIsEqual(intObj, await Items.itemListings.call(id)));
       let delivery = await this.getItemDelivery(Items, id);
       let itemTags = await this.getItemTags(Items, id);
-      assert.deepEqual(delivery, intObj.delivery);
-      assert.deepEqual(itemTags, intObj.itemTags)
+      this.arrIsEqualBN(delivery, intObj.delivery);
+      this.arrIsEqualBN(itemTags, intObj.itemTags)
    }
   
 
@@ -132,7 +132,8 @@ class MarketplaceAPI {
   // mixture where values are represented as both
   // '1': __, '2': __, __:__, __:__ (as in, keys are shown alongside values, and numerical mapping to values; values are repeated)
   //[] values are ignored, since arrays will not appear in returned structs
-  /*static*/ structIsEqual(intObj, retObj) {
+
+  structIsEqual(intObj, retObj) {
     for(let key in intObj) {
       //[] == [] is false, so we try this as a hack workaround
       if(typeof intObj[key] != "object"){
@@ -141,6 +142,38 @@ class MarketplaceAPI {
     }
     return true;
   }
+
+
+  arrIsEqualBN(a, b) {
+    console.log("THIS IS A: " + a)
+    console.log("THIS IS B: " + b)
+
+    if(a != undefined && b != undefined) {
+      assert.equal(a.length, b.length)
+      for(let i = 0; i < a.length; i++) {
+        let elementA, elementB
+        //"Cast" to BN
+        typeof a[i] != "object" ? elementA = new BN(a[i], 10) : elementA = a[i]
+        typeof b[i] != "object" ? elementB = new BN(b[i], 10) : elementB = b[i]
+        //Use BN.js .eq function to test for equality
+        assert.ok(elementA.eq(elementB))
+      }
+      return true;
+    } else {
+      if(typeof a != undefined) {
+        assert.equal(a.length, 0) 
+      } else if(typeof b != undefined) {
+        assert.equal(b.length, 0)
+      } else {
+        //Logically both must be undefined, so this should result in true
+        assert.equal(a, b);
+      }
+      
+    }
+
+
+  }
+
 
   /*
     =========================

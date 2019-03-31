@@ -281,7 +281,12 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //console.log("Testing API")
 
+        var testBN = new BN(2)
+        console.log("YOUR TYPE IS  " + typeof testBN)
+
         await MarketplaceAPI.itemStructIsEqual(instances.ItemFeature, itemLID, newItemL);
+
+       
 
         /*
             HOW TO PROCEED:
