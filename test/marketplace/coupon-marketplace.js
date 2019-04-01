@@ -433,12 +433,12 @@ contract('Testing Coupon Marketplace', function (accounts) {
             
     })
 
-    describe.skip('Purchase Item', async function () {
+    describe('Purchase Item', async function () {
 
       let buyer = users[1]
 
       it('add buyer to IdentityRegistry', async function () {
-        await addToIdentityRegistrySimple(buyer)
+        await MarketplaceAPI.addToIdentityRegistry(buyer, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
       })
 
       it('add allowance for Snowflake address', async function () {
@@ -458,34 +458,11 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
 
       it('add item', async function () {
-        /* Perhaps try to refactor the things below into some sort of object, and the .addItemListing below into some sort of Factory pattern so we just need to pass the object? Shorten the code, mainly*/
-        let newItemL = {
-          uuid: 7329140802,
-          quantity: 1,
-          itemType: enums.ItemType.DIGITAL,
-          status: enums.ItemStatus.INACTIVE,
-          condition: enums.ItemCondition.GOOD,
-          title: "Test Item",
-          description: "An item you should probably buy",
-          price: 80,
-          delivery: [], deliveryExpected: undefined,
-          tags: [], tagsExpected: undefined,
-          returnPolicy: 0
-        }
-
+        let newItemL = Test.itemListings[0]; 
         //Add it
-        await instances.CouponMarketplaceResolver.addItemListing(
-          newItemL.uuid,
-          newItemL.quantity,
-          newItemL.itemType,
-          newItemL.status,
-          newItemL.condition,
-          newItemL.title,
-          newItemL.description,
-          newItemL.price,
-          newItemL.delivery,
-          newItemL.tags,
-          newItemL.returnPolicy,
+        await instances.ItemFeature.addItemListing(
+          await instances.ItemFeature.ownerEIN.call(),
+          ...Object.values(newItemL),   
           {from: seller.address}
         )
       })
