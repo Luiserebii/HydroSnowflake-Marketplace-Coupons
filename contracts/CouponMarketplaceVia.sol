@@ -69,22 +69,9 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             //TODO: Break this out into its own function thingie
 
             //Get coupon info from our coupon feature contract
-               //Personal note; supposedly, these ()s are needed. Wait, is this always true when calling outside of contract? I swear that I've accessed some directly...?
             CouponFeature couponFeature = CouponFeature(mktResolver.CouponFeatureAddress());
 
-            (CouponInterface.CouponType couponType, uint256 amountOff, uint expirationDate) = couponFeature.getCouponSimple(couponID); 
-
-            //Ensure coupon is not expired
-            require(now < expirationDate, "Coupon is expired!");
-
-            //If couponType is amountOff...
-            if(couponType == CouponInterface.CouponType.AMOUNT_OFF){
-                total = _applyCouponAmountOff(total, amountOff);
-                amountRefund = amountOff;
-            }
-
-            //In an event, let's push the transaction or something
-            emit CouponProcessed(total, amountRefund, couponType, amountOff, expirationDate);
+            (total, amountRefund) = _processCoupon(couponFeature, couponID);
 
             //Send coupon to burner address
             couponFeature.burnAddress(couponID);
@@ -107,7 +94,33 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             snowflake.transferSnowflakeBalance(einSeller, total);
 
         }
-   }
+    }
+
+    function _processCoupon(CouponFeature couponFeature, uint256 couponID) internal returns (uint256 /*total*/, uint256 /*amountRefund*/) {
+
+        uint256 total;
+        uint256 amountRefund;
+        
+        //Get coupon info from our coupon feature contract
+        //CouponFeature couponFeature = CouponFeature(mktResolver.CouponFeatureAddress());
+
+        (CouponInterface.CouponType couponType, uint256 amountOff, uint expirationDate) = couponFeature.getCouponSimple(couponID);
+
+        //Ensure coupon is not expired
+        require(now < expirationDate, "Coupon is expired!");
+
+        //If couponType is amountOff...
+        if(couponType == CouponInterface.CouponType.AMOUNT_OFF){
+            total = _applyCouponAmountOff(total, amountOff);
+            amountRefund = amountOff;
+        }
+
+        //In an event, let's push the transaction or something
+        emit CouponProcessed(total, amountRefund, couponType, amountOff, expirationDate);
+
+        return (total, amountRefund);
+    }
+
 
     function _applyCouponAmountOff(uint256 total, uint256 amountOff) pure private returns (uint256) {
         require(total >= amountOff, "Coupon amount is higher than total");
