@@ -442,33 +442,43 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
 
       it('add allowance for Snowflake address', async function () {
-        //approveAndCall(address _spender, uint256 _value, bytes memory _extraData)
+
         let allowance = 750;
 
         //Test if empty
-        let resolverAmount = await instances.Snowflake.resolverAllowances(buyer.ein, instances.CouponMarketplaceResolver.address)
-//        assert.ok(resolverAmount.eq(0))
-        console.log(resolverAmount)
+        let snowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
+        assert.ok(snowflakeDepositAmount.eq(new BN(0)))
 
         //Add the allowance
+        //  approveAndCall(address _spender, uint256 _value, bytes memory _extraData)
         await instances.HydroToken.approveAndCall(instances.Snowflake.address, allowance, "0x", {from: buyer.address})
 
-        let currSnowflakeDepositAmountBuyer = await instances.Snowflake.deposits(buyer.ein);
-        console.log(currSnowflakeDepositAmountBuyer)
-        //Test to see if allowance is there
-//        assert.ok(currSnowflakeDepositAmountBuyer.eq(new BN(allowance)))
+        //Test to see if allowance is there 
+        let snowflakeDepositAmountNew = await instances.Snowflake.deposits(buyer.ein);
+        assert.ok(snowflakeDepositAmountNew.eq(new BN(allowance)))
 
      })
 
       it('add CouponMarketplaceResolver as resolver for buyer', async function () {
+
+        let resolverAllowance = 200;
+
+        //Check that is empty
+        let currResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
+        assert.ok(currResolverAllowance.eq(new BN(0)))
+
         await instances.Snowflake.addResolver(
           instances.CouponMarketplaceResolver.address,
           true,
-          200,
+          resolverAllowance,
           "0x00aaff", //arbitrary bytes here
           {from: buyer.address}
         )
- 
+
+        let newResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
+        assert.ok(newResolverAllowance.eq(new BN(resolverAllowance)))
+
+
       })
 
       it('add item', async function () {
