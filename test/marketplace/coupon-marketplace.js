@@ -443,7 +443,21 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('add allowance for Snowflake address', async function () {
         //approveAndCall(address _spender, uint256 _value, bytes memory _extraData)
-        await instances.HydroToken.approveAndCall(instances.Snowflake.address, 750, "0x", {from: buyer.address})
+        let allowance = 750;
+
+        //Test if empty
+        let resolverAmount = await instances.Snowflake.resolverAllowances(buyer.ein, instances.CouponMarketplaceResolver.address)
+//        assert.ok(resolverAmount.eq(0))
+        console.log(resolverAmount)
+
+        //Add the allowance
+        await instances.HydroToken.approveAndCall(instances.Snowflake.address, allowance, "0x", {from: buyer.address})
+
+        let currSnowflakeDepositAmountBuyer = await instances.Snowflake.deposits(buyer.ein);
+        console.log(currSnowflakeDepositAmountBuyer)
+        //Test to see if allowance is there
+//        assert.ok(currSnowflakeDepositAmountBuyer.eq(new BN(allowance)))
+
      })
 
       it('add CouponMarketplaceResolver as resolver for buyer', async function () {
@@ -469,8 +483,41 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('buyer purchases item (no coupon)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
+        let currBal = await instances.HydroToken.balanceOf(buyer.address);
+
+        let owner = await instances.ItemFeature.ownerOf(2);
+        let currSnowflakeDepositAmountBuyer = await instances.Snowflake.deposits(buyer.ein);
+        let currSnowflakeResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
+
+
+console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
+console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
+console.log("THE EIN OF THE SELLER IS: " + seller.ein)
+console.log("THE DEPOSIT AMOUNT FOR THE BUYER: " + currSnowflakeDepositAmountBuyer)
+console.log("THE RESOLVER ALLOWANCE FOR THE BUYER: " + currSnowflakeResolverAllowance)
+
+
+
         let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, 0, {from: buyer.address})
 //        console.log(util.inspect(res.receipt.logs))
+console.log("\n\nPOST-PURCHASE: \n\n\n")
+        //Assert our ownership of the item
+        owner = await instances.ItemFeature.ownerOf(2);
+        console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
+        console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
+        console.log("THE EIN OF THE SELLER IS: " + seller.ein)
+
+        //Test for amount spent given
+        console.log("AMOUNT I HAD: " + currBal);
+        console.log("AMOUNT ITEM: " + Test.itemListings[0].price)
+
+        console.log("AMOUNT POST-PURCHASE: " + await instances.HydroToken.balanceOf(buyer.address))
+        
+        console.log("THE DEPOSIT AMOUNT FOR THE BUYER: " + await instances.Snowflake.deposits(buyer.ein))
+        console.log("THE RESOLVER ALLOWANCE FOR THE BUYER: " + await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address))
+
+    
+
       })
 
     })

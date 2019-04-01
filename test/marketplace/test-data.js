@@ -36,7 +36,7 @@ const TestData = {
       condition: enums.ItemCondition.GOOD,
       title: "Test Item",
       description: "An item you should probably buy",
-      price: 8000,
+      price: 80,
       delivery: [1,2],
       tags: [],
       returnPolicy: 0
@@ -49,7 +49,7 @@ const TestData = {
       condition: enums.ItemCondition.NEW,
       title: "Test IMPROVED Item",
       description: "An item you should ***DEFINITELY*** buy",
-      price: 10000,
+      price: 100,
       delivery: [],
       tags: [],
       returnPolicy: 1
