@@ -44,7 +44,10 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
         uint /* amount */,
         bytes memory snowflakeCallBytes 
     ) public senderIsSnowflake {
-        address(this).call(snowflakeCallBytes);
+
+
+        (bool success, bytes memory returnData) = address(this).call(snowflakeCallBytes);
+        require(success, ".call() to snowflakeCallBytes failed!");
     }
 
 
