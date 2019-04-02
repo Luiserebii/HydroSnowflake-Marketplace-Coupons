@@ -60,21 +60,18 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
     //Name of this function is perhaps a little misleading, since amount has already been transferred, we're just calcing coupon here
     //TODO: Should we have the NeoCouponMarketplaceResolverAddress exist, or just take the address resolver passed here? Completely forgot we were give this, and now this param is being unused
     //***NOTE***: Removed modifier for testing purposes; very dangerous!!!
-    function processTransaction(/*address resolver, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) public /*senderIsSnowflake*/ returns (bool) {
-//require(false, 'WE HIT PROCESSTRANSACTION!!!');
+    function processTransaction(/*address resolver, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) internal /*senderIsSnowflake*/ returns (bool) {
+
         //Initialize NeoCouponMarketplaceResolverAddress
         CouponMarketplaceResolver mktResolver = CouponMarketplaceResolver(CouponMarketplaceResolverAddress);
-//require(false, 'WE HIT FLAG3');
  
         ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress());
-//require(false, 'WE HIT FLAGA');
  
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
 
         //Declare our total
         uint total = amount;
-//require(false, 'WE HIT FLAGB');
  
         //Since couponID == 0 means we do not have a coupon, we check this first
         if(couponID != 0){
@@ -98,13 +95,10 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
       
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
             snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
-            //require(false, 'FLAG 1');
         } else {
-//require(false, 'WE HIT FLAGB1');
 
             //Send item to buyer
             itemFeature.transferFromAddress(einSeller, einBuyer, itemID);
-//require(false, 'WE HIT FLAGB2');
 
             //Send our total charged to buyer addr via snowflake
 //            snowflake.transferSnowflakeBalance(einSeller, total);
@@ -114,8 +108,6 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             hydro.transfer(mktResolver.paymentAddress(), total);
             
             //Actually, I think the Resolver has HYDRO sent to address directly to this contract, so it may just be a regular send, check later
-
-//            require(false, 'FLAG 2');
 
         }
     }
