@@ -151,6 +151,12 @@ contract('Testing Coupon Marketplace', function (accounts) {
       assert.ok(instances.CouponMarketplaceResolver)
     })
 
+    it('set CouponMarketplaceResolver address within Coupon Marketplace Via', async function () {
+      assert.ok(instances.CouponMarketplaceVia.setCouponMarketplaceResolverAddress(instances.CouponMarketplaceResolver.address, {from: seller.address }));
+
+    })
+
+
     it('deploy Coupon Distribution contract', async function () {
       instances.CouponDistribution = await CouponDistribution.new(
         instances.CouponMarketplaceResolver.address,

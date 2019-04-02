@@ -60,17 +60,21 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
     //TODO: Should we have the NeoCouponMarketplaceResolverAddress exist, or just take the address resolver passed here? Completely forgot we were give this, and now this param is being unused
     //***NOTE***: Removed modifier for testing purposes; very dangerous!!!
     function processTransaction(/*address resolver, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) public /*senderIsSnowflake*/ returns (bool) {
-require(false, 'WE HIT PROCESSTRANSACTION!!!');
+//require(false, 'WE HIT PROCESSTRANSACTION!!!');
         //Initialize NeoCouponMarketplaceResolverAddress
         CouponMarketplaceResolver mktResolver = CouponMarketplaceResolver(CouponMarketplaceResolverAddress);
+//require(false, 'WE HIT FLAG3');
+ 
         ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress());
-
+require(false, 'WE HIT FLAGA');
+ 
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
 
         //Declare our total
         uint total = amount;
-
+require(false, 'WE HIT FLAGB');
+ 
         //Since couponID == 0 means we do not have a coupon, we check this first
         if(couponID != 0){
 
