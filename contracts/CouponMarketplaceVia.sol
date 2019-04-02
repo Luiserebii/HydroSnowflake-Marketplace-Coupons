@@ -66,14 +66,14 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 //require(false, 'WE HIT FLAG3');
  
         ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress());
-require(false, 'WE HIT FLAGA');
+//require(false, 'WE HIT FLAGA');
  
         //Initialize Snowflake
         SnowflakeInterface snowflake = SnowflakeInterface(snowflakeAddress);
 
         //Declare our total
         uint total = amount;
-require(false, 'WE HIT FLAGB');
+//require(false, 'WE HIT FLAGB');
  
         //Since couponID == 0 means we do not have a coupon, we check this first
         if(couponID != 0){
@@ -99,13 +99,18 @@ require(false, 'WE HIT FLAGB');
             snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
             //require(false, 'FLAG 1');
         } else {
+//require(false, 'WE HIT FLAGB1');
 
             //Send item to buyer
             itemFeature.transferFromAddress(einSeller, einBuyer, itemID);
+//require(false, 'WE HIT FLAGB2');
 
             //Send our total charged to buyer addr via snowflake
             snowflake.transferSnowflakeBalance(einSeller, total);
-            //require(false, 'FLAG 2');
+             
+            //Actually, I think the Resolver has HYDRO sent to address directly to this contract, so it may just be a regular send, check later
+
+            require(false, 'FLAG 2');
 
         }
     }
