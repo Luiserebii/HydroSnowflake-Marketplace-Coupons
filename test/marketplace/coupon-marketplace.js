@@ -449,6 +449,10 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let snowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
         assert.ok(snowflakeDepositAmount.eq(new BN(0)))
 
+        //Keep track of our balance beforehand   
+        let currBal = await instances.HydroToken.balanceOf(buyer.address);
+
+
         //Add the allowance
         //  approveAndCall(address _spender, uint256 _value, bytes memory _extraData)
         await instances.HydroToken.approveAndCall(instances.Snowflake.address, allowance, "0x", {from: buyer.address})
@@ -456,6 +460,10 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Test to see if allowance is there 
         let snowflakeDepositAmountNew = await instances.Snowflake.deposits(buyer.ein);
         assert.ok(snowflakeDepositAmountNew.eq(new BN(allowance)))
+
+        //Check to see amount of HYDRO removed from our account
+        let newBal = await instances.HydroToken.balanceOf(buyer.address);
+        assert.ok((currBal.sub(newBal)).eq(new BN(allowance)))
 
      })
 
@@ -467,6 +475,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let currResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
         assert.ok(currResolverAllowance.eq(new BN(0)))
 
+        //Add resolver along with allowance
         await instances.Snowflake.addResolver(
           instances.CouponMarketplaceResolver.address,
           true,
@@ -475,6 +484,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
           {from: buyer.address}
         )
 
+        //Test resolver allowance is added
         let newResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
         assert.ok(newResolverAllowance.eq(new BN(resolverAllowance)))
 
@@ -493,40 +503,41 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       it('buyer purchases item (no coupon)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
-        let currBal = await instances.HydroToken.balanceOf(buyer.address);
 
-        let owner = await instances.ItemFeature.ownerOf(2);
-        let currSnowflakeDepositAmountBuyer = await instances.Snowflake.deposits(buyer.ein);
-        let currSnowflakeResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
+        let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
+        let owner = await instances.ItemFeature.ownerOf(itemID);
+        console.log("OURID:   " + itemID)
+        let itemPrice = Test.itemListings[0].price;
+
+        let currSnowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
+        let currResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
 
 
 console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
 console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
 console.log("THE EIN OF THE SELLER IS: " + seller.ein)
-console.log("THE DEPOSIT AMOUNT FOR THE BUYER: " + currSnowflakeDepositAmountBuyer)
-console.log("THE RESOLVER ALLOWANCE FOR THE BUYER: " + currSnowflakeResolverAllowance)
 
 
-
-        let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, 0, {from: buyer.address})
+        let res = await instances.CouponMarketplaceResolver.purchaseItem(itemID, buyer.address, 0, {from: buyer.address})
 //        console.log(util.inspect(res.receipt.logs))
 console.log("\n\nPOST-PURCHASE: \n\n\n")
+
+
         //Assert our ownership of the item
         owner = await instances.ItemFeature.ownerOf(2);
         console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
         console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
         console.log("THE EIN OF THE SELLER IS: " + seller.ein)
 
+
+
         //Test for amount spent given
-        console.log("AMOUNT I HAD: " + currBal);
-        console.log("AMOUNT ITEM: " + Test.itemListings[0].price)
+        let postSnowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
+        let postResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
 
-        console.log("AMOUNT POST-PURCHASE: " + await instances.HydroToken.balanceOf(buyer.address))
-        
-        console.log("THE DEPOSIT AMOUNT FOR THE BUYER: " + await instances.Snowflake.deposits(buyer.ein))
-        console.log("THE RESOLVER ALLOWANCE FOR THE BUYER: " + await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address))
-
-    
+        //Ensure the cost of the item has been subtracted from both of these
+        assert.ok((currSnowflakeDepositAmount.sub(postSnowflakeDepositAmount)).eq(new BN(itemPrice)))
+        assert.ok((currResolverAllowance.sub(postResolverAllowance)).eq(new BN(itemPrice)))
 
       })
 
