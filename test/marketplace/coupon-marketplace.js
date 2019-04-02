@@ -502,10 +502,18 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
 
       it('buyer purchases item (no coupon)', async function () {
-//        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
+/*
+        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
 
+*/
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
         let owner = await instances.ItemFeature.ownerOf(itemID);
+        console.log("APPROVED ADDRESS FOR THIS ITEM: " + await instances.ItemFeature.getApprovedAddress(itemID));
+
+        await instances.ItemFeature.approveAddress(instances.CouponMarketplaceVia.address, itemID, {from: seller.address})
+        console.log("APPROVED ADDRESS FOR THIS ITEM: " + await instances.ItemFeature.getApprovedAddress(itemID));
+ 
+
         console.log("OURID:   " + itemID)
         let itemPrice = Test.itemListings[0].price;
 
@@ -517,14 +525,17 @@ console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
 console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
 console.log("THE EIN OF THE SELLER IS: " + seller.ein)
 
+        //Assert seller's ownership over this item
+        assert.ok(owner.eq(new BN(seller.ein)));
 
+        //Purchase the item
         let res = await instances.CouponMarketplaceResolver.purchaseItem(itemID, buyer.address, 0, {from: buyer.address})
 //        console.log(util.inspect(res.receipt.logs))
 console.log("\n\nPOST-PURCHASE: \n\n\n")
 
 
         //Assert our ownership of the item
-        owner = await instances.ItemFeature.ownerOf(2);
+        owner = await instances.ItemFeature.ownerOf(itemID);
         console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
         console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
         console.log("THE EIN OF THE SELLER IS: " + seller.ein)
