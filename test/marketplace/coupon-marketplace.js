@@ -515,31 +515,26 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
         let owner = await instances.ItemFeature.ownerOf(itemID);
 
-
         //Approve address for transfer of item
-        console.log("APPROVED ADDRESS FOR THIS ITEM: " + await instances.ItemFeature.getApprovedAddress(itemID));
+
+        //Test to see that we have no address approved for this item
+        assert.ok(await instances.ItemFeature.getApprovedAddress(itemID), '0x0000000000000000000000000000000000000000')
+
+        //Approve the item
         assert.ok(await instances.ItemFeature.approveAddress(instances.CouponMarketplaceVia.address, itemID, {from: seller.address}))
-        console.log("APPROVED ADDRESS FOR THIS ITEM: " + await instances.ItemFeature.getApprovedAddress(itemID));
+
+        //Affirm that the approved address to move this item is the Via contract
+        assert.ok(await instances.ItemFeature.getApprovedAddress(itemID), instances.CouponMarketplaceVia.address);
+
+
  
-
-        console.log("OURID:   " + itemID)
         let itemPrice = Test.itemListings[0].price;
-
         let currSnowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
         let currResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
 
 
-        let currSnowflakeDepositAmountSeller = await instances.Snowflake.deposits(seller.ein);
-        let currResolverAllowanceSeller = await instances.Snowflake.resolverAllowances(seller.ein,instances.CouponMarketplaceResolver.address)
-
-
-
-console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
-console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
-console.log("THE EIN OF THE SELLER IS: " + seller.ein)
-
-console.log("THE EIN OF THE BUYER IS: " + await instances.IdentityRegistry.getEIN(buyer.address))
-console.log("THE EIN OF THE SELLER IS: " + await instances.IdentityRegistry.getEIN(seller.address))
+//        let currSnowflakeDepositAmountSeller = await instances.Snowflake.deposits(seller.ein);
+//        let currResolverAllowanceSeller = await instances.Snowflake.resolverAllowances(seller.ein,instances.CouponMarketplaceResolver.address)
 
 
         //Assert seller's ownership over this item
@@ -547,16 +542,14 @@ console.log("THE EIN OF THE SELLER IS: " + await instances.IdentityRegistry.getE
 
         //Purchase the item
         let res = await instances.CouponMarketplaceResolver.purchaseItem(itemID, buyer.address, 0, {from: buyer.address})
-//        console.log(util.inspect(res.receipt.logs))
-console.log("\n\nPOST-PURCHASE: \n\n\n")
-
 
         //Assert our ownership of the item
         owner = await instances.ItemFeature.ownerOf(itemID);
-        console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
-        console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
-        console.log("THE EIN OF THE SELLER IS: " + seller.ein)
-        console.log("APPROVED ADDRESS FOR THIS ITEM (IS IT CLEARED???): " + await instances.ItemFeature.getApprovedAddress(itemID));
+        assert.equal(owner, buyer.ein);
+
+
+        //Test to see that the approved address for transferring this item has cleared
+        assert.equal(await instances.ItemFeature.getApprovedAddress(itemID), '0x0000000000000000000000000000000000000000');
  
 
 
@@ -568,16 +561,6 @@ console.log("\n\nPOST-PURCHASE: \n\n\n")
         assert.ok((currSnowflakeDepositAmount.sub(postSnowflakeDepositAmount)).eq(new BN(itemPrice)))
         assert.ok((currResolverAllowance.sub(postResolverAllowance)).eq(new BN(itemPrice)))
 
-
-
-        let postSnowflakeDepositAmountSeller = await instances.Snowflake.deposits(seller.ein);
-        let postResolverAllowanceSeller = await instances.Snowflake.resolverAllowances(seller.ein,instances.CouponMarketplaceResolver.address)
-
-        console.log(currSnowflakeDepositAmountSeller);
-        console.log(currResolverAllowanceSeller)
-
-        console.log(postSnowflakeDepositAmountSeller);
-        console.log(postResolverAllowanceSeller)
 
       })
 
