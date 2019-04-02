@@ -50,6 +50,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 //        require(success, ".call() to snowflakeCallBytes failed!");
 
         (/*bytes4 selector, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) = abi.decode(snowflakeCallBytes, (/*bytes4, */uint256, uint256, uint256, uint256, uint256));
+        processTransaction(itemID, einBuyer, einSeller, amount, couponID);
         
 
     }
@@ -59,7 +60,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
     //TODO: Should we have the NeoCouponMarketplaceResolverAddress exist, or just take the address resolver passed here? Completely forgot we were give this, and now this param is being unused
     //***NOTE***: Removed modifier for testing purposes; very dangerous!!!
     function processTransaction(/*address resolver, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) public /*senderIsSnowflake*/ returns (bool) {
-//require(false, 'WE HIT PROCESSTRANSACTION!!!');
+require(false, 'WE HIT PROCESSTRANSACTION!!!');
         //Initialize NeoCouponMarketplaceResolverAddress
         CouponMarketplaceResolver mktResolver = CouponMarketplaceResolver(CouponMarketplaceResolverAddress);
         ItemFeature itemFeature = ItemFeature(mktResolver.ItemFeatureAddress());
