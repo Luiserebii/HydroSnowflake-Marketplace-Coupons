@@ -182,7 +182,7 @@ Via contract to use coupons:
 
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
-        string memory functionSignature = "processTransaction(uint,uint,uint,uint,uint)";
+        string memory functionSignature = "processTransaction(uint256,uint256,uint256,uint256,uint256)";
         snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), id, getEIN(approvingAddress), ownerEIN(), price, couponID);
 
         //Allowance for item to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
