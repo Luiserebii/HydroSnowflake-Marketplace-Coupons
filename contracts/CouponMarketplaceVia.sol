@@ -46,8 +46,12 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
     ) public senderIsSnowflake {
 
 
-        (bool success, bytes memory returnData) = address(this).call(snowflakeCallBytes);
-        require(success, ".call() to snowflakeCallBytes failed!");
+//        (bool success, bytes memory returnData) = address(this).call(snowflakeCallBytes);
+//        require(success, ".call() to snowflakeCallBytes failed!");
+
+        (/*bytes4 selector, */uint itemID, uint einBuyer, uint einSeller, uint amount, uint couponID) = abi.decode(snowflakeCallBytes, (/*bytes4, */uint256, uint256, uint256, uint256, uint256));
+        
+
     }
 
 
