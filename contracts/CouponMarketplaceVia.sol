@@ -7,6 +7,7 @@ import "./interfaces/CouponMarketplaceResolverInterface.sol";
 import "./interfaces/SnowflakeInterface.sol";
 import "./resolvers/CouponMarketplaceResolver.sol";
 import "./ein/util/SnowflakeEINOwnable.sol";
+import "./interfaces/HydroInterface.sol";
 
 import "./interfaces/marketplace/CouponInterface.sol";
 import "./interfaces/marketplace/ItemInterface.sol";
@@ -106,11 +107,15 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 //require(false, 'WE HIT FLAGB2');
 
             //Send our total charged to buyer addr via snowflake
-            snowflake.transferSnowflakeBalance(einSeller, total);
-             
+//            snowflake.transferSnowflakeBalance(einSeller, total);
+            
+            //We will send it to the seller payment address, actually...
+            HydroInterface hydro = HydroInterface(snowflake.hydroTokenAddress());
+            hydro.transfer(mktResolver.paymentAddress(), total);
+            
             //Actually, I think the Resolver has HYDRO sent to address directly to this contract, so it may just be a regular send, check later
 
-            require(false, 'FLAG 2');
+//            require(false, 'FLAG 2');
 
         }
     }
