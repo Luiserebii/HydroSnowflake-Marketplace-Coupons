@@ -508,9 +508,11 @@ contract('Testing Coupon Marketplace', function (accounts) {
 */
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
         let owner = await instances.ItemFeature.ownerOf(itemID);
-        console.log("APPROVED ADDRESS FOR THIS ITEM: " + await instances.ItemFeature.getApprovedAddress(itemID));
 
-        await instances.ItemFeature.approveAddress(instances.CouponMarketplaceVia.address, itemID, {from: seller.address})
+
+        //Approve address for transfer of item
+        console.log("APPROVED ADDRESS FOR THIS ITEM: " + await instances.ItemFeature.getApprovedAddress(itemID));
+        assert.ok(await instances.ItemFeature.approveAddress(instances.CouponMarketplaceVia.address, itemID, {from: seller.address}))
         console.log("APPROVED ADDRESS FOR THIS ITEM: " + await instances.ItemFeature.getApprovedAddress(itemID));
  
 
@@ -521,9 +523,18 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let currResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
 
 
+        let currSnowflakeDepositAmountSeller = await instances.Snowflake.deposits(seller.ein);
+        let currResolverAllowanceSeller = await instances.Snowflake.resolverAllowances(seller.ein,instances.CouponMarketplaceResolver.address)
+
+
+
 console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
 console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
 console.log("THE EIN OF THE SELLER IS: " + seller.ein)
+
+console.log("THE EIN OF THE BUYER IS: " + await instances.IdentityRegistry.getEIN(buyer.address))
+console.log("THE EIN OF THE SELLER IS: " + await instances.IdentityRegistry.getEIN(seller.address))
+
 
         //Assert seller's ownership over this item
         assert.ok(owner.eq(new BN(seller.ein)));
@@ -539,7 +550,8 @@ console.log("\n\nPOST-PURCHASE: \n\n\n")
         console.log("THE EIN OF THE PERSON OWNING THIS ITEM IS: " + owner)
         console.log("THE EIN OF THE BUYER IS: " + buyer.ein)
         console.log("THE EIN OF THE SELLER IS: " + seller.ein)
-
+        console.log("APPROVED ADDRESS FOR THIS ITEM (IS IT CLEARED???): " + await instances.ItemFeature.getApprovedAddress(itemID));
+ 
 
 
         //Test for amount spent given
@@ -549,6 +561,17 @@ console.log("\n\nPOST-PURCHASE: \n\n\n")
         //Ensure the cost of the item has been subtracted from both of these
         assert.ok((currSnowflakeDepositAmount.sub(postSnowflakeDepositAmount)).eq(new BN(itemPrice)))
         assert.ok((currResolverAllowance.sub(postResolverAllowance)).eq(new BN(itemPrice)))
+
+
+
+        let postSnowflakeDepositAmountSeller = await instances.Snowflake.deposits(seller.ein);
+        let postResolverAllowanceSeller = await instances.Snowflake.resolverAllowances(seller.ein,instances.CouponMarketplaceResolver.address)
+
+        console.log(currSnowflakeDepositAmountSeller);
+        console.log(currResolverAllowanceSeller)
+
+        console.log(postSnowflakeDepositAmountSeller);
+        console.log(postResolverAllowanceSeller)
 
       })
 

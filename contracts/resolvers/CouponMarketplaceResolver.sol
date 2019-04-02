@@ -182,8 +182,8 @@ Via contract to use coupons:
 
         //bytes data; set snowflakeCall stuff
         bytes memory snowflakeCallData;
-        string memory functionSignature = "function processTransaction(address, uint, uint, uint, uint, uint)";
-        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), address(this), id, getEIN(approvingAddress), ownerEIN(), price, couponID);
+        string memory functionSignature = "processTransaction(uint,uint,uint,uint,uint)";
+        snowflakeCallData = abi.encodeWithSelector(bytes4(keccak256(bytes(functionSignature))), id, getEIN(approvingAddress), ownerEIN(), price, couponID);
 
         //Allowance for item to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
         //Allowance for coupon to CouponMarketplaceVia MUST BE DONE FROM FRONT-END
