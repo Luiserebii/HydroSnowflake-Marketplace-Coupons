@@ -601,7 +601,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //Add it
         await instances.CouponFeature.addAvailableCoupon(
-          seller.address,
+          seller.ein,
           ...Object.values(newAC),
           {from: seller.address}
         );
@@ -618,13 +618,13 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let val = (await instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID));
         console.log("VALUE RETURNED:   " + val);
 
-//        assert.equal((instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID)), true);
+        assert.equal((await instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID)), true);
 
         /*!!!IMPORTANT!!! - for this logic to work, we are giving users 1-5 to claim this coupon, which can only be claimed by one of them before being burned. In this case, ownership of the coupon is kept by the seller. Multiple variations of this can exist, depending on desired implementation!*/
 
       })
 
-      it.skip('approve Via address for transfer of Item', async function () {
+      it('approve Via address for transfer of Item', async function () {
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
 
         //Approve address for transfer of item
@@ -640,7 +640,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       })
 
-      it.skip('approve Via address for transfer of Coupon', async function () {
+      it('approve Via address for transfer of Coupon', async function () {
         couponID = (await instances.CouponFeature.nextAvailableCouponsID()).sub(new BN(1));
 
         //Approve address for transfer of coupon
@@ -651,8 +651,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Approve the item
         assert.ok(await instances.CouponFeature.approveAddress(instances.CouponMarketplaceVia.address, couponID, {from: seller.address}))
 
-        //Affirm that the approved address to move this item is the Via contract
-        assert.ok(await instances.CouponFeature.getApprovedAddress(itemID), instances.CouponMarketplaceVia.address);
+        //Affirm that the approved address to move this coupon is the Via contract
+        assert.ok(await instances.CouponFeature.getApprovedAddress(couponID), instances.CouponMarketplaceVia.address);
 
       })
 

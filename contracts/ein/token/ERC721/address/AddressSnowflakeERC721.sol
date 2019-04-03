@@ -34,7 +34,7 @@ contract AddressSnowflakeERC721 is SnowflakeERC721 {
         uint256 owner = ownerOf(tokenId);
         uint256 sender = getEIN(msg.sender);
         //require(to != owner);  <--- We likely don't need this, let's just let any address be a potential approved one
-        require(sender == owner || isApprovedForAll(owner, sender));
+        require(sender == owner || isApprovedForAll(owner, sender), 'Sender is not owner, or fails to pass isApprovedForAll(owner, sender)');
 
         _tokenApprovalsAddress[tokenId] = to;
         emit ApprovalAddress(owner, to, tokenId);
