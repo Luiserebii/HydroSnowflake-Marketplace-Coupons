@@ -131,6 +131,9 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             amountRefund = amountOff;
         }
 
+        //Transfer coupon to a burner address
+        //NOTE: NEED TO GIVE COUPON ALLOWANCE TO VIA CONTRACT FOR THIS TO WORK
+
         //In an event, let's push the transaction or something
         emit CouponProcessed(total, amountRefund, couponType, amountOff, expirationDate);
 

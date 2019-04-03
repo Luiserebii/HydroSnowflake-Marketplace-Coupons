@@ -507,13 +507,8 @@ contract('Testing Coupon Marketplace', function (accounts) {
         )
       })
 
-      it('buyer purchases item (no coupon)', async function () {
-/*
-        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
-
-*/
+      it('approve Via address for transfer of Item', async function () {
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
-        let owner = await instances.ItemFeature.ownerOf(itemID);
 
         //Approve address for transfer of item
 
@@ -526,6 +521,15 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Affirm that the approved address to move this item is the Via contract
         assert.ok(await instances.ItemFeature.getApprovedAddress(itemID), instances.CouponMarketplaceVia.address);
 
+      })
+
+      it('buyer purchases item (no coupon)', async function () {
+/*
+        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
+
+*/
+        let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
+        let owner = await instances.ItemFeature.ownerOf(itemID);
 
  
         let itemPrice = Test.itemListings[0].price;
@@ -572,6 +576,17 @@ contract('Testing Coupon Marketplace', function (accounts) {
       let buyer = users[1]
       let couponID
 
+      it('add item', async function () {
+        let newItemL = Test.itemListings[1];
+ 
+        //Add it
+        await instances.ItemFeature.addItemListing(
+          await instances.ItemFeature.ownerEIN.call(),
+          ...Object.values(newItemL),   
+          {from: seller.address}
+        )
+      })
+
       it('add coupon', async function () {
 
         // Grab our next avaiable coupon ID
@@ -590,14 +605,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 */
 
 
-        let newAC = { 
-          couponType: enums.CouponType.AMOUNT_OFF,
-          title: '50 HYDRO Test Discount!' ,
-          description: 'A small little discount for you to cherish for a while during its highly transient existence',
-          amountOff: 50,
-          itemsApplicable: [2], itemsApplicableExpected: undefined,
-          expirationDate: 1571312124
-        }
+        let newAC = availableCoupons[0]; 
 
         //Add it
         await instances.CouponMarketplaceResolver.addAvailableCoupon(
