@@ -572,7 +572,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     })
 
 
-    describe.skip('Purchase Item (with a coupon)', async function () {
+    describe('Purchase Item (with a coupon)', async function () {
 
       let buyer = users[1]
       let couponID
@@ -591,32 +591,33 @@ contract('Testing Coupon Marketplace', function (accounts) {
       it('add coupon', async function () {
 
         // Grab our next avaiable coupon ID
-        couponID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
+        couponID = parseInt(await instances.CouponFeature.nextAvailableCouponsID.call(), 10)
 
-        let newAC = availableCoupons[0]; 
+        let newAC = Test.availableCoupons[0]; 
 
         //Add it
-        await instances.CouponMarketplaceResolver.addAvailableCoupon(
+        await instances.CouponFeature.addAvailableCoupon(
+          seller.address,
           ...Object.values(newAC),
           {from: seller.address}
         );
 
        })
 
-      it('distribute coupon', async function () {
+      it.skip('distribute coupon', async function () {
         
         //Call distributeCoupon() function within Marketplace, which executes logic in CouponDistribution contract
         assert.ok(instances.CouponMarketplaceResolver.distributeCoupon(couponID, { from: seller.address }))
         
         //Test distribution logic success
         //check EINs 1-5 for userCoupons existence, but let's just do 2 for now
-        assert.equal((instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein)), true);
+        assert.equal((instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID)), true);
 
         /*!!!IMPORTANT!!! - for this logic to work, we are giving users 1-5 to claim this coupon, which can only be claimed by one of them before being burned. In this case, ownership of the coupon is kept by the seller. Multiple variations of this can exist, depending on desired implementation!*/
 
       })
 
-      it('approve Via address for transfer of Item', async function () {
+      it.skip('approve Via address for transfer of Item', async function () {
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
 
         //Approve address for transfer of item
@@ -632,7 +633,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
       })
 
-      it('approve Via address for transfer of Coupon', async function () {
+      it.skip('approve Via address for transfer of Coupon', async function () {
         couponID = (await instances.CouponFeature.nextAvailableCouponsID()).sub(new BN(1));
 
         //Approve address for transfer of coupon
@@ -652,7 +653,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
 
-      it('buyer purchases item (50 HYDRO Coupon)', async function () {
+      it.skip('buyer purchases item (50 HYDRO Coupon)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
 
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
