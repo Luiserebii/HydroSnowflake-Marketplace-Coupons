@@ -592,37 +592,54 @@ contract('Testing Coupon Marketplace', function (accounts) {
         // Grab our next avaiable coupon ID
         couponID = parseInt(await instances.CouponMarketplaceResolver.nextAvailableCouponsID.call(), 10)
 
-/*
-
-  TODO: Listing ideas for refactoring here:
-
-1. Seperate config files for example objects like avaliable coupons, like an array of these
-2. refactor the passing of these params by creating helper functions that return the arguments below from an object (e.g. ...addAvaliableCoupon( await parseAvaliableCoupon(newAC) , {from: seller.address} )), something like this
-3. Need to find a way to organize "steps", there is disorganization in that some things, such as users being added to IdentityRegistry being done once in a previous test and sort of assumed to carry forward
-
-
-
-*/
-
-
         let newAC = availableCoupons[0]; 
 
         //Add it
         await instances.CouponMarketplaceResolver.addAvailableCoupon(
-          newAC.couponType,
-          newAC.title,
-          newAC.description,
-          newAC.amountOff,
-          newAC.itemsApplicable,
-          newAC.expirationDate,
+          ...Object.values(newAC),
           {from: seller.address}
         );
 
        })
 
+      it('approve Via address for transfer of Item', async function () {
+        let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
+
+        //Approve address for transfer of item
+
+        //Test to see that we have no address approved for this item
+        assert.ok(await instances.ItemFeature.getApprovedAddress(itemID), '0x0000000000000000000000000000000000000000')
+
+        //Approve the item
+        assert.ok(await instances.ItemFeature.approveAddress(instances.CouponMarketplaceVia.address, itemID, {from: seller.address}))
+
+        //Affirm that the approved address to move this item is the Via contract
+        assert.ok(await instances.ItemFeature.getApprovedAddress(itemID), instances.CouponMarketplaceVia.address);
+
+      })
+
+      it('approve Via address for transfer of Coupon', async function () {
+        let couponID = (await instances.CouponFeature.nextAvailableCouponsID()).sub(new BN(1));
+
+        //Approve address for transfer of coupon
+
+        //Test to see that we have no address approved for this item
+        assert.ok(await instances.CouponFeature.getApprovedAddress(couponID), '0x0000000000000000000000000000000000000000')
+
+        //Approve the item
+        assert.ok(await instances.CouponFeature.approveAddress(instances.CouponMarketplaceVia.address, couponID, {from: seller.address}))
+
+        //Affirm that the approved address to move this item is the Via contract
+        assert.ok(await instances.CouponFeature.getApprovedAddress(itemID), instances.CouponMarketplaceVia.address);
+
+      })
+
+
+
+
+
       it('buyer purchases item (50 HYDRO)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
-         //TODO: Swap out the hard-coded 2 for something else, read from next ID and go off of therei
 
         let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, couponID, {from: buyer.address})
       })
@@ -654,40 +671,13 @@ async function assertSolidityRevert(run, expectedErr = null){
 }
 
 /*
-//Convenience function, assumes instances is set with loaded contracts
-async function addToIdentityRegistrySimple(userIdentity) {
-  await addToIdentityRegistry(userIdentity, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop)
-}
 
-//"Lower-level" convenience function
-async function addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
+  TODO: Listing ideas for refactoring here:
 
-      const timestamp = Math.round(new Date() / 1000) - 1
-      const permissionString = web3.utils.soliditySha3(
-        '0x19', '0x00', IdentityRegistryInstance.address,
-        'I authorize the creation of an Identity on my behalf.',
-        userIdentity.recoveryAddress,
-        userIdentity.address,
-        { t: 'address[]', v: [SnowflakeInstance.address] },
-        { t: 'address[]', v: [] },
-        timestamp
-      )
+1. Seperate config files for example objects like avaliable coupons, like an array of these
+2. refactor the passing of these params by creating helper functions that return the arguments below from an object (e.g. ...addAvaliableCoupon( await parseAvaliableCoupon(newAC) , {from: seller.address} )), something like this
+3. Need to find a way to organize "steps", there is disorganization in that some things, such as users being added to IdentityRegistry being done once in a previous test and sort of assumed to carry forward
 
-      const permission = await sign(permissionString, userIdentity.address, userIdentity.private)
 
-      await SnowflakeInstance.createIdentityDelegated(
-        userIdentity.recoveryAddress, userIdentity.address, [], userIdentity.hydroID, permission.v, permission.r, permission.s, timestamp
-      )
-      //console.log("EIN:    " + userIdentity.ein)
-      userIdentity.identity = web3.utils.toBN(userIdentity.ein)
-
-      await verifyIdentity(userIdentity.identity, IdentityRegistryInstance, {
-        recoveryAddress:     userIdentity.recoveryAddress,
-        associatedAddresses: [userIdentity.address],
-        providers:           [SnowflakeInstance.address],
-        resolvers:           [ClientRaindropInstance.address]
-      })
-
-}
 
 */
