@@ -686,14 +686,16 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let postSnowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
         let postResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
 
-        //Ensure the cost of the item has been subtracted from both of these
-        assert.ok((currSnowflakeDepositAmount.sub(postSnowflakeDepositAmount)).eq(new BN(itemPrice)))
-        assert.ok((currResolverAllowance.sub(postResolverAllowance)).eq(new BN(itemPrice)))
-
-
+        let discountedAmount = itemPrice - Test.availableCoupons[0].amountOff;
+ 
         //Assert fact that we have received the proper amount returned
+        assert.ok((currSnowflakeDepositAmount.sub(postSnowflakeDepositAmount)).eq(new BN(discountedAmount)))
+        assert.ok((currResolverAllowance.sub(postResolverAllowance)).eq(new BN(discountedAmount)))
+
+
         let refundAmount = itemPrice - Test.availableCoupons[0].amountOff;
-        assert.ok(/*()*/.eq(new BN(refundAmount)))
+ //       assert.ok(/*()*/.eq(new BN(refundAmount)))
+        
 
       })
 

@@ -87,11 +87,15 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             //Send item to buyer
             itemFeature.transferFromAddress(einSeller, einBuyer, itemID);
 
-            //Send our total charged to buyer addr via snowflake
-            snowflake.transferSnowflakeBalance(einSeller, total);
-      
+            //Send to seller payment address
+            HydroInterface hydro = HydroInterface(snowflake.hydroTokenAddress());
+            hydro.transfer(mktResolver.paymentAddress(), total);     
+ 
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
-            snowflake.transferSnowflakeBalance(einBuyer, amountRefund);
+            //This will result in a SnowflakeDeposit; see receiveApproval() of Snowflake contract
+            hydro.approveAndCall(snowflakeAddress, amountRefund, abi.encode(einBuyer));
+
+
         } else {
 
             //Send item to buyer
