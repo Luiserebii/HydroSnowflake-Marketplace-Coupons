@@ -84,9 +84,6 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
 
             (total, amountRefund) = _processCoupon(couponFeature, couponID);
 
-            //Send coupon to burner address
-            couponFeature.burnAddress(couponID);
-
             //Send item to buyer
             itemFeature.transferFromAddress(einSeller, einBuyer, itemID);
 
@@ -131,7 +128,10 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             amountRefund = amountOff;
         }
 
-        //Transfer coupon to a burner address
+ 
+        //Send coupon to burner address
+        couponFeature.burnAddress(couponID);
+
         //NOTE: NEED TO GIVE COUPON ALLOWANCE TO VIA CONTRACT FOR THIS TO WORK
 
         //In an event, let's push the transaction or something

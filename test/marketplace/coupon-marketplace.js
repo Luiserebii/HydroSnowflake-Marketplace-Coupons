@@ -165,6 +165,10 @@ contract('Testing Coupon Marketplace', function (accounts) {
       assert.ok(instances.CouponDistribution)
     })
 
+    it('set Coupon Distribution address within SnowflakeEINMarketplace contract (i.e. the Resolver)', async function () {
+      assert.ok(instances.CouponMarketplaceResolver.setCouponDistributionAddress(instances.CouponDistribution.address, { from: seller.address }))
+    })
+
 
     it('Deployer is EIN Owner', async function () {
       let isEINOwner = await instances.CouponMarketplaceResolver.isEINOwner.call({ from: accounts[0]})
@@ -537,9 +541,6 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let currResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
 
 
-//        let currSnowflakeDepositAmountSeller = await instances.Snowflake.deposits(seller.ein);
-//        let currResolverAllowanceSeller = await instances.Snowflake.resolverAllowances(seller.ein,instances.CouponMarketplaceResolver.address)
-
 
         //Assert seller's ownership over this item
         assert.ok(owner.eq(new BN(seller.ein)));
@@ -602,6 +603,19 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
        })
 
+      it('distribute coupon', async function () {
+        
+        //Call distributeCoupon() function within Marketplace, which executes logic in CouponDistribution contract
+        assert.ok(instances.CouponMarketplaceResolver.distributeCoupon(couponID, { from: seller.address }))
+        
+        //Test distribution logic success
+        //check EINs 1-5 for userCoupons existence, but let's just do 2 for now
+        assert.equal((instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein)), true);
+
+        /*!!!IMPORTANT!!! - for this logic to work, we are giving users 1-5 to claim this coupon, which can only be claimed by one of them before being burned. In this case, ownership of the coupon is kept by the seller. Multiple variations of this can exist, depending on desired implementation!*/
+
+      })
+
       it('approve Via address for transfer of Item', async function () {
         let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
 
@@ -619,7 +633,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
       })
 
       it('approve Via address for transfer of Coupon', async function () {
-        let couponID = (await instances.CouponFeature.nextAvailableCouponsID()).sub(new BN(1));
+        couponID = (await instances.CouponFeature.nextAvailableCouponsID()).sub(new BN(1));
 
         //Approve address for transfer of coupon
 
@@ -638,10 +652,49 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
 
-      it('buyer purchases item (50 HYDRO)', async function () {
+      it('buyer purchases item (50 HYDRO Coupon)', async function () {
 //        function purchaseItem(uint id, bytes memory data, address approvingAddress, uint couponID)
 
-        let res = await instances.CouponMarketplaceResolver.purchaseItem(2, buyer.address, couponID, {from: buyer.address})
+        let itemID = (await instances.ItemFeature.nextItemListingsID()).sub(new BN(1));
+        let owner = await instances.ItemFeature.ownerOf(itemID);
+
+ 
+        let itemPrice = Test.itemListings[1].price;
+        let currSnowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
+        let currResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
+
+
+        //Assert seller's ownership over this item
+        assert.ok(owner.eq(new BN(seller.ein)));
+
+        //Purchase the item
+        let res = await instances.CouponMarketplaceResolver.purchaseItem(itemID, buyer.address, couponID, {from: buyer.address})
+
+        //Assert our ownership of the item
+        owner = await instances.ItemFeature.ownerOf(itemID);
+        assert.equal(owner, buyer.ein);
+
+
+        //Test to see that the approved address for transferring this item has cleared
+        assert.equal(await instances.ItemFeature.getApprovedAddress(itemID), '0x0000000000000000000000000000000000000000');
+ 
+        //Test to see that Coupon has been burned
+        assert.equal(await instances.CouponFeature.ownerOf(couponID), '0x0000000000000000000000000000000000000000');
+
+
+        //Test for amount spent given
+        let postSnowflakeDepositAmount = await instances.Snowflake.deposits(buyer.ein);
+        let postResolverAllowance = await instances.Snowflake.resolverAllowances(buyer.ein,instances.CouponMarketplaceResolver.address)
+
+        //Ensure the cost of the item has been subtracted from both of these
+        assert.ok((currSnowflakeDepositAmount.sub(postSnowflakeDepositAmount)).eq(new BN(itemPrice)))
+        assert.ok((currResolverAllowance.sub(postResolverAllowance)).eq(new BN(itemPrice)))
+
+
+        //Assert fact that we have received the proper amount returned
+        let refundAmount = itemPrice - Test.availableCoupons[0].amountOff;
+        assert.ok(/*()*/.eq(new BN(refundAmount)))
+
       })
 
     })
