@@ -82,7 +82,7 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             //Get coupon info from our coupon feature contract
             CouponFeature couponFeature = CouponFeature(mktResolver.CouponFeatureAddress());
 
-            (total, amountRefund) = _processCoupon(couponFeature, couponID);
+            (total, amountRefund) = _processCoupon(couponFeature, couponID, total);
 
             //Send item to buyer
             itemFeature.transferFromAddress(einSeller, einBuyer, itemID);
@@ -94,7 +94,6 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
             //Finally, let's return their amount... (for security reasons, we follow Checks-Effect-Interaction pattern and modify state last...)
             //This will result in a SnowflakeDeposit; see receiveApproval() of Snowflake contract
             hydro.approveAndCall(snowflakeAddress, amountRefund, abi.encode(einBuyer));
-
 
         } else {
 
@@ -113,9 +112,9 @@ contract CouponMarketplaceVia is SnowflakeVia, SnowflakeEINOwnable {
         }
     }
 
-    function _processCoupon(CouponFeature couponFeature, uint256 couponID) internal returns (uint256 /*total*/, uint256 /*amountRefund*/) {
+    function _processCoupon(CouponFeature couponFeature, uint256 couponID, uint256 _total) internal returns (uint256 /*total*/, uint256 /*amountRefund*/) {
 
-        uint256 total;
+        uint256 total = _total;
         uint256 amountRefund;
         
         //Get coupon info from our coupon feature contract
