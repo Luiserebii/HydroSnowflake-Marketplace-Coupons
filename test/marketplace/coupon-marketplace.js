@@ -170,6 +170,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
     })
 
 
+
     it('Deployer is EIN Owner', async function () {
       let isEINOwner = await instances.CouponMarketplaceResolver.isEINOwner.call({ from: accounts[0]})
       assert.isTrue(isEINOwner);
@@ -594,6 +595,9 @@ contract('Testing Coupon Marketplace', function (accounts) {
         couponID = parseInt(await instances.CouponFeature.nextAvailableCouponsID.call(), 10)
 
         let newAC = Test.availableCoupons[0]; 
+        //IMPORTANT: SET COUPONDISTRIBUTION ADDRESS IN COUPON
+        newAC.couponDistribution = instances.CouponDistribution.address;
+        console.log("COUPONDIST ADDR:  " + newAC.couponDistribution)
 
         //Add it
         await instances.CouponFeature.addAvailableCoupon(
@@ -604,14 +608,17 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
        })
 
-      it.skip('distribute coupon', async function () {
+      it('distribute coupon', async function () {
         
         //Call distributeCoupon() function within Marketplace, which executes logic in CouponDistribution contract
-        assert.ok(instances.CouponMarketplaceResolver.distributeCoupon(couponID, { from: seller.address }))
+        assert.ok(await instances.CouponMarketplaceResolver.distributeCoupon(couponID, { from: seller.address }))
         
         //Test distribution logic success
         //check EINs 1-5 for userCoupons existence, but let's just do 2 for now
-        assert.equal((instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID)), true);
+        let val = (await instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID));
+        console.log("VALUE RETURNED:   " + val);
+
+//        assert.equal((instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID)), true);
 
         /*!!!IMPORTANT!!! - for this logic to work, we are giving users 1-5 to claim this coupon, which can only be claimed by one of them before being burned. In this case, ownership of the coupon is kept by the seller. Multiple variations of this can exist, depending on desired implementation!*/
 
