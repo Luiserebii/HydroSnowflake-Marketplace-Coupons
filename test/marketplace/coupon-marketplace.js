@@ -2,7 +2,6 @@ const common = require('../common')
 const mapi = require('./marketplace-api')
 const MarketplaceAPI = new mapi()
 const Test = require('./test-data')
-//console.log(common)
 const { sign, verifyIdentity } = require('../utilities')
 const util = require('util')
 
@@ -185,7 +184,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //addItemTag test for failure
         it('addItemTag', async function () {
-          await assertSolidityRevert(
+          await MarketplaceAPI.assertSolidityRevert(
             async function(){ 
               await instances.CouponMarketplaceResolver.addItemTag("Test_Item_Tag", {from: nonOwner}) 
             }
@@ -194,7 +193,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //updateItemTag test for failure
         it('updateItemTag', async function () {
-          await assertSolidityRevert(
+          await MarketplaceAPI.assertSolidityRevert(
             async function(){ 
               await instances.CouponMarketplaceResolver.updateItemTag(1, "Test_Item_Tag", {from: nonOwner}) 
             }
@@ -203,7 +202,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
         //deleteItemTag test for failure
         it('deleteItemTag', async function () {
-          await assertSolidityRevert(
+          await MarketplaceAPI.assertSolidityRevert(
             async function(){ 
               await instances.CouponMarketplaceResolver.deleteItemTag(1, {from: nonOwner})
             }
@@ -597,7 +596,7 @@ contract('Testing Coupon Marketplace', function (accounts) {
         let newAC = Test.availableCoupons[0]; 
         //IMPORTANT: SET COUPONDISTRIBUTION ADDRESS IN COUPON
         newAC.couponDistribution = instances.CouponDistribution.address;
-        console.log("COUPONDIST ADDR:  " + newAC.couponDistribution)
+        //console.log("COUPONDIST ADDR:  " + newAC.couponDistribution)
 
         //Add it
         await instances.CouponFeature.addAvailableCoupon(
@@ -616,7 +615,6 @@ contract('Testing Coupon Marketplace', function (accounts) {
         //Test distribution logic success
         //check EINs 1-5 for userCoupons existence, but let's just do 2 for now
         let val = (await instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID));
-        console.log("VALUE RETURNED:   " + val);
 
         assert.equal((await instances.CouponMarketplaceResolver.isUserCouponOwner(seller.ein, couponID)), true);
 
@@ -715,22 +713,6 @@ contract('Testing Coupon Marketplace', function (accounts) {
 
 
 })
-
-
-//Simply function to test for Solidity revert errors; optionally takes an "expectedErr" which simply looks for a string within
-// This function has limits, however; if a function can potentially return two or more reverts, we can't quite test for each of them through expectedErr and apply if/and/or logic
-async function assertSolidityRevert(run, expectedErr = null){
-  let err;
-  try {
-    await run();
-  } catch(_e) {
-    err = _e.message;
-  }
-  assert.isTrue(err.includes('VM Exception while processing transaction: revert'));
-  if(expectedErr != null) assert.isTrue(err.includes(expectedErr));
-
-  return err;
-}
 
 /*
 

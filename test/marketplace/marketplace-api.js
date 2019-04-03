@@ -21,7 +21,9 @@ const enums = allEnums.CouponMarketPlaceResolverInterface;
 class MarketplaceAPI {
 
 
-  /*static*/ async assertSolidityRevert(run, expectedErr = null) {
+  //Simply function to test for Solidity revert errors; optionally takes an "expectedErr" which simply looks for a string within
+  // This function has limits, however; if a function can potentially return two or more reverts, we can't quite test for each of them through expectedErr and apply if/and/or logic
+  async assertSolidityRevert(run, expectedErr = null) {
     let err;
     try {
       await run();
