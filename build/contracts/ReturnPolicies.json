@@ -1,0 +1,2667 @@
+{
+  "contractName": "ReturnPolicies",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "returnPolicies",
+      "outputs": [
+        {
+          "name": "returnsAccepted",
+          "type": "bool"
+        },
+        {
+          "name": "timeLimit",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "nextReturnPoliciesID",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getReturnPolicy",
+      "outputs": [
+        {
+          "name": "returnsAccepted",
+          "type": "bool"
+        },
+        {
+          "name": "timeLimit",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"returnPolicies\",\"outputs\":[{\"name\":\"returnsAccepted\",\"type\":\"bool\"},{\"name\":\"timeLimit\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"nextReturnPoliciesID\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getReturnPolicy\",\"outputs\":[{\"name\":\"returnsAccepted\",\"type\":\"bool\"},{\"name\":\"timeLimit\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/marketplace/features/ReturnPolicies.sol\":\"ReturnPolicies\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/marketplace/features/ReturnPolicies.sol\":{\"keccak256\":\"0xa0f103717ff5da691fdd47ece7b478009b4c094a82e967bc393dd9677141784e\",\"urls\":[\"bzzr://61b50e9b655aa56d29fa486aa07febb706a33792abea7076047ba92a3f9d7a74\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610176806100206000396000f3fe608060405234801561001057600080fd5b506004361061005d577c01000000000000000000000000000000000000000000000000000000006000350463798f1be1811461006257806380168e811461009a578063fd4230e6146100b4575b600080fd5b61007f6004803603602081101561007857600080fd5b50356100d1565b60408051921515835260208301919091528051918290030190f35b6100a26100f0565b60408051918252519081900360200190f35b61007f600480360360208110156100ca57600080fd5b50356100f6565b6001602081905260009182526040909120805491015460ff9091169082565b60005481565b600080610101610133565b5050506000908152600160208181526040928390208351808501909452805460ff161515808552920154920182905291565b60408051808201909152600080825260208201529056fea165627a7a723058208becefd861c9bb45879241b426098e5e73d00f31eacf4ce2b2be44bdeb5bb3ee0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061005d577c01000000000000000000000000000000000000000000000000000000006000350463798f1be1811461006257806380168e811461009a578063fd4230e6146100b4575b600080fd5b61007f6004803603602081101561007857600080fd5b50356100d1565b60408051921515835260208301919091528051918290030190f35b6100a26100f0565b60408051918252519081900360200190f35b61007f600480360360208110156100ca57600080fd5b50356100f6565b6001602081905260009182526040909120805491015460ff9091169082565b60005481565b600080610101610133565b5050506000908152600160208181526040928390208351808501909452805460ff161515808552920154920182905291565b60408051808201909152600080825260208201529056fea165627a7a723058208becefd861c9bb45879241b426098e5e73d00f31eacf4ce2b2be44bdeb5bb3ee0029",
+  "sourceMap": "26:1464:43:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:1464:43;;;;;;;",
+  "deployedSourceMap": "26:1464:43:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:1464:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;123:51;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;123:51:43;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;71:32;;;:::i;:::-;;;;;;;;;;;;;;;;441:204;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;441:204:43;;:::i;123:51::-;;;;;;;;;;;;;;;;;;;;;;;;;:::o;71:32::-;;;;:::o;441:204::-;496:20;518:14;544:22;;:::i;:::-;-1:-1:-1;;;569:18:43;;;;:14;:18;;;;;;;;;544:43;;;;;;;;;;;;;;;;;;;;;;;;;;441:204::o;26:1464::-;;;;;;;;;;-1:-1:-1;26:1464:43;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\n\ncontract ReturnPolicies {\n\n\n    //ID    \n    uint public nextReturnPoliciesID;\n\n    //Struct\n    mapping(uint => ReturnPolicy) public returnPolicies;\n\n/*    \n    constructor() public {\n        _constructReturnPolicies();\n    }\n*/\n    function _constructReturnPolicies() internal {\n        nextReturnPoliciesID = 1;\n    }\n\n\n    struct ReturnPolicy {\n        bool returnsAccepted;\n        uint timeLimit;\n    }\n\n\n    function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit){\n\n        ReturnPolicy memory rp = returnPolicies[id];\n        return (rp.returnsAccepted, rp.timeLimit);\n    }\n\n\n/*\n==============================\nReturnPolicy add/update/delete\n==============================\n*/\n\n    function _addReturnPolicy(bool returnsAccepted, uint timeLimit) internal returns (bool) {\n        //Add to returnPolicies\n        returnPolicies[nextReturnPoliciesID] = ReturnPolicy(returnsAccepted, timeLimit);\n        //Advance return policy ID by one\n        nextReturnPoliciesID++;\n\n        return true;\n    }\n\n    function _updateReturnPolicy(uint id, bool returnsAccepted, uint timeLimit) internal returns (bool) {\n        //Update returnPolicies by ID\n        returnPolicies[id] = ReturnPolicy(returnsAccepted, timeLimit);\n        return true;\n    }\n\n    function _deleteReturnPolicy(uint id) internal returns (bool) {\n        //Delete Return Policy identified by ID\n        delete returnPolicies[id];\n        return true;\n    }\n\n\n}\n",
+  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/marketplace/features/ReturnPolicies.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/marketplace/features/ReturnPolicies.sol",
+    "exportedSymbols": {
+      "ReturnPolicies": [
+        9680
+      ]
+    },
+    "id": 9681,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9576,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:43"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 9680,
+        "linearizedBaseContracts": [
+          9680
+        ],
+        "name": "ReturnPolicies",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 9578,
+            "name": "nextReturnPoliciesID",
+            "nodeType": "VariableDeclaration",
+            "scope": 9680,
+            "src": "71:32:43",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 9577,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "71:4:43",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 9582,
+            "name": "returnPolicies",
+            "nodeType": "VariableDeclaration",
+            "scope": 9680,
+            "src": "123:51:43",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+              "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy)"
+            },
+            "typeName": {
+              "id": 9581,
+              "keyType": {
+                "id": 9579,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "131:4:43",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "123:29:43",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 9580,
+                "name": "ReturnPolicy",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 9595,
+                "src": "139:12:43",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage_ptr",
+                  "typeString": "struct ReturnPolicies.ReturnPolicy"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9589,
+              "nodeType": "Block",
+              "src": "305:41:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9587,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 9585,
+                      "name": "nextReturnPoliciesID",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9578,
+                      "src": "315:20:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "31",
+                      "id": 9586,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "338:1:43",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "315:24:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 9588,
+                  "nodeType": "ExpressionStatement",
+                  "src": "315:24:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9590,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_constructReturnPolicies",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9583,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:2:43"
+            },
+            "returnParameters": {
+              "id": 9584,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "305:0:43"
+            },
+            "scope": 9680,
+            "src": "260:86:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "ReturnPolicies.ReturnPolicy",
+            "id": 9595,
+            "members": [
+              {
+                "constant": false,
+                "id": 9592,
+                "name": "returnsAccepted",
+                "nodeType": "VariableDeclaration",
+                "scope": 9595,
+                "src": "383:20:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 9591,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "383:4:43",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 9594,
+                "name": "timeLimit",
+                "nodeType": "VariableDeclaration",
+                "scope": 9595,
+                "src": "413:14:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 9593,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "413:4:43",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ReturnPolicy",
+            "nodeType": "StructDefinition",
+            "scope": 9680,
+            "src": "353:81:43",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9616,
+              "nodeType": "Block",
+              "src": "533:112:43",
+              "statements": [
+                {
+                  "assignments": [
+                    9605
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 9605,
+                      "name": "rp",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 9616,
+                      "src": "544:22:43",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory_ptr",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 9604,
+                        "name": "ReturnPolicy",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 9595,
+                        "src": "544:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage_ptr",
+                          "typeString": "struct ReturnPolicies.ReturnPolicy"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 9609,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 9606,
+                      "name": "returnPolicies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9582,
+                      "src": "569:14:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                        "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                      }
+                    },
+                    "id": 9608,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 9607,
+                      "name": "id",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9597,
+                      "src": "584:2:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "569:18:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                      "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "544:43:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 9610,
+                          "name": "rp",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9605,
+                          "src": "605:2:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory_ptr",
+                            "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                          }
+                        },
+                        "id": 9611,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "returnsAccepted",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 9592,
+                        "src": "605:18:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 9612,
+                          "name": "rp",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9605,
+                          "src": "625:2:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory_ptr",
+                            "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                          }
+                        },
+                        "id": 9613,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timeLimit",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 9594,
+                        "src": "625:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "id": 9614,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "604:34:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_uint256_$",
+                      "typeString": "tuple(bool,uint256)"
+                    }
+                  },
+                  "functionReturnParameters": 9603,
+                  "id": 9615,
+                  "nodeType": "Return",
+                  "src": "597:41:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9617,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9598,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9597,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9617,
+                  "src": "466:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9596,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "466:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "465:9:43"
+            },
+            "returnParameters": {
+              "id": 9603,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9600,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9617,
+                  "src": "496:20:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9599,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "496:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9602,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9617,
+                  "src": "518:14:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9601,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "518:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "495:38:43"
+            },
+            "scope": 9680,
+            "src": "441:204:43",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9640,
+              "nodeType": "Block",
+              "src": "840:224:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9633,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 9626,
+                        "name": "returnPolicies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9582,
+                        "src": "882:14:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                          "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                        }
+                      },
+                      "id": 9628,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 9627,
+                        "name": "nextReturnPoliciesID",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9578,
+                        "src": "897:20:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "882:36:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 9630,
+                          "name": "returnsAccepted",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9619,
+                          "src": "934:15:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 9631,
+                          "name": "timeLimit",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9621,
+                          "src": "951:9:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 9629,
+                        "name": "ReturnPolicy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9595,
+                        "src": "921:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_ReturnPolicy_$9595_storage_ptr_$",
+                          "typeString": "type(struct ReturnPolicies.ReturnPolicy storage pointer)"
+                        }
+                      },
+                      "id": 9632,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "921:40:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                      }
+                    },
+                    "src": "882:79:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                      "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                    }
+                  },
+                  "id": 9634,
+                  "nodeType": "ExpressionStatement",
+                  "src": "882:79:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9636,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "1013:22:43",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 9635,
+                      "name": "nextReturnPoliciesID",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9578,
+                      "src": "1013:20:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 9637,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1013:22:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 9638,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1053:4:43",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 9625,
+                  "id": 9639,
+                  "nodeType": "Return",
+                  "src": "1046:11:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9641,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_addReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9622,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9619,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9641,
+                  "src": "778:20:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9618,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "778:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9621,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9641,
+                  "src": "800:14:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9620,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "800:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "777:38:43"
+            },
+            "returnParameters": {
+              "id": 9625,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9624,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9641,
+                  "src": "834:4:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9623,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "834:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "833:6:43"
+            },
+            "scope": 9680,
+            "src": "752:312:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9663,
+              "nodeType": "Block",
+              "src": "1170:137:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9659,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 9652,
+                        "name": "returnPolicies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9582,
+                        "src": "1218:14:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                          "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                        }
+                      },
+                      "id": 9654,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 9653,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9643,
+                        "src": "1233:2:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1218:18:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 9656,
+                          "name": "returnsAccepted",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9645,
+                          "src": "1252:15:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 9657,
+                          "name": "timeLimit",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9647,
+                          "src": "1269:9:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 9655,
+                        "name": "ReturnPolicy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9595,
+                        "src": "1239:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_ReturnPolicy_$9595_storage_ptr_$",
+                          "typeString": "type(struct ReturnPolicies.ReturnPolicy storage pointer)"
+                        }
+                      },
+                      "id": 9658,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1239:40:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                      }
+                    },
+                    "src": "1218:61:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                      "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                    }
+                  },
+                  "id": 9660,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1218:61:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 9661,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1296:4:43",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 9651,
+                  "id": 9662,
+                  "nodeType": "Return",
+                  "src": "1289:11:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9664,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_updateReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9648,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9643,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1099:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9642,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1099:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9645,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1108:20:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9644,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1108:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9647,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1130:14:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9646,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1130:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1098:47:43"
+            },
+            "returnParameters": {
+              "id": 9651,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9650,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1164:4:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9649,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1164:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1163:6:43"
+            },
+            "scope": 9680,
+            "src": "1070:237:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9678,
+              "nodeType": "Block",
+              "src": "1375:111:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9674,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "delete",
+                    "prefix": true,
+                    "src": "1433:25:43",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 9671,
+                        "name": "returnPolicies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9582,
+                        "src": "1440:14:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                          "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                        }
+                      },
+                      "id": 9673,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 9672,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9666,
+                        "src": "1455:2:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1440:18:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9675,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1433:25:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 9676,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1475:4:43",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 9670,
+                  "id": 9677,
+                  "nodeType": "Return",
+                  "src": "1468:11:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9679,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_deleteReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9667,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9666,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9679,
+                  "src": "1342:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9665,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1342:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1341:9:43"
+            },
+            "returnParameters": {
+              "id": 9670,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9669,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9679,
+                  "src": "1369:4:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9668,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1369:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1368:6:43"
+            },
+            "scope": 9680,
+            "src": "1313:173:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 9681,
+        "src": "26:1464:43"
+      }
+    ],
+    "src": "0:1491:43"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/marketplace/features/ReturnPolicies.sol",
+    "exportedSymbols": {
+      "ReturnPolicies": [
+        9680
+      ]
+    },
+    "id": 9681,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9576,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:43"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 9680,
+        "linearizedBaseContracts": [
+          9680
+        ],
+        "name": "ReturnPolicies",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 9578,
+            "name": "nextReturnPoliciesID",
+            "nodeType": "VariableDeclaration",
+            "scope": 9680,
+            "src": "71:32:43",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 9577,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "71:4:43",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 9582,
+            "name": "returnPolicies",
+            "nodeType": "VariableDeclaration",
+            "scope": 9680,
+            "src": "123:51:43",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+              "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy)"
+            },
+            "typeName": {
+              "id": 9581,
+              "keyType": {
+                "id": 9579,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "131:4:43",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "123:29:43",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 9580,
+                "name": "ReturnPolicy",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 9595,
+                "src": "139:12:43",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage_ptr",
+                  "typeString": "struct ReturnPolicies.ReturnPolicy"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9589,
+              "nodeType": "Block",
+              "src": "305:41:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9587,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 9585,
+                      "name": "nextReturnPoliciesID",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9578,
+                      "src": "315:20:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "31",
+                      "id": 9586,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "338:1:43",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "315:24:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 9588,
+                  "nodeType": "ExpressionStatement",
+                  "src": "315:24:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9590,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_constructReturnPolicies",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9583,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:2:43"
+            },
+            "returnParameters": {
+              "id": 9584,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "305:0:43"
+            },
+            "scope": 9680,
+            "src": "260:86:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "ReturnPolicies.ReturnPolicy",
+            "id": 9595,
+            "members": [
+              {
+                "constant": false,
+                "id": 9592,
+                "name": "returnsAccepted",
+                "nodeType": "VariableDeclaration",
+                "scope": 9595,
+                "src": "383:20:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 9591,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "383:4:43",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 9594,
+                "name": "timeLimit",
+                "nodeType": "VariableDeclaration",
+                "scope": 9595,
+                "src": "413:14:43",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 9593,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "413:4:43",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ReturnPolicy",
+            "nodeType": "StructDefinition",
+            "scope": 9680,
+            "src": "353:81:43",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9616,
+              "nodeType": "Block",
+              "src": "533:112:43",
+              "statements": [
+                {
+                  "assignments": [
+                    9605
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 9605,
+                      "name": "rp",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 9616,
+                      "src": "544:22:43",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory_ptr",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 9604,
+                        "name": "ReturnPolicy",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 9595,
+                        "src": "544:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage_ptr",
+                          "typeString": "struct ReturnPolicies.ReturnPolicy"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 9609,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 9606,
+                      "name": "returnPolicies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9582,
+                      "src": "569:14:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                        "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                      }
+                    },
+                    "id": 9608,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 9607,
+                      "name": "id",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9597,
+                      "src": "584:2:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "569:18:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                      "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "544:43:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 9610,
+                          "name": "rp",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9605,
+                          "src": "605:2:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory_ptr",
+                            "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                          }
+                        },
+                        "id": 9611,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "returnsAccepted",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 9592,
+                        "src": "605:18:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 9612,
+                          "name": "rp",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9605,
+                          "src": "625:2:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory_ptr",
+                            "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                          }
+                        },
+                        "id": 9613,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timeLimit",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 9594,
+                        "src": "625:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "id": 9614,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "604:34:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_uint256_$",
+                      "typeString": "tuple(bool,uint256)"
+                    }
+                  },
+                  "functionReturnParameters": 9603,
+                  "id": 9615,
+                  "nodeType": "Return",
+                  "src": "597:41:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9617,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9598,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9597,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9617,
+                  "src": "466:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9596,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "466:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "465:9:43"
+            },
+            "returnParameters": {
+              "id": 9603,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9600,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9617,
+                  "src": "496:20:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9599,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "496:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9602,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9617,
+                  "src": "518:14:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9601,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "518:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "495:38:43"
+            },
+            "scope": 9680,
+            "src": "441:204:43",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9640,
+              "nodeType": "Block",
+              "src": "840:224:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9633,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 9626,
+                        "name": "returnPolicies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9582,
+                        "src": "882:14:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                          "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                        }
+                      },
+                      "id": 9628,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 9627,
+                        "name": "nextReturnPoliciesID",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9578,
+                        "src": "897:20:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "882:36:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 9630,
+                          "name": "returnsAccepted",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9619,
+                          "src": "934:15:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 9631,
+                          "name": "timeLimit",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9621,
+                          "src": "951:9:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 9629,
+                        "name": "ReturnPolicy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9595,
+                        "src": "921:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_ReturnPolicy_$9595_storage_ptr_$",
+                          "typeString": "type(struct ReturnPolicies.ReturnPolicy storage pointer)"
+                        }
+                      },
+                      "id": 9632,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "921:40:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                      }
+                    },
+                    "src": "882:79:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                      "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                    }
+                  },
+                  "id": 9634,
+                  "nodeType": "ExpressionStatement",
+                  "src": "882:79:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9636,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "1013:22:43",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 9635,
+                      "name": "nextReturnPoliciesID",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9578,
+                      "src": "1013:20:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 9637,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1013:22:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 9638,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1053:4:43",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 9625,
+                  "id": 9639,
+                  "nodeType": "Return",
+                  "src": "1046:11:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9641,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_addReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9622,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9619,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9641,
+                  "src": "778:20:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9618,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "778:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9621,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9641,
+                  "src": "800:14:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9620,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "800:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "777:38:43"
+            },
+            "returnParameters": {
+              "id": 9625,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9624,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9641,
+                  "src": "834:4:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9623,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "834:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "833:6:43"
+            },
+            "scope": 9680,
+            "src": "752:312:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9663,
+              "nodeType": "Block",
+              "src": "1170:137:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9659,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 9652,
+                        "name": "returnPolicies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9582,
+                        "src": "1218:14:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                          "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                        }
+                      },
+                      "id": 9654,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 9653,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9643,
+                        "src": "1233:2:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1218:18:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 9656,
+                          "name": "returnsAccepted",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9645,
+                          "src": "1252:15:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 9657,
+                          "name": "timeLimit",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9647,
+                          "src": "1269:9:43",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 9655,
+                        "name": "ReturnPolicy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9595,
+                        "src": "1239:12:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_ReturnPolicy_$9595_storage_ptr_$",
+                          "typeString": "type(struct ReturnPolicies.ReturnPolicy storage pointer)"
+                        }
+                      },
+                      "id": 9658,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1239:40:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_memory",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy memory"
+                      }
+                    },
+                    "src": "1218:61:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                      "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                    }
+                  },
+                  "id": 9660,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1218:61:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 9661,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1296:4:43",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 9651,
+                  "id": 9662,
+                  "nodeType": "Return",
+                  "src": "1289:11:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9664,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_updateReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9648,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9643,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1099:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9642,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1099:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9645,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1108:20:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9644,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1108:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9647,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1130:14:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9646,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1130:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1098:47:43"
+            },
+            "returnParameters": {
+              "id": 9651,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9650,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9664,
+                  "src": "1164:4:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9649,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1164:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1163:6:43"
+            },
+            "scope": 9680,
+            "src": "1070:237:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9678,
+              "nodeType": "Block",
+              "src": "1375:111:43",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 9674,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "delete",
+                    "prefix": true,
+                    "src": "1433:25:43",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 9671,
+                        "name": "returnPolicies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9582,
+                        "src": "1440:14:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ReturnPolicy_$9595_storage_$",
+                          "typeString": "mapping(uint256 => struct ReturnPolicies.ReturnPolicy storage ref)"
+                        }
+                      },
+                      "id": 9673,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 9672,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9666,
+                        "src": "1455:2:43",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1440:18:43",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReturnPolicy_$9595_storage",
+                        "typeString": "struct ReturnPolicies.ReturnPolicy storage ref"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9675,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1433:25:43"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 9676,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1475:4:43",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 9670,
+                  "id": 9677,
+                  "nodeType": "Return",
+                  "src": "1468:11:43"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 9679,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_deleteReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9667,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9666,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9679,
+                  "src": "1342:7:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9665,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1342:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1341:9:43"
+            },
+            "returnParameters": {
+              "id": 9670,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9669,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9679,
+                  "src": "1369:4:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9668,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1369:4:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1368:6:43"
+            },
+            "scope": 9680,
+            "src": "1313:173:43",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 9681,
+        "src": "26:1464:43"
+      }
+    ],
+    "src": "0:1491:43"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.6+commit.b259423e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-04-11T00:38:35.869Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

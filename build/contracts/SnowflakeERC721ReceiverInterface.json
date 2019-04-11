@@ -1,0 +1,473 @@
+{
+  "contractName": "SnowflakeERC721ReceiverInterface",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "einOperator",
+          "type": "uint256"
+        },
+        {
+          "name": "einFrom",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC721Received",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"einOperator\",\"type\":\"uint256\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes4\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for any contract that wants to support safeTransfers from Snowflake ERC721 asset contracts.\",\"methods\":{\"onERC721Received(uint256,uint256,uint256,bytes)\":{\"details\":\"The ERC721 smart contract calls this function on the recipient after a `safeTransfer`. This function MUST return the function selector, otherwise the caller will revert the transaction. The selector to be returned can be obtained as `this.onERC721Received.selector`. This function MAY throw to revert and reject the transfer. Note: the ERC721 contract address is always the message sender.\",\"params\":{\"data\":\"Additional data with no specified format\",\"einFrom\":\"The EIN which previously owned the token\",\"einOperator\":\"The EIN which called `safeTransferFrom` function\",\"tokenId\":\"The NFT identifier which is being transferred\"},\"return\":\"bytes4 `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`\"}},\"title\":\"Snowflake ERC721 token receiver interface\"},\"userdoc\":{\"methods\":{\"onERC721Received(uint256,uint256,uint256,bytes)\":{\"notice\":\"Handle the receipt of an NFT\"}}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/token/ERC721/SnowflakeERC721ReceiverInterface.sol\":\"SnowflakeERC721ReceiverInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/token/ERC721/SnowflakeERC721ReceiverInterface.sol\":{\"keccak256\":\"0x1d94fd6a75bca20c27bfafc97de2e9df0f12eeae152820bbcaa423535223c019\",\"urls\":[\"bzzr://d053e44920ee5c53ded1ae8a112f34f28732bbc3ac04beb10b2e63369137c7dc\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.2;\n\n/**\n * @title Snowflake ERC721 token receiver interface\n * @dev Interface for any contract that wants to support safeTransfers\n * from Snowflake ERC721 asset contracts.\n */\ncontract SnowflakeERC721ReceiverInterface {\n    /**\n     * @notice Handle the receipt of an NFT\n     * @dev The ERC721 smart contract calls this function on the recipient\n     * after a `safeTransfer`. This function MUST return the function selector,\n     * otherwise the caller will revert the transaction. The selector to be\n     * returned can be obtained as `this.onERC721Received.selector`. This\n     * function MAY throw to revert and reject the transfer.\n     * Note: the ERC721 contract address is always the message sender.\n     * @param einOperator The EIN which called `safeTransferFrom` function\n     * @param einFrom The EIN which previously owned the token\n     * @param tokenId The NFT identifier which is being transferred\n     * @param data Additional data with no specified format\n     * @return bytes4 `bytes4(keccak256(\"onERC721Received(address,address,uint256,bytes)\"))`\n     */\n    function onERC721Received(uint256 einOperator, uint256 einFrom, uint256 tokenId, bytes memory data)\n    public returns (bytes4);\n}\n",
+  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/token/ERC721/SnowflakeERC721ReceiverInterface.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/token/ERC721/SnowflakeERC721ReceiverInterface.sol",
+    "exportedSymbols": {
+      "SnowflakeERC721ReceiverInterface": [
+        6497
+      ]
+    },
+    "id": 6498,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6483,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:16"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Snowflake ERC721 token receiver interface\n@dev Interface for any contract that wants to support safeTransfers\nfrom Snowflake ERC721 asset contracts.",
+        "fullyImplemented": false,
+        "id": 6497,
+        "linearizedBaseContracts": [
+          6497
+        ],
+        "name": "SnowflakeERC721ReceiverInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Handle the receipt of an NFT\n@dev The ERC721 smart contract calls this function on the recipient\nafter a `safeTransfer`. This function MUST return the function selector,\notherwise the caller will revert the transaction. The selector to be\nreturned can be obtained as `this.onERC721Received.selector`. This\nfunction MAY throw to revert and reject the transfer.\nNote: the ERC721 contract address is always the message sender.\n@param einOperator The EIN which called `safeTransferFrom` function\n@param einFrom The EIN which previously owned the token\n@param tokenId The NFT identifier which is being transferred\n@param data Additional data with no specified format\n@return bytes4 `bytes4(keccak256(\"onERC721Received(address,address,uint256,bytes)\"))`",
+            "id": 6496,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onERC721Received",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6492,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6485,
+                  "name": "einOperator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1128:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6484,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1128:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6487,
+                  "name": "einFrom",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1149:15:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6486,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1149:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6489,
+                  "name": "tokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1166:15:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6488,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1166:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6491,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1183:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 6490,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1183:5:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1127:74:16"
+            },
+            "returnParameters": {
+              "id": 6495,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6494,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1222:6:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 6493,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1222:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1221:8:16"
+            },
+            "scope": 6497,
+            "src": "1102:128:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 6498,
+        "src": "198:1034:16"
+      }
+    ],
+    "src": "0:1233:16"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/token/ERC721/SnowflakeERC721ReceiverInterface.sol",
+    "exportedSymbols": {
+      "SnowflakeERC721ReceiverInterface": [
+        6497
+      ]
+    },
+    "id": 6498,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6483,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:16"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Snowflake ERC721 token receiver interface\n@dev Interface for any contract that wants to support safeTransfers\nfrom Snowflake ERC721 asset contracts.",
+        "fullyImplemented": false,
+        "id": 6497,
+        "linearizedBaseContracts": [
+          6497
+        ],
+        "name": "SnowflakeERC721ReceiverInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Handle the receipt of an NFT\n@dev The ERC721 smart contract calls this function on the recipient\nafter a `safeTransfer`. This function MUST return the function selector,\notherwise the caller will revert the transaction. The selector to be\nreturned can be obtained as `this.onERC721Received.selector`. This\nfunction MAY throw to revert and reject the transfer.\nNote: the ERC721 contract address is always the message sender.\n@param einOperator The EIN which called `safeTransferFrom` function\n@param einFrom The EIN which previously owned the token\n@param tokenId The NFT identifier which is being transferred\n@param data Additional data with no specified format\n@return bytes4 `bytes4(keccak256(\"onERC721Received(address,address,uint256,bytes)\"))`",
+            "id": 6496,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onERC721Received",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6492,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6485,
+                  "name": "einOperator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1128:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6484,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1128:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6487,
+                  "name": "einFrom",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1149:15:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6486,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1149:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6489,
+                  "name": "tokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1166:15:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6488,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1166:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6491,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1183:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 6490,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1183:5:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1127:74:16"
+            },
+            "returnParameters": {
+              "id": 6495,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6494,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6496,
+                  "src": "1222:6:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 6493,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1222:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1221:8:16"
+            },
+            "scope": 6497,
+            "src": "1102:128:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 6498,
+        "src": "198:1034:16"
+      }
+    ],
+    "src": "0:1233:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.6+commit.b259423e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-04-11T00:38:35.855Z",
+  "devdoc": {
+    "details": "Interface for any contract that wants to support safeTransfers from Snowflake ERC721 asset contracts.",
+    "methods": {
+      "onERC721Received(uint256,uint256,uint256,bytes)": {
+        "details": "The ERC721 smart contract calls this function on the recipient after a `safeTransfer`. This function MUST return the function selector, otherwise the caller will revert the transaction. The selector to be returned can be obtained as `this.onERC721Received.selector`. This function MAY throw to revert and reject the transfer. Note: the ERC721 contract address is always the message sender.",
+        "params": {
+          "data": "Additional data with no specified format",
+          "einFrom": "The EIN which previously owned the token",
+          "einOperator": "The EIN which called `safeTransferFrom` function",
+          "tokenId": "The NFT identifier which is being transferred"
+        },
+        "return": "bytes4 `bytes4(keccak256(\"onERC721Received(address,address,uint256,bytes)\"))`"
+      }
+    },
+    "title": "Snowflake ERC721 token receiver interface"
+  },
+  "userdoc": {
+    "methods": {
+      "onERC721Received(uint256,uint256,uint256,bytes)": {
+        "notice": "Handle the receipt of an NFT"
+      }
+    }
+  }
+}

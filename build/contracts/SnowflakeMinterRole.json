@@ -1,0 +1,2939 @@
+{
+  "contractName": "SnowflakeMinterRole",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "snowflakeAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "account",
+          "type": "uint256"
+        }
+      ],
+      "name": "SnowflakeMinterAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "account",
+          "type": "uint256"
+        }
+      ],
+      "name": "SnowflakeMinterRemoved",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "uint256"
+        }
+      ],
+      "name": "isSnowflakeMinter",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "uint256"
+        }
+      ],
+      "name": "addSnowflakeMinter",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceSnowflakeMinter",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"renounceSnowflakeMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"isSnowflakeMinter\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"addSnowflakeMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"snowflakeAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"SnowflakeMinterAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"SnowflakeMinterRemoved\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/roles/SnowflakeMinterRole.sol\":\"SnowflakeMinterRole\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/EINRoles.sol\":{\"keccak256\":\"0x9dd4763598b03044f79572c9eb554b2256ef20c0da1e60dadc77cc4c8ec3fcbf\",\"urls\":[\"bzzr://ee43a144547fca35d7941e1d470118d8fb13b165a49eaa1a62512f64725f9c0e\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/roles/SnowflakeMinterRole.sol\":{\"keccak256\":\"0xcc387a300ce07e337cfce40783b33df0b4ebcb24b446434b5f4c34a02755c547\",\"urls\":[\"bzzr://20b6b626fd668bb2023770d5183825f82f567aa66cd8398edd7880f817dab57e\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/IdentityRegistryInterface.sol\":{\"keccak256\":\"0xb559191dbd30da97a8b5759a895d7f4eff420eedc55b0786ae7206fbe384dc15\",\"urls\":[\"bzzr://a6122de11af1f831b1a93dba66aabe9e299f0040cf3404510790453addc6e0d9\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeInterface.sol\":{\"keccak256\":\"0xb34e22de661c32131d4d5bbd8f8dbf1794e5d944736ccb31870b6f75bdd322e5\",\"urls\":[\"bzzr://aaa6399afaf287d517ece7ac874cf6da3c2d81f9d88cb8cdc4631adc3f4ac52a\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol\":{\"keccak256\":\"0x2abd0f0b6837dec5554cf29f986d5e365631fc514d2f636fab1054958fd1a1c0\",\"urls\":[\"bzzr://149da665bf1ca0442cf1956087a24d1a11de1a2f5cd77eebefdcf2e1f2c56bb4\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506104cf806100206000396000f3fe608060405234801561001057600080fd5b5060043610610068577c01000000000000000000000000000000000000000000000000000000006000350463895c3e94811461006d5780639690f6d114610077578063a4453ffb146100a8578063f9f451b8146100c5575b600080fd5b6100756100e9565b005b6100946004803603602081101561008d57600080fd5b50356100fc565b604080519115158252519081900360200190f35b610075600480360360208110156100be57600080fd5b5035610115565b6100cd61013b565b60408051600160a060020a039092168252519081900360200190f35b6100fa6100f53361014a565b61036a565b565b600061010f60018363ffffffff6103a916565b92915050565b6101266101213361014a565b6100fc565b61012f57600080fd5b610138816103cc565b50565b600054600160a060020a031681565b60008054604080517fa759ee6f0000000000000000000000000000000000000000000000000000000081529051600160a060020a03909216918391839163a759ee6f9160048082019260209290919082900301818787803b1580156101ae57600080fd5b505af11580156101c2573d6000803e3d6000fd5b505050506040513d60208110156101d857600080fd5b5051604080517f237f1a21000000000000000000000000000000000000000000000000000000008152600160a060020a038781166004830152915192935083929183169163237f1a2191602480820192602092909190829003018186803b15801561024257600080fd5b505afa158015610256573d6000803e3d6000fd5b505050506040513d602081101561026c57600080fd5b50516102c3576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602881526020018061047c6028913960400191505060405180910390fd5b80600160a060020a03166305c62c2f866040518263ffffffff167c01000000000000000000000000000000000000000000000000000000000281526004018082600160a060020a0316600160a060020a0316815260200191505060206040518083038186803b15801561033557600080fd5b505afa158015610349573d6000803e3d6000fd5b505050506040513d602081101561035f57600080fd5b505195945050505050565b61037b60018263ffffffff61040b16565b60405181907f34803f71b3ce19f83d2efe8fd85a68795e6ca17a2139def6f374f7cec617366c90600090a250565b6000816103b557600080fd5b506000908152602091909152604090205460ff1690565b6103dd60018263ffffffff61044116565b60405181907fc96fabf52983c486b9ee7f26fa97994b2199bd98cf74f02ef6aa1e1d87cbb48290600090a250565b8061041557600080fd5b61041f82826103a9565b61042857600080fd5b600090815260209190915260409020805460ff19169055565b8061044b57600080fd5b61045582826103a9565b1561045f57600080fd5b600090815260209190915260409020805460ff1916600117905556fe41646472657373206e6f6e2d6578697374656e7420696e204964656e746974795265676973747279a165627a7a72305820ca5717e4137b9261dbaf04a206c41af3cdf40d9d5a3153a4f669a9e349ae0a5e0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610068577c01000000000000000000000000000000000000000000000000000000006000350463895c3e94811461006d5780639690f6d114610077578063a4453ffb146100a8578063f9f451b8146100c5575b600080fd5b6100756100e9565b005b6100946004803603602081101561008d57600080fd5b50356100fc565b604080519115158252519081900360200190f35b610075600480360360208110156100be57600080fd5b5035610115565b6100cd61013b565b60408051600160a060020a039092168252519081900360200190f35b6100fa6100f53361014a565b61036a565b565b600061010f60018363ffffffff6103a916565b92915050565b6101266101213361014a565b6100fc565b61012f57600080fd5b610138816103cc565b50565b600054600160a060020a031681565b60008054604080517fa759ee6f0000000000000000000000000000000000000000000000000000000081529051600160a060020a03909216918391839163a759ee6f9160048082019260209290919082900301818787803b1580156101ae57600080fd5b505af11580156101c2573d6000803e3d6000fd5b505050506040513d60208110156101d857600080fd5b5051604080517f237f1a21000000000000000000000000000000000000000000000000000000008152600160a060020a038781166004830152915192935083929183169163237f1a2191602480820192602092909190829003018186803b15801561024257600080fd5b505afa158015610256573d6000803e3d6000fd5b505050506040513d602081101561026c57600080fd5b50516102c3576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602881526020018061047c6028913960400191505060405180910390fd5b80600160a060020a03166305c62c2f866040518263ffffffff167c01000000000000000000000000000000000000000000000000000000000281526004018082600160a060020a0316600160a060020a0316815260200191505060206040518083038186803b15801561033557600080fd5b505afa158015610349573d6000803e3d6000fd5b505050506040513d602081101561035f57600080fd5b505195945050505050565b61037b60018263ffffffff61040b16565b60405181907f34803f71b3ce19f83d2efe8fd85a68795e6ca17a2139def6f374f7cec617366c90600090a250565b6000816103b557600080fd5b506000908152602091909152604090205460ff1690565b6103dd60018263ffffffff61044116565b60405181907fc96fabf52983c486b9ee7f26fa97994b2199bd98cf74f02ef6aa1e1d87cbb48290600090a250565b8061041557600080fd5b61041f82826103a9565b61042857600080fd5b600090815260209190915260409020805460ff19169055565b8061044b57600080fd5b61045582826103a9565b1561045f57600080fd5b600090815260209190915260409020805460ff1916600117905556fe41646472657373206e6f6e2d6578697374656e7420696e204964656e746974795265676973747279a165627a7a72305820ca5717e4137b9261dbaf04a206c41af3cdf40d9d5a3153a4f669a9e349ae0a5e0029",
+  "sourceMap": "255:1425:11:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;255:1425:11;;;;;;;",
+  "deployedSourceMap": "255:1425:11:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;255:1425:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1277:101;;;:::i;:::-;;1029:119;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1029:119:11;;:::i;:::-;;;;;;;;;;;;;;;;;;1154:117;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1154:117:11;;:::i;371:31:53:-;;;:::i;:::-;;;;-1:-1:-1;;;;;371:31:53;;;;;;;;;;;;;;1277:101:11;1329:42;1352:18;1359:10;1352:6;:18::i;:::-;1329:22;:42::i;:::-;1277:101::o;1029:119::-;1094:4;1117:24;:11;1133:7;1117:24;:15;:24;:::i;:::-;1110:31;1029:119;-1:-1:-1;;1029:119:11:o;1154:117::-;967:37;985:18;992:10;985:6;:18::i;:::-;967:17;:37::i;:::-;959:46;;;;;;1236:28;1256:7;1236:19;:28::i;:::-;1154:117;:::o;371:31:53:-;;;-1:-1:-1;;;;;371:31:53;;:::o;736:580::-;790:11;940:16;;982:28;;;;;;;;-1:-1:-1;;;;;940:16:53;;;;790:11;;940:16;;982:26;;:28;;;;;;;;;;;;;;;790:11;940:16;982:28;;;5:2:-1;;;;30:1;27;20:12;5:2;982:28:53;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;982:28:53;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;982:28:53;1171:40;;;;;;-1:-1:-1;;;;;1171:40:53;;;;;;;;;982:28;;-1:-1:-1;982:28:53;;1171;;;;;;:40;;;;;982:28;;1171:40;;;;;;;;:28;:40;;;5:2:-1;;;;30:1;27;20:12;5:2;1171:40:53;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1171:40:53;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1171:40:53;1163:93;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1274:16;-1:-1:-1;;;;;1274:23:53;;1298:10;1274:35;;;;;;;;;;;;;-1:-1:-1;;;;;1274:35:53;-1:-1:-1;;;;;1274:35:53;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1274:35:53;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1274:35:53;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1274:35:53;;736:580;-1:-1:-1;;;;;736:580:53:o;1530:148:11:-;1598:27;:11;1617:7;1598:27;:18;:27;:::i;:::-;1640:31;;1663:7;;1640:31;;;;;1530:148;:::o;778:156:10:-;853:4;877:12;869:21;;;;;;-1:-1:-1;907:11:10;:20;;;;;;;;;;;;;;;778:156::o;1384:140:11:-;1449:24;:11;1465:7;1449:24;:15;:24;:::i;:::-;1488:29;;1509:7;;1488:29;;;;;1384:140;:::o;512:178:10:-;594:12;586:21;;;;;;625:18;629:4;635:7;625:3;:18::i;:::-;617:27;;;;;;678:5;655:20;;;;;;;;;;;:28;;-1:-1:-1;;655:28:10;;;512:178::o;263:175::-;342:12;334:21;;;;;;374:18;378:4;384:7;374:3;:18::i;:::-;373:19;365:28;;;;;;404:11;:20;;;;;;;;;;;:27;;-1:-1:-1;;404:27:10;427:4;404:27;;;263:175::o",
+  "source": "pragma solidity ^0.5.2;\n\nimport \"../EINRoles.sol\";\nimport \"../../../snowflake_custom/SnowflakeReader.sol\";\n\n\n/*\n * =========================\n * NOTE ABOUT THIS CONTRACT: This is a more of a \"SnowflakeMinterRole\" contract\n * =========================\n */\n\ncontract SnowflakeMinterRole is SnowflakeReader {\n    using EINRoles for EINRoles.EINRole;\n\n    event SnowflakeMinterAdded(uint256 indexed account);\n    event SnowflakeMinterRemoved(uint256 indexed account);\n\n    EINRoles.EINRole private _einMinters;\n\n    //TODO: Merge in msg.sender idea somehow in a good way; Identity Registry link, perhaps?\n/*\n    constructor (address _snowflakeAddress) public {\n        _constructSnowflakeMinterRole(_snowflakeAddress);\n    }\n*/\n    function _constructSnowflakeMinterRole(address _snowflakeAddress) internal {\n        _constructSnowflakeReader(_snowflakeAddress);\n        _addSnowflakeMinter(getEIN(msg.sender));\n    }\n\n    modifier onlySnowflakeMinter() {\n        require(isSnowflakeMinter(getEIN(msg.sender)));\n        _;\n    }\n\n    function isSnowflakeMinter(uint256 account) public view returns (bool) {\n        return _einMinters.has(account);\n    }\n\n    function addSnowflakeMinter(uint256 account) public onlySnowflakeMinter {\n        _addSnowflakeMinter(account);\n    }\n\n    function renounceSnowflakeMinter() public {\n        _removeSnowflakeMinter(getEIN(msg.sender));\n    }\n\n    function _addSnowflakeMinter(uint256 account) internal {\n        _einMinters.add(account);\n        emit SnowflakeMinterAdded(account);\n    }\n\n    function _removeSnowflakeMinter(uint256 account) internal {\n        _einMinters.remove(account);\n        emit SnowflakeMinterRemoved(account);\n    }\n}\n",
+  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/roles/SnowflakeMinterRole.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/roles/SnowflakeMinterRole.sol",
+    "exportedSymbols": {
+      "SnowflakeMinterRole": [
+        5765
+      ]
+    },
+    "id": 5766,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5649,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:11"
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/EINRoles.sol",
+        "file": "../EINRoles.sol",
+        "id": 5650,
+        "nodeType": "ImportDirective",
+        "scope": 5766,
+        "sourceUnit": 5648,
+        "src": "25:25:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol",
+        "file": "../../../snowflake_custom/SnowflakeReader.sol",
+        "id": 5651,
+        "nodeType": "ImportDirective",
+        "scope": 5766,
+        "sourceUnit": 12012,
+        "src": "51:55:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 5652,
+              "name": "SnowflakeReader",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12011,
+              "src": "287:15:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SnowflakeReader_$12011",
+                "typeString": "contract SnowflakeReader"
+              }
+            },
+            "id": 5653,
+            "nodeType": "InheritanceSpecifier",
+            "src": "287:15:11"
+          }
+        ],
+        "contractDependencies": [
+          12011
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 5765,
+        "linearizedBaseContracts": [
+          5765,
+          12011
+        ],
+        "name": "SnowflakeMinterRole",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 5656,
+            "libraryName": {
+              "contractScope": null,
+              "id": 5654,
+              "name": "EINRoles",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5647,
+              "src": "315:8:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_EINRoles_$5647",
+                "typeString": "library EINRoles"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "309:36:11",
+            "typeName": {
+              "contractScope": null,
+              "id": 5655,
+              "name": "EINRoles.EINRole",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5566,
+              "src": "328:16:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_EINRole_$5566_storage_ptr",
+                "typeString": "struct EINRoles.EINRole"
+              }
+            }
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 5660,
+            "name": "SnowflakeMinterAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5659,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5658,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5660,
+                  "src": "378:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5657,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "378:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "377:25:11"
+            },
+            "src": "351:52:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 5664,
+            "name": "SnowflakeMinterRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5663,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5662,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5664,
+                  "src": "437:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5661,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "437:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "436:25:11"
+            },
+            "src": "408:54:11"
+          },
+          {
+            "constant": false,
+            "id": 5666,
+            "name": "_einMinters",
+            "nodeType": "VariableDeclaration",
+            "scope": 5765,
+            "src": "468:36:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+              "typeString": "struct EINRoles.EINRole"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 5665,
+              "name": "EINRoles.EINRole",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5566,
+              "src": "468:16:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_EINRole_$5566_storage_ptr",
+                "typeString": "struct EINRoles.EINRole"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 5682,
+              "nodeType": "Block",
+              "src": "802:110:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5672,
+                        "name": "_snowflakeAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5668,
+                        "src": "838:17:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 5671,
+                      "name": "_constructSnowflakeReader",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11971,
+                      "src": "812:25:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 5673,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "812:44:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5674,
+                  "nodeType": "ExpressionStatement",
+                  "src": "812:44:11"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 5677,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 14657,
+                              "src": "893:3:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 5678,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "893:10:11",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          ],
+                          "id": 5676,
+                          "name": "getEIN",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12010,
+                          "src": "886:6:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_uint256_$",
+                            "typeString": "function (address) returns (uint256)"
+                          }
+                        },
+                        "id": 5679,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "886:18:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5675,
+                      "name": "_addSnowflakeMinter",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5748,
+                      "src": "866:19:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5680,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "866:39:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5681,
+                  "nodeType": "ExpressionStatement",
+                  "src": "866:39:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5683,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_constructSnowflakeMinterRole",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5669,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5668,
+                  "name": "_snowflakeAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5683,
+                  "src": "766:25:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5667,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "766:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "765:27:11"
+            },
+            "returnParameters": {
+              "id": 5670,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "802:0:11"
+            },
+            "scope": 5765,
+            "src": "727:185:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5695,
+              "nodeType": "Block",
+              "src": "949:74:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 5688,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 14657,
+                                  "src": "992:3:11",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 5689,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "992:10:11",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              ],
+                              "id": 5687,
+                              "name": "getEIN",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 12010,
+                              "src": "985:6:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_uint256_$",
+                                "typeString": "function (address) returns (uint256)"
+                              }
+                            },
+                            "id": 5690,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "985:18:11",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "id": 5686,
+                          "name": "isSnowflakeMinter",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 5709,
+                          "src": "967:17:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_uint256_$returns$_t_bool_$",
+                            "typeString": "function (uint256) view returns (bool)"
+                          }
+                        },
+                        "id": 5691,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "967:37:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 5685,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        14660,
+                        14661
+                      ],
+                      "referencedDeclaration": 14660,
+                      "src": "959:7:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 5692,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "959:46:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5693,
+                  "nodeType": "ExpressionStatement",
+                  "src": "959:46:11"
+                },
+                {
+                  "id": 5694,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "1015:1:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5696,
+            "name": "onlySnowflakeMinter",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 5684,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "946:2:11"
+            },
+            "src": "918:105:11",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5708,
+              "nodeType": "Block",
+              "src": "1100:48:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5705,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5698,
+                        "src": "1133:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5703,
+                        "name": "_einMinters",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5666,
+                        "src": "1117:11:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+                          "typeString": "struct EINRoles.EINRole storage ref"
+                        }
+                      },
+                      "id": 5704,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "has",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5646,
+                      "src": "1117:15:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_EINRole_$5566_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_EINRole_$5566_storage_ptr_$",
+                        "typeString": "function (struct EINRoles.EINRole storage pointer,uint256) view returns (bool)"
+                      }
+                    },
+                    "id": 5706,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1117:24:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 5702,
+                  "id": 5707,
+                  "nodeType": "Return",
+                  "src": "1110:31:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5709,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5699,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5698,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5709,
+                  "src": "1056:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5697,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1056:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1055:17:11"
+            },
+            "returnParameters": {
+              "id": 5702,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5701,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5709,
+                  "src": "1094:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5700,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1094:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1093:6:11"
+            },
+            "scope": 5765,
+            "src": "1029:119:11",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5720,
+              "nodeType": "Block",
+              "src": "1226:45:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5717,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5711,
+                        "src": "1256:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5716,
+                      "name": "_addSnowflakeMinter",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5748,
+                      "src": "1236:19:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5718,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1236:28:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5719,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1236:28:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5721,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 5714,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 5713,
+                  "name": "onlySnowflakeMinter",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 5696,
+                  "src": "1206:19:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1206:19:11"
+              }
+            ],
+            "name": "addSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5712,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5711,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5721,
+                  "src": "1182:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5710,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1182:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1181:17:11"
+            },
+            "returnParameters": {
+              "id": 5715,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1226:0:11"
+            },
+            "scope": 5765,
+            "src": "1154:117:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5731,
+              "nodeType": "Block",
+              "src": "1319:59:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 5726,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 14657,
+                              "src": "1359:3:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 5727,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "1359:10:11",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          ],
+                          "id": 5725,
+                          "name": "getEIN",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12010,
+                          "src": "1352:6:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_uint256_$",
+                            "typeString": "function (address) returns (uint256)"
+                          }
+                        },
+                        "id": 5728,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1352:18:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5724,
+                      "name": "_removeSnowflakeMinter",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5764,
+                      "src": "1329:22:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5729,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1329:42:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5730,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1329:42:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5732,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "renounceSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5722,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1309:2:11"
+            },
+            "returnParameters": {
+              "id": 5723,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1319:0:11"
+            },
+            "scope": 5765,
+            "src": "1277:101:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5747,
+              "nodeType": "Block",
+              "src": "1439:85:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5740,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5734,
+                        "src": "1465:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5737,
+                        "name": "_einMinters",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5666,
+                        "src": "1449:11:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+                          "typeString": "struct EINRoles.EINRole storage ref"
+                        }
+                      },
+                      "id": 5739,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5596,
+                      "src": "1449:15:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_EINRole_$5566_storage_ptr_$_t_uint256_$returns$__$bound_to$_t_struct$_EINRole_$5566_storage_ptr_$",
+                        "typeString": "function (struct EINRoles.EINRole storage pointer,uint256)"
+                      }
+                    },
+                    "id": 5741,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1449:24:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5742,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1449:24:11"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5744,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5734,
+                        "src": "1509:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5743,
+                      "name": "SnowflakeMinterAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5660,
+                      "src": "1488:20:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5745,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1488:29:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5746,
+                  "nodeType": "EmitStatement",
+                  "src": "1483:34:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5748,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_addSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5735,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5734,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5748,
+                  "src": "1413:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5733,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1413:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1412:17:11"
+            },
+            "returnParameters": {
+              "id": 5736,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1439:0:11"
+            },
+            "scope": 5765,
+            "src": "1384:140:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5763,
+              "nodeType": "Block",
+              "src": "1588:90:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5756,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5750,
+                        "src": "1617:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5753,
+                        "name": "_einMinters",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5666,
+                        "src": "1598:11:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+                          "typeString": "struct EINRoles.EINRole storage ref"
+                        }
+                      },
+                      "id": 5755,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5625,
+                      "src": "1598:18:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_EINRole_$5566_storage_ptr_$_t_uint256_$returns$__$bound_to$_t_struct$_EINRole_$5566_storage_ptr_$",
+                        "typeString": "function (struct EINRoles.EINRole storage pointer,uint256)"
+                      }
+                    },
+                    "id": 5757,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1598:27:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5758,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1598:27:11"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5760,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5750,
+                        "src": "1663:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5759,
+                      "name": "SnowflakeMinterRemoved",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5664,
+                      "src": "1640:22:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5761,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1640:31:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5762,
+                  "nodeType": "EmitStatement",
+                  "src": "1635:36:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5764,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_removeSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5751,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5750,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5764,
+                  "src": "1562:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5749,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1562:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1561:17:11"
+            },
+            "returnParameters": {
+              "id": 5752,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1588:0:11"
+            },
+            "scope": 5765,
+            "src": "1530:148:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5766,
+        "src": "255:1425:11"
+      }
+    ],
+    "src": "0:1681:11"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/roles/SnowflakeMinterRole.sol",
+    "exportedSymbols": {
+      "SnowflakeMinterRole": [
+        5765
+      ]
+    },
+    "id": 5766,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5649,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:11"
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/ein/access/EINRoles.sol",
+        "file": "../EINRoles.sol",
+        "id": 5650,
+        "nodeType": "ImportDirective",
+        "scope": 5766,
+        "sourceUnit": 5648,
+        "src": "25:25:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol",
+        "file": "../../../snowflake_custom/SnowflakeReader.sol",
+        "id": 5651,
+        "nodeType": "ImportDirective",
+        "scope": 5766,
+        "sourceUnit": 12012,
+        "src": "51:55:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 5652,
+              "name": "SnowflakeReader",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12011,
+              "src": "287:15:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SnowflakeReader_$12011",
+                "typeString": "contract SnowflakeReader"
+              }
+            },
+            "id": 5653,
+            "nodeType": "InheritanceSpecifier",
+            "src": "287:15:11"
+          }
+        ],
+        "contractDependencies": [
+          12011
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 5765,
+        "linearizedBaseContracts": [
+          5765,
+          12011
+        ],
+        "name": "SnowflakeMinterRole",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 5656,
+            "libraryName": {
+              "contractScope": null,
+              "id": 5654,
+              "name": "EINRoles",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5647,
+              "src": "315:8:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_EINRoles_$5647",
+                "typeString": "library EINRoles"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "309:36:11",
+            "typeName": {
+              "contractScope": null,
+              "id": 5655,
+              "name": "EINRoles.EINRole",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5566,
+              "src": "328:16:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_EINRole_$5566_storage_ptr",
+                "typeString": "struct EINRoles.EINRole"
+              }
+            }
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 5660,
+            "name": "SnowflakeMinterAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5659,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5658,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5660,
+                  "src": "378:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5657,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "378:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "377:25:11"
+            },
+            "src": "351:52:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 5664,
+            "name": "SnowflakeMinterRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5663,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5662,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5664,
+                  "src": "437:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5661,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "437:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "436:25:11"
+            },
+            "src": "408:54:11"
+          },
+          {
+            "constant": false,
+            "id": 5666,
+            "name": "_einMinters",
+            "nodeType": "VariableDeclaration",
+            "scope": 5765,
+            "src": "468:36:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+              "typeString": "struct EINRoles.EINRole"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 5665,
+              "name": "EINRoles.EINRole",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5566,
+              "src": "468:16:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_EINRole_$5566_storage_ptr",
+                "typeString": "struct EINRoles.EINRole"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 5682,
+              "nodeType": "Block",
+              "src": "802:110:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5672,
+                        "name": "_snowflakeAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5668,
+                        "src": "838:17:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 5671,
+                      "name": "_constructSnowflakeReader",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11971,
+                      "src": "812:25:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 5673,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "812:44:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5674,
+                  "nodeType": "ExpressionStatement",
+                  "src": "812:44:11"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 5677,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 14657,
+                              "src": "893:3:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 5678,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "893:10:11",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          ],
+                          "id": 5676,
+                          "name": "getEIN",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12010,
+                          "src": "886:6:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_uint256_$",
+                            "typeString": "function (address) returns (uint256)"
+                          }
+                        },
+                        "id": 5679,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "886:18:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5675,
+                      "name": "_addSnowflakeMinter",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5748,
+                      "src": "866:19:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5680,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "866:39:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5681,
+                  "nodeType": "ExpressionStatement",
+                  "src": "866:39:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5683,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_constructSnowflakeMinterRole",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5669,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5668,
+                  "name": "_snowflakeAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5683,
+                  "src": "766:25:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5667,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "766:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "765:27:11"
+            },
+            "returnParameters": {
+              "id": 5670,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "802:0:11"
+            },
+            "scope": 5765,
+            "src": "727:185:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5695,
+              "nodeType": "Block",
+              "src": "949:74:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 5688,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 14657,
+                                  "src": "992:3:11",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 5689,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "992:10:11",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              ],
+                              "id": 5687,
+                              "name": "getEIN",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 12010,
+                              "src": "985:6:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_uint256_$",
+                                "typeString": "function (address) returns (uint256)"
+                              }
+                            },
+                            "id": 5690,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "985:18:11",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "id": 5686,
+                          "name": "isSnowflakeMinter",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 5709,
+                          "src": "967:17:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_uint256_$returns$_t_bool_$",
+                            "typeString": "function (uint256) view returns (bool)"
+                          }
+                        },
+                        "id": 5691,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "967:37:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 5685,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        14660,
+                        14661
+                      ],
+                      "referencedDeclaration": 14660,
+                      "src": "959:7:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 5692,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "959:46:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5693,
+                  "nodeType": "ExpressionStatement",
+                  "src": "959:46:11"
+                },
+                {
+                  "id": 5694,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "1015:1:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5696,
+            "name": "onlySnowflakeMinter",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 5684,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "946:2:11"
+            },
+            "src": "918:105:11",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5708,
+              "nodeType": "Block",
+              "src": "1100:48:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5705,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5698,
+                        "src": "1133:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5703,
+                        "name": "_einMinters",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5666,
+                        "src": "1117:11:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+                          "typeString": "struct EINRoles.EINRole storage ref"
+                        }
+                      },
+                      "id": 5704,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "has",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5646,
+                      "src": "1117:15:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_EINRole_$5566_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_EINRole_$5566_storage_ptr_$",
+                        "typeString": "function (struct EINRoles.EINRole storage pointer,uint256) view returns (bool)"
+                      }
+                    },
+                    "id": 5706,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1117:24:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 5702,
+                  "id": 5707,
+                  "nodeType": "Return",
+                  "src": "1110:31:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5709,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5699,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5698,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5709,
+                  "src": "1056:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5697,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1056:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1055:17:11"
+            },
+            "returnParameters": {
+              "id": 5702,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5701,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5709,
+                  "src": "1094:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5700,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1094:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1093:6:11"
+            },
+            "scope": 5765,
+            "src": "1029:119:11",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5720,
+              "nodeType": "Block",
+              "src": "1226:45:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5717,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5711,
+                        "src": "1256:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5716,
+                      "name": "_addSnowflakeMinter",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5748,
+                      "src": "1236:19:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5718,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1236:28:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5719,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1236:28:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5721,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 5714,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 5713,
+                  "name": "onlySnowflakeMinter",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 5696,
+                  "src": "1206:19:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1206:19:11"
+              }
+            ],
+            "name": "addSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5712,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5711,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5721,
+                  "src": "1182:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5710,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1182:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1181:17:11"
+            },
+            "returnParameters": {
+              "id": 5715,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1226:0:11"
+            },
+            "scope": 5765,
+            "src": "1154:117:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5731,
+              "nodeType": "Block",
+              "src": "1319:59:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 5726,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 14657,
+                              "src": "1359:3:11",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 5727,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "1359:10:11",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          ],
+                          "id": 5725,
+                          "name": "getEIN",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12010,
+                          "src": "1352:6:11",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_uint256_$",
+                            "typeString": "function (address) returns (uint256)"
+                          }
+                        },
+                        "id": 5728,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1352:18:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5724,
+                      "name": "_removeSnowflakeMinter",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5764,
+                      "src": "1329:22:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5729,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1329:42:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5730,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1329:42:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5732,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "renounceSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5722,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1309:2:11"
+            },
+            "returnParameters": {
+              "id": 5723,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1319:0:11"
+            },
+            "scope": 5765,
+            "src": "1277:101:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5747,
+              "nodeType": "Block",
+              "src": "1439:85:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5740,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5734,
+                        "src": "1465:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5737,
+                        "name": "_einMinters",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5666,
+                        "src": "1449:11:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+                          "typeString": "struct EINRoles.EINRole storage ref"
+                        }
+                      },
+                      "id": 5739,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5596,
+                      "src": "1449:15:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_EINRole_$5566_storage_ptr_$_t_uint256_$returns$__$bound_to$_t_struct$_EINRole_$5566_storage_ptr_$",
+                        "typeString": "function (struct EINRoles.EINRole storage pointer,uint256)"
+                      }
+                    },
+                    "id": 5741,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1449:24:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5742,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1449:24:11"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5744,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5734,
+                        "src": "1509:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5743,
+                      "name": "SnowflakeMinterAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5660,
+                      "src": "1488:20:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5745,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1488:29:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5746,
+                  "nodeType": "EmitStatement",
+                  "src": "1483:34:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5748,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_addSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5735,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5734,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5748,
+                  "src": "1413:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5733,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1413:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1412:17:11"
+            },
+            "returnParameters": {
+              "id": 5736,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1439:0:11"
+            },
+            "scope": 5765,
+            "src": "1384:140:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5763,
+              "nodeType": "Block",
+              "src": "1588:90:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5756,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5750,
+                        "src": "1617:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5753,
+                        "name": "_einMinters",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5666,
+                        "src": "1598:11:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_EINRole_$5566_storage",
+                          "typeString": "struct EINRoles.EINRole storage ref"
+                        }
+                      },
+                      "id": 5755,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5625,
+                      "src": "1598:18:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_EINRole_$5566_storage_ptr_$_t_uint256_$returns$__$bound_to$_t_struct$_EINRole_$5566_storage_ptr_$",
+                        "typeString": "function (struct EINRoles.EINRole storage pointer,uint256)"
+                      }
+                    },
+                    "id": 5757,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1598:27:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5758,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1598:27:11"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 5760,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5750,
+                        "src": "1663:7:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5759,
+                      "name": "SnowflakeMinterRemoved",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5664,
+                      "src": "1640:22:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 5761,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1640:31:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5762,
+                  "nodeType": "EmitStatement",
+                  "src": "1635:36:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5764,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_removeSnowflakeMinter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5751,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5750,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5764,
+                  "src": "1562:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5749,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1562:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1561:17:11"
+            },
+            "returnParameters": {
+              "id": 5752,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1588:0:11"
+            },
+            "scope": 5765,
+            "src": "1530:148:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5766,
+        "src": "255:1425:11"
+      }
+    ],
+    "src": "0:1681:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.6+commit.b259423e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-04-11T00:38:35.852Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

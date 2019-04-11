@@ -1,0 +1,710 @@
+{
+  "contractName": "SnowflakeEINMarketplaceInterface",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "paymentAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setPaymentAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_CouponDistributionAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setCouponDistributionAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "ein",
+          "type": "uint256"
+        },
+        {
+          "name": "couponID",
+          "type": "uint256"
+        }
+      ],
+      "name": "giveUserCoupon",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"paymentAddress\",\"type\":\"address\"}],\"name\":\"setPaymentAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_CouponDistributionAddress\",\"type\":\"address\"}],\"name\":\"setCouponDistributionAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"couponID\",\"type\":\"uint256\"}],\"name\":\"giveUserCoupon\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol\":\"SnowflakeEINMarketplaceInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol\":{\"keccak256\":\"0x79e1e69beb0aca6c7367c874aa1f1a70869c7ae7e14bb57c1b80211592d43c9a\",\"urls\":[\"bzzr://094ba7d7a1124e48297dd81798ff4aa60b05f5ea193278f56a4bc51dd80e45f6\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\ninterface SnowflakeEINMarketplaceInterface {\n\n    function setPaymentAddress(address paymentAddress) external returns (bool);\n    function setCouponDistributionAddress(address _CouponDistributionAddress) external returns (bool);\n    function giveUserCoupon(uint ein, uint couponID) external returns (bool);\n\n}\n\n\n\n",
+  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
+    "exportedSymbols": {
+      "SnowflakeEINMarketplaceInterface": [
+        8073
+      ]
+    },
+    "id": 8074,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8049,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:33"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 8073,
+        "linearizedBaseContracts": [
+          8073
+        ],
+        "name": "SnowflakeEINMarketplaceInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8056,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setPaymentAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8052,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8051,
+                  "name": "paymentAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8056,
+                  "src": "102:22:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8050,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "102:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "101:24:33"
+            },
+            "returnParameters": {
+              "id": 8055,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8054,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8056,
+                  "src": "144:4:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8053,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "144:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "143:6:33"
+            },
+            "scope": 8073,
+            "src": "75:75:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8063,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setCouponDistributionAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8059,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8058,
+                  "name": "_CouponDistributionAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8063,
+                  "src": "193:34:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8057,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "193:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "192:36:33"
+            },
+            "returnParameters": {
+              "id": 8062,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8061,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8063,
+                  "src": "247:4:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8060,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "247:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "246:6:33"
+            },
+            "scope": 8073,
+            "src": "155:98:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8072,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "giveUserCoupon",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8068,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8065,
+                  "name": "ein",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8072,
+                  "src": "282:8:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8064,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "282:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8067,
+                  "name": "couponID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8072,
+                  "src": "292:13:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8066,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "281:25:33"
+            },
+            "returnParameters": {
+              "id": 8071,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8070,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8072,
+                  "src": "325:4:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8069,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "325:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "324:6:33"
+            },
+            "scope": 8073,
+            "src": "258:73:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8074,
+        "src": "25:309:33"
+      }
+    ],
+    "src": "0:338:33"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
+    "exportedSymbols": {
+      "SnowflakeEINMarketplaceInterface": [
+        8073
+      ]
+    },
+    "id": 8074,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8049,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:33"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 8073,
+        "linearizedBaseContracts": [
+          8073
+        ],
+        "name": "SnowflakeEINMarketplaceInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8056,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setPaymentAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8052,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8051,
+                  "name": "paymentAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8056,
+                  "src": "102:22:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8050,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "102:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "101:24:33"
+            },
+            "returnParameters": {
+              "id": 8055,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8054,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8056,
+                  "src": "144:4:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8053,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "144:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "143:6:33"
+            },
+            "scope": 8073,
+            "src": "75:75:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8063,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setCouponDistributionAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8059,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8058,
+                  "name": "_CouponDistributionAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8063,
+                  "src": "193:34:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8057,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "193:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "192:36:33"
+            },
+            "returnParameters": {
+              "id": 8062,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8061,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8063,
+                  "src": "247:4:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8060,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "247:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "246:6:33"
+            },
+            "scope": 8073,
+            "src": "155:98:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8072,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "giveUserCoupon",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8068,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8065,
+                  "name": "ein",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8072,
+                  "src": "282:8:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8064,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "282:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8067,
+                  "name": "couponID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8072,
+                  "src": "292:13:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8066,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "281:25:33"
+            },
+            "returnParameters": {
+              "id": 8071,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8070,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8072,
+                  "src": "325:4:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8069,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "325:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "324:6:33"
+            },
+            "scope": 8073,
+            "src": "258:73:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8074,
+        "src": "25:309:33"
+      }
+    ],
+    "src": "0:338:33"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.6+commit.b259423e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-04-11T00:38:35.859Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,0 +1,2751 @@
+{
+  "contractName": "CouponMarketplaceResolverInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getItem",
+      "outputs": [
+        {
+          "name": "uuid",
+          "type": "uint256"
+        },
+        {
+          "name": "quantity",
+          "type": "uint256"
+        },
+        {
+          "name": "itemType",
+          "type": "uint8"
+        },
+        {
+          "name": "status",
+          "type": "uint8"
+        },
+        {
+          "name": "condition",
+          "type": "uint8"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "name": "returnPolicy",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getItemDelivery",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getItemTag",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getDeliveryMethod",
+      "outputs": [
+        {
+          "name": "method",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getReturnPolicy",
+      "outputs": [
+        {
+          "name": "returnsAccepted",
+          "type": "bool"
+        },
+        {
+          "name": "timeLimit",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCoupon",
+      "outputs": [
+        {
+          "name": "couponType",
+          "type": "uint8"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "amountOff",
+          "type": "uint256"
+        },
+        {
+          "name": "expirationDate",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCouponItemApplicable",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "ein",
+          "type": "uint256"
+        },
+        {
+          "name": "couponID",
+          "type": "uint256"
+        }
+      ],
+      "name": "isUserCouponOwner",
+      "outputs": [
+        {
+          "name": "isValid",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getItemTag\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getItemDelivery\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getItem\",\"outputs\":[{\"name\":\"uuid\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint8\"},{\"name\":\"status\",\"type\":\"uint8\"},{\"name\":\"condition\",\"type\":\"uint8\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"uint256\"},{\"name\":\"returnPolicy\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getCoupon\",\"outputs\":[{\"name\":\"couponType\",\"type\":\"uint8\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"},{\"name\":\"amountOff\",\"type\":\"uint256\"},{\"name\":\"expirationDate\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getCouponItemApplicable\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"couponID\",\"type\":\"uint256\"}],\"name\":\"isUserCouponOwner\",\"outputs\":[{\"name\":\"isValid\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getDeliveryMethod\",\"outputs\":[{\"name\":\"method\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getReturnPolicy\",\"outputs\":[{\"name\":\"returnsAccepted\",\"type\":\"bool\"},{\"name\":\"timeLimit\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/CouponMarketplaceResolverInterface.sol\":\"CouponMarketplaceResolverInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/CouponMarketplaceResolverInterface.sol\":{\"keccak256\":\"0xa5c54d32d2ebfe715bde148ee6b7890ca22464a82f462ab0addbd6651c065400\",\"urls\":[\"bzzr://bf280abc2877f6be1224d40c939569e2440f6974fe328ba50a2b261406901fff\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\ninterface CouponMarketplaceResolverInterface {\n\n    enum ItemType { DIGITAL, PHYSICAL }\n    \n    enum ItemStatus { ACTIVE, INACTIVE }\n    enum ItemCondition { NEW, LIKE_NEW, VERY_GOOD, GOOD, ACCEPTABLE }\n    enum CouponType { AMOUNT_OFF, PERCENTAGE_OFF, BUY_X_QTY_GET_Y_FREE, BUY_X_QTY_FOR_Y_AMNT }\n\n   \n    function getItem(uint id) external view returns (uint uuid, uint quantity, ItemType itemType, ItemStatus status, ItemCondition condition, string memory title, string memory description, uint256 price, uint returnPolicy);\n\n    function getItemDelivery(uint id, uint index) external view returns (uint);\n    function getItemTag(uint id, uint index) external view returns (uint);\n\n    //Returns delivery method at mapping ID (i.e. Fedex)\n    function getDeliveryMethod(uint id) external view returns (string memory method);\n    \n    function getReturnPolicy(uint id) external view returns (bool returnsAccepted, uint timeLimit);\n    function getCoupon(uint id) external view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);\n    function getCouponItemApplicable(uint id, uint index) external view returns (uint);\n\n    function isUserCouponOwner(uint ein, uint couponID) external view returns (bool isValid);\n\n\n\n}\n",
+  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/CouponMarketplaceResolverInterface.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/CouponMarketplaceResolverInterface.sol",
+    "exportedSymbols": {
+      "CouponMarketplaceResolverInterface": [
+        7189
+      ]
+    },
+    "id": 7190,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7081,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:23"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 7189,
+        "linearizedBaseContracts": [
+          7189
+        ],
+        "name": "CouponMarketplaceResolverInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.ItemType",
+            "id": 7084,
+            "members": [
+              {
+                "id": 7082,
+                "name": "DIGITAL",
+                "nodeType": "EnumValue",
+                "src": "93:7:23"
+              },
+              {
+                "id": 7083,
+                "name": "PHYSICAL",
+                "nodeType": "EnumValue",
+                "src": "102:8:23"
+              }
+            ],
+            "name": "ItemType",
+            "nodeType": "EnumDefinition",
+            "src": "77:35:23"
+          },
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.ItemStatus",
+            "id": 7087,
+            "members": [
+              {
+                "id": 7085,
+                "name": "ACTIVE",
+                "nodeType": "EnumValue",
+                "src": "140:6:23"
+              },
+              {
+                "id": 7086,
+                "name": "INACTIVE",
+                "nodeType": "EnumValue",
+                "src": "148:8:23"
+              }
+            ],
+            "name": "ItemStatus",
+            "nodeType": "EnumDefinition",
+            "src": "122:36:23"
+          },
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.ItemCondition",
+            "id": 7093,
+            "members": [
+              {
+                "id": 7088,
+                "name": "NEW",
+                "nodeType": "EnumValue",
+                "src": "184:3:23"
+              },
+              {
+                "id": 7089,
+                "name": "LIKE_NEW",
+                "nodeType": "EnumValue",
+                "src": "189:8:23"
+              },
+              {
+                "id": 7090,
+                "name": "VERY_GOOD",
+                "nodeType": "EnumValue",
+                "src": "199:9:23"
+              },
+              {
+                "id": 7091,
+                "name": "GOOD",
+                "nodeType": "EnumValue",
+                "src": "210:4:23"
+              },
+              {
+                "id": 7092,
+                "name": "ACCEPTABLE",
+                "nodeType": "EnumValue",
+                "src": "216:10:23"
+              }
+            ],
+            "name": "ItemCondition",
+            "nodeType": "EnumDefinition",
+            "src": "163:65:23"
+          },
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.CouponType",
+            "id": 7098,
+            "members": [
+              {
+                "id": 7094,
+                "name": "AMOUNT_OFF",
+                "nodeType": "EnumValue",
+                "src": "251:10:23"
+              },
+              {
+                "id": 7095,
+                "name": "PERCENTAGE_OFF",
+                "nodeType": "EnumValue",
+                "src": "263:14:23"
+              },
+              {
+                "id": 7096,
+                "name": "BUY_X_QTY_GET_Y_FREE",
+                "nodeType": "EnumValue",
+                "src": "279:20:23"
+              },
+              {
+                "id": 7097,
+                "name": "BUY_X_QTY_FOR_Y_AMNT",
+                "nodeType": "EnumValue",
+                "src": "301:20:23"
+              }
+            ],
+            "name": "CouponType",
+            "nodeType": "EnumDefinition",
+            "src": "233:90:23"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7121,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getItem",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7101,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7100,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "350:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7099,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "350:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "349:9:23"
+            },
+            "returnParameters": {
+              "id": 7120,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7103,
+                  "name": "uuid",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "382:9:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7102,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "382:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7105,
+                  "name": "quantity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "393:13:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7104,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7107,
+                  "name": "itemType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "408:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemType_$7084",
+                    "typeString": "enum CouponMarketplaceResolverInterface.ItemType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7106,
+                    "name": "ItemType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7084,
+                    "src": "408:8:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_ItemType_$7084",
+                      "typeString": "enum CouponMarketplaceResolverInterface.ItemType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7109,
+                  "name": "status",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "427:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemStatus_$7087",
+                    "typeString": "enum CouponMarketplaceResolverInterface.ItemStatus"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7108,
+                    "name": "ItemStatus",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7087,
+                    "src": "427:10:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_ItemStatus_$7087",
+                      "typeString": "enum CouponMarketplaceResolverInterface.ItemStatus"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7111,
+                  "name": "condition",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "446:23:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemCondition_$7093",
+                    "typeString": "enum CouponMarketplaceResolverInterface.ItemCondition"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7110,
+                    "name": "ItemCondition",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7093,
+                    "src": "446:13:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_ItemCondition_$7093",
+                      "typeString": "enum CouponMarketplaceResolverInterface.ItemCondition"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7113,
+                  "name": "title",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "471:19:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7112,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "471:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7115,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "492:25:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7114,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "492:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7117,
+                  "name": "price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "519:13:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7116,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "519:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7119,
+                  "name": "returnPolicy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "534:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7118,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "534:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "381:171:23"
+            },
+            "scope": 7189,
+            "src": "333:220:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7130,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getItemDelivery",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7126,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7123,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7130,
+                  "src": "584:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7122,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "584:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7125,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7130,
+                  "src": "593:10:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7124,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "593:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "583:21:23"
+            },
+            "returnParameters": {
+              "id": 7129,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7128,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7130,
+                  "src": "628:4:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7127,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "628:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "627:6:23"
+            },
+            "scope": 7189,
+            "src": "559:75:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7139,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getItemTag",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7135,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7132,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7139,
+                  "src": "659:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7131,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "659:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7134,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7139,
+                  "src": "668:10:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7133,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "658:21:23"
+            },
+            "returnParameters": {
+              "id": 7138,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7137,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7139,
+                  "src": "703:4:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7136,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "703:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "702:6:23"
+            },
+            "scope": 7189,
+            "src": "639:70:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7146,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDeliveryMethod",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7142,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7141,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7146,
+                  "src": "799:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7140,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "799:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "798:9:23"
+            },
+            "returnParameters": {
+              "id": 7145,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7144,
+                  "name": "method",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7146,
+                  "src": "831:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7143,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "830:22:23"
+            },
+            "scope": 7189,
+            "src": "772:81:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7155,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7149,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7148,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7155,
+                  "src": "888:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7147,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "888:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "887:9:23"
+            },
+            "returnParameters": {
+              "id": 7154,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7151,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7155,
+                  "src": "920:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7150,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "920:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7153,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7155,
+                  "src": "942:14:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7152,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "942:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "919:38:23"
+            },
+            "scope": 7189,
+            "src": "863:95:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7170,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCoupon",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7158,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7157,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "982:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7156,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "982:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "981:9:23"
+            },
+            "returnParameters": {
+              "id": 7169,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7160,
+                  "name": "couponType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1014:21:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CouponType_$7098",
+                    "typeString": "enum CouponMarketplaceResolverInterface.CouponType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7159,
+                    "name": "CouponType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7098,
+                    "src": "1014:10:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CouponType_$7098",
+                      "typeString": "enum CouponMarketplaceResolverInterface.CouponType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7162,
+                  "name": "title",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1037:19:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7161,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1037:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7164,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1058:25:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7163,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1058:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7166,
+                  "name": "amountOff",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1085:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7165,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1085:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7168,
+                  "name": "expirationDate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1104:19:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7167,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1104:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1013:111:23"
+            },
+            "scope": 7189,
+            "src": "963:162:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7179,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCouponItemApplicable",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7175,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7172,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7179,
+                  "src": "1163:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7171,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1163:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7174,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7179,
+                  "src": "1172:10:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7173,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1172:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1162:21:23"
+            },
+            "returnParameters": {
+              "id": 7178,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7177,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7179,
+                  "src": "1207:4:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7176,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1207:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1206:6:23"
+            },
+            "scope": 7189,
+            "src": "1130:83:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7188,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isUserCouponOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7184,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7181,
+                  "name": "ein",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7188,
+                  "src": "1246:8:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7180,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1246:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7183,
+                  "name": "couponID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7188,
+                  "src": "1256:13:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7182,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1256:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1245:25:23"
+            },
+            "returnParameters": {
+              "id": 7187,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7186,
+                  "name": "isValid",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7188,
+                  "src": "1294:12:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7185,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1294:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1293:14:23"
+            },
+            "scope": 7189,
+            "src": "1219:89:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7190,
+        "src": "25:1288:23"
+      }
+    ],
+    "src": "0:1314:23"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/CouponMarketplaceResolverInterface.sol",
+    "exportedSymbols": {
+      "CouponMarketplaceResolverInterface": [
+        7189
+      ]
+    },
+    "id": 7190,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7081,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:23"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 7189,
+        "linearizedBaseContracts": [
+          7189
+        ],
+        "name": "CouponMarketplaceResolverInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.ItemType",
+            "id": 7084,
+            "members": [
+              {
+                "id": 7082,
+                "name": "DIGITAL",
+                "nodeType": "EnumValue",
+                "src": "93:7:23"
+              },
+              {
+                "id": 7083,
+                "name": "PHYSICAL",
+                "nodeType": "EnumValue",
+                "src": "102:8:23"
+              }
+            ],
+            "name": "ItemType",
+            "nodeType": "EnumDefinition",
+            "src": "77:35:23"
+          },
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.ItemStatus",
+            "id": 7087,
+            "members": [
+              {
+                "id": 7085,
+                "name": "ACTIVE",
+                "nodeType": "EnumValue",
+                "src": "140:6:23"
+              },
+              {
+                "id": 7086,
+                "name": "INACTIVE",
+                "nodeType": "EnumValue",
+                "src": "148:8:23"
+              }
+            ],
+            "name": "ItemStatus",
+            "nodeType": "EnumDefinition",
+            "src": "122:36:23"
+          },
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.ItemCondition",
+            "id": 7093,
+            "members": [
+              {
+                "id": 7088,
+                "name": "NEW",
+                "nodeType": "EnumValue",
+                "src": "184:3:23"
+              },
+              {
+                "id": 7089,
+                "name": "LIKE_NEW",
+                "nodeType": "EnumValue",
+                "src": "189:8:23"
+              },
+              {
+                "id": 7090,
+                "name": "VERY_GOOD",
+                "nodeType": "EnumValue",
+                "src": "199:9:23"
+              },
+              {
+                "id": 7091,
+                "name": "GOOD",
+                "nodeType": "EnumValue",
+                "src": "210:4:23"
+              },
+              {
+                "id": 7092,
+                "name": "ACCEPTABLE",
+                "nodeType": "EnumValue",
+                "src": "216:10:23"
+              }
+            ],
+            "name": "ItemCondition",
+            "nodeType": "EnumDefinition",
+            "src": "163:65:23"
+          },
+          {
+            "canonicalName": "CouponMarketplaceResolverInterface.CouponType",
+            "id": 7098,
+            "members": [
+              {
+                "id": 7094,
+                "name": "AMOUNT_OFF",
+                "nodeType": "EnumValue",
+                "src": "251:10:23"
+              },
+              {
+                "id": 7095,
+                "name": "PERCENTAGE_OFF",
+                "nodeType": "EnumValue",
+                "src": "263:14:23"
+              },
+              {
+                "id": 7096,
+                "name": "BUY_X_QTY_GET_Y_FREE",
+                "nodeType": "EnumValue",
+                "src": "279:20:23"
+              },
+              {
+                "id": 7097,
+                "name": "BUY_X_QTY_FOR_Y_AMNT",
+                "nodeType": "EnumValue",
+                "src": "301:20:23"
+              }
+            ],
+            "name": "CouponType",
+            "nodeType": "EnumDefinition",
+            "src": "233:90:23"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7121,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getItem",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7101,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7100,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "350:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7099,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "350:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "349:9:23"
+            },
+            "returnParameters": {
+              "id": 7120,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7103,
+                  "name": "uuid",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "382:9:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7102,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "382:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7105,
+                  "name": "quantity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "393:13:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7104,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7107,
+                  "name": "itemType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "408:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemType_$7084",
+                    "typeString": "enum CouponMarketplaceResolverInterface.ItemType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7106,
+                    "name": "ItemType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7084,
+                    "src": "408:8:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_ItemType_$7084",
+                      "typeString": "enum CouponMarketplaceResolverInterface.ItemType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7109,
+                  "name": "status",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "427:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemStatus_$7087",
+                    "typeString": "enum CouponMarketplaceResolverInterface.ItemStatus"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7108,
+                    "name": "ItemStatus",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7087,
+                    "src": "427:10:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_ItemStatus_$7087",
+                      "typeString": "enum CouponMarketplaceResolverInterface.ItemStatus"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7111,
+                  "name": "condition",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "446:23:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemCondition_$7093",
+                    "typeString": "enum CouponMarketplaceResolverInterface.ItemCondition"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7110,
+                    "name": "ItemCondition",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7093,
+                    "src": "446:13:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_ItemCondition_$7093",
+                      "typeString": "enum CouponMarketplaceResolverInterface.ItemCondition"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7113,
+                  "name": "title",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "471:19:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7112,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "471:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7115,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "492:25:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7114,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "492:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7117,
+                  "name": "price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "519:13:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7116,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "519:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7119,
+                  "name": "returnPolicy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7121,
+                  "src": "534:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7118,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "534:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "381:171:23"
+            },
+            "scope": 7189,
+            "src": "333:220:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7130,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getItemDelivery",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7126,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7123,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7130,
+                  "src": "584:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7122,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "584:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7125,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7130,
+                  "src": "593:10:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7124,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "593:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "583:21:23"
+            },
+            "returnParameters": {
+              "id": 7129,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7128,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7130,
+                  "src": "628:4:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7127,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "628:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "627:6:23"
+            },
+            "scope": 7189,
+            "src": "559:75:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7139,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getItemTag",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7135,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7132,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7139,
+                  "src": "659:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7131,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "659:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7134,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7139,
+                  "src": "668:10:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7133,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "658:21:23"
+            },
+            "returnParameters": {
+              "id": 7138,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7137,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7139,
+                  "src": "703:4:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7136,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "703:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "702:6:23"
+            },
+            "scope": 7189,
+            "src": "639:70:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7146,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDeliveryMethod",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7142,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7141,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7146,
+                  "src": "799:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7140,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "799:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "798:9:23"
+            },
+            "returnParameters": {
+              "id": 7145,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7144,
+                  "name": "method",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7146,
+                  "src": "831:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7143,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "830:22:23"
+            },
+            "scope": 7189,
+            "src": "772:81:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7155,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReturnPolicy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7149,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7148,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7155,
+                  "src": "888:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7147,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "888:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "887:9:23"
+            },
+            "returnParameters": {
+              "id": 7154,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7151,
+                  "name": "returnsAccepted",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7155,
+                  "src": "920:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7150,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "920:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7153,
+                  "name": "timeLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7155,
+                  "src": "942:14:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7152,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "942:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "919:38:23"
+            },
+            "scope": 7189,
+            "src": "863:95:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7170,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCoupon",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7158,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7157,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "982:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7156,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "982:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "981:9:23"
+            },
+            "returnParameters": {
+              "id": 7169,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7160,
+                  "name": "couponType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1014:21:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CouponType_$7098",
+                    "typeString": "enum CouponMarketplaceResolverInterface.CouponType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7159,
+                    "name": "CouponType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7098,
+                    "src": "1014:10:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CouponType_$7098",
+                      "typeString": "enum CouponMarketplaceResolverInterface.CouponType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7162,
+                  "name": "title",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1037:19:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7161,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1037:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7164,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1058:25:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7163,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1058:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7166,
+                  "name": "amountOff",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1085:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7165,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1085:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7168,
+                  "name": "expirationDate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7170,
+                  "src": "1104:19:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7167,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1104:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1013:111:23"
+            },
+            "scope": 7189,
+            "src": "963:162:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7179,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCouponItemApplicable",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7175,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7172,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7179,
+                  "src": "1163:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7171,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1163:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7174,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7179,
+                  "src": "1172:10:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7173,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1172:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1162:21:23"
+            },
+            "returnParameters": {
+              "id": 7178,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7177,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7179,
+                  "src": "1207:4:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7176,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1207:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1206:6:23"
+            },
+            "scope": 7189,
+            "src": "1130:83:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7188,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isUserCouponOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7184,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7181,
+                  "name": "ein",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7188,
+                  "src": "1246:8:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7180,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1246:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7183,
+                  "name": "couponID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7188,
+                  "src": "1256:13:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7182,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1256:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1245:25:23"
+            },
+            "returnParameters": {
+              "id": 7187,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7186,
+                  "name": "isValid",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7188,
+                  "src": "1294:12:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7185,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1294:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1293:14:23"
+            },
+            "scope": 7189,
+            "src": "1219:89:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7190,
+        "src": "25:1288:23"
+      }
+    ],
+    "src": "0:1314:23"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.6+commit.b259423e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-04-11T00:38:35.858Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

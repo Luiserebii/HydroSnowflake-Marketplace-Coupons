@@ -1,0 +1,1529 @@
+{
+  "contractName": "SnowflakeReader",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "snowflakeAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"snowflakeAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Intended to provide a simple thing for contracts to extend and do things such as read EINs. For now, this is its only function, but this is needed for design purposes, IMO\",\"methods\":{},\"title\":\"SnowflakeReader\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol\":\"SnowflakeReader\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/IdentityRegistryInterface.sol\":{\"keccak256\":\"0xb559191dbd30da97a8b5759a895d7f4eff420eedc55b0786ae7206fbe384dc15\",\"urls\":[\"bzzr://a6122de11af1f831b1a93dba66aabe9e299f0040cf3404510790453addc6e0d9\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeInterface.sol\":{\"keccak256\":\"0xb34e22de661c32131d4d5bbd8f8dbf1794e5d944736ccb31870b6f75bdd322e5\",\"urls\":[\"bzzr://aaa6399afaf287d517ece7ac874cf6da3c2d81f9d88cb8cdc4631adc3f4ac52a\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol\":{\"keccak256\":\"0x2abd0f0b6837dec5554cf29f986d5e365631fc514d2f636fab1054958fd1a1c0\",\"urls\":[\"bzzr://149da665bf1ca0442cf1956087a24d1a11de1a2f5cd77eebefdcf2e1f2c56bb4\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060c08061001f6000396000f3fe6080604052348015600f57600080fd5b50600436106044577c01000000000000000000000000000000000000000000000000000000006000350463f9f451b881146049575b600080fd5b604f6078565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b60005473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a723058204c7cbf8b61caece37abc7bb73280d5efe3ccfabb8d9a2fe42089941acb6651ed0029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b50600436106044577c01000000000000000000000000000000000000000000000000000000006000350463f9f451b881146049575b600080fd5b604f6078565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b60005473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a723058204c7cbf8b61caece37abc7bb73280d5efe3ccfabb8d9a2fe42089941acb6651ed0029",
+  "sourceMap": "340:980:53:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;340:980:53;;;;;;;",
+  "deployedSourceMap": "340:980:53:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;340:980:53;;;;;;;;;;;;;;;;;;;371:31;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"../interfaces/SnowflakeInterface.sol\";\nimport \"../interfaces/IdentityRegistryInterface.sol\";\n\n/**\n* @title SnowflakeReader\n* @dev Intended to provide a simple thing for contracts to extend and do things such as read EINs. For now, this is its only function, but this is needed for design purposes, IMO\n*\n*/\ncontract SnowflakeReader {\n    address public snowflakeAddress;\n\n/*    constructor(address _snowflakeAddress) public {\n        _constructSnowflakeReader(_snowflakeAddress);\n    }\n*/\n    //Function to avoid double-constructor in inheriting, sort of a work-around\n    function _constructSnowflakeReader(address _snowflakeAddress) internal {\n        snowflakeAddress = _snowflakeAddress;\n    }\n\n    function getEIN(address einAddress) internal returns (uint256 ein) {\n        //Grab an instance of IdentityRegistry to work with as defined in Snowflake\n        SnowflakeInterface si = SnowflakeInterface(snowflakeAddress);\n        address iAdd = si.identityRegistryAddress();\n\n        IdentityRegistryInterface identityRegistry = IdentityRegistryInterface(iAdd);\n        //Ensure the address exists within the registry\n        require(identityRegistry.hasIdentity(einAddress), \"Address non-existent in IdentityRegistry\");\n\n        return identityRegistry.getEIN(einAddress);\n    }\n\n\n}\n\n",
+  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol",
+    "exportedSymbols": {
+      "SnowflakeReader": [
+        12011
+      ]
+    },
+    "id": 12012,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11957,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:53"
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeInterface.sol",
+        "file": "../interfaces/SnowflakeInterface.sol",
+        "id": 11958,
+        "nodeType": "ImportDirective",
+        "scope": 12012,
+        "sourceUnit": 7860,
+        "src": "25:46:53",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/IdentityRegistryInterface.sol",
+        "file": "../interfaces/IdentityRegistryInterface.sol",
+        "id": 11959,
+        "nodeType": "ImportDirective",
+        "scope": 12012,
+        "sourceUnit": 7547,
+        "src": "72:53:53",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title SnowflakeReader\n@dev Intended to provide a simple thing for contracts to extend and do things such as read EINs. For now, this is its only function, but this is needed for design purposes, IMO\n",
+        "fullyImplemented": true,
+        "id": 12011,
+        "linearizedBaseContracts": [
+          12011
+        ],
+        "name": "SnowflakeReader",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 11961,
+            "name": "snowflakeAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 12011,
+            "src": "371:31:53",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 11960,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "371:7:53",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 11970,
+              "nodeType": "Block",
+              "src": "677:53:53",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 11968,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 11966,
+                      "name": "snowflakeAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11961,
+                      "src": "687:16:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 11967,
+                      "name": "_snowflakeAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11963,
+                      "src": "706:17:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "687:36:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 11969,
+                  "nodeType": "ExpressionStatement",
+                  "src": "687:36:53"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 11971,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_constructSnowflakeReader",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11964,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11963,
+                  "name": "_snowflakeAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11971,
+                  "src": "641:25:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11962,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "641:7:53",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "640:27:53"
+            },
+            "returnParameters": {
+              "id": 11965,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "677:0:53"
+            },
+            "scope": 12011,
+            "src": "606:124:53",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 12009,
+              "nodeType": "Block",
+              "src": "803:513:53",
+              "statements": [
+                {
+                  "assignments": [
+                    11979
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 11979,
+                      "name": "si",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 12009,
+                      "src": "897:21:53",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                        "typeString": "contract SnowflakeInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 11978,
+                        "name": "SnowflakeInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7859,
+                        "src": "897:18:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                          "typeString": "contract SnowflakeInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 11983,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 11981,
+                        "name": "snowflakeAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11961,
+                        "src": "940:16:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 11980,
+                      "name": "SnowflakeInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7859,
+                      "src": "921:18:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_SnowflakeInterface_$7859_$",
+                        "typeString": "type(contract SnowflakeInterface)"
+                      }
+                    },
+                    "id": 11982,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "921:36:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                      "typeString": "contract SnowflakeInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "897:60:53"
+                },
+                {
+                  "assignments": [
+                    11985
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 11985,
+                      "name": "iAdd",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 12009,
+                      "src": "967:12:53",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 11984,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "967:7:53",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 11989,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 11986,
+                        "name": "si",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11979,
+                        "src": "982:2:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                          "typeString": "contract SnowflakeInterface"
+                        }
+                      },
+                      "id": 11987,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "identityRegistryAddress",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7585,
+                      "src": "982:26:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$__$returns$_t_address_$",
+                        "typeString": "function () external returns (address)"
+                      }
+                    },
+                    "id": 11988,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "982:28:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "967:43:53"
+                },
+                {
+                  "assignments": [
+                    11991
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 11991,
+                      "name": "identityRegistry",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 12009,
+                      "src": "1021:42:53",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                        "typeString": "contract IdentityRegistryInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 11990,
+                        "name": "IdentityRegistryInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7546,
+                        "src": "1021:25:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                          "typeString": "contract IdentityRegistryInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 11995,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 11993,
+                        "name": "iAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11985,
+                        "src": "1092:4:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 11992,
+                      "name": "IdentityRegistryInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7546,
+                      "src": "1066:25:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IdentityRegistryInterface_$7546_$",
+                        "typeString": "type(contract IdentityRegistryInterface)"
+                      }
+                    },
+                    "id": 11994,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1066:31:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                      "typeString": "contract IdentityRegistryInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1021:76:53"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 11999,
+                            "name": "einAddress",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11973,
+                            "src": "1200:10:53",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 11997,
+                            "name": "identityRegistry",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11991,
+                            "src": "1171:16:53",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                              "typeString": "contract IdentityRegistryInterface"
+                            }
+                          },
+                          "id": 11998,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "hasIdentity",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 7309,
+                          "src": "1171:28:53",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
+                            "typeString": "function (address) view external returns (bool)"
+                          }
+                        },
+                        "id": 12000,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1171:40:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "41646472657373206e6f6e2d6578697374656e7420696e204964656e746974795265676973747279",
+                        "id": 12001,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1213:42:53",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_a23aeb11cf63ea31cc6b9beabacebe252ee8a2f6de6f415f3a58d63ad6a204fb",
+                          "typeString": "literal_string \"Address non-existent in IdentityRegistry\""
+                        },
+                        "value": "Address non-existent in IdentityRegistry"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_a23aeb11cf63ea31cc6b9beabacebe252ee8a2f6de6f415f3a58d63ad6a204fb",
+                          "typeString": "literal_string \"Address non-existent in IdentityRegistry\""
+                        }
+                      ],
+                      "id": 11996,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        14660,
+                        14661
+                      ],
+                      "referencedDeclaration": 14661,
+                      "src": "1163:7:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 12002,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1163:93:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 12003,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1163:93:53"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 12006,
+                        "name": "einAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11973,
+                        "src": "1298:10:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 12004,
+                        "name": "identityRegistry",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11991,
+                        "src": "1274:16:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                          "typeString": "contract IdentityRegistryInterface"
+                        }
+                      },
+                      "id": 12005,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getEIN",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7316,
+                      "src": "1274:23:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) view external returns (uint256)"
+                      }
+                    },
+                    "id": 12007,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1274:35:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 11977,
+                  "id": 12008,
+                  "nodeType": "Return",
+                  "src": "1267:42:53"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 12010,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getEIN",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11974,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11973,
+                  "name": "einAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12010,
+                  "src": "752:18:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11972,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "752:7:53",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "751:20:53"
+            },
+            "returnParameters": {
+              "id": 11977,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11976,
+                  "name": "ein",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12010,
+                  "src": "790:11:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11975,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "790:7:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "789:13:53"
+            },
+            "scope": 12011,
+            "src": "736:580:53",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 12012,
+        "src": "340:980:53"
+      }
+    ],
+    "src": "0:1322:53"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/snowflake_custom/SnowflakeReader.sol",
+    "exportedSymbols": {
+      "SnowflakeReader": [
+        12011
+      ]
+    },
+    "id": 12012,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11957,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:53"
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeInterface.sol",
+        "file": "../interfaces/SnowflakeInterface.sol",
+        "id": 11958,
+        "nodeType": "ImportDirective",
+        "scope": 12012,
+        "sourceUnit": 7860,
+        "src": "25:46:53",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/IdentityRegistryInterface.sol",
+        "file": "../interfaces/IdentityRegistryInterface.sol",
+        "id": 11959,
+        "nodeType": "ImportDirective",
+        "scope": 12012,
+        "sourceUnit": 7547,
+        "src": "72:53:53",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title SnowflakeReader\n@dev Intended to provide a simple thing for contracts to extend and do things such as read EINs. For now, this is its only function, but this is needed for design purposes, IMO\n",
+        "fullyImplemented": true,
+        "id": 12011,
+        "linearizedBaseContracts": [
+          12011
+        ],
+        "name": "SnowflakeReader",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 11961,
+            "name": "snowflakeAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 12011,
+            "src": "371:31:53",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 11960,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "371:7:53",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 11970,
+              "nodeType": "Block",
+              "src": "677:53:53",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 11968,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 11966,
+                      "name": "snowflakeAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11961,
+                      "src": "687:16:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 11967,
+                      "name": "_snowflakeAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11963,
+                      "src": "706:17:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "687:36:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 11969,
+                  "nodeType": "ExpressionStatement",
+                  "src": "687:36:53"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 11971,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_constructSnowflakeReader",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11964,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11963,
+                  "name": "_snowflakeAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11971,
+                  "src": "641:25:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11962,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "641:7:53",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "640:27:53"
+            },
+            "returnParameters": {
+              "id": 11965,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "677:0:53"
+            },
+            "scope": 12011,
+            "src": "606:124:53",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 12009,
+              "nodeType": "Block",
+              "src": "803:513:53",
+              "statements": [
+                {
+                  "assignments": [
+                    11979
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 11979,
+                      "name": "si",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 12009,
+                      "src": "897:21:53",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                        "typeString": "contract SnowflakeInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 11978,
+                        "name": "SnowflakeInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7859,
+                        "src": "897:18:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                          "typeString": "contract SnowflakeInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 11983,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 11981,
+                        "name": "snowflakeAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11961,
+                        "src": "940:16:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 11980,
+                      "name": "SnowflakeInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7859,
+                      "src": "921:18:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_SnowflakeInterface_$7859_$",
+                        "typeString": "type(contract SnowflakeInterface)"
+                      }
+                    },
+                    "id": 11982,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "921:36:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                      "typeString": "contract SnowflakeInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "897:60:53"
+                },
+                {
+                  "assignments": [
+                    11985
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 11985,
+                      "name": "iAdd",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 12009,
+                      "src": "967:12:53",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 11984,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "967:7:53",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 11989,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 11986,
+                        "name": "si",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11979,
+                        "src": "982:2:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_SnowflakeInterface_$7859",
+                          "typeString": "contract SnowflakeInterface"
+                        }
+                      },
+                      "id": 11987,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "identityRegistryAddress",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7585,
+                      "src": "982:26:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$__$returns$_t_address_$",
+                        "typeString": "function () external returns (address)"
+                      }
+                    },
+                    "id": 11988,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "982:28:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "967:43:53"
+                },
+                {
+                  "assignments": [
+                    11991
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 11991,
+                      "name": "identityRegistry",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 12009,
+                      "src": "1021:42:53",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                        "typeString": "contract IdentityRegistryInterface"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 11990,
+                        "name": "IdentityRegistryInterface",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7546,
+                        "src": "1021:25:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                          "typeString": "contract IdentityRegistryInterface"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 11995,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 11993,
+                        "name": "iAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11985,
+                        "src": "1092:4:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 11992,
+                      "name": "IdentityRegistryInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7546,
+                      "src": "1066:25:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IdentityRegistryInterface_$7546_$",
+                        "typeString": "type(contract IdentityRegistryInterface)"
+                      }
+                    },
+                    "id": 11994,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1066:31:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                      "typeString": "contract IdentityRegistryInterface"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1021:76:53"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 11999,
+                            "name": "einAddress",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11973,
+                            "src": "1200:10:53",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 11997,
+                            "name": "identityRegistry",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11991,
+                            "src": "1171:16:53",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                              "typeString": "contract IdentityRegistryInterface"
+                            }
+                          },
+                          "id": 11998,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "hasIdentity",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 7309,
+                          "src": "1171:28:53",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
+                            "typeString": "function (address) view external returns (bool)"
+                          }
+                        },
+                        "id": 12000,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1171:40:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "41646472657373206e6f6e2d6578697374656e7420696e204964656e746974795265676973747279",
+                        "id": 12001,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1213:42:53",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_a23aeb11cf63ea31cc6b9beabacebe252ee8a2f6de6f415f3a58d63ad6a204fb",
+                          "typeString": "literal_string \"Address non-existent in IdentityRegistry\""
+                        },
+                        "value": "Address non-existent in IdentityRegistry"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_a23aeb11cf63ea31cc6b9beabacebe252ee8a2f6de6f415f3a58d63ad6a204fb",
+                          "typeString": "literal_string \"Address non-existent in IdentityRegistry\""
+                        }
+                      ],
+                      "id": 11996,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        14660,
+                        14661
+                      ],
+                      "referencedDeclaration": 14661,
+                      "src": "1163:7:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 12002,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1163:93:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 12003,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1163:93:53"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 12006,
+                        "name": "einAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11973,
+                        "src": "1298:10:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 12004,
+                        "name": "identityRegistry",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11991,
+                        "src": "1274:16:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IdentityRegistryInterface_$7546",
+                          "typeString": "contract IdentityRegistryInterface"
+                        }
+                      },
+                      "id": 12005,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getEIN",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7316,
+                      "src": "1274:23:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) view external returns (uint256)"
+                      }
+                    },
+                    "id": 12007,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1274:35:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 11977,
+                  "id": 12008,
+                  "nodeType": "Return",
+                  "src": "1267:42:53"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 12010,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getEIN",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11974,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11973,
+                  "name": "einAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12010,
+                  "src": "752:18:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11972,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "752:7:53",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "751:20:53"
+            },
+            "returnParameters": {
+              "id": 11977,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11976,
+                  "name": "ein",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12010,
+                  "src": "790:11:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11975,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "790:7:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "789:13:53"
+            },
+            "scope": 12011,
+            "src": "736:580:53",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 12012,
+        "src": "340:980:53"
+      }
+    ],
+    "src": "0:1322:53"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.6+commit.b259423e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-04-11T00:38:35.871Z",
+  "devdoc": {
+    "details": "Intended to provide a simple thing for contracts to extend and do things such as read EINs. For now, this is its only function, but this is needed for design purposes, IMO",
+    "methods": {},
+    "title": "SnowflakeReader"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
