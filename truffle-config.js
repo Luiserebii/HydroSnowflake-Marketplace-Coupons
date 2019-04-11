@@ -1,6 +1,20 @@
 const gas = 6.5 * 1e6
 const gasPrice = 2000000000 // 2 gwei
 
+
+/*===========================
+ * Config for deployment
+ *===========================
+ */
+
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const config = require('./config/config');
+
+const infuraKey = config.infuraKey;
+const mnemonic = config.mnemonic;
+
+
+
 module.exports = {
   networks: {
     development: {
@@ -25,6 +39,14 @@ module.exports = {
       gas: gas,
       gasPrice: gasPrice,
       skipDryRun: true
+    },
+    rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/${infuraKey}`),
+      network_id: 4,       // Rinkeby's id
+      gas: 5500000,        // Ropsten has a lower block limit than mainnet
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     },
     mainIPC: {
       host: 'localhost',
