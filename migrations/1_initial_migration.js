@@ -15,6 +15,7 @@ const instances = {};
 
 module.exports = async function (deployer, network, accounts) {
 
+  console.log(accounts);
 
   //Set up "settings"
   const seller = {
@@ -48,8 +49,7 @@ module.exports = async function (deployer, network, accounts) {
   //If we need to, register seller to IdentityRegistry
   if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
 
-    await instances.IdentityRegistry.createAddress(seller.recoveryAddress, null, null)
-
+    await instances.IdentityRegistry.createIdentity(seller.recoveryAddress, [], [], { from: seller.address })
     //ensure we have an identity, else, throw
     if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
       throw "Adding identity to IdentityRegistry failed, despite createAddress line running";
