@@ -30,8 +30,9 @@ module.exports = async function (deployer, network, accounts) {
 
   //Set up "settings"
   const seller = {
-    address: '0xC38076718C883C776700514C8554Dda7558A16bd',
-    paymentAddress: '0x6FA229c69Ee78577dd74cCeEb3a91c9d78b04374'
+    address: accounts[0],
+    paymentAddress: accounts[1],
+    recoveryAddress: accounts[1]
   }
 
 
@@ -47,7 +48,6 @@ module.exports = async function (deployer, network, accounts) {
 
 
 
-
   //Grab Snowflake contract deployed at this address
   instances.Snowflake = await Snowflake.at(snowflakeAddress)
 
@@ -57,7 +57,23 @@ module.exports = async function (deployer, network, accounts) {
   //Grab IdentityRegistry
   instances.IdentityRegistry = await IdentityRegistry.at(identityRegistryAddress)
 
-  console.log(identityRegistryAddress)
+  //If we need to, register seller to IdentityRegistry
+  if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
+
+    await instances.IdentityRegistry.createAddress(seller.recoveryAddress, null, null)
+
+    //ensure we have an identity, else, throw
+    if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
+      throw "Adding identity to IdentityRegistry failed, despite createAddress line running";
+    }
+  }
+  
+
+  deployer.deploy(ItemFeature, instances.Snowflake.address, { from: seller.address })
+  deployer.deploy(CouponFeature, instances.Snowflake.address { from: seller.address })
+
+
+
 
 console.log("Neat, we ran!")
 //console.log(web3);
@@ -66,11 +82,6 @@ console.log("Neat, we ran!")
 /* describe('Testing Coupon Marketplace', async () => {
 
     let seller = users[0]
-
-    it('add seller identity to Identity Registry', async function () {
-      await MarketplaceAPI.addToIdentityRegistry(seller, instances.IdentityRegistry, instances.Snowflake, instances.ClientRaindrop);
-    })
-
 
     it('deploy ItemFeature contract', async function () {
       instances.ItemFeature = await ItemFeature.new(instances.Snowflake.address, { from: seller.address })
