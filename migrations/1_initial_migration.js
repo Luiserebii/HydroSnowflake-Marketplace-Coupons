@@ -1,4 +1,6 @@
-/*const AddressSet = artifacts.require('./_testing/AddressSet/AddressSet.sol')
+/*
+
+const AddressSet = artifacts.require('./_testing/AddressSet/AddressSet.sol')
 const IdentityRegistry = artifacts.require('./_testing/IdentityRegistry.sol')
 
 const HydroToken = artifacts.require('./_testing/HydroToken.sol')
@@ -9,11 +11,11 @@ const Snowflake = artifacts.require('./Snowflake.sol')
 const StringUtils = artifacts.require('./resolvers/ClientRaindrop/StringUtils.sol')
 const ClientRaindrop = artifacts.require('./resolvers/ClientRaindrop/ClientRaindrop.sol')
 const OldClientRaindrop = artifacts.require('./_testing/OldClientRaindrop.sol')
-
-const mapi = require('../test/marketplace/marketplace-api')
-const MarketplaceAPI = new mapi()
-
 */
+//const mapi = require('../test/marketplace/marketplace-api')
+//const MarketplaceAPI = new mapi()
+
+
 
 //Settings
 
@@ -25,36 +27,27 @@ const seller = {
 }
 
 const snowflakeAddress = '0xB0D5a36733886a4c5597849a05B315626aF5222E';
+const instances = {};
 
 
 
 module.exports = async function (deployer, network, accounts) {
 
+  const Snowflake = artifacts.require('Snowflake')
+
+  //Grab Snowflake contract deployed at this address
+  instances.Snowflake = await Snowflake.at(snowflakeAddress)
+
+  //Get IdentityRegistryAddress
+  const identityRegistryAddress = await instances.Snowflake.identityRegistryAddress.call()
+
+  console.log(identityRegistryAddress)
 
 console.log("Neat, we ran!")
-
-/*  await deployer.deploy(AddressSet)
-  deployer.link(AddressSet, IdentityRegistry)
-
-  await deployer.deploy(SafeMath)
-  deployer.link(SafeMath, HydroToken)
-  deployer.link(SafeMath, Snowflake)
-
-  await deployer.deploy(StringUtils)
-  deployer.link(StringUtils, ClientRaindrop)
-  deployer.link(StringUtils, OldClientRaindrop)
-*/
-  // const identityRegistry = await deployer.deploy(IdentityRegistry)
-  // const hydroToken = await deployer.deploy(HydroToken)
-  // const snowflake = await deployer.deploy(Snowflake, identityRegistry.address, hydroToken.address)
-  // const oldClientRaindrop = await deployer.deploy(OldClientRaindrop)
-  // await deployer.deploy(ClientRaindrop, snowflake.address, oldClientRaindrop.address, 0, 0)
-  // await deployer.deploy(Status, snowflake.address)
-
-/*
+//console.log(web3);
 
 
-  describe('Testing Coupon Marketplace', async () => {
+/* describe('Testing Coupon Marketplace', async () => {
 
     let seller = users[0]
 
@@ -120,3 +113,36 @@ console.log("Neat, we ran!")
 
 
 }
+
+
+
+  async function addToIdentityRegistry(userIdentity, IdentityRegistryInstance, SnowflakeInstance, ClientRaindropInstance){
+
+    const timestamp = Math.round(new Date() / 1000) - 1
+    const permissionString = web3.utils.soliditySha3(
+      '0x19', '0x00', IdentityRegistryInstance.address,
+      'I authorize the creation of an Identity on my behalf.',
+      userIdentity.recoveryAddress,
+      userIdentity.address,
+      { t: 'address[]', v: [SnowflakeInstance.address] },
+      { t: 'address[]', v: [] },
+      timestamp
+    )
+
+    const permission = await sign(permissionString, userIdentity.address, userIdentity.private)
+
+    await SnowflakeInstance.createIdentityDelegated(
+      userIdentity.recoveryAddress, userIdentity.address, [], userIdentity.hydroID, permission.v, permission.r, permission.s, timestamp
+    )
+    //console.log("EIN:    " + userIdentity.ein)
+    userIdentity.identity = web3.utils.toBN(userIdentity.ein)
+
+    await verifyIdentity(userIdentity.identity, IdentityRegistryInstance, {
+      recoveryAddress:     userIdentity.recoveryAddress,
+      associatedAddresses: [userIdentity.address],
+      providers:           [SnowflakeInstance.address],
+      resolvers:           [ClientRaindropInstance.address]
+   })
+
+  }
+
