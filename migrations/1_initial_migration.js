@@ -21,25 +21,41 @@ const OldClientRaindrop = artifacts.require('./_testing/OldClientRaindrop.sol')
 
 
 
-const seller = {
-  address: '0xC38076718C883C776700514C8554Dda7558A16bd',
-  paymentAddress: '0x6FA229c69Ee78577dd74cCeEb3a91c9d78b04374'
-}
-
 const snowflakeAddress = '0xB0D5a36733886a4c5597849a05B315626aF5222E';
 const instances = {};
 
 
-
 module.exports = async function (deployer, network, accounts) {
 
+
+  //Set up "settings"
+  const seller = {
+    address: '0xC38076718C883C776700514C8554Dda7558A16bd',
+    paymentAddress: '0x6FA229c69Ee78577dd74cCeEb3a91c9d78b04374'
+  }
+
+
+  //Import contract artifacts
   const Snowflake = artifacts.require('Snowflake')
+  const IdentityRegistry = artifacts.require('IdentityRegistry')
+  const ItemFeature = artifacts.require('ItemFeature')
+  const CouponFeature = artifacts.require('CouponFeature')
+  const CouponMarketplaceVia = artifacts.require('CouponMarketplaceVia')
+  const CouponMarketplaceResolver = artifacts.require('CouponMarketplaceResolver')
+  const CouponDistribution = artifacts.require('CouponDistribution')
+
+
+
+
 
   //Grab Snowflake contract deployed at this address
   instances.Snowflake = await Snowflake.at(snowflakeAddress)
 
   //Get IdentityRegistryAddress
   const identityRegistryAddress = await instances.Snowflake.identityRegistryAddress.call()
+
+  //Grab IdentityRegistry
+  instances.IdentityRegistry = await IdentityRegistry.at(identityRegistryAddress)
 
   console.log(identityRegistryAddress)
 
