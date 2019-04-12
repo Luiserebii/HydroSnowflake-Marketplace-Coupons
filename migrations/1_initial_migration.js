@@ -85,6 +85,7 @@ module.exports = async function (deployer, network, accounts) {
   await deployer.deploy(CouponDistribution, CouponMarketplaceResolver.address, instances.Snowflake.address, { from: seller.address })
 
   //Set Coupon Distribution address within SnowflakeEINMarketplace contract (i.e. the Resolver)
+  instances.CouponMarketplaceResolver = await CouponMarketplaceResolver.at(CouponMarketplaceResolver.address)
   await instances.CouponMarketplaceResolver.setCouponDistributionAddress(CouponDistribution.address, { from: seller.address })
 
 

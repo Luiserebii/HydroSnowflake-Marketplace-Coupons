@@ -13,7 +13,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x14d8b821"
     },
     {
       "constant": true,
@@ -27,7 +28,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5437b67c"
     },
     {
       "constant": true,
@@ -62,7 +64,8 @@
       ],
       "payable": false,
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8677ebe8"
     },
     {
       "constant": true,
@@ -76,7 +79,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xa1707e7b"
     },
     {
       "constant": true,
@@ -90,7 +94,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xab9a8538"
     },
     {
       "anonymous": false,
@@ -132,7 +137,8 @@
         }
       ],
       "name": "IdentityCreated",
-      "type": "event"
+      "type": "event",
+      "signature": "0xe541733a4670852051762d3cdb7d9123bea21d01e252aa39ca403c8d0f5ab66c"
     },
     {
       "anonymous": false,
@@ -164,7 +170,8 @@
         }
       ],
       "name": "AssociatedAddressAdded",
-      "type": "event"
+      "type": "event",
+      "signature": "0x1e0c87f4d9edce88868577315152d327d02ff25d2cb9384cd6ee609a9f56b64e"
     },
     {
       "anonymous": false,
@@ -191,7 +198,8 @@
         }
       ],
       "name": "AssociatedAddressRemoved",
-      "type": "event"
+      "type": "event",
+      "signature": "0x04095b6a64a9a32bafa887e731a82f91cdec3bf819389deea6aa34a488034f7d"
     },
     {
       "anonymous": false,
@@ -218,7 +226,8 @@
         }
       ],
       "name": "ProviderAdded",
-      "type": "event"
+      "type": "event",
+      "signature": "0xd2af86288d6ec28d93c5459bdc5a21da89b340c28ad430327e40139c1178986f"
     },
     {
       "anonymous": false,
@@ -245,7 +254,8 @@
         }
       ],
       "name": "ProviderRemoved",
-      "type": "event"
+      "type": "event",
+      "signature": "0xe41b11c1b8e658dea501b4a432bd3f7b3e6db83ef57ac16c52e5f288edeffec4"
     },
     {
       "anonymous": false,
@@ -272,7 +282,8 @@
         }
       ],
       "name": "ResolverAdded",
-      "type": "event"
+      "type": "event",
+      "signature": "0x8d2c0379f93ea94639b25aaf145689b0db73ba107f5b9972bbd6238d7b0440ac"
     },
     {
       "anonymous": false,
@@ -299,7 +310,8 @@
         }
       ],
       "name": "ResolverRemoved",
-      "type": "event"
+      "type": "event",
+      "signature": "0x35f17668a4aadc48b2952cd27f0c5017b357497a1f20cedf4713d91d019a63a8"
     },
     {
       "anonymous": false,
@@ -331,7 +343,8 @@
         }
       ],
       "name": "RecoveryAddressChangeTriggered",
-      "type": "event"
+      "type": "event",
+      "signature": "0xd9d54f9caf1bb2f4f815d22df297e7b73291ee08a95df2d47b0b03378ebe7c5d"
     },
     {
       "anonymous": false,
@@ -358,7 +371,8 @@
         }
       ],
       "name": "RecoveryTriggered",
-      "type": "event"
+      "type": "event",
+      "signature": "0x2fe95fbd211d0471c596b1f81d913d1389d5d1ddeb2bdd96143acc651aa3b02e"
     },
     {
       "anonymous": false,
@@ -385,7 +399,8 @@
         }
       ],
       "name": "IdentityDestroyed",
-      "type": "event"
+      "type": "event",
+      "signature": "0x1807cc67f627d55c0a797a6c603fa124978caf5bb45c1748329489fd0185b9ef"
     },
     {
       "constant": true,
@@ -404,7 +419,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5b5aed3a"
     },
     {
       "constant": true,
@@ -423,7 +439,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x237f1a21"
     },
     {
       "constant": true,
@@ -442,7 +459,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x05c62c2f"
     },
     {
       "constant": true,
@@ -465,7 +483,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xa687662d"
     },
     {
       "constant": true,
@@ -488,7 +507,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x53a9698a"
     },
     {
       "constant": true,
@@ -511,7 +531,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xd4b1cdcc"
     },
     {
       "constant": true,
@@ -542,7 +563,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x85e3f058"
     },
     {
       "constant": false,
@@ -589,7 +611,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x14fb5646"
     },
     {
       "constant": false,
@@ -616,7 +639,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x268e8970"
     },
     {
       "constant": false,
@@ -650,7 +674,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xab5f6781"
     },
     {
       "constant": false,
@@ -684,7 +709,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3aedf3c9"
     },
     {
       "constant": false,
@@ -714,7 +740,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xdd9ad9ed"
     },
     {
       "constant": false,
@@ -723,7 +750,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3b4656a1"
     },
     {
       "constant": false,
@@ -741,7 +769,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x960b11f5"
     },
     {
       "constant": false,
@@ -755,7 +784,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x7d079951"
     },
     {
       "constant": false,
@@ -773,7 +803,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x06c93c36"
     },
     {
       "constant": false,
@@ -787,7 +818,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x232e7d83"
     },
     {
       "constant": false,
@@ -805,7 +837,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x010887dc"
     },
     {
       "constant": false,
@@ -819,7 +852,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xe846fd91"
     },
     {
       "constant": false,
@@ -837,7 +871,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5726f660"
     },
     {
       "constant": false,
@@ -851,7 +886,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xb8a5c2a6"
     },
     {
       "constant": false,
@@ -869,7 +905,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x2501faa5"
     },
     {
       "constant": false,
@@ -883,7 +920,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x1bfe3508"
     },
     {
       "constant": false,
@@ -917,7 +955,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8e1bb633"
     },
     {
       "constant": false,
@@ -943,7 +982,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xfa57b576"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"resolvers\",\"type\":\"address[]\"}],\"name\":\"addResolversFor\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"getEIN\",\"outputs\":[{\"name\":\"ein\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"providers\",\"type\":\"address[]\"}],\"name\":\"removeProvidersFor\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"recoveryTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"recoveryAddress\",\"type\":\"address\"},{\"name\":\"associatedAddress\",\"type\":\"address\"},{\"name\":\"providers\",\"type\":\"address[]\"},{\"name\":\"resolvers\",\"type\":\"address[]\"},{\"name\":\"v\",\"type\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\"},{\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"createIdentityDelegated\",\"outputs\":[{\"name\":\"ein\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newRecoveryAddress\",\"type\":\"address\"}],\"name\":\"triggerRecoveryAddressChange\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"providers\",\"type\":\"address[]\"}],\"name\":\"removeProviders\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"hasIdentity\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"newRecoveryAddress\",\"type\":\"address\"}],\"name\":\"triggerRecoveryAddressChangeFor\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"recoveryAddress\",\"type\":\"address\"},{\"name\":\"providers\",\"type\":\"address[]\"},{\"name\":\"resolvers\",\"type\":\"address[]\"}],\"name\":\"createIdentity\",\"outputs\":[{\"name\":\"ein\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"approvingAddress\",\"type\":\"address\"},{\"name\":\"addressToAdd\",\"type\":\"address\"},{\"name\":\"v\",\"type\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\"},{\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"addAssociatedAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"removeAssociatedAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"provider\",\"type\":\"address\"}],\"name\":\"isProviderFor\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"signatureTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"resolvers\",\"type\":\"address[]\"}],\"name\":\"removeResolversFor\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"}],\"name\":\"identityExists\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"providers\",\"type\":\"address[]\"}],\"name\":\"addProviders\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"}],\"name\":\"getIdentity\",\"outputs\":[{\"name\":\"recoveryAddress\",\"type\":\"address\"},{\"name\":\"associatedAddresses\",\"type\":\"address[]\"},{\"name\":\"providers\",\"type\":\"address[]\"},{\"name\":\"resolvers\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"},{\"name\":\"messageHash\",\"type\":\"bytes32\"},{\"name\":\"v\",\"type\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"isSigned\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"newAssociatedAddress\",\"type\":\"address\"},{\"name\":\"v\",\"type\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\"},{\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"triggerRecovery\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"providers\",\"type\":\"address[]\"}],\"name\":\"addProvidersFor\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"nextEIN\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"isAssociatedAddressFor\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"approvingAddress\",\"type\":\"address\"},{\"name\":\"addressToAdd\",\"type\":\"address\"},{\"name\":\"v\",\"type\":\"uint8[2]\"},{\"name\":\"r\",\"type\":\"bytes32[2]\"},{\"name\":\"s\",\"type\":\"bytes32[2]\"},{\"name\":\"timestamp\",\"type\":\"uint256[2]\"}],\"name\":\"addAssociatedAddressDelegated\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"maxAssociatedAddresses\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolvers\",\"type\":\"address[]\"}],\"name\":\"removeResolvers\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"resolver\",\"type\":\"address\"}],\"name\":\"isResolverFor\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"addressToRemove\",\"type\":\"address\"},{\"name\":\"v\",\"type\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\"},{\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"removeAssociatedAddressDelegated\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolvers\",\"type\":\"address[]\"}],\"name\":\"addResolvers\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"firstChunk\",\"type\":\"address[]\"},{\"name\":\"lastChunk\",\"type\":\"address[]\"},{\"name\":\"resetResolvers\",\"type\":\"bool\"}],\"name\":\"triggerDestruction\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"recoveryAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"associatedAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"providers\",\"type\":\"address[]\"},{\"indexed\":false,\"name\":\"resolvers\",\"type\":\"address[]\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"IdentityCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"approvingAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"addedAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"AssociatedAddressAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"removedAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"AssociatedAddressRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"provider\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"ProviderAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"provider\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"ProviderRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"resolvers\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"ResolverAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"resolvers\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"ResolverRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"oldRecoveryAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"newRecoveryAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"delegated\",\"type\":\"bool\"}],\"name\":\"RecoveryAddressChangeTriggered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"oldAssociatedAddresses\",\"type\":\"address[]\"},{\"indexed\":false,\"name\":\"newAssociatedAddress\",\"type\":\"address\"}],\"name\":\"RecoveryTriggered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"initiator\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"ein\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"recoveryAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"resolversReset\",\"type\":\"bool\"}],\"name\":\"IdentityDestroyed\",\"type\":\"event\"}],\"devdoc\":{\"author\":\"Noah ZinsmeisterAndy Chorlian\",\"methods\":{\"addAssociatedAddress(address,address,uint8,bytes32,bytes32,uint256)\":{\"params\":{\"addressToAdd\":\"A new address to set for the Identity of the sender.\",\"approvingAddress\":\"An associated address for an Identity.\",\"r\":\"The r component of the signature.\",\"s\":\"The s component of the signature.\",\"timestamp\":\"The timestamp of the signature.\",\"v\":\"The v component of the signature.\"}},\"addAssociatedAddressDelegated(address,address,uint8[2],bytes32[2],bytes32[2],uint256[2])\":{\"details\":\"The first signature must be that of the approvingAddress.\",\"params\":{\"addressToAdd\":\"A new address to set for the Identity of approvingAddress.\",\"approvingAddress\":\"An associated address for an Identity.\",\"r\":\"The r component of the signatures.\",\"s\":\"The s component of the signatures.\",\"timestamp\":\"The timestamp of the signatures.\",\"v\":\"The v component of the signatures.\"}},\"addProviders(address[])\":{\"params\":{\"providers\":\"A list of providers.\"}},\"addProvidersFor(uint256,address[])\":{\"params\":{\"ein\":\"The EIN to add providers to.\",\"providers\":\"A list of providers.\"}},\"addResolvers(address[])\":{\"params\":{\"resolvers\":\"A list of resolvers.\"}},\"addResolversFor(uint256,address[])\":{\"params\":{\"ein\":\"The EIN to add resolvers to.\",\"resolvers\":\"A list of resolvers.\"}},\"createIdentity(address,address[],address[])\":{\"details\":\"Sets the msg.sender as the only associatedAddress.\",\"params\":{\"providers\":\"A list of providers to set for the new Identity.\",\"recoveryAddress\":\"A recovery address to set for the new Identity.\",\"resolvers\":\"A list of resolvers to set for the new Identity.\"},\"return\":\"The EIN of the new Identity.\"},\"createIdentityDelegated(address,address,address[],address[],uint8,bytes32,bytes32,uint256)\":{\"params\":{\"associatedAddress\":\"An associated address to set for the new Identity (must have produced the signature).\",\"providers\":\"A list of providers to set for the new Identity.\",\"r\":\"The r component of the signature.\",\"recoveryAddress\":\"A recovery address to set for the new Identity.\",\"resolvers\":\"A list of resolvers to set for the new Identity.\",\"s\":\"The s component of the signature.\",\"timestamp\":\"The timestamp of the signature.\",\"v\":\"The v component of the signature.\"},\"return\":\"The EIN of the new Identity.\"},\"getEIN(address)\":{\"details\":\"Throws if the address is not associated with an Identity.\",\"params\":{\"_address\":\"The address to check.\"},\"return\":\"The associated EIN.\"},\"getIdentity(uint256)\":{\"details\":\"Throws if the passed EIN does not exist.\",\"params\":{\"ein\":\"The EIN to get information for.\"},\"return\":\"All the information for the Identity denominated by the passed EIN.\"},\"hasIdentity(address)\":{\"details\":\"Does not throw.\",\"params\":{\"_address\":\"The address to check.\"},\"return\":\"true if the passed address is associated with an Identity, false otherwise.\"},\"identityExists(uint256)\":{\"details\":\"Does not throw.\",\"params\":{\"ein\":\"The EIN to check the existence of.\"},\"return\":\"true if the passed EIN exists, false otherwise.\"},\"isAssociatedAddressFor(uint256,address)\":{\"details\":\"Does not throw.\",\"params\":{\"_address\":\"The address to check.\",\"ein\":\"The EIN to check.\"},\"return\":\"true if the passed address is associated with the passed EIN, false otherwise.\"},\"isProviderFor(uint256,address)\":{\"details\":\"Does not throw.\",\"params\":{\"ein\":\"The EIN to check.\",\"provider\":\"The provider to check.\"},\"return\":\"true if the provider is set for the passed EIN, false otherwise.\"},\"isResolverFor(uint256,address)\":{\"details\":\"Does not throw.\",\"params\":{\"ein\":\"The EIN to check.\",\"resolver\":\"The resolver to check.\"},\"return\":\"true if the resolver is set for the passed EIN, false otherwise.\"},\"isSigned(address,bytes32,uint8,bytes32,bytes32)\":{\"params\":{\"_address\":\"The address that may or may not have signed the passed messageHash.\",\"messageHash\":\"The messageHash that may or may not have been signed.\",\"r\":\"The r component of the signature.\",\"s\":\"The s component of the signature.\",\"v\":\"The v component of the signature.\"},\"return\":\"true if the signature can be verified, false otherwise.\"},\"removeAssociatedAddressDelegated(address,uint8,bytes32,bytes32,uint256)\":{\"params\":{\"addressToRemove\":\"An associated address to remove from its Identity.\",\"r\":\"The r component of the signature.\",\"s\":\"The s component of the signature.\",\"timestamp\":\"The timestamp of the signature.\",\"v\":\"The v component of the signature.\"}},\"removeProviders(address[])\":{\"params\":{\"providers\":\"A list of providers.\"}},\"removeProvidersFor(uint256,address[])\":{\"params\":{\"ein\":\"The EIN to remove providers from.\",\"providers\":\"A list of providers.\"}},\"removeResolvers(address[])\":{\"params\":{\"resolvers\":\"A list of resolvers.\"}},\"removeResolversFor(uint256,address[])\":{\"params\":{\"ein\":\"The EIN to remove resolvers from.\",\"resolvers\":\"A list of resolvers.\"}},\"triggerDestruction(uint256,address[],address[],bool)\":{\"params\":{\"ein\":\"The EIN to trigger destruction of.\",\"firstChunk\":\"The array of addresses before the msg.sender in the pre-recovery associated addresses array.\",\"lastChunk\":\"The array of addresses after the msg.sender in the pre-recovery associated addresses array.\",\"resetResolvers\":\"true if the destroyer wants resolvers to be removed, false otherwise.\"}},\"triggerRecovery(uint256,address,uint8,bytes32,bytes32,uint256)\":{\"details\":\"msg.sender must be current recovery address, or the old one if it was changed recently.\",\"params\":{\"ein\":\"The EIN to trigger recovery for.\",\"newAssociatedAddress\":\"A recovery address to set for the passed EIN.\",\"r\":\"The r component of the signature.\",\"s\":\"The s component of the signature.\",\"timestamp\":\"The timestamp of the signature.\",\"v\":\"The v component of the signature.\"}},\"triggerRecoveryAddressChange(address)\":{\"details\":\"Recovery addresses can be changed at most once every recoveryTimeout seconds.\",\"params\":{\"newRecoveryAddress\":\"A recovery address to set for the sender's EIN.\"}},\"triggerRecoveryAddressChangeFor(uint256,address)\":{\"details\":\"Recovery addresses can be changed at most once every recoveryTimeout seconds.\",\"params\":{\"ein\":\"The EIN to set the recovery address of.\",\"newRecoveryAddress\":\"A recovery address to set for the passed EIN.\"}}},\"title\":\"The ERC-1484 Identity Registry.\"},\"userdoc\":{\"methods\":{\"addAssociatedAddress(address,address,uint8,bytes32,bytes32,uint256)\":{\"notice\":\"Allows an associated address to add another associated address to its Identity.\"},\"addAssociatedAddressDelegated(address,address,uint8[2],bytes32[2],bytes32[2],uint256[2])\":{\"notice\":\"Allows addition of an associated address to an Identity.\"},\"addProviders(address[])\":{\"notice\":\"Allows an associated address to add providers to its Identity.\"},\"addProvidersFor(uint256,address[])\":{\"notice\":\"Allows providers to add providers to an Identity.\"},\"addResolvers(address[])\":{\"notice\":\"Allows an associated address to add resolvers to its Identity.\"},\"addResolversFor(uint256,address[])\":{\"notice\":\"Allows providers to add resolvers to an Identity.\"},\"createIdentity(address,address[],address[])\":{\"notice\":\"Create an new Identity for the transaction sender.\"},\"createIdentityDelegated(address,address,address[],address[],uint8,bytes32,bytes32,uint256)\":{\"notice\":\"Allows creation of a new Identity for the passed associatedAddress.\"},\"getEIN(address)\":{\"notice\":\"Gets the EIN associated with the passed address.\"},\"getIdentity(uint256)\":{\"notice\":\"Gets all identity-related information for the passed EIN.\"},\"hasIdentity(address)\":{\"notice\":\"Checks if the passed address is associated with an Identity.\"},\"identityExists(uint256)\":{\"notice\":\"Checks if the passed EIN exists.\"},\"isAssociatedAddressFor(uint256,address)\":{\"notice\":\"Checks whether the passed EIN is associated with the passed address.\"},\"isProviderFor(uint256,address)\":{\"notice\":\"Checks whether the passed provider is set for the passed EIN.\"},\"isResolverFor(uint256,address)\":{\"notice\":\"Checks whether the passed resolver is set for the passed EIN.\"},\"isSigned(address,bytes32,uint8,bytes32,bytes32)\":{\"notice\":\"Determines whether the passed signature of `messageHash` was made by the private key of `_address`.\"},\"removeAssociatedAddress()\":{\"notice\":\"Allows an associated address to remove itself from its Identity.\"},\"removeAssociatedAddressDelegated(address,uint8,bytes32,bytes32,uint256)\":{\"notice\":\"Allows removal of an associated address from an Identity.\"},\"removeProviders(address[])\":{\"notice\":\"Allows an associated address to remove providers from its Identity.\"},\"removeProvidersFor(uint256,address[])\":{\"notice\":\"Allows providers to remove providers to an Identity.\"},\"removeResolvers(address[])\":{\"notice\":\"Allows an associated address to remove resolvers from its Identity.\"},\"removeResolversFor(uint256,address[])\":{\"notice\":\"Allows providers to remove resolvers from an Identity.\"},\"triggerDestruction(uint256,address[],address[],bool)\":{\"notice\":\"Allows associated addresses recently removed via recovery to permanently disable their old Identity.\"},\"triggerRecovery(uint256,address,uint8,bytes32,bytes32,uint256)\":{\"notice\":\"Allows recovery addresses to trigger the recovery process for an Identity.\"},\"triggerRecoveryAddressChange(address)\":{\"notice\":\"Allows an associated address to change the recovery address for its Identity.\"},\"triggerRecoveryAddressChangeFor(uint256,address)\":{\"notice\":\"Allows providers to change the recovery address for an Identity.\"}}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/IdentityRegistry.sol\":\"IdentityRegistry\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/AddressSet/AddressSet.sol\":{\"keccak256\":\"0x3e00884e2275385e7f2fdee6d079edf4fa35f1fecf2f44083df5f49a736f94bc\",\"urls\":[\"bzzr://0163a4a0ced5f79bc0260f909b030f4cf579727291c90351191465594a863861\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/IdentityRegistry.sol\":{\"keccak256\":\"0x78727cfeae26ebb8dddaeb56d28f6ce7f16976729131aaeebd902a8d91b64c02\",\"urls\":[\"bzzr://5c126474afb472af666e2af05ad52742b919c71a0940a0adab3b1483fa2e41d8\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/SignatureVerifier.sol\":{\"keccak256\":\"0x3069ac0c8b35f57d8906f639d40f65bf3f2c67e339f149bd78afc804598ef1d1\",\"urls\":[\"bzzr://c0f139a9f619219c123e17e7cfb67a15c725c83be6f6126c3a07ce270c5b9845\"]}},\"version\":1}",
@@ -44929,7 +44969,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-12T01:36:38.341Z",
+  "updatedAt": "2019-04-12T02:45:45.217Z",
   "devdoc": {
     "author": "Noah ZinsmeisterAndy Chorlian",
     "methods": {

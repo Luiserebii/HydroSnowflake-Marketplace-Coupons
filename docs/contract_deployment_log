@@ -1,0 +1,129 @@
+=======================================================
+Log of a successful deployment, for reference.
+
+Executed and recorded: 4.11.19.
+=======================================================
+
+
+luiserebii@luiserebii-latias:~/github/HydroSnowflake-Marketplace-Coupons$ truffle migrate --network rinkeby
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 0x6acfc0
+
+
+1_initial_migration.js
+======================
+[ '0xc1B1b64c33e0578DBa9E2CEacf0F8763128ddF63',
+  '0x37F9e3F08552033f14efd3153a0E6cc4C7aaB012',
+  '0x7F5d2a7ff7228d59D2886591f6B0e03129DD9B29',
+  '0x05d66b4F2703b7C811916f3c51afeDcAF24344d0',
+  '0x44e29857162352Ab64c41EeAAb5409eF7378F64E',
+  '0xe00B840eB140F1640c474bA7365CA49129Aa0399',
+  '0x8f74443AE9b67e3A58Bb32d03C48F2bD2E13F26B',
+  '0x2915C9AC9DB5BFDc44Cb14d1Ed7CCfdCbA10052C',
+  '0x40EFD39Ae2caF9eaF08bC44cf3B9A6C790CcED84',
+  '0x64058C0BA5dDd6499423659090769Ef966aC9746' ]
+
+   Deploying 'ItemFeature'
+   -----------------------
+   > transaction hash:    0x6cc9f41212e97a324145de176a89e655a851295769b8937e7c3f89d39bb8f260
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x1fBEc70d445647B2a2e6d81d7b89288556ebf52E
+   > account:             0xc1B1b64c33e0578DBa9E2CEacf0F8763128ddF63
+   > balance:             15.38190036
+   > gas used:            2817397
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.05634794 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 4193839)
+   > confirmation number: 2 (block: 4193840)
+
+   Deploying 'CouponFeature'
+   -------------------------
+   > transaction hash:    0x986e1c966b0022245f231b6470ceaeedb3ec39c5270c0227eb1f01093313390b
+   > Blocks: 0            Seconds: 8
+   > contract address:    0x05F4aE5A13C38835EC9707BB04078dac8fB3d0Cf
+   > account:             0xc1B1b64c33e0578DBa9E2CEacf0F8763128ddF63
+   > balance:             15.32208678
+   > gas used:            2990679
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.05981358 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 4193841)
+   > confirmation number: 2 (block: 4193842)
+
+   Deploying 'CouponMarketplaceVia'
+   --------------------------------
+   > transaction hash:    0xd78175c0d19f84bc10f6917092c1678999f40939a7dd95e1d103d3d22d42f3b0
+   > Blocks: 0            Seconds: 12
+   > contract address:    0x2c08c9a281517971d971F08bCA8713E7a4A39414
+   > account:             0xc1B1b64c33e0578DBa9E2CEacf0F8763128ddF63
+   > balance:             15.29256224
+   > gas used:            1476227
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.02952454 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 4193843)
+   > confirmation number: 2 (block: 4193844)
+
+   Deploying 'CouponMarketplaceResolver'
+   -------------------------------------
+   > transaction hash:    0x485aa7f2bda2aa06be4df547f73908b52f52f6c99b607f11b99684e3c708d063
+   > Blocks: 0            Seconds: 12
+   > contract address:    0x3Ad8F934f6AF4564e3EC4A7055298823A1039e4F
+   > account:             0xc1B1b64c33e0578DBa9E2CEacf0F8763128ddF63
+   > balance:             15.24444004
+   > gas used:            2406110
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0481222 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 4193845)
+   > confirmation number: 2 (block: 4193846)
+
+   Deploying 'CouponDistribution'
+   ------------------------------
+   > transaction hash:    0x72bf379ea393561c8fdd7519fafa52f982b7e247d2cc615bcb79dac645aa0791
+   > Blocks: 1            Seconds: 12
+   > contract address:    0xd29447d4CD6e6Ae005B3a85ffAb14389a38D1e4f
+   > account:             0xc1B1b64c33e0578DBa9E2CEacf0F8763128ddF63
+   > balance:             15.22874088
+   > gas used:            731956
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01463912 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 4193849)
+   > confirmation number: 2 (block: 4193850)
+Neat, we ran!
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.20844738 ETH
+
+
+Summary
+=======
+> Total deployments:   5
+> Final cost:          0.20844738 ETH
+

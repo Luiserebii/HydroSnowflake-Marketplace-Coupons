@@ -18,7 +18,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x01ffc9a7"
     },
     {
       "constant": true,
@@ -41,7 +42,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x02569d5b"
     },
     {
       "constant": true,
@@ -60,7 +62,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x081812fc"
     },
     {
       "constant": false,
@@ -82,7 +85,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x0d2e347d"
     },
     {
       "constant": true,
@@ -105,7 +109,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x13ca683a"
     },
     {
       "constant": false,
@@ -123,7 +128,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x16b49a43"
     },
     {
       "constant": true,
@@ -174,7 +180,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x172e8e4c"
     },
     {
       "constant": false,
@@ -197,7 +204,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x1b2ef1ca"
     },
     {
       "constant": false,
@@ -219,7 +227,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x310ed7f0"
     },
     {
       "constant": true,
@@ -270,7 +279,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3129e773"
     },
     {
       "constant": true,
@@ -284,7 +294,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3e938fb7"
     },
     {
       "constant": false,
@@ -298,7 +309,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x42966c68"
     },
     {
       "constant": false,
@@ -324,7 +336,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x435b153f"
     },
     {
       "constant": true,
@@ -343,7 +356,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x4c4df870"
     },
     {
       "constant": false,
@@ -361,7 +375,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5d35a3d9"
     },
     {
       "constant": false,
@@ -375,7 +390,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5fd5e4d0"
     },
     {
       "constant": true,
@@ -394,7 +410,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5fe0d82f"
     },
     {
       "constant": true,
@@ -413,7 +430,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x6352211e"
     },
     {
       "constant": true,
@@ -432,7 +450,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x64433bb2"
     },
     {
       "constant": false,
@@ -458,7 +477,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x68d1e641"
     },
     {
       "constant": false,
@@ -467,7 +487,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x715018a6"
     },
     {
       "constant": false,
@@ -489,7 +510,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x7f493d9c"
     },
     {
       "constant": false,
@@ -498,7 +520,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x895c3e94"
     },
     {
       "constant": false,
@@ -516,7 +539,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8b9a0c89"
     },
     {
       "constant": true,
@@ -539,7 +563,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8d9188d5"
     },
     {
       "constant": true,
@@ -558,7 +583,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x9690f6d1"
     },
     {
       "constant": true,
@@ -577,7 +603,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x9cc7f708"
     },
     {
       "constant": false,
@@ -591,7 +618,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xa4453ffb"
     },
     {
       "constant": true,
@@ -605,7 +633,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xaf05cbdf"
     },
     {
       "constant": false,
@@ -619,7 +648,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xd23e8489"
     },
     {
       "constant": true,
@@ -638,7 +668,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xeca4742a"
     },
     {
       "constant": false,
@@ -660,7 +691,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf4670462"
     },
     {
       "constant": true,
@@ -674,7 +706,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf9f451b8"
     },
     {
       "inputs": [
@@ -685,7 +718,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "constructor",
+      "signature": "constructor"
     },
     {
       "anonymous": false,
@@ -707,7 +741,8 @@
         }
       ],
       "name": "ApprovalAddress",
-      "type": "event"
+      "type": "event",
+      "signature": "0xdd2d4479f7ebe0a20212b0ef6b723a3f0d98a4b3d64b8d9898777c769bb7a881"
     },
     {
       "anonymous": false,
@@ -719,7 +754,8 @@
         }
       ],
       "name": "SnowflakeMinterAdded",
-      "type": "event"
+      "type": "event",
+      "signature": "0xc96fabf52983c486b9ee7f26fa97994b2199bd98cf74f02ef6aa1e1d87cbb482"
     },
     {
       "anonymous": false,
@@ -731,7 +767,8 @@
         }
       ],
       "name": "SnowflakeMinterRemoved",
-      "type": "event"
+      "type": "event",
+      "signature": "0x34803f71b3ce19f83d2efe8fd85a68795e6ca17a2139def6f374f7cec617366c"
     },
     {
       "anonymous": false,
@@ -748,7 +785,8 @@
         }
       ],
       "name": "OwnershipTransferred",
-      "type": "event"
+      "type": "event",
+      "signature": "0x41545563b5478d4a04f861e33b36e455316904e9fe15096d35d14a5f9885212a"
     },
     {
       "anonymous": false,
@@ -770,7 +808,8 @@
         }
       ],
       "name": "Transfer",
-      "type": "event"
+      "type": "event",
+      "signature": "0xaf6151f5085accf2d57e1e7bf7601d3b3982e0de7e9a90f032f8554de9c104f6"
     },
     {
       "anonymous": false,
@@ -792,7 +831,8 @@
         }
       ],
       "name": "Approval",
-      "type": "event"
+      "type": "event",
+      "signature": "0x08aaf4f7dd1adfa5bfe7067dea5b4ebd7e119d43257438a9189f37d7044eb09a"
     },
     {
       "anonymous": false,
@@ -814,7 +854,8 @@
         }
       ],
       "name": "ApprovalForAll",
-      "type": "event"
+      "type": "event",
+      "signature": "0xe08356808518f185b1eebe6f778106965c2df3a69af4d7139fa9451067146eb7"
     },
     {
       "constant": false,
@@ -877,7 +918,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x1240aa40"
     },
     {
       "constant": false,
@@ -940,7 +982,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x77dfe7c8"
     },
     {
       "constant": false,
@@ -959,7 +1002,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x7c35d692"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getItemTag\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getApproved\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"safeTransferFromAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"uuid\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint8\"},{\"name\":\"status\",\"type\":\"uint8\"},{\"name\":\"condition\",\"type\":\"uint8\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"uint256\"},{\"name\":\"delivery\",\"type\":\"uint256[]\"},{\"name\":\"tags\",\"type\":\"uint256[]\"},{\"name\":\"returnPolicy\",\"type\":\"uint256\"}],\"name\":\"addItemListing\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getItemDelivery\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"itemListings\",\"outputs\":[{\"name\":\"uuid\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint8\"},{\"name\":\"status\",\"type\":\"uint8\"},{\"name\":\"condition\",\"type\":\"uint8\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"uint256\"},{\"name\":\"returnPolicy\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getItem\",\"outputs\":[{\"name\":\"uuid\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint8\"},{\"name\":\"status\",\"type\":\"uint8\"},{\"name\":\"condition\",\"type\":\"uint8\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"uint256\"},{\"name\":\"returnPolicy\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ownerEIN\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"},{\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFromAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getItemPrice\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"isEINOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getItemDeliveryLength\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getItemTagsLength\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"},{\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"uuid\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint8\"},{\"name\":\"status\",\"type\":\"uint8\"},{\"name\":\"condition\",\"type\":\"uint8\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"uint256\"},{\"name\":\"delivery\",\"type\":\"uint256[]\"},{\"name\":\"tags\",\"type\":\"uint256[]\"},{\"name\":\"returnPolicy\",\"type\":\"uint256\"}],\"name\":\"updateItemListing\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"deleteItemListing\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transferFromAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceSnowflakeMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"approveAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"uint256\"},{\"name\":\"operator\",\"type\":\"uint256\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"isSnowflakeMinter\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"uint256\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"addSnowflakeMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"nextItemListingsID\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"uint256\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getApprovedAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"uint256\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"snowflakeAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_snowflakeAddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"owner\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ApprovalAddress\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"SnowflakeMinterAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"uint256\"}],\"name\":\"SnowflakeMinterRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"uint256\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"einFrom\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"einTo\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"einOwner\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"einApproved\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"einOwner\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"einOperator\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"approve(uint256,uint256)\":{\"details\":\"Approves another EIN to transfer the given token ID The zero EIN indicates there is no approved EIN. There can only be one approved EIN per token at a given time. Can only be called by the token owner or an approved operator.\",\"params\":{\"to\":\"uint256 to be approved for the given token ID\",\"tokenId\":\"uint256 ID of the token to be approved\"}},\"approveAddress(address,uint256)\":{\"details\":\"Approves an address to transfer the given token ID The zero address indicates there is no approved EIN. There can only be one approved address per token at a given time. Can only be called by the token owner or an approved operator.\",\"params\":{\"to\":\"address to be approved for the given token ID\",\"tokenId\":\"uint256 ID of the token to be approved\"}},\"balanceOf(uint256)\":{\"details\":\"Gets the balance of the specified address\",\"params\":{\"owner\":\"uint256 to query the balance of\"},\"return\":\"uint256 representing the amount owned by the passed address\"},\"burn(uint256)\":{\"details\":\"Burns a specific Snowflake ERC721 token.\",\"params\":{\"tokenId\":\"uint256 id of the Snowflake ERC721 token to be burned.\"}},\"getApproved(uint256)\":{\"details\":\"Gets the approved EIN for a token ID, or zero if no EIN set Reverts if the token ID does not exist.\",\"params\":{\"tokenId\":\"uint256 ID of the token to query the approval of\"},\"return\":\"EIN currently approved for the given token ID\"},\"getApprovedAddress(uint256)\":{\"details\":\"Gets the approved address for a token ID, or zero if no EIN set Reverts if the token ID does not exist.\",\"params\":{\"tokenId\":\"uint256 ID of the token to query the approval of\"},\"return\":\"address currently approved for the given token ID\"},\"isApprovedForAll(uint256,uint256)\":{\"details\":\"Tells whether an operator is approved by a given owner\",\"params\":{\"operator\":\"operator EIN which you want to query the approval of\",\"owner\":\"owner EIN which you want to query the approval of\"},\"return\":\"bool whether the given operator is approved by the given owner\"},\"isEINOwner()\":{\"return\":\"true if address resolves to owner of the contract.\"},\"mint(uint256,uint256)\":{\"details\":\"Function to mint tokens\",\"params\":{\"to\":\"The EIN that will receive the minted tokens.\",\"tokenId\":\"The token id to mint.\"},\"return\":\"A boolean that indicates if the operation was successful.\"},\"ownerEIN()\":{\"return\":\"the EIN of the owner.\"},\"ownerOf(uint256)\":{\"details\":\"Gets the owner of the specified token ID\",\"params\":{\"tokenId\":\"uint256 ID of the token to query the owner of\"},\"return\":\"uint256 currently marked as the owner of the given token ID\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"safeTransferFrom(uint256,uint256,uint256)\":{\"details\":\"Safely transfers the ownership of a given token ID to another EIN If the target EIN is a contract, it must implement `onERC721Received`, which is called upon a safe transfer, and return the magic value `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`; otherwise, the transfer is reverted. Requires the msg.sender to be the owner, approved, or operator\",\"params\":{\"from\":\"uint256 current owner of the token\",\"to\":\"uint256 to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"safeTransferFrom(uint256,uint256,uint256,bytes)\":{\"details\":\"Safely transfers the ownership of a given token ID to another EIN If the target EIN is a contract, it must implement `onERC721Received`, which is called upon a safe transfer, and return the magic value `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`; otherwise, the transfer is reverted. Requires the msg.sender to be the owner, approved, or operator\",\"params\":{\"_data\":\"bytes data to send along with a safe transfer check\",\"from\":\"current owner of the token\",\"to\":\"uint256 to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"safeTransferFromAddress(uint256,uint256,uint256)\":{\"details\":\"Safely transfers the ownership of a given token ID to another EIN If the target EIN is a contract, it must implement `onERC721Received`, which is called upon a safe transfer, and return the magic value `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`; otherwise, the transfer is reverted. Requires the msg.sender to be the owner, approved, or operator\",\"params\":{\"from\":\"uint256 current owner of the token\",\"to\":\"uint256 to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"safeTransferFromAddress(uint256,uint256,uint256,bytes)\":{\"details\":\"Safely transfers the ownership of a given token ID to another EIN If the target address is a contract, it must implement `onERC721Received`, which is called upon a safe transfer, and return the magic value `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`; otherwise, the transfer is reverted. Requires the msg.sender to be the owner, approved, or operator\",\"params\":{\"_data\":\"bytes data to send along with a safe transfer check\",\"from\":\"current owner of the token\",\"to\":\"uint256 to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"setApprovalForAll(uint256,bool)\":{\"details\":\"Sets or unsets the approval of a given operator An operator is allowed to transfer all tokens of the sender on their behalf\",\"params\":{\"approved\":\"representing the status of the approval to be set\",\"to\":\"operator EIN to set the approval\"}},\"supportsInterface(bytes4)\":{\"details\":\"implement supportsInterface(bytes4) using a lookup table\"},\"transferFrom(uint256,uint256,uint256)\":{\"details\":\"Transfers the ownership of a given token ID to another address Usage of this method is discouraged, use `safeTransferFrom` whenever possible Requires the msg.sender to be the owner, approved, or operator\",\"params\":{\"from\":\"current owner of the token\",\"to\":\"address to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"transferFromAddress(uint256,uint256,uint256)\":{\"details\":\"Transfers the ownership of a given token ID to another address Usage of this method is discouraged, use `safeTransferFrom` whenever possible Requires the msg.sender to be the owner, approved, or operator\",\"params\":{\"from\":\"current owner of the token\",\"to\":\"address to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"transferOwnership(uint256)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemFeature.sol\":\"ItemFeature\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/access/EINRoles.sol\":{\"keccak256\":\"0x9dd4763598b03044f79572c9eb554b2256ef20c0da1e60dadc77cc4c8ec3fcbf\",\"urls\":[\"bzzr://ee43a144547fca35d7941e1d470118d8fb13b165a49eaa1a62512f64725f9c0e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/access/roles/SnowflakeMinterRole.sol\":{\"keccak256\":\"0xcc387a300ce07e337cfce40783b33df0b4ebcb24b446434b5f4c34a02755c547\",\"urls\":[\"bzzr://20b6b626fd668bb2023770d5183825f82f567aa66cd8398edd7880f817dab57e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721.sol\":{\"keccak256\":\"0x8a370499f7285103514127d61b05b9f1c5e1f52d1974f3b039e45cd28c3ea878\",\"urls\":[\"bzzr://d22fe33589ee906af949bc1cc429a395f14796f3142d50e59d3d6de16f8a509e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721Burnable.sol\":{\"keccak256\":\"0x2db6951914d133a6c6fa46a6b64e1c0010da9715101cf7d5fff6a58dc8f0116c\",\"urls\":[\"bzzr://6943eeeb1335cff854aade9217eca42dc427cbe5833b81b92f932cfd977c6e79\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721Interface.sol\":{\"keccak256\":\"0xa5e0f633e49cedd94989337a9cb2464dc948ceba335988397e526224b602c116\",\"urls\":[\"bzzr://f11c8ed796d4d4b73a5b88daf1fe83ea24eaa50139179359ada7b243ca29f521\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721Mintable.sol\":{\"keccak256\":\"0xd06a96615fcef4c59adf36aecd35cf846e30cc573e3ff8c2d0abe3c6b55d2b4d\",\"urls\":[\"bzzr://ab142d4ebb5500950b57846c87dbff526c766f6f7e347ac7ca5279183d55a283\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721ReceiverInterface.sol\":{\"keccak256\":\"0x1d94fd6a75bca20c27bfafc97de2e9df0f12eeae152820bbcaa423535223c019\",\"urls\":[\"bzzr://d053e44920ee5c53ded1ae8a112f34f28732bbc3ac04beb10b2e63369137c7dc\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/address/AddressSnowflakeERC721.sol\":{\"keccak256\":\"0x9b52a723e976c023a56d4da85a00159b379cc3ea6ade877578c62d9cc5591517\",\"urls\":[\"bzzr://f2cf50866412c424b3e91f15bfa46ac78b21f9f5bb7ff8b6432aa7e4a694140a\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/util/EINOwnable.sol\":{\"keccak256\":\"0xebd1e3e03000681c471b586288dc6c4232546e0371ec30929b8ff4f880c949f3\",\"urls\":[\"bzzr://a6be3009c6b47f39e3f8d791344088717a6a8fee26f7bb803503e5abaec5f0ff\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/util/SnowflakeEINOwnable.sol\":{\"keccak256\":\"0x9fff4be9ffa622c5751e13107aac8159f2a7dede3a30eafbf9badb7b38d7de14\",\"urls\":[\"bzzr://2d372664d8a6ac21f14f72599a8b09da0ce63b1ef11fa39f789c5b3cf0804c8c\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/IdentityRegistryInterface.sol\":{\"keccak256\":\"0xb559191dbd30da97a8b5759a895d7f4eff420eedc55b0786ae7206fbe384dc15\",\"urls\":[\"bzzr://a6122de11af1f831b1a93dba66aabe9e299f0040cf3404510790453addc6e0d9\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeInterface.sol\":{\"keccak256\":\"0xb34e22de661c32131d4d5bbd8f8dbf1794e5d944736ccb31870b6f75bdd322e5\",\"urls\":[\"bzzr://aaa6399afaf287d517ece7ac874cf6da3c2d81f9d88cb8cdc4631adc3f4ac52a\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/ItemInterface.sol\":{\"keccak256\":\"0x9b844cab2c67edd9b87400f867b1032ec911466fec094b19f741f0ee7eb0835c\",\"urls\":[\"bzzr://48219a748afa2781ac0d4b990b44faa587d798a3b38566d6d713b48ab9f9c843\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemFeature.sol\":{\"keccak256\":\"0xb97b41d690394f6fe972b7a217dc0435f51992985c27d3bbeb4e128a520e6729\",\"urls\":[\"bzzr://e0cc6e91eb38bda22e73efa385500e5da6a2ba9998a6daeb5617701c1cd2c06a\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/Items.sol\":{\"keccak256\":\"0x5cb795b4dcadb25fc746db928d2582c2f68b14cbf18bc122652ab5826a19c1a9\",\"urls\":[\"bzzr://2fe9d904da8c976e49865a640c35c1a8a94356614451f8409cdb0f25a6e0785e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/snowflake_custom/SnowflakeReader.sol\":{\"keccak256\":\"0x2abd0f0b6837dec5554cf29f986d5e365631fc514d2f636fab1054958fd1a1c0\",\"urls\":[\"bzzr://149da665bf1ca0442cf1956087a24d1a11de1a2f5cd77eebefdcf2e1f2c56bb4\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/drafts/Counters.sol\":{\"keccak256\":\"0x982e18d2e3df98e3339f70f955a4d1fb78411a29963d0ea34621759eef67e86d\",\"urls\":[\"bzzr://a5438906da44343a09c6b47666d3649f269d9d156f2109e147e21595b2284363\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/introspection/ERC165.sol\":{\"keccak256\":\"0xd86c61f2e7e78c88716b5591bbf2d6cce8fe1a68320484994810d54f82605a7a\",\"urls\":[\"bzzr://4823f8b1263e0bacc50b5a823ebb27abeda34bffd67fa72225c44ebb2b4a30c7\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/introspection/IERC165.sol\":{\"keccak256\":\"0xc48ee580d20820cc0ef122b2acc9bf8836731dd8b9671cc03d21a12e3ab14976\",\"urls\":[\"bzzr://744cf3b8280d4a050ad0771e2ed0d7d41bbddfa40a541933d46bb31007a2e4a9\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/math/SafeMath.sol\":{\"keccak256\":\"0x2cee2f0a5f7c68ece40aa1641b34177859058b4b3d74f243112c96f0bff7d54b\",\"urls\":[\"bzzr://f84a966fb57ec20ab2ed137b385c332cb5f67a5ad2ee5c46eb64b3ca6a6ab1cd\"]}},\"version\":1}",
@@ -4763,9 +4807,16 @@
     "name": "solc",
     "version": "0.5.6+commit.b259423e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x1fBEc70d445647B2a2e6d81d7b89288556ebf52E",
+      "transactionHash": "0x6cc9f41212e97a324145de176a89e655a851295769b8937e7c3f89d39bb8f260"
+    }
+  },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-12T01:36:38.129Z",
+  "updatedAt": "2019-04-12T02:45:45.167Z",
   "devdoc": {
     "methods": {
       "approve(uint256,uint256)": {

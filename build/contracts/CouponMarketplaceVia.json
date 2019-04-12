@@ -13,7 +13,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x11206b0c"
     },
     {
       "constant": true,
@@ -27,7 +28,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3e938fb7"
     },
     {
       "constant": false,
@@ -41,7 +43,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x5fd5e4d0"
     },
     {
       "constant": false,
@@ -50,7 +53,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x715018a6"
     },
     {
       "constant": true,
@@ -64,7 +68,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8da5cb5b"
     },
     {
       "constant": true,
@@ -78,7 +83,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8f32d59b"
     },
     {
       "constant": false,
@@ -92,7 +98,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xc979b05a"
     },
     {
       "constant": false,
@@ -106,7 +113,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xd23e8489"
     },
     {
       "constant": false,
@@ -120,7 +128,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf2fde38b"
     },
     {
       "constant": true,
@@ -134,7 +143,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf9f451b8"
     },
     {
       "inputs": [
@@ -145,7 +155,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "constructor",
+      "signature": "constructor"
     },
     {
       "anonymous": false,
@@ -177,7 +188,8 @@
         }
       ],
       "name": "CouponProcessed",
-      "type": "event"
+      "type": "event",
+      "signature": "0x9debd4c4b41b926400898fe31b381ff5de50b82fd249d5094146c291bce16420"
     },
     {
       "anonymous": false,
@@ -194,7 +206,8 @@
         }
       ],
       "name": "OwnershipTransferred",
-      "type": "event"
+      "type": "event",
+      "signature": "0x41545563b5478d4a04f861e33b36e455316904e9fe15096d35d14a5f9885212a"
     },
     {
       "anonymous": false,
@@ -211,7 +224,8 @@
         }
       ],
       "name": "OwnershipTransferred",
-      "type": "event"
+      "type": "event",
+      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
     },
     {
       "constant": false,
@@ -241,7 +255,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x1c75edfe"
     },
     {
       "constant": false,
@@ -271,7 +286,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3aaaa8a0"
     },
     {
       "constant": false,
@@ -297,7 +313,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3c72e439"
     },
     {
       "constant": false,
@@ -323,7 +340,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xe5a13092"
     },
     {
       "constant": false,
@@ -342,7 +360,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xe2393ba2"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"CouponMarketplaceResolverAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ownerEIN\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"isEINOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_snowflakeAddress\",\"type\":\"address\"}],\"name\":\"setSnowflakeAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"uint256\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_CouponMarketplaceResolverAddress\",\"type\":\"address\"}],\"name\":\"setCouponMarketplaceResolverAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"snowflakeAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_snowflakeAddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"total\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"amountRefunded\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"couponType\",\"type\":\"uint8\"},{\"indexed\":false,\"name\":\"amountOff\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"expirationDate\",\"type\":\"uint256\"}],\"name\":\"CouponProcessed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"uint256\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"isEINOwner()\":{\"return\":\"true if address resolves to owner of the contract.\"},\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"ownerEIN()\":{\"return\":\"the EIN of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}},\"transferOwnership(uint256)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/CouponMarketplaceVia.sol\":\"CouponMarketplaceVia\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/CouponMarketplaceVia.sol\":{\"keccak256\":\"0x6672f88e1662a5244805b19e50593f8d0320ad63429bf87c94f4ba0340017e38\",\"urls\":[\"bzzr://ee5501c5fa8b456153ba3ed5d724a30f6f415ec1385de6685cc5a305271b5691\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/SnowflakeResolver.sol\":{\"keccak256\":\"0xba1200f806655b37a99b58a1e5b6d36bd09026c3a4d4a05fbc25126281a1c788\",\"urls\":[\"bzzr://76feb72e8a6e8ff908740a42b71427a798aa40c346868c50b7f799cdee903af6\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/SnowflakeVia.sol\":{\"keccak256\":\"0xab9bf3871c1db7b5576ad7ceb59d2c423f853fff9b82777419b54b0373bdcb05\",\"urls\":[\"bzzr://85ea15f861d3499394940d1fd25a7c464323595d241ab32a54cfa35836252a14\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/access/EINRoles.sol\":{\"keccak256\":\"0x9dd4763598b03044f79572c9eb554b2256ef20c0da1e60dadc77cc4c8ec3fcbf\",\"urls\":[\"bzzr://ee43a144547fca35d7941e1d470118d8fb13b165a49eaa1a62512f64725f9c0e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/access/roles/SnowflakeMinterRole.sol\":{\"keccak256\":\"0xcc387a300ce07e337cfce40783b33df0b4ebcb24b446434b5f4c34a02755c547\",\"urls\":[\"bzzr://20b6b626fd668bb2023770d5183825f82f567aa66cd8398edd7880f817dab57e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721.sol\":{\"keccak256\":\"0x8a370499f7285103514127d61b05b9f1c5e1f52d1974f3b039e45cd28c3ea878\",\"urls\":[\"bzzr://d22fe33589ee906af949bc1cc429a395f14796f3142d50e59d3d6de16f8a509e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721Burnable.sol\":{\"keccak256\":\"0x2db6951914d133a6c6fa46a6b64e1c0010da9715101cf7d5fff6a58dc8f0116c\",\"urls\":[\"bzzr://6943eeeb1335cff854aade9217eca42dc427cbe5833b81b92f932cfd977c6e79\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721Interface.sol\":{\"keccak256\":\"0xa5e0f633e49cedd94989337a9cb2464dc948ceba335988397e526224b602c116\",\"urls\":[\"bzzr://f11c8ed796d4d4b73a5b88daf1fe83ea24eaa50139179359ada7b243ca29f521\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721Mintable.sol\":{\"keccak256\":\"0xd06a96615fcef4c59adf36aecd35cf846e30cc573e3ff8c2d0abe3c6b55d2b4d\",\"urls\":[\"bzzr://ab142d4ebb5500950b57846c87dbff526c766f6f7e347ac7ca5279183d55a283\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/SnowflakeERC721ReceiverInterface.sol\":{\"keccak256\":\"0x1d94fd6a75bca20c27bfafc97de2e9df0f12eeae152820bbcaa423535223c019\",\"urls\":[\"bzzr://d053e44920ee5c53ded1ae8a112f34f28732bbc3ac04beb10b2e63369137c7dc\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/address/AddressSnowflakeERC721.sol\":{\"keccak256\":\"0x9b52a723e976c023a56d4da85a00159b379cc3ea6ade877578c62d9cc5591517\",\"urls\":[\"bzzr://f2cf50866412c424b3e91f15bfa46ac78b21f9f5bb7ff8b6432aa7e4a694140a\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/address/AddressSnowflakeERC721Burnable.sol\":{\"keccak256\":\"0x73274eace23449cf7654f7ee61c56aefde4c793234e10dd060e7d8e89b07acf8\",\"urls\":[\"bzzr://e1370752a88ce5d3bdfdaf38903de407423a34551645eb88d8f298b9b0af7c63\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/token/ERC721/address/AddressSnowflakeERC721Mintable.sol\":{\"keccak256\":\"0x89cb348fba21d944a1be7a92605f0ac7bfe8098f6a0ba081b440f007f78260ef\",\"urls\":[\"bzzr://606e01d88156c8c51323402bd5f9a8433a1b0e04910257461728397cff900706\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/util/EINOwnable.sol\":{\"keccak256\":\"0xebd1e3e03000681c471b586288dc6c4232546e0371ec30929b8ff4f880c949f3\",\"urls\":[\"bzzr://a6be3009c6b47f39e3f8d791344088717a6a8fee26f7bb803503e5abaec5f0ff\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/ein/util/SnowflakeEINOwnable.sol\":{\"keccak256\":\"0x9fff4be9ffa622c5751e13107aac8159f2a7dede3a30eafbf9badb7b38d7de14\",\"urls\":[\"bzzr://2d372664d8a6ac21f14f72599a8b09da0ce63b1ef11fa39f789c5b3cf0804c8c\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/CouponMarketplaceResolverInterface.sol\":{\"keccak256\":\"0xa5c54d32d2ebfe715bde148ee6b7890ca22464a82f462ab0addbd6651c065400\",\"urls\":[\"bzzr://bf280abc2877f6be1224d40c939569e2440f6974fe328ba50a2b261406901fff\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/HydroInterface.sol\":{\"keccak256\":\"0x3f0b755561062d9912aca9a46d728918404fe17a09cfbadfcdd498bdd6fd0b6e\",\"urls\":[\"bzzr://7347515ad9e6891eadd0e635e546a4f2addd7a4121dced0b18104953a1d9b217\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/IdentityRegistryInterface.sol\":{\"keccak256\":\"0xb559191dbd30da97a8b5759a895d7f4eff420eedc55b0786ae7206fbe384dc15\",\"urls\":[\"bzzr://a6122de11af1f831b1a93dba66aabe9e299f0040cf3404510790453addc6e0d9\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol\":{\"keccak256\":\"0xd9d891c7697c27187208388b98919b6bf7b70aeda4f399b9ccf6f2167e5b8d6b\",\"urls\":[\"bzzr://ca87cc7a596e91e4c1f888e94f3e9ed19b43609e7a56985bf618260293e7a236\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeInterface.sol\":{\"keccak256\":\"0xb34e22de661c32131d4d5bbd8f8dbf1794e5d944736ccb31870b6f75bdd322e5\",\"urls\":[\"bzzr://aaa6399afaf287d517ece7ac874cf6da3c2d81f9d88cb8cdc4631adc3f4ac52a\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeResolverInterface.sol\":{\"keccak256\":\"0x8a5595a41d86f78514dfcd6eaa0ec79482187b8ead1c8c129faab29aeb2aced1\",\"urls\":[\"bzzr://1f741c8e9d50535a1a18c71c689e1e2876cd75e30256273ffeb2b47b72bcbb76\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol\":{\"keccak256\":\"0x145fa0d482b9f25c70b8426d7cedb07dd056d3b3ff47c6c9def3cef13167ea1f\",\"urls\":[\"bzzr://40166b8f6c0862f756876962dd1eb5545d17ec337d06f5a547ea733182b75ce4\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/CouponInterface.sol\":{\"keccak256\":\"0xf4e6ba59f6f3870ace9de98e5ea12eb12305dae0db9bbc67e794fd34d4047b2d\",\"urls\":[\"bzzr://ca807264527ec7ecf03dd903ac86ea2ebe85dfbd78ca42a9491390afc3aaa3dc\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/ItemInterface.sol\":{\"keccak256\":\"0x9b844cab2c67edd9b87400f867b1032ec911466fec094b19f741f0ee7eb0835c\",\"urls\":[\"bzzr://48219a748afa2781ac0d4b990b44faa587d798a3b38566d6d713b48ab9f9c843\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/MarketplaceInterface.sol\":{\"keccak256\":\"0xb51854deffb2e8c6c8c7bf3524f536064a4107811731f623cae0caba72ed025a\",\"urls\":[\"bzzr://0ee1e88cd3fedbeda980a95edb72e2fbaac290a40fd4c9591bc3caf30e86f270\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol\":{\"keccak256\":\"0x79e1e69beb0aca6c7367c874aa1f1a70869c7ae7e14bb57c1b80211592d43c9a\",\"urls\":[\"bzzr://094ba7d7a1124e48297dd81798ff4aa60b05f5ea193278f56a4bc51dd80e45f6\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/features/coupon_distribution/CouponDistributionInterface.sol\":{\"keccak256\":\"0x3ba64d20766a40b054eea7e536f76227febd8a87bff112c60319c1bfd62f205b\",\"urls\":[\"bzzr://14848270f9f8d99acda885e826f4e8779b92fe65bf58a8fbf2131dfcd672cd11\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/Marketplace.sol\":{\"keccak256\":\"0xbd4f068cb7d69d8dbbb2166a6b72166ffbfbcc4bf67f2a1ca247550cca389bb2\",\"urls\":[\"bzzr://567cf17712cbce4d0b9fefa31046da280e3888a327bc97c93a4483e57b8688f3\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/SnowflakeEINMarketplace.sol\":{\"keccak256\":\"0xb328622187a4022671c3bc6501500413b8f5c373ce9f068b5d92959e35fad0ad\",\"urls\":[\"bzzr://5caa3230d33ee07efab93e1cc2f0c5f513fa86728e2087cae10fdbf2c032c9cd\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/CouponFeature.sol\":{\"keccak256\":\"0xdcc43d5e5b49efe51268e8280fafa2fa8a0480933016fe1308ac4b2d90820337\",\"urls\":[\"bzzr://5056926a6a291e7fc5571a88d8914bc14402ba1d2260cf516308ccc3ecfb40c6\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/Coupons.sol\":{\"keccak256\":\"0xbc27ca45547b587f4e9cf0d2476d6eb6ac03196b4d7b44f834e1574985fc0bf7\",\"urls\":[\"bzzr://a11605781c2e089d92e87122836446b956618310003f4099488ba1554d1c05a1\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/Delivery.sol\":{\"keccak256\":\"0xbffa92eccdb6f792e7f83699f3d3f17b09c9d6e6cb90cd433b5ff390e969c507\",\"urls\":[\"bzzr://041b937e2cdfa72607205da813356b44b484e4b2b83a408caccc7122abcb3ae8\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemFeature.sol\":{\"keccak256\":\"0xb97b41d690394f6fe972b7a217dc0435f51992985c27d3bbeb4e128a520e6729\",\"urls\":[\"bzzr://e0cc6e91eb38bda22e73efa385500e5da6a2ba9998a6daeb5617701c1cd2c06a\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemTags.sol\":{\"keccak256\":\"0xdc8d964d7211f486c596e0b2449ff7b3d334070828164a928b0cac4831f29dfc\",\"urls\":[\"bzzr://6417f06a5611d94ab7d021c9f512fb9376eaff52786d3f993dd50181c69bf464\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/Items.sol\":{\"keccak256\":\"0x5cb795b4dcadb25fc746db928d2582c2f68b14cbf18bc122652ab5826a19c1a9\",\"urls\":[\"bzzr://2fe9d904da8c976e49865a640c35c1a8a94356614451f8409cdb0f25a6e0785e\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ReturnPolicies.sol\":{\"keccak256\":\"0xa0f103717ff5da691fdd47ece7b478009b4c094a82e967bc393dd9677141784e\",\"urls\":[\"bzzr://61b50e9b655aa56d29fa486aa07febb706a33792abea7076047ba92a3f9d7a74\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/resolvers/CouponMarketplaceResolver.sol\":{\"keccak256\":\"0x960d1d429292d99380d586cef9b6b39e21fb2703326b33a5c736dbabdff002a6\",\"urls\":[\"bzzr://aaa678da17a4103219b957df5131ff2524fe885c0805641cb96d27aa4af95812\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/snowflake_custom/SnowflakeReader.sol\":{\"keccak256\":\"0x2abd0f0b6837dec5554cf29f986d5e365631fc514d2f636fab1054958fd1a1c0\",\"urls\":[\"bzzr://149da665bf1ca0442cf1956087a24d1a11de1a2f5cd77eebefdcf2e1f2c56bb4\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/Roles.sol\":{\"keccak256\":\"0x75481aaa988c5e9fbc91b4f695678806579c04e0ad56907978c1ca5c7e92a682\",\"urls\":[\"bzzr://da472135eb9268d863825ea26e227a9f8980c54bd32e0764d61711acca59fc89\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/roles/MinterRole.sol\":{\"keccak256\":\"0x317b01d5df6753f57244b354d0a23d5055b293f3fa22693c2ff7906cc988ce97\",\"urls\":[\"bzzr://d3f08352c241a34db9b244c5fb569c7ffb3dcd1a0aa288c855a4a70eddb9e2a3\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/drafts/Counters.sol\":{\"keccak256\":\"0x982e18d2e3df98e3339f70f955a4d1fb78411a29963d0ea34621759eef67e86d\",\"urls\":[\"bzzr://a5438906da44343a09c6b47666d3649f269d9d156f2109e147e21595b2284363\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/introspection/ERC165.sol\":{\"keccak256\":\"0xd86c61f2e7e78c88716b5591bbf2d6cce8fe1a68320484994810d54f82605a7a\",\"urls\":[\"bzzr://4823f8b1263e0bacc50b5a823ebb27abeda34bffd67fa72225c44ebb2b4a30c7\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/introspection/IERC165.sol\":{\"keccak256\":\"0xc48ee580d20820cc0ef122b2acc9bf8836731dd8b9671cc03d21a12e3ab14976\",\"urls\":[\"bzzr://744cf3b8280d4a050ad0771e2ed0d7d41bbddfa40a541933d46bb31007a2e4a9\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/math/SafeMath.sol\":{\"keccak256\":\"0x2cee2f0a5f7c68ece40aa1641b34177859058b4b3d74f243112c96f0bff7d54b\",\"urls\":[\"bzzr://f84a966fb57ec20ab2ed137b385c332cb5f67a5ad2ee5c46eb64b3ca6a6ab1cd\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/ownership/Ownable.sol\":{\"keccak256\":\"0x1fbe7f67d6b8ac1f5aff86a9da41833273e073c47ce1e160f9addd9c64d9ff1d\",\"urls\":[\"bzzr://1a147508938228cad4bbc0f17c66e6d541d8740e8ae521dab377fe1519f801f1\"]}},\"version\":1}",
@@ -10652,9 +10671,16 @@
     "name": "solc",
     "version": "0.5.6+commit.b259423e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x2c08c9a281517971d971F08bCA8713E7a4A39414",
+      "transactionHash": "0xd78175c0d19f84bc10f6917092c1678999f40939a7dd95e1d103d3d22d42f3b0"
+    }
+  },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-12T01:36:38.192Z",
+  "updatedAt": "2019-04-12T02:45:45.198Z",
   "devdoc": {
     "methods": {
       "isEINOwner()": {
