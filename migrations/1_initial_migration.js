@@ -64,7 +64,7 @@ module.exports = async function (deployer, network, accounts) {
   //Deploy ItemFeature, CouponFeature, CouponMarketplaceVia, CouponMarketplaceResolver
   await deployer.deploy(ItemFeature, instances.Snowflake.address, { from: seller.address })
   await deployer.deploy(CouponFeature, instances.Snowflake.address, { from: seller.address })
-  await deployer.deploy(CouponMarketplaceVia, seller.address, instances.Snowflake.address, { from: seller.address })
+  await deployer.deploy(CouponMarketplaceVia, instances.Snowflake.address, { from: seller.address })
   await deployer.deploy(
         CouponMarketplaceResolver, 
         "Coupon-Marketplace-Resolver",
@@ -78,14 +78,14 @@ module.exports = async function (deployer, network, accounts) {
 )
 
   //Set CouponMarketplaceResolver address within Coupon Marketplace Via
-  instances.CouponMarketplaceVia = CouponMarketplaceVia.at(CouponMarketplaceVia.address)
-  instances.CouponMarketplaceVia.setCouponMarketplaceResolverAddress(CouponMarketplaceResolver.address, { from: seller.address })
+  instances.CouponMarketplaceVia = await CouponMarketplaceVia.at(CouponMarketplaceVia.address)
+  await instances.CouponMarketplaceVia.setCouponMarketplaceResolverAddress(CouponMarketplaceResolver.address, { from: seller.address })
 
   //Deploy Coupon Distribution contract
   await deployer.deploy(CouponDistribution, CouponMarketplaceResolver.address, instances.Snowflake.address, { from: seller.address })
 
   //Set Coupon Distribution address within SnowflakeEINMarketplace contract (i.e. the Resolver)
-  instances.CouponMarketplaceResolver.setCouponDistributionAddress(CouponDistribution.address, { from: seller.address })
+  await instances.CouponMarketplaceResolver.setCouponDistributionAddress(CouponDistribution.address, { from: seller.address })
 
 
   console.log("Neat, we ran!")
