@@ -74,15 +74,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isSigner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceSigner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addSigner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"SignerAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"SignerRemoved\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/roles/SignerRole.sol\":\"SignerRole\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/Roles.sol\":{\"keccak256\":\"0x75481aaa988c5e9fbc91b4f695678806579c04e0ad56907978c1ca5c7e92a682\",\"urls\":[\"bzzr://da472135eb9268d863825ea26e227a9f8980c54bd32e0764d61711acca59fc89\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/roles/SignerRole.sol\":{\"keccak256\":\"0x6a7b3cc7605ccb056aa758efc05fe91c0100632b56d09bc6f558b431bb46d324\",\"urls\":[\"bzzr://dfa471b4c2a704eb9c403392254df9019b070a02113b80a5e74581a34fa7a447\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isSigner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceSigner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addSigner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"SignerAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"SignerRemoved\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/roles/SignerRole.sol\":\"SignerRole\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/Roles.sol\":{\"keccak256\":\"0x75481aaa988c5e9fbc91b4f695678806579c04e0ad56907978c1ca5c7e92a682\",\"urls\":[\"bzzr://da472135eb9268d863825ea26e227a9f8980c54bd32e0764d61711acca59fc89\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/roles/SignerRole.sol\":{\"keccak256\":\"0x6a7b3cc7605ccb056aa758efc05fe91c0100632b56d09bc6f558b431bb46d324\",\"urls\":[\"bzzr://dfa471b4c2a704eb9c403392254df9019b070a02113b80a5e74581a34fa7a447\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.2;\n\nimport \"../Roles.sol\";\n\ncontract SignerRole {\n    using Roles for Roles.Role;\n\n    event SignerAdded(address indexed account);\n    event SignerRemoved(address indexed account);\n\n    Roles.Role private _signers;\n\n    constructor () internal {\n        _addSigner(msg.sender);\n    }\n\n    modifier onlySigner() {\n        require(isSigner(msg.sender));\n        _;\n    }\n\n    function isSigner(address account) public view returns (bool) {\n        return _signers.has(account);\n    }\n\n    function addSigner(address account) public onlySigner {\n        _addSigner(account);\n    }\n\n    function renounceSigner() public {\n        _removeSigner(msg.sender);\n    }\n\n    function _addSigner(address account) internal {\n        _signers.add(account);\n        emit SignerAdded(account);\n    }\n\n    function _removeSigner(address account) internal {\n        _signers.remove(account);\n        emit SignerRemoved(account);\n    }\n}\n",
-  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/roles/SignerRole.sol",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/roles/SignerRole.sol",
   "ast": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/roles/SignerRole.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/roles/SignerRole.sol",
     "exportedSymbols": {
       "SignerRole": [
         12517
@@ -103,7 +103,7 @@
         "src": "0:23:58"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/Roles.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/Roles.sol",
         "file": "../Roles.sol",
         "id": 12417,
         "nodeType": "ImportDirective",
@@ -1282,7 +1282,7 @@
     "src": "0:940:58"
   },
   "legacyAST": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/roles/SignerRole.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/roles/SignerRole.sol",
     "exportedSymbols": {
       "SignerRole": [
         12517
@@ -1303,7 +1303,7 @@
         "src": "0:23:58"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/access/Roles.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/access/Roles.sol",
         "file": "../Roles.sol",
         "id": 12417,
         "nodeType": "ImportDirective",
@@ -2487,7 +2487,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-11T00:38:35.872Z",
+  "updatedAt": "2019-04-12T01:36:38.069Z",
   "devdoc": {
     "methods": {}
   },

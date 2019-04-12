@@ -221,15 +221,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_snowflakeAddress\",\"type\":\"address\"}],\"name\":\"setSnowflakeAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"snowflakeAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_snowflakeAddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/SnowflakeVia.sol\":\"SnowflakeVia\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/SnowflakeVia.sol\":{\"keccak256\":\"0xab9bf3871c1db7b5576ad7ceb59d2c423f853fff9b82777419b54b0373bdcb05\",\"urls\":[\"bzzr://85ea15f861d3499394940d1fd25a7c464323595d241ab32a54cfa35836252a14\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol\":{\"keccak256\":\"0x145fa0d482b9f25c70b8426d7cedb07dd056d3b3ff47c6c9def3cef13167ea1f\",\"urls\":[\"bzzr://40166b8f6c0862f756876962dd1eb5545d17ec337d06f5a547ea733182b75ce4\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/ownership/Ownable.sol\":{\"keccak256\":\"0x1fbe7f67d6b8ac1f5aff86a9da41833273e073c47ce1e160f9addd9c64d9ff1d\",\"urls\":[\"bzzr://1a147508938228cad4bbc0f17c66e6d541d8740e8ae521dab377fe1519f801f1\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_snowflakeAddress\",\"type\":\"address\"}],\"name\":\"setSnowflakeAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"snowflakeAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_snowflakeAddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/SnowflakeVia.sol\":\"SnowflakeVia\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/SnowflakeVia.sol\":{\"keccak256\":\"0xab9bf3871c1db7b5576ad7ceb59d2c423f853fff9b82777419b54b0373bdcb05\",\"urls\":[\"bzzr://85ea15f861d3499394940d1fd25a7c464323595d241ab32a54cfa35836252a14\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol\":{\"keccak256\":\"0x145fa0d482b9f25c70b8426d7cedb07dd056d3b3ff47c6c9def3cef13167ea1f\",\"urls\":[\"bzzr://40166b8f6c0862f756876962dd1eb5545d17ec337d06f5a547ea733182b75ce4\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/ownership/Ownable.sol\":{\"keccak256\":\"0x1fbe7f67d6b8ac1f5aff86a9da41833273e073c47ce1e160f9addd9c64d9ff1d\",\"urls\":[\"bzzr://1a147508938228cad4bbc0f17c66e6d541d8740e8ae521dab377fe1519f801f1\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\nimport \"./zeppelin/ownership/Ownable.sol\";\n\nimport \"./interfaces/SnowflakeViaInterface.sol\";\n\ncontract SnowflakeVia is Ownable {\n    address public snowflakeAddress;\n\n    constructor(address _snowflakeAddress) public {\n        setSnowflakeAddress(_snowflakeAddress);\n    }\n\n    modifier senderIsSnowflake() {\n        require(msg.sender == snowflakeAddress, \"Did not originate from Snowflake.\");\n        _;\n    }\n\n    // this can be overriden to initialize other variables, such as e.g. an ERC20 object to wrap the HYDRO token\n    function setSnowflakeAddress(address _snowflakeAddress) public onlyOwner {\n        snowflakeAddress = _snowflakeAddress;\n    }\n\n    // all snowflakeCall functions **must** use the senderIsSnowflake modifier, because otherwise there is no guarantee\n    // that HYDRO tokens were actually sent to this smart contract prior to the snowflakeCall. Further accounting checks\n    // of course make this possible to check, but since this is tedious and a low value-add,\n    // it's officially not recommended\n    function snowflakeCall(address resolver, uint einFrom, uint einTo, uint amount, bytes memory snowflakeCallBytes)\n        public;\n    function snowflakeCall(\n        address resolver, uint einFrom, address payable to, uint amount, bytes memory snowflakeCallBytes\n    ) public;\n    function snowflakeCall(address resolver, uint einTo, uint amount, bytes memory snowflakeCallBytes) public;\n    function snowflakeCall(address resolver, address payable to, uint amount, bytes memory snowflakeCallBytes) public;\n}\n",
-  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/SnowflakeVia.sol",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/SnowflakeVia.sol",
   "ast": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/SnowflakeVia.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/SnowflakeVia.sol",
     "exportedSymbols": {
       "SnowflakeVia": [
         2720
@@ -250,7 +250,7 @@
         "src": "0:23:4"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/ownership/Ownable.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/ownership/Ownable.sol",
         "file": "./zeppelin/ownership/Ownable.sol",
         "id": 2632,
         "nodeType": "ImportDirective",
@@ -261,7 +261,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol",
         "file": "./interfaces/SnowflakeViaInterface.sol",
         "id": 2633,
         "nodeType": "ImportDirective",
@@ -1322,7 +1322,7 @@
     "src": "0:1568:4"
   },
   "legacyAST": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/SnowflakeVia.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/SnowflakeVia.sol",
     "exportedSymbols": {
       "SnowflakeVia": [
         2720
@@ -1343,7 +1343,7 @@
         "src": "0:23:4"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/ownership/Ownable.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/ownership/Ownable.sol",
         "file": "./zeppelin/ownership/Ownable.sol",
         "id": 2632,
         "nodeType": "ImportDirective",
@@ -1354,7 +1354,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol",
         "file": "./interfaces/SnowflakeViaInterface.sol",
         "id": 2633,
         "nodeType": "ImportDirective",
@@ -2420,7 +2420,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-11T00:38:35.950Z",
+  "updatedAt": "2019-04-12T01:36:38.059Z",
   "devdoc": {
     "methods": {
       "isOwner()": {

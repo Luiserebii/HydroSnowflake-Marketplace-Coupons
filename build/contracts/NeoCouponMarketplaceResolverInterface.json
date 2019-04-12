@@ -29,15 +29,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"approvingAddress\",\"type\":\"address\"},{\"name\":\"couponID\",\"type\":\"uint256\"}],\"name\":\"purchaseItem\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol\":\"NeoCouponMarketplaceResolverInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol\":{\"keccak256\":\"0xd9d891c7697c27187208388b98919b6bf7b70aeda4f399b9ccf6f2167e5b8d6b\",\"urls\":[\"bzzr://ca87cc7a596e91e4c1f888e94f3e9ed19b43609e7a56985bf618260293e7a236\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/CouponInterface.sol\":{\"keccak256\":\"0xf4e6ba59f6f3870ace9de98e5ea12eb12305dae0db9bbc67e794fd34d4047b2d\",\"urls\":[\"bzzr://ca807264527ec7ecf03dd903ac86ea2ebe85dfbd78ca42a9491390afc3aaa3dc\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/ItemInterface.sol\":{\"keccak256\":\"0x9b844cab2c67edd9b87400f867b1032ec911466fec094b19f741f0ee7eb0835c\",\"urls\":[\"bzzr://48219a748afa2781ac0d4b990b44faa587d798a3b38566d6d713b48ab9f9c843\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"approvingAddress\",\"type\":\"address\"},{\"name\":\"couponID\",\"type\":\"uint256\"}],\"name\":\"purchaseItem\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol\":\"NeoCouponMarketplaceResolverInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol\":{\"keccak256\":\"0xd9d891c7697c27187208388b98919b6bf7b70aeda4f399b9ccf6f2167e5b8d6b\",\"urls\":[\"bzzr://ca87cc7a596e91e4c1f888e94f3e9ed19b43609e7a56985bf618260293e7a236\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/CouponInterface.sol\":{\"keccak256\":\"0xf4e6ba59f6f3870ace9de98e5ea12eb12305dae0db9bbc67e794fd34d4047b2d\",\"urls\":[\"bzzr://ca807264527ec7ecf03dd903ac86ea2ebe85dfbd78ca42a9491390afc3aaa3dc\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/ItemInterface.sol\":{\"keccak256\":\"0x9b844cab2c67edd9b87400f867b1032ec911466fec094b19f741f0ee7eb0835c\",\"urls\":[\"bzzr://48219a748afa2781ac0d4b990b44faa587d798a3b38566d6d713b48ab9f9c843\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\nimport \"./marketplace/CouponInterface.sol\";\nimport \"./marketplace/ItemInterface.sol\";\n\n//We may just need to make this an abstract contract instead of an interface to give access to these enums, see: https://gist.github.com/Luiserebii/18a2bed267992dff8bc85703ca8fe3f3\n\ninterface NeoCouponMarketplaceResolverInterface {\n\n//This should likely go in their respective feature interfaces\n/*\n    function getItem(uint id) public view returns (uint uuid, uint quantity, ItemInterface.ItemType itemType, ItemInterface.ItemStatus status, ItemInterface.ItemCondition condition, string memory title, string memory description, uint256 price, uint returnPolicy);\n\n    function getItemDelivery(uint id, uint index) public view returns (uint);\n    function getItemTag(uint id, uint index) public view returns (uint);\n\n    //Returns delivery method at mapping ID (i.e. Fedex)\n    function getDeliveryMethod(uint id) public view returns (string memory method);\n    \n    function getReturnPolicy(uint id) public view returns (bool returnsAccepted, uint timeLimit);\n    function getCoupon(uint id) public view returns (CouponInterface.CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);\n    function getCouponItemApplicable(uint id, uint index) public view returns (uint);\n*/\n    //This should be moved to MarketplaceInterface.sol\n    //function isUserCouponOwner(uint ein, uint couponID) public view returns (bool isValid);\n    function purchaseItem(uint id, address approvingAddress, uint couponID) external returns (bool);\n}\n",
-  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol",
   "ast": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol",
     "exportedSymbols": {
       "NeoCouponMarketplaceResolverInterface": [
         7562
@@ -58,7 +58,7 @@
         "src": "0:23:26"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/CouponInterface.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/CouponInterface.sol",
         "file": "./marketplace/CouponInterface.sol",
         "id": 7549,
         "nodeType": "ImportDirective",
@@ -69,7 +69,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/ItemInterface.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/ItemInterface.sol",
         "file": "./marketplace/ItemInterface.sol",
         "id": 7550,
         "nodeType": "ImportDirective",
@@ -234,7 +234,7 @@
     "src": "0:1595:26"
   },
   "legacyAST": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/NeoCouponMarketplaceResolverInterface.sol",
     "exportedSymbols": {
       "NeoCouponMarketplaceResolverInterface": [
         7562
@@ -255,7 +255,7 @@
         "src": "0:23:26"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/CouponInterface.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/CouponInterface.sol",
         "file": "./marketplace/CouponInterface.sol",
         "id": 7549,
         "nodeType": "ImportDirective",
@@ -266,7 +266,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/ItemInterface.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/ItemInterface.sol",
         "file": "./marketplace/ItemInterface.sol",
         "id": 7550,
         "nodeType": "ImportDirective",
@@ -436,7 +436,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-11T00:38:35.858Z",
+  "updatedAt": "2019-04-12T01:36:38.029Z",
   "devdoc": {
     "methods": {}
   },

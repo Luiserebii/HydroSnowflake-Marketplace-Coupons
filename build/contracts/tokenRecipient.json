@@ -28,15 +28,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_token\",\"type\":\"address\"},{\"name\":\"_extraData\",\"type\":\"bytes\"}],\"name\":\"receiveApproval\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/_testing/HydroToken.sol\":\"tokenRecipient\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/_testing/HydroToken.sol\":{\"keccak256\":\"0xe57c9871d7afaa07511eb6039ab8780660fbffc0f6806dab7f47ab390903b671\",\"urls\":[\"bzzr://337b9cedf108d64169c90a268dbe5c72d5a0c1d4ea8229e0487ab37ffb197343\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/math/SafeMath.sol\":{\"keccak256\":\"0x2cee2f0a5f7c68ece40aa1641b34177859058b4b3d74f243112c96f0bff7d54b\",\"urls\":[\"bzzr://f84a966fb57ec20ab2ed137b385c332cb5f67a5ad2ee5c46eb64b3ca6a6ab1cd\"]},\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/ownership/Ownable.sol\":{\"keccak256\":\"0x1fbe7f67d6b8ac1f5aff86a9da41833273e073c47ce1e160f9addd9c64d9ff1d\",\"urls\":[\"bzzr://1a147508938228cad4bbc0f17c66e6d541d8740e8ae521dab377fe1519f801f1\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_token\",\"type\":\"address\"},{\"name\":\"_extraData\",\"type\":\"bytes\"}],\"name\":\"receiveApproval\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/HydroToken.sol\":\"tokenRecipient\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/HydroToken.sol\":{\"keccak256\":\"0xe57c9871d7afaa07511eb6039ab8780660fbffc0f6806dab7f47ab390903b671\",\"urls\":[\"bzzr://337b9cedf108d64169c90a268dbe5c72d5a0c1d4ea8229e0487ab37ffb197343\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/math/SafeMath.sol\":{\"keccak256\":\"0x2cee2f0a5f7c68ece40aa1641b34177859058b4b3d74f243112c96f0bff7d54b\",\"urls\":[\"bzzr://f84a966fb57ec20ab2ed137b385c332cb5f67a5ad2ee5c46eb64b3ca6a6ab1cd\"]},\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/ownership/Ownable.sol\":{\"keccak256\":\"0x1fbe7f67d6b8ac1f5aff86a9da41833273e073c47ce1e160f9addd9c64d9ff1d\",\"urls\":[\"bzzr://1a147508938228cad4bbc0f17c66e6d541d8740e8ae521dab377fe1519f801f1\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\nimport \"../zeppelin/ownership/Ownable.sol\";\nimport \"../zeppelin/math/SafeMath.sol\";\n\ninterface Raindrop {\n    function authenticate(address _sender, uint _value, uint _challenge, uint _partnerId) external;\n}\n\ninterface tokenRecipient {\n    function receiveApproval(address _from, uint256 _value, address _token, bytes calldata _extraData) external;\n}\n\ncontract HydroToken is Ownable {\n    using SafeMath for uint256;\n\n    string public name = \"Hydro\";          // The token's name\n    uint8 public decimals = 18;            // Number of decimals of the smallest unit\n    string public symbol = \"HYDRO\";        // An identifier\n    uint public totalSupply;\n    address public raindropAddress = address(0);\n\n    mapping (address => uint256) public balances;\n    // `allowed` tracks any extra transfer rights as in all ERC20 tokens\n    mapping (address => mapping (address => uint256)) public allowed;\n\n    ////////////////\n    // Constructor\n    ////////////////\n\n    /// @notice Constructor to create a HydroToken\n    constructor() public {\n        totalSupply = 11111111111 * 10**18;\n        // Give the creator all initial tokens\n        balances[msg.sender] = totalSupply;\n    }\n\n\n    ///////////////////\n    // ERC20 Methods\n    ///////////////////\n\n    /// @notice Send `_amount` tokens to `_to` from `msg.sender`\n    /// @param _to The address of the recipient\n    /// @param _amount The amount of tokens to be transferred\n    /// @return Whether the transfer was successful or not\n    function transfer(address _to, uint256 _amount) public returns (bool success) {\n        doTransfer(msg.sender, _to, _amount);\n        return true;\n    }\n\n    /// @notice Send `_amount` tokens to `_to` from `_from` on the condition it\n    ///  is approved by `_from`\n    /// @param _from The address holding the tokens being transferred\n    /// @param _to The address of the recipient\n    /// @param _amount The amount of tokens to be transferred\n    /// @return True if the transfer was successful\n    function transferFrom(address _from, address _to, uint256 _amount) public returns (bool success) {\n        // The standard ERC 20 transferFrom functionality\n        require(allowed[_from][msg.sender] >= _amount);\n        allowed[_from][msg.sender] -= _amount;\n        doTransfer(_from, _to, _amount);\n        return true;\n    }\n\n    /// @dev This is the actual transfer function in the token contract, it can\n    ///  only be called by other functions in this contract.\n    /// @param _from The address holding the tokens being transferred\n    /// @param _to The address of the recipient\n    /// @param _amount The amount of tokens to be transferred\n    /// @return True if the transfer was successful\n    function doTransfer(address _from, address _to, uint _amount\n    ) internal {\n        // Do not allow transfer to 0x0 or the token contract itself\n        require((_to != address(0)) && (_to != address(this)));\n        require(_amount <= balances[_from]);\n        balances[_from] = balances[_from].sub(_amount);\n        balances[_to] = balances[_to].add(_amount);\n        emit Transfer(_from, _to, _amount);\n    }\n\n    /// @return The balance of `_owner`\n    function balanceOf(address _owner) public view returns (uint256 balance) {\n        return balances[_owner];\n    }\n\n    /// @notice `msg.sender` approves `_spender` to spend `_amount` tokens on\n    ///  its behalf. This is a modified version of the ERC20 approve function\n    ///  to be a little bit safer\n    /// @param _spender The address of the account able to transfer the tokens\n    /// @param _amount The amount of tokens to be approved for transfer\n    /// @return True if the approval was successful\n    function approve(address _spender, uint256 _amount) public returns (bool success) {\n        // To change the approve amount you first have to reduce the addresses`\n        //  allowance to zero by calling `approve(_spender,0)` if it is not\n        //  already 0 to mitigate the race condition described here:\n        //  https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\n        require((_amount == 0) || (allowed[msg.sender][_spender] == 0));\n\n        allowed[msg.sender][_spender] = _amount;\n        emit Approval(msg.sender, _spender, _amount);\n        return true;\n    }\n\n    function approveAndCall(address _spender, uint256 _value, bytes memory _extraData) public returns (bool success) {\n        tokenRecipient spender = tokenRecipient(_spender);\n        if (approve(_spender, _value)) {\n            spender.receiveApproval(msg.sender, _value, address(this), _extraData);\n            return true;\n        }\n    }\n\n    function burn(uint256 _value) public onlyOwner {\n        require(balances[msg.sender] >= _value);\n        balances[msg.sender] = balances[msg.sender].sub(_value);\n        totalSupply = totalSupply.sub(_value);\n        emit Burn(msg.sender, _value);\n    }\n\n    /// @dev This function makes it easy to read the `allowed[]` map\n    /// @param _owner The address of the account that owns the token\n    /// @param _spender The address of the account able to transfer the tokens\n    /// @return Amount of remaining tokens of _owner that _spender is allowed\n    ///  to spend\n    function allowance(address _owner, address _spender\n    ) public view returns (uint256 remaining) {\n        return allowed[_owner][_spender];\n    }\n\n    function setRaindropAddress(address _raindrop) public onlyOwner {\n        raindropAddress = _raindrop;\n    }\n\n    function authenticate(uint _value, uint _challenge, uint _partnerId) public {\n        Raindrop raindrop = Raindrop(raindropAddress);\n        raindrop.authenticate(msg.sender, _value, _challenge, _partnerId);\n        doTransfer(msg.sender, owner(), _value);\n    }\n\n    function setBalances(address[] memory _addressList, uint[] memory _amounts) public onlyOwner {\n        require(_addressList.length == _amounts.length);\n        for (uint i = 0; i < _addressList.length; i++) {\n            require(balances[_addressList[i]] == 0);\n            transfer(_addressList[i], _amounts[i]);\n        }\n    }\n\n    event Transfer(\n        address indexed _from,\n        address indexed _to,\n        uint256 _amount\n    );\n\n    event Approval(\n        address indexed _owner,\n        address indexed _spender,\n        uint256 _amount\n    );\n\n    event Burn(\n        address indexed _burner,\n        uint256 _amount\n    );\n\n}\n",
-  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/_testing/HydroToken.sol",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/HydroToken.sol",
   "ast": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/_testing/HydroToken.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/HydroToken.sol",
     "exportedSymbols": {
       "HydroToken": [
         3349
@@ -63,7 +63,7 @@
         "src": "0:23:6"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/ownership/Ownable.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/ownership/Ownable.sol",
         "file": "../zeppelin/ownership/Ownable.sol",
         "id": 2878,
         "nodeType": "ImportDirective",
@@ -74,7 +74,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/math/SafeMath.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/math/SafeMath.sol",
         "file": "../zeppelin/math/SafeMath.sol",
         "id": 2879,
         "nodeType": "ImportDirective",
@@ -6273,7 +6273,7 @@
     "src": "0:6388:6"
   },
   "legacyAST": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/_testing/HydroToken.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/_testing/HydroToken.sol",
     "exportedSymbols": {
       "HydroToken": [
         3349
@@ -6300,7 +6300,7 @@
         "src": "0:23:6"
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/ownership/Ownable.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/ownership/Ownable.sol",
         "file": "../zeppelin/ownership/Ownable.sol",
         "id": 2878,
         "nodeType": "ImportDirective",
@@ -6311,7 +6311,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/zeppelin/math/SafeMath.sol",
+        "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/zeppelin/math/SafeMath.sol",
         "file": "../zeppelin/math/SafeMath.sol",
         "id": 2879,
         "nodeType": "ImportDirective",
@@ -12515,7 +12515,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-11T00:38:36.009Z",
+  "updatedAt": "2019-04-12T01:36:38.205Z",
   "devdoc": {
     "methods": {}
   },

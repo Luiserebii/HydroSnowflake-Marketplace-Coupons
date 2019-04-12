@@ -63,15 +63,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"paymentAddress\",\"type\":\"address\"}],\"name\":\"setPaymentAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_CouponDistributionAddress\",\"type\":\"address\"}],\"name\":\"setCouponDistributionAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"couponID\",\"type\":\"uint256\"}],\"name\":\"giveUserCoupon\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol\":\"SnowflakeEINMarketplaceInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol\":{\"keccak256\":\"0x79e1e69beb0aca6c7367c874aa1f1a70869c7ae7e14bb57c1b80211592d43c9a\",\"urls\":[\"bzzr://094ba7d7a1124e48297dd81798ff4aa60b05f5ea193278f56a4bc51dd80e45f6\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"paymentAddress\",\"type\":\"address\"}],\"name\":\"setPaymentAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_CouponDistributionAddress\",\"type\":\"address\"}],\"name\":\"setCouponDistributionAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"ein\",\"type\":\"uint256\"},{\"name\":\"couponID\",\"type\":\"uint256\"}],\"name\":\"giveUserCoupon\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol\":\"SnowflakeEINMarketplaceInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol\":{\"keccak256\":\"0x79e1e69beb0aca6c7367c874aa1f1a70869c7ae7e14bb57c1b80211592d43c9a\",\"urls\":[\"bzzr://094ba7d7a1124e48297dd81798ff4aa60b05f5ea193278f56a4bc51dd80e45f6\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\ninterface SnowflakeEINMarketplaceInterface {\n\n    function setPaymentAddress(address paymentAddress) external returns (bool);\n    function setCouponDistributionAddress(address _CouponDistributionAddress) external returns (bool);\n    function giveUserCoupon(uint ein, uint couponID) external returns (bool);\n\n}\n\n\n\n",
-  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
   "ast": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
     "exportedSymbols": {
       "SnowflakeEINMarketplaceInterface": [
         8073
@@ -383,7 +383,7 @@
     "src": "0:338:33"
   },
   "legacyAST": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/marketplace/SnowflakeEINMarketplaceInterface.sol",
     "exportedSymbols": {
       "SnowflakeEINMarketplaceInterface": [
         8073
@@ -700,7 +700,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-11T00:38:35.859Z",
+  "updatedAt": "2019-04-12T01:36:38.030Z",
   "devdoc": {
     "methods": {}
   },

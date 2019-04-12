@@ -44,15 +44,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"userName\",\"type\":\"string\"}],\"name\":\"getUserByName\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"userName\",\"type\":\"string\"}],\"name\":\"userNameTaken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol\":\"OldClientRaindropInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol\":{\"keccak256\":\"0xd72adcdfc2bfdb550c187338edb8700ea6daa19e5f7a71d94088f96071ef5d6d\",\"urls\":[\"bzzr://3dad2c00b7348fff8b2191e25e8344f1f3fe54f8e2059b029f0a1f4dce4c7e93\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"userName\",\"type\":\"string\"}],\"name\":\"getUserByName\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"userName\",\"type\":\"string\"}],\"name\":\"userNameTaken\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol\":\"OldClientRaindropInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol\":{\"keccak256\":\"0xd72adcdfc2bfdb550c187338edb8700ea6daa19e5f7a71d94088f96071ef5d6d\",\"urls\":[\"bzzr://3dad2c00b7348fff8b2191e25e8344f1f3fe54f8e2059b029f0a1f4dce4c7e93\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\ninterface OldClientRaindropInterface {\n    function userNameTaken(string calldata userName) external view returns (bool);\n    function getUserByName(string calldata userName) external view returns (string memory, address);\n}",
-  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
   "ast": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
     "exportedSymbols": {
       "OldClientRaindropInterface": [
         10576
@@ -282,7 +282,7 @@
     "src": "0:249:46"
   },
   "legacyAST": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/resolvers/ClientRaindrop/OldClientRaindropInterface.sol",
     "exportedSymbols": {
       "OldClientRaindropInterface": [
         10576
@@ -517,7 +517,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-11T00:38:35.928Z",
+  "updatedAt": "2019-04-12T01:36:38.031Z",
   "devdoc": {
     "methods": {}
   },

@@ -27,6 +27,7 @@
     "solidity-coverage": "^0.5.11"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "ethereumjs-util": "^6.0.0",
     "ganache-cli": "^6.2.3",
     "solc": "^0.5.2",

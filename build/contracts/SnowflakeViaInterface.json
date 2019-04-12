@@ -114,15 +114,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol\":\"SnowflakeViaInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol\":{\"keccak256\":\"0x145fa0d482b9f25c70b8426d7cedb07dd056d3b3ff47c6c9def3cef13167ea1f\",\"urls\":[\"bzzr://40166b8f6c0862f756876962dd1eb5545d17ec337d06f5a547ea733182b75ce4\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.6+commit.b259423e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einFrom\",\"type\":\"uint256\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"einTo\",\"type\":\"uint256\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"resolver\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"snowflakeCallBytes\",\"type\":\"bytes\"}],\"name\":\"snowflakeCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol\":\"SnowflakeViaInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol\":{\"keccak256\":\"0x145fa0d482b9f25c70b8426d7cedb07dd056d3b3ff47c6c9def3cef13167ea1f\",\"urls\":[\"bzzr://40166b8f6c0862f756876962dd1eb5545d17ec337d06f5a547ea733182b75ce4\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\ninterface SnowflakeViaInterface {\n    function snowflakeCall(address resolver, uint einFrom, uint einTo, uint amount, bytes calldata snowflakeCallBytes)\n        external;\n    function snowflakeCall(\n        address resolver, uint einFrom, address payable to, uint amount, bytes calldata snowflakeCallBytes\n    ) external;\n    function snowflakeCall(address resolver, uint einTo, uint amount, bytes calldata snowflakeCallBytes) external;\n    function snowflakeCall(address resolver, address payable to, uint amount, bytes calldata snowflakeCallBytes)\n        external;\n}\n",
-  "sourcePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol",
   "ast": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol",
     "exportedSymbols": {
       "SnowflakeViaInterface": [
         7943
@@ -749,7 +749,7 @@
     "src": "0:595:29"
   },
   "legacyAST": {
-    "absolutePath": "/home/luiserebii/hydrosnowflake_marketplace_coupons/contracts/interfaces/SnowflakeViaInterface.sol",
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/interfaces/SnowflakeViaInterface.sol",
     "exportedSymbols": {
       "SnowflakeViaInterface": [
         7943
@@ -1381,7 +1381,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-11T00:38:35.932Z",
+  "updatedAt": "2019-04-12T01:36:38.040Z",
   "devdoc": {
     "methods": {}
   },
