@@ -15,6 +15,10 @@ const instances = {};
 
 module.exports = async function (deployer, network, accounts) {
 
+
+
+  if(network == "rinkeby"){
+
   console.log(accounts);
 
   //Set up "settings"
@@ -84,7 +88,35 @@ module.exports = async function (deployer, network, accounts) {
   instances.CouponMarketplaceResolver.setCouponDistributionAddress(CouponDistribution.address, { from: seller.address })
 
 
-console.log("Neat, we ran!")
+  console.log("Neat, we ran!")
 
+  } else {
+
+    const AddressSet = artifacts.require('./_testing/AddressSet/AddressSet.sol')
+    const IdentityRegistry = artifacts.require('./_testing/IdentityRegistry.sol')
+
+    const HydroToken = artifacts.require('./_testing/HydroToken.sol')
+
+    const SafeMath = artifacts.require('./zeppelin/math/SafeMath.sol')
+    const Snowflake = artifacts.require('./Snowflake.sol')
+    // const Status = artifacts.require('./resolvers/Status.sol')
+
+    const StringUtils = artifacts.require('./resolvers/ClientRaindrop/StringUtils.sol')
+    const ClientRaindrop = artifacts.require('./resolvers/ClientRaindrop/ClientRaindrop.sol')
+    const OldClientRaindrop = artifacts.require('./_testing/OldClientRaindrop.sol')
+
+    await deployer.deploy(AddressSet)
+    deployer.link(AddressSet, IdentityRegistry)
+
+    await deployer.deploy(SafeMath)
+    deployer.link(SafeMath, HydroToken)
+    deployer.link(SafeMath, Snowflake)
+
+    await deployer.deploy(StringUtils)
+    deployer.link(StringUtils, ClientRaindrop)
+    deployer.link(StringUtils, OldClientRaindrop)
+
+
+  }
 }
 
