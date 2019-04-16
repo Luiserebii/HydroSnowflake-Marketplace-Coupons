@@ -19,7 +19,7 @@ const config = require('dotenv').config();
 
 const infuraKey = process.env.INFURA_KEY;
 const mnemonic = process.env.MNEMONIC;
-
+console.log(mnemonic)
 
 module.exports = {
   networks: {

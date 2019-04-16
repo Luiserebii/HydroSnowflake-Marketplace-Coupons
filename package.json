@@ -30,7 +30,7 @@
     "dotenv": "^7.0.0",
     "ethereumjs-util": "^6.0.0",
     "ganache-cli": "^6.2.3",
-    "solc": "^0.5.2",
+    "solc": "^0.5.7",
     "truffle": "^5.0.0-beta.2",
     "truffle-hdwallet-provider": "^1.0.6"
   }

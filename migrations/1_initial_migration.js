@@ -52,11 +52,11 @@ module.exports = async function (deployer, network, accounts) {
 
   //If we need to, register seller to IdentityRegistry
   if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
-
+    console.log("Seller has no identity; attempting to create one")
     await instances.IdentityRegistry.createIdentity(seller.recoveryAddress, [], [], { from: seller.address })
     //ensure we have an identity, else, throw
     if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
-      throw "Adding identity to IdentityRegistry failed, despite createAddress line running";
+      throw "Adding identity to IdentityRegistry failed, despite createAddress line running"
     }
   }
   
