@@ -4317,12 +4317,12 @@
         }
       },
       "links": {},
-      "address": "0x3F6B2371d5c98d5aB643cC62F9B5648dF6db0F00",
-      "transactionHash": "0x6e9a486197da047bb681db1e455c76ed5d78dbe909d2831803c34e28f03ef206"
+      "address": "0xf0c44fA4191Af45B68B8fE1FA861968cc317f39C",
+      "transactionHash": "0x1acff4e7b3352b753acc7a9a5c7e850d800ab35decae1d8096ee53142c662a5c"
     }
   },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-16T02:33:05.064Z",
+  "updatedAt": "2019-04-16T02:44:05.068Z",
   "devdoc": {
     "methods": {
       "isEINOwner()": {

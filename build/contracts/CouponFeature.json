@@ -4280,12 +4280,12 @@
         }
       },
       "links": {},
-      "address": "0x54F74b0777E5A60E72acf98A54bFb5587f95d78c",
-      "transactionHash": "0xf3ddeab0dd1d91cd6bb1f76f06a8f0f30865d11b305fbe651f380d78cef33d53"
+      "address": "0x0fd082d2B6cbaac09941292B20523Bf6771AF265",
+      "transactionHash": "0xcc026376ed5e26f366d511880423474ae60bc37fcc433ad9c45013af373fb1ad"
     }
   },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-16T02:33:05.067Z",
+  "updatedAt": "2019-04-16T02:44:05.077Z",
   "devdoc": {
     "methods": {
       "approve(uint256,uint256)": {
