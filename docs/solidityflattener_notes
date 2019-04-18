@@ -15,3 +15,25 @@ sudo scripts/solidityFlattener.pl --contractsdir=contracts/marketplace --mainsol
 
 Succesfully generated in root (i.e. location script was run): SnowflakeEINMarketplace_flattened.sol
 
+Attempt 2:
+Command:
+```
+sudo scripts/solidityFlattener.pl --contractsdir=contracts/resolvers --mainsol=CouponMarketplaceResolver.sol --verbose
+```
+
+Failing here (and generally, by other commands, failing here commonly):
+
+```
+Cannot open contracts/resolvers/../marketplace/features/import '../../ein/token/ERC721/SnowflakeERC721.sol'; for reading. Stopped at scripts/solidityFlattener.pl line 111.
+```
+
+
+
+!!! Master build script (latest one) appears to be working!!!
+
+Command:
+```
+sudo scripts/solidityFlattenerMaster.pl --contractsdir=contracts/resolvers --mainsol=CouponMarketplaceResolver.sol --outputsol=flattened/CouponMarketplaceResolver_flattened.sol --verbose
+```
+
+
