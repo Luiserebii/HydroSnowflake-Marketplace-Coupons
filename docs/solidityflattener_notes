@@ -1,11 +1,11 @@
 Attempting: 
 =============
 
-
+===============================================================
 SolidityFlattener.pl
 bokkypoobah
 GitHub: https://github.com/bokkypoobah/SolidityFlattener
-
+===============================================================
 
 Attempt 1:
 Command:
@@ -36,13 +36,59 @@ Command:
 sudo scripts/solidityFlattenerMaster.pl --contractsdir=contracts/resolvers --mainsol=CouponMarketplaceResolver.sol --outputsol=flattened/CouponMarketplaceResolver_flattened.sol --verbose
 ```
 
-
+========================================================================
 SolidityFlattery
 GitHub: https://github.com/akombalabs/SolidityFlattery
+========================================================================
 
 Fails at: 
 
 * [contracts/marketplace/features/ein/token/ERC721/SnowflakeERC721.sol'] open contracts/marketplace/features/ein/token/ERC721/SnowflakeERC721.sol': no such file or directory
 
 Seems to be unable to resolve imports that reach beneath dir tree...?
+
+=====================================================================
+And finally:
+
+Solidity-Flattener
+https://github.com/poanetwork/solidity-flattener
+=====================================================================
+
+Attempt:
+
+Command:
+```
+npm start "~/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemFeature.sol"
+
+```
+
+And, failure:
+
+ npm start "~/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemFeature.sol"
+
+> solidity-flattener@3.0.1 start /home/luiserebii/github/solidity-flattener
+> node index.js "~/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemFeature.sol"
+
+(node:5432) UnhandledPromiseRejectionWarning: Error: ENOENT: no such file or directory, open '~/github/HydroSnowflake-Marketplace-Coupons/contracts/marketplace/features/ItemFeature.sol'
+    at Object.openSync (fs.js:438:3)
+    at Object.readFileSync (fs.js:343:35)
+    at flatten (/home/luiserebii/github/solidity-flattener/index.js:14:36)
+    at Object.<anonymous> (/home/luiserebii/github/solidity-flattener/index.js:11:1)
+    at Module._compile (internal/modules/cjs/loader.js:701:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:754:12)
+(node:5432) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:5432) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+
+┌──────────────────────────────────────────────────────────────┐
+│                   npm update check failed                    │
+│             Try running with sudo or get access              │
+│             to the local update config store via             │
+│ sudo chown -R $USER:$(id -gn $USER) /home/luiserebii/.config │
+└──────────────────────────────────────────────────────────────┘
+
+
 
