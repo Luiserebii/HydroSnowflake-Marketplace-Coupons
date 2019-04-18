@@ -37,3 +37,12 @@ sudo scripts/solidityFlattenerMaster.pl --contractsdir=contracts/resolvers --mai
 ```
 
 
+SolidityFlattery
+GitHub: https://github.com/akombalabs/SolidityFlattery
+
+Fails at: 
+
+* [contracts/marketplace/features/ein/token/ERC721/SnowflakeERC721.sol'] open contracts/marketplace/features/ein/token/ERC721/SnowflakeERC721.sol': no such file or directory
+
+Seems to be unable to resolve imports that reach beneath dir tree...?
+
