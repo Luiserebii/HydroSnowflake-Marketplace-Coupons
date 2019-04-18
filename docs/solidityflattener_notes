@@ -1,0 +1,17 @@
+Attempting: 
+=============
+
+
+SolidityFlattener.pl
+bokkypoobah
+GitHub: https://github.com/bokkypoobah/SolidityFlattener
+
+
+Attempt 1:
+Command:
+```
+sudo scripts/solidityFlattener.pl --contractsdir=contracts/marketplace --mainsol=SnowflakeEINMarketplace.sol --verbose
+```
+
+Succesfully generated in root (i.e. location script was run): SnowflakeEINMarketplace_flattened.sol
+
