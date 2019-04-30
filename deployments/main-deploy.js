@@ -86,7 +86,6 @@ async function run() {
 
       break;
     case Stage.ITEM_FEATURE:
-      let snowflakeAddress = args['snowflakeAddress'];
       await itemfeature(snowflakeAddress);
       process.exit(0);
       break;
