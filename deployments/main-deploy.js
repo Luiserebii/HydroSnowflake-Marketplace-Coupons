@@ -6,10 +6,10 @@ const Compiler = require('./compile/compiler');
 const compiler = new Compiler();
 const Deployer = require('./deploy/deployer');
 const deployutil = require('./deploy/deploy-util');
-const DeployUtil = deployutil();
+const DeployUtil = new deployutil();
 const Logger = require('./logging/logger');
 const log = new Logger(Logger.state.MASTER);
-const Flattener = require('./flatten/flattener');
+const Flattener = require('./compile/flattener');
 const flattener = new Flattener(Logger.state.MASTER);
 const defaultConfig = require('./config/default-config');
 
@@ -48,13 +48,11 @@ const Stage = {
 const snowflakeAddress = '0xB0D5a36733886a4c5597849a05B315626aF5222E';
 const instances = {};
 
+let deployer;
+let accounts;
 //Set up "settings"
-const seller = {
-  address: accounts[0],
-  paymentAddress: accounts[1],
-  recoveryAddress: accounts[1]
-}
-
+const seller = {};
+ 
 //Total compiled material, for ABI usage
 const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
  
@@ -65,6 +63,14 @@ run();
 
 
 async function run() {
+
+  deployer = await Deployer.build(web3, compiled);
+  accounts = deployer.accounts;
+
+  seller.address = accounts[0];
+  seller.paymentAddress = accounts[1];
+  seller.recoveryAddress: accounts[1];
+
 
   
  //const deployer = await Deployer.build(web3, compiled);
