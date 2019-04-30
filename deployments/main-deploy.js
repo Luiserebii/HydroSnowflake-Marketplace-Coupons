@@ -86,7 +86,8 @@ async function run() {
 
       break;
     case Stage.ITEM_FEATURE:
-      await itemfeature();
+      let snowflakeAddress = args['snowflakeAddress'];
+      await itemfeature(snowflakeAddress);
       process.exit(0);
       break;
    /* case Stage.:
@@ -133,7 +134,7 @@ async function init() {
 
 async function itemfeature(snowflakeAddress) {
 
-  let compiledItemFeature = flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'ItemFeature.sol'), true);
+  let compiledItemFeature = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'ItemFeature.sol'), true);
   let deployerItemFeature = await Deployer.build(web3, compiledItemFeature);
   await deployerItemFeature.deploy("ItemFeature", [snowflakeAddress], { from: seller.address });
   console.log("End of Stage ITEM_FEATURE")
