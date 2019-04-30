@@ -5,7 +5,10 @@
 const Compiler = require('./compile/compiler');
 const compiler = new Compiler();
 const Deployer = require('./deploy/deployer');
+const deployutil = require('./deploy/deploy-util');
+const DeployUtil = deployutil();
 const Logger = require('./logging/logger');
+const log = new Logger(Logger.state.MASTER);
 const Flattener = require('./flatten/flattener');
 const flattener = new Flattener(Logger.state.MASTER);
 const defaultConfig = require('./config/default-config');
@@ -111,9 +114,30 @@ async function init() {
   }
 
 */
-      const SnowflakeABI = compiler.compile()
-      const compiled = await flattener.flattenAndCompile('../contracts/main-contracts/Number.sol', true);
-      await deployer.deploy("Calculator");
+
+  //Grab Snowflake contract deployed at this address
+  const SnowflakeABI = DeployUtil.extractContract(compiled, "Snowflake");
+  instances.Snowflake = new web3.eth.Contract(SnowflakeABI, snowflakeAddress);
+
+  //Get IdentityRegistryAddress
+  const identityRegistryAddress = await instances.Snowflake.methods.identityRegistryAddress.call();
+
+  //Grab IdentityRegistry
+  const identityRegistryABI = DeployUtil.extractContract(compiled, "IdentityRegistry");
+  instances.IdentityRegistry = new web3.eth.Contract(identityRegistryABI, identityRegistryAddress);
+
+  //If we need to, register seller to IdentityRegistry
+  if(!(await instances.IdentityRegistry.methods.hasIdentity(seller.address).call())){
+    log.print(Logger.state.NORMAL, "Seller has no identity; attempting to create one");
+    await instances.IdentityRegistry.methods.createIdentity(seller.recoveryAddress, [], []).send({ from: seller.address });
+    //ensure we have an identity, else, throw
+    if(!(await instances.IdentityRegistry.methods.hasIdentity(seller.address).call())){
+      throw "Adding identity to IdentityRegistry failed, despite createAddress line running"
+    }
+  }
+
+  // const compiled = await flattener.flattenAndCompile('../contracts/main-contracts/Number.sol', true);
+  // await deployer.deploy("Calculator");
 
 }
 
