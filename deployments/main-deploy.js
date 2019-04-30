@@ -82,12 +82,12 @@ async function run() {
     case Stage.INIT: 
 
       await init();
-      process.exit(0);
+  //    process.exit(0);
 
       break;
     case Stage.ITEM_FEATURE:
       await itemfeature(snowflakeAddress);
-      process.exit(0);
+   //   process.exit(0);
       break;
    /* case Stage.:
   
