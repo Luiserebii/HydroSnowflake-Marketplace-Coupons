@@ -60,14 +60,12 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
 //===========|MAIN|============//
 run();
 //=============================//
-
+console.log("vav")
 
 async function run() {
 
   log.print(Logger.state.SUPER, "Building deployer...")
   deployer = await Deployer.build(web3, compiled);
-  console.log(deployer);
-  console.log(await web3.eth.getAccounts());
   accounts = deployer.accounts;
 
   seller.address = accounts[0];
@@ -85,7 +83,7 @@ async function run() {
 
       await init();
 
-
+      process.exit(0);
       break;
    /* case Stage.:
 
@@ -95,6 +93,7 @@ async function run() {
       break;
 */
   }
+  return true;
 
 }
 
@@ -125,17 +124,20 @@ async function init() {
 */
 
   //Grab Snowflake contract deployed at this address
-  const SnowflakeABI = DeployUtil.extractContract(compiled, "Snowflake");
+  const SnowflakeABI = DeployUtil.extractContract(compiled, "Snowflake").abi;
   instances.Snowflake = new web3.eth.Contract(SnowflakeABI, snowflakeAddress);
 
   //Get IdentityRegistryAddress
-  const identityRegistryAddress = await instances.Snowflake.methods.identityRegistryAddress.call();
+  const identityRegistryAddress = await instances.Snowflake.methods.identityRegistryAddress().call();
+  console.log("============================================")
+  console.log(identityRegistryAddress)
 
   //Grab IdentityRegistry
-  const identityRegistryABI = DeployUtil.extractContract(compiled, "IdentityRegistry");
+  const identityRegistryABI = DeployUtil.extractContract(compiled, "IdentityRegistry").abi;
   instances.IdentityRegistry = new web3.eth.Contract(identityRegistryABI, identityRegistryAddress);
 
   //If we need to, register seller to IdentityRegistry
+  log.print(Logger.state.SUPER, "Checking to see if our seller has an identity...")
   if(!(await instances.IdentityRegistry.methods.hasIdentity(seller.address).call())){
     log.print(Logger.state.NORMAL, "Seller has no identity; attempting to create one");
     await instances.IdentityRegistry.methods.createIdentity(seller.recoveryAddress, [], []).send({ from: seller.address });
@@ -143,11 +145,15 @@ async function init() {
     if(!(await instances.IdentityRegistry.methods.hasIdentity(seller.address).call())){
       throw "Adding identity to IdentityRegistry failed, despite createAddress line running"
     }
+  } else {
+    log.print(Logger.state.NORMAL, "Seller has identity registered! Proceeding...");
   }
 
+  console.log("End of Stage INIT")
   // const compiled = await flattener.flattenAndCompile('../contracts/main-contracts/Number.sol', true);
   // await deployer.deploy("Calculator");
 
+  return true;
 }
 
 
