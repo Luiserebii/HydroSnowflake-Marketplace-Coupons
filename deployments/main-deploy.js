@@ -9,7 +9,7 @@ const Deployer = require('./deploy/deployer');
 //const DeployUtil = new deployutil();
 const defaultConfig = require('./config/default-config');
 const Logger = require('./logging/logger');
-const log = new Logger(Logger.state.MASTER);
+//const log = new Logger(Logger.state.MASTER);
 
 const fs = require('fs');
 const path = require('path');
@@ -44,7 +44,7 @@ const Stage = {
   COUPON_DISTRIBUTION: 7,
   FINISH: 8
 }
-
+/*
 const snowflakeAddress = '0xB0D5a36733886a4c5597849a05B315626aF5222E';
 const instances = {};
 
@@ -52,7 +52,7 @@ let deployer;
 let accounts;
 //Set up "settings"
 const seller = {};
- 
+ */
 //Total compiled material, for ABI usage
 //const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
  
@@ -74,7 +74,7 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
 */
 
   
- //const deployer = await Deployer.build(web3, compiled);
+  const deployer = await Deployer.build(web3, compiled);
 
   const stage = args['stage'];
 
@@ -85,7 +85,7 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
   //    process.exit(0);
       break;
     case Stage.ITEM_FEATURE:
-      await itemfeature(snowflakeAddress);
+   //   await itemfeature(snowflakeAddress);
    //   process.exit(0);
       break;
    /* case Stage.:
@@ -96,7 +96,7 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
 
 }
 
-async function init() {
+//async function init() {
 
 /*  //Grab Snowflake contract deployed at this address
   const SnowflakeABI = DeployUtil.extractContract(compiled, "Snowflake").abi;
@@ -127,8 +127,8 @@ async function init() {
   console.log("End of Stage INIT")
 
   return true;*/
-}
-
+//}
+/*
 async function itemfeature(snowflakeAddress) {
 
   let compiledItemFeature = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'ItemFeature.sol'), true);
@@ -141,7 +141,7 @@ async function itemfeature(snowflakeAddress) {
 }
 
 
-
+*/
 
 
 
