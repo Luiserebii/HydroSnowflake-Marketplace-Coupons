@@ -13,7 +13,7 @@
     "test-cover": "npx truffle test --network coverage"
   },
   "keywords": [],
-  "author": "",
+  "author": "Luiserebii",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",

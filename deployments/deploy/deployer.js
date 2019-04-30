@@ -33,9 +33,9 @@ class Deployer {
   async deployContract(contract, args, sendOptions){
 
     console.log(pp.miniheadline("Deploying " + contract.name));
-    console.log("Args: " + args);
-    console.log("Send options: ");
-    console.log(sendOptions);
+    //console.log("Args: " + args);
+    //console.log("Send options: ");
+    //console.log(sendOptions);
     let contractWeb3 = await (new this.web3.eth.Contract(contract.abi)
         .deploy({ "data": contract.bytecode.indexOf('0x') === 0 ? contract.bytecode : '0x' + contract.bytecode, "arguments": args })
         .send(sendOptions)
