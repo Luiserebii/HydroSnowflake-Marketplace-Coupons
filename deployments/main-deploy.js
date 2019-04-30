@@ -5,13 +5,11 @@
 const Compiler = require('./compile/compiler');
 const compiler = new Compiler();
 const Deployer = require('./deploy/deployer');
-const deployutil = require('./deploy/deploy-util');
-const DeployUtil = new deployutil();
+//const deployutil = require('./deploy/deploy-util');
+//const DeployUtil = new deployutil();
+const defaultConfig = require('./config/default-config');
 const Logger = require('./logging/logger');
 const log = new Logger(Logger.state.MASTER);
-const Flattener = require('./compile/flattener');
-const flattener = new Flattener(Logger.state.MASTER);
-const defaultConfig = require('./config/default-config');
 
 const fs = require('fs');
 const path = require('path');
@@ -25,6 +23,8 @@ console.log(config);
 const minimist = require('minimist');
 const args = minimist(process.argv.slice(2));
 
+const Flattener = require('./compile/flattener');
+const flattener = new Flattener(Logger.state.MASTER);
 
 
 const provider = new HDWalletProvider(
@@ -54,24 +54,24 @@ let accounts;
 const seller = {};
  
 //Total compiled material, for ABI usage
-const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
+//const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
  
 
 //===========|MAIN|============//
 run();
 //=============================//
-console.log("vav")
 
 async function run() {
-
-  log.print(Logger.state.SUPER, "Building deployer...")
-  deployer = await Deployer.build(web3, compiled);
+const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
+ 
+//  log.print(Logger.state.SUPER, "Building deployer...")
+/*  deployer = await Deployer.build(web3, compiled);
   accounts = deployer.accounts;
 
   seller.address = accounts[0];
   seller.paymentAddress = accounts[1];
   seller.recoveryAddress = accounts[1];
-
+*/
 
   
  //const deployer = await Deployer.build(web3, compiled);
@@ -81,9 +81,8 @@ async function run() {
   switch(stage) {
     case Stage.INIT: 
 
-      await init();
+  //    await init();
   //    process.exit(0);
-
       break;
     case Stage.ITEM_FEATURE:
       await itemfeature(snowflakeAddress);
@@ -94,13 +93,12 @@ async function run() {
       break;
 */
   }
-  return true;
 
 }
 
 async function init() {
 
-  //Grab Snowflake contract deployed at this address
+/*  //Grab Snowflake contract deployed at this address
   const SnowflakeABI = DeployUtil.extractContract(compiled, "Snowflake").abi;
   instances.Snowflake = new web3.eth.Contract(SnowflakeABI, snowflakeAddress);
 
@@ -128,7 +126,7 @@ async function init() {
 
   console.log("End of Stage INIT")
 
-  return true;
+  return true;*/
 }
 
 async function itemfeature(snowflakeAddress) {
