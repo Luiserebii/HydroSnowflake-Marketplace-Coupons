@@ -82,13 +82,14 @@ async function run() {
     case Stage.INIT: 
 
       await init();
+      process.exit(0);
 
+      break;
+    case Stage.ITEM_FEATURE:
+      await itemfeature();
       process.exit(0);
       break;
    /* case Stage.:
-
-      break;
-    case Stage.:
   
       break;
 */
@@ -98,30 +99,6 @@ async function run() {
 }
 
 async function init() {
-
-
-/*
-
-  //Grab Snowflake contract deployed at this address
-  instances.Snowflake = await Snowflake.at(snowflakeAddress)
-
-  //Get IdentityRegistryAddress
-  const identityRegistryAddress = await instances.Snowflake.identityRegistryAddress.call()
-
-  //Grab IdentityRegistry
-  instances.IdentityRegistry = await IdentityRegistry.at(identityRegistryAddress)
-
-  //If we need to, register seller to IdentityRegistry
-  if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
-    console.log("Seller has no identity; attempting to create one")
-    await instances.IdentityRegistry.createIdentity(seller.recoveryAddress, [], [], { from: seller.address })
-    //ensure we have an identity, else, throw
-    if(!(await instances.IdentityRegistry.hasIdentity(seller.address))){
-      throw "Adding identity to IdentityRegistry failed, despite createAddress line running"
-    }
-  }
-
-*/
 
   //Grab Snowflake contract deployed at this address
   const SnowflakeABI = DeployUtil.extractContract(compiled, "Snowflake").abi;
@@ -150,12 +127,20 @@ async function init() {
   }
 
   console.log("End of Stage INIT")
-  // const compiled = await flattener.flattenAndCompile('../contracts/main-contracts/Number.sol', true);
-  // await deployer.deploy("Calculator");
 
   return true;
 }
 
+async function itemfeature(snowflakeAddress) {
+
+  let compiledItemFeature = flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'ItemFeature.sol'), true);
+  let deployerItemFeature = await Deployer.build(web3, compiledItemFeature);
+  await deployerItemFeature.deploy("ItemFeature", [snowflakeAddress], { from: seller.address });
+  console.log("End of Stage ITEM_FEATURE")
+
+  return true; 
+
+}
 
 
 

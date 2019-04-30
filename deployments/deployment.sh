@@ -23,6 +23,9 @@ node $main --stage 1
 
 headline 1
 
+node $main --stage 2
+headline 2
+
 
 
 echo "end of script"
