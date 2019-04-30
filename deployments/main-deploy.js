@@ -64,12 +64,15 @@ run();
 
 async function run() {
 
+  log.print(Logger.state.SUPER, "Building deployer...")
   deployer = await Deployer.build(web3, compiled);
+  console.log(deployer);
+  console.log(await web3.eth.getAccounts());
   accounts = deployer.accounts;
 
   seller.address = accounts[0];
   seller.paymentAddress = accounts[1];
-  seller.recoveryAddress: accounts[1];
+  seller.recoveryAddress = accounts[1];
 
 
   
