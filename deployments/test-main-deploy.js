@@ -21,7 +21,7 @@ const minimist = require('minimist');
 const args = minimist(process.argv.slice(2));
 
 const Flattener = require('./compile/flattener')
-const flattener = new Flattener(Logger.state.MASTER);
+const flattener = new Flattener(Logger.state.NORMAL);
 
 
 const provider = new HDWalletProvider(

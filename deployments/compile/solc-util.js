@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const solc = require('solc');
+const ora = require('ora');
 
 const Logger = require('../logging/logger');
 
@@ -67,6 +68,14 @@ class SolcUtil {
     //parse through all the paths
     let files = this.findSolInDir(root);
 
+    let msg = 'Processing contracts for generation of solc input...';
+    let spinner;
+    if(this.log.setting < Logger.state.SUPER) {
+      spinner = ora(msg).start();
+    } else {
+      this.log.print(Logger.state.SUPER, msg);
+    }
+ 
     //For each .sol file found,
     //  (Grab contents of contract)
     //  (Grab base filename, which should end in .sol)
@@ -75,11 +84,14 @@ class SolcUtil {
     for(var i = 0; i < files.length; i++) {
       let base = this.toSolcFilename(files[i], root);
       //Skipping over the Migrations.sol by Truffle... (TODO: Should we do this?)
-      if(base !== "Migrations.sol") {
+     if(base !== "Migrations.sol") {
         let src = fs.readFileSync(files[i], 'utf8');
         input.sources[base] = { content: src };
-        this.log.print(Logger.state.NORMAL, "PROCESSED CONTRACT: " + base);
+        this.log.print(Logger.state.SUPER, "PROCESSED CONTRACT: " + base);       
       }
+    }
+    if(this.log.setting < Logger.state.SUPER) {
+      spinner.succeed()
     }
     return input;  
 
@@ -99,8 +111,7 @@ class SolcUtil {
     //By default, we will print all output, therefore, we directly stick the output settings above ^^^
 
     input.sources[base] = { content: src };
-    this.log.print(Logger.state.NORMAL, "PROCESSED CONTRACT: " + base);
-
+    this.log.print(Logger.state.SUPER, "PROCESSED CONTRACT: " + base);
     return input;  
   }
 
