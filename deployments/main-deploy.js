@@ -5,11 +5,11 @@
 const Compiler = require('./compile/compiler');
 const compiler = new Compiler();
 const Deployer = require('./deploy/deployer');
-//const deployutil = require('./deploy/deploy-util');
-//const DeployUtil = new deployutil();
+const deployutil = require('./deploy/deploy-util');
+const DeployUtil = new deployutil();
 const defaultConfig = require('./config/default-config');
 const Logger = require('./logging/logger');
-//const log = new Logger(Logger.state.MASTER);
+const log = new Logger(Logger.state.MASTER);
 const inquirer = require('inquirer')
 
 const fs = require('fs');
@@ -64,17 +64,13 @@ run();
 
 async function run() {
  
-//  log.print(Logger.state.SUPER, "Building deployer...")
-  deployer = await Deployer.build(web3, compiled);
+  log.print(Logger.state.SUPER, "Building deployer...")
+  let deployer = await Deployer.build(web3, compiled);
   accounts = deployer.accounts;
 
   seller.address = accounts[0];
   seller.paymentAddress = accounts[1];
   seller.recoveryAddress = accounts[1];
-
-
-  
-  const deployer = await Deployer.build(web3, compiled);
 
   const stage = args['stage'];
 
@@ -100,33 +96,33 @@ async function run() {
       process.exit(0);
       break;
 
-    case Stage.COUPON_MARKETPLACE_RESOLVER:
+    case Stage.COUPON_MARKETPLACE_RESOLVER:{
       let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
       let couponFeatureAddress = args['CouponFeatureAddress'];
       let itemFeatureAddress = args['ItemFeatureAddress'];
-      promptExistence(couponMarketplaceViaAddress);
-      promptExistence(couponFeatureAddress);
-      promptExistence(itemFeatureAddress);
+      await promptExistence(couponMarketplaceViaAddress);
+      await promptExistence(couponFeatureAddress);
+      await promptExistence(itemFeatureAddress);
 
       await couponmarketplaceresolver(snowflakeAddress, seller.paymentAddress, couponMarketplaceViaAddress, couponFeatureAddress, itemFeatureAddress);
-      process.exit(0);
+      process.exit(0);}
       break;
  
-    case Stage.SET_1:
+    case Stage.SET_1: {
       let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
-      promptExistence(couponMarketplaceViaAddress);
-      promptExistence(couponMarketplaceResolverAddress);
+      await promptExistence(couponMarketplaceViaAddress);
+      await promptExistence(couponMarketplaceResolverAddress);
 
       await set1(couponMarketplaceViaAddress, couponMarketplaceResolverAddress);
-      process.exit(0);
+      process.exit(0);}
       break;
  
-    case Stage.COUPON_DISTRIBUTION: 
+    case Stage.COUPON_DISTRIBUTION: {
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
-      promptExistence(couponMarketplaceResolverAddress);
+      await promptExistence(couponMarketplaceResolverAddress);
       await coupondistribution(couponMarketplaceResolverAddress, snowflakeAddress);
-      process.exit(0);
+      process.exit(0);}
       break;
 
     case Stage.FINISH:
@@ -241,8 +237,9 @@ async function finish(couponMarketplaceResolverAddress, couponDistributionAddres
 }
 
 async function promptExistence(x) {
+  console.log("Prompting existence...")
   if(!x) {
-    answers = await inquirer.prompt([{ message: 'Value ' + x + ' was not passed a value or has not been set. Continue?' }])
+    answers = await inquirer.prompt([{ type: 'input', name: 'promptExistence', message: 'Value ' + x + ' was not passed a value or has not been set. Continue?' }])
     console.log("doot doot")
   }
 
