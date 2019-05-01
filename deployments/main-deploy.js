@@ -100,9 +100,9 @@ async function run() {
       let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
       let couponFeatureAddress = args['CouponFeatureAddress'];
       let itemFeatureAddress = args['ItemFeatureAddress'];
-      await promptExistence(couponMarketplaceViaAddress);
-      await promptExistence(couponFeatureAddress);
-      await promptExistence(itemFeatureAddress);
+      couponMarketplaceViaAddress = await promptExistence('CouponMarketplaceViaAddress', couponMarketplaceViaAddress);
+      couponFeatureAddress = await promptExistence('CouponFeatureAddress', couponFeatureAddress);
+      itemFeatureAddress = await promptExistence('ItemFeatureAddress', itemFeatureAddress);
 
       await couponmarketplaceresolver(snowflakeAddress, seller.paymentAddress, couponMarketplaceViaAddress, couponFeatureAddress, itemFeatureAddress);
       process.exit(0);}
@@ -111,8 +111,8 @@ async function run() {
     case Stage.SET_1: {
       let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
-      await promptExistence(couponMarketplaceViaAddress);
-      await promptExistence(couponMarketplaceResolverAddress);
+      couponMarketplaceViaAddress = await promptExistence('CouponMarketplaceViaAddress', couponMarketplaceViaAddress);
+      couponMarketplaceResolverAddress = await promptExistence('CouponMarketplaceResolverAddress', couponMarketplaceResolverAddress);
 
       await set1(couponMarketplaceViaAddress, couponMarketplaceResolverAddress);
       process.exit(0);}
@@ -120,7 +120,7 @@ async function run() {
  
     case Stage.COUPON_DISTRIBUTION: {
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
-      await promptExistence(couponMarketplaceResolverAddress);
+      couponMarketplaceResolverAddress = await promptExistence('CouponMarketplaceResolverAddress', couponMarketplaceResolverAddress);
       await coupondistribution(couponMarketplaceResolverAddress, snowflakeAddress);
       process.exit(0);}
       break;
@@ -236,11 +236,17 @@ async function finish(couponMarketplaceResolverAddress, couponDistributionAddres
 
 }
 
-async function promptExistence(x) {
+async function promptExistence(name, x) {
   console.log("Prompting existence...")
   if(!x) {
-    answers = await inquirer.prompt([{ type: 'input', name: 'promptExistence', message: 'Value ' + x + ' was not passed a value or has not been set. Continue?' }])
-    console.log("doot doot")
+    let answers = await inquirer.prompt([{ type: 'input', name: 'continue', message: 'Value ' + name + ' was not passed a value or has not been set. Continue?' }])
+    if(answers['continue'] == "y" || answers['continue'] == "Y" || answers['continue'].toLowerCase() == "yes") {
+      answers = await inquirer.prompt([{ type: 'input', name: 'value', message: 'Enter the value to be used: ' }]);
+      console.log("Using value: " + answers['value'] + "...");
+      return answers['value'];
+    } else {
+      process.exit(0);
+    }
   }
 
 }
