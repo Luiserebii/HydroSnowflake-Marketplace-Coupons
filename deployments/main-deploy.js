@@ -44,7 +44,7 @@ const Stage = {
   COUPON_DISTRIBUTION: 7,
   FINISH: 8
 }
-/*
+
 const snowflakeAddress = '0xB0D5a36733886a4c5597849a05B315626aF5222E';
 const instances = {};
 
@@ -52,9 +52,9 @@ let deployer;
 let accounts;
 //Set up "settings"
 const seller = {};
- */
+ 
 //Total compiled material, for ABI usage
-//const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
+const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
  
 
 //===========|MAIN|============//
@@ -62,16 +62,15 @@ run();
 //=============================//
 
 async function run() {
-const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
  
 //  log.print(Logger.state.SUPER, "Building deployer...")
-/*  deployer = await Deployer.build(web3, compiled);
+  deployer = await Deployer.build(web3, compiled);
   accounts = deployer.accounts;
 
   seller.address = accounts[0];
   seller.paymentAddress = accounts[1];
   seller.recoveryAddress = accounts[1];
-*/
+
 
   
   const deployer = await Deployer.build(web3, compiled);
@@ -84,17 +83,27 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
       await init();
       process.exit(0);
       break;
+
     case Stage.ITEM_FEATURE:
       await itemfeature(snowflakeAddress);
       process.exit(0);
       break;
  
     case Stage.COUPON_FEATURE: 
-      
-      
+      await couponfeature(snowflakeAddress);
+      process.exit(0);
       break;
+      
     case Stage.COUPON_MARKETPLACE_VIA:
+      await couponmarketplacevia(snowflakeAddress);
+      process.exit(0);
+      break;
 
+    case Stage.COUPON_MARKETPLACE_RESOLVER:
+      await couponmarketplaceresolver(snowflakeAddress, seller.paymentAddress, /*couponMarketplaceViaAddress*/, /*couponFeatureAddress*/, /*itemFeatureAddress*/);
+      process.exit(0);
+      break;
+ 
     case Stage.SET_1:
   
     case Stage.COUPON_DISTRIBUTION: 
@@ -176,6 +185,17 @@ async function couponmarketplacevia(snowflakeAddress) {
 
 }
 
+async function couponmarketplaceresolver(snowflakeAddress, paymentAddress, couponMarketplaceViaAddress, couponFeatureAddress, itemFeatureAddress) {
 
+  let compiledCMR = await flattener.flattenAndCompile(path.resolve('../contracts/', 'resolvers', 'CouponMarketplaceResolver.sol'), true);
+  let deployerCMR = await Deployer.build(web3, compiledCMR);
+  await deployerCMR.deploy("CouponMarketplaceResolver", ["Coupon-Marketplace-Resolver", "A test Coupon Marketplace Resolver built on top of Hydro Snowflake", snowflakeAddress, false, false, paymentAddress, couponMarketplaceViaAddress, couponFeatureAddress, itemFeatureAddress], { from: seller.address });
+  console.log("End of Stage COUPON_MARKETPLACE_RESOLVER")
+
+}
+async function set1() {
+
+
+}
 
 
