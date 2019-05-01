@@ -105,15 +105,19 @@ async function run() {
       break;
  
     case Stage.SET_1:
-  
+      await set1(/*couponMarketplaceViaAddress*/, /*couponMarketplaceResolverAddress*/);
+      process.exit(0);
+      break;
+ 
     case Stage.COUPON_DISTRIBUTION: 
+      await coupondistribution(/*couponMarketplaceResolverAddress*/, snowflakeAddress);
+      process.exit(0);
+      break;
 
     case Stage.FINISH:
-
-}  /* case Stage.:
-  
+      await finish(couponMarketplaceResolverAddress, couponDistributionAddress);
+      process.exit(0);
       break;
-*/
   }
 
 }
@@ -211,7 +215,7 @@ async function coupondistribution(couponMarketplaceResolverAddress, snowflakeAdd
   console.log("End of Stage COUPON_DISTRIBUTION")
 }
 
-async function finish(couponMarketplaceResolverAddress, ) {
+async function finish(couponMarketplaceResolverAddress, couponDistributionAddress) {
   
   const ABI = DeployUtil.extractContract(compiled, "CouponMarketplaceResolver").abi;
   instances.CouponMarketplaceResolver = new web3.eth.Contract(ABI, couponMarketplaceResolverAddress);
