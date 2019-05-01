@@ -193,9 +193,43 @@ async function couponmarketplaceresolver(snowflakeAddress, paymentAddress, coupo
   console.log("End of Stage COUPON_MARKETPLACE_RESOLVER")
 
 }
-async function set1() {
 
+async function set1(couponMarketplaceViaAddress, couponMarketplaceResolverAddress) {
+
+  const ABI = DeployUtil.extractContract(compiled, "CouponMarketplaceVia").abi;
+  instances.CouponMarketplaceVia = new web3.eth.Contract(ABI, couponMarketplaceViaAddress);
+
+  await instances.CouponMarketplaceVia.methods.setCouponMarketplaceResolverAddress(couponMarketplaceResolverAddress).send({ from: seller.address });
+  console.log("End of Stage SET_1");
+}
+
+async function coupondistribution(couponMarketplaceResolverAddress, snowflakeAddress) {
+
+  let compiledCouponDistribution = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'coupon_distribution', 'CouponDistribution.sol'), true);
+  let deployerCouponDistribution = await Deployer.build(web3, compiledCouponDistribution);
+  await deployerCouponDistribution.deploy("CouponDistribution", [couponMarketplaceResolverAddress, snowflakeAddress], { from: seller.address });
+  console.log("End of Stage COUPON_DISTRIBUTION")
+}
+
+async function finish(couponMarketplaceResolverAddress, ) {
+  
+  const ABI = DeployUtil.extractContract(compiled, "CouponMarketplaceResolver").abi;
+  instances.CouponMarketplaceResolver = new web3.eth.Contract(ABI, couponMarketplaceResolverAddress);
+
+  await instances.CouponMarketplaceResolver.methods.setCouponDistributionAddress(couponDistributionAddress).send({ from: seller.address });
+  console.log("End of Stage FINISH");  
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
