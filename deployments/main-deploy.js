@@ -81,14 +81,27 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
   switch(stage) {
     case Stage.INIT: 
 
-  //    await init();
-  //    process.exit(0);
+      await init();
+      process.exit(0);
       break;
     case Stage.ITEM_FEATURE:
-   //   await itemfeature(snowflakeAddress);
-   //   process.exit(0);
+      await itemfeature(snowflakeAddress);
+      process.exit(0);
       break;
-   /* case Stage.:
+ 
+    case Stage.COUPON_FEATURE: 
+      
+      
+      break;
+    case Stage.COUPON_MARKETPLACE_VIA:
+
+    case Stage.SET_1:
+  
+    case Stage.COUPON_DISTRIBUTION: 
+
+    case Stage.FINISH:
+
+}  /* case Stage.:
   
       break;
 */
@@ -96,9 +109,9 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
 
 }
 
-//async function init() {
+async function init() {
 
-/*  //Grab Snowflake contract deployed at this address
+  //Grab Snowflake contract deployed at this address
   const SnowflakeABI = DeployUtil.extractContract(compiled, "Snowflake").abi;
   instances.Snowflake = new web3.eth.Contract(SnowflakeABI, snowflakeAddress);
 
@@ -126,9 +139,9 @@ const compiled = config.root ? compiler.compileDirectory(config.root) : compiler
 
   console.log("End of Stage INIT")
 
-  return true;*/
-//}
-/*
+  return true;
+}
+
 async function itemfeature(snowflakeAddress) {
 
   let compiledItemFeature = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'ItemFeature.sol'), true);
@@ -141,9 +154,27 @@ async function itemfeature(snowflakeAddress) {
 }
 
 
-*/
+async function couponfeature(snowflakeAddress) {
 
+  let compiledCouponFeature = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'CouponFeature.sol'), true);
+  let deployerCouponFeature = await Deployer.build(web3, compiledCouponFeature);
+  await deployerCouponFeature.deploy("ItemFeature", [snowflakeAddress], { from: seller.address });
+  console.log("End of Stage COUPON_FEATURE")
 
+  return true; 
+
+}
+
+async function couponmarketplacevia(snowflakeAddress) {
+
+  let compiledCMV = await flattener.flattenAndCompile(path.resolve('../contracts', 'CouponMarketplaceVia.sol'), true);
+  let deployerCMV = await Deployer.build(web3, compiledCMV);
+  await deployerCMV.deploy("ItemFeature", [snowflakeAddress], { from: seller.address });
+  console.log("End of Stage COUPON_MARKETPLACE_VIA")
+
+  return true;   
+
+}
 
 
 

@@ -81,9 +81,13 @@ async function run() {
     case Stage.INIT: 
 //      await deployer.deploy("Calculator");
 
+
+
+      
       console.log("zoot zoot")
-      var gog = await init();
-      console.log("MY TYPEEEEE:  " + gog)
+
+//      var gog = await init();
+//      console.log("MY TYPEEEEE:  " + gog)
       break;
     case Stage.ITEM_FEATURE:
 
@@ -97,14 +101,20 @@ async function run() {
       const numberBasicDeployer = await Deployer.build(web3, compiledNumberBasic);
       await deployer.deploy("NumberBasic", [5]);  
       break;
-
-  }
-
+    
+ }
+    console.log("EEEEE")
+    console.log(web3.currentProvider)
+    console.log("====================================")
+    console.log(web3.currentProvider.connection)
+    web3.currentProvider.close()
+    return;
+ 
 }
-
+/*
 async function init() {
   console.log("init has run!");
-}
+}*/
 
 /*
 async function init() {
