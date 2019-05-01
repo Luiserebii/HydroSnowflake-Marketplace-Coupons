@@ -10,6 +10,7 @@ const Deployer = require('./deploy/deployer');
 const defaultConfig = require('./config/default-config');
 const Logger = require('./logging/logger');
 //const log = new Logger(Logger.state.MASTER);
+const inquirer = require('inquirer')
 
 const fs = require('fs');
 const path = require('path');
@@ -100,17 +101,31 @@ async function run() {
       break;
 
     case Stage.COUPON_MARKETPLACE_RESOLVER:
-      await couponmarketplaceresolver(snowflakeAddress, seller.paymentAddress, /*couponMarketplaceViaAddress*/, /*couponFeatureAddress*/, /*itemFeatureAddress*/);
+      let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
+      let couponFeatureAddress = args['CouponFeatureAddress'];
+      let itemFeatureAddress = args['ItemFeatureAddress'];
+      promptExistence(couponMarketplaceViaAddress);
+      promptExistence(couponFeatureAddress);
+      promptExistence(itemFeatureAddress);
+
+      await couponmarketplaceresolver(snowflakeAddress, seller.paymentAddress, couponMarketplaceViaAddress, couponFeatureAddress, itemFeatureAddress);
       process.exit(0);
       break;
  
     case Stage.SET_1:
-      await set1(/*couponMarketplaceViaAddress*/, /*couponMarketplaceResolverAddress*/);
+      let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
+      let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
+      promptExistence(couponMarketplaceViaAddress);
+      promptExistence(couponMarketplaceResolverAddress);
+
+      await set1(couponMarketplaceViaAddress, couponMarketplaceResolverAddress);
       process.exit(0);
       break;
  
     case Stage.COUPON_DISTRIBUTION: 
-      await coupondistribution(/*couponMarketplaceResolverAddress*/, snowflakeAddress);
+      let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
+      promptExistence(couponMarketplaceResolverAddress);
+      await coupondistribution(couponMarketplaceResolverAddress, snowflakeAddress);
       process.exit(0);
       break;
 
@@ -225,7 +240,13 @@ async function finish(couponMarketplaceResolverAddress, couponDistributionAddres
 
 }
 
+async function promptExistence(x) {
+  if(!x) {
+    answers = await inquirer.prompt([{ message: 'Value ' + x + ' was not passed a value or has not been set. Continue?' }])
+    console.log("doot doot")
+  }
 
+}
 
 
 
