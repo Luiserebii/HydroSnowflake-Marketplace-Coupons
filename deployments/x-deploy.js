@@ -79,10 +79,11 @@ async function run() {
 
   switch(stage) {
     case Stage.INIT: 
-      //await deployer.deploy("Calculator");
+//      await deployer.deploy("Calculator");
 
-      await init();
-
+      console.log("zoot zoot")
+      var gog = await init();
+      console.log("MY TYPEEEEE:  " + gog)
       break;
     case Stage.ITEM_FEATURE:
 
@@ -101,7 +102,11 @@ async function run() {
 
 }
 
+async function init() {
+  console.log("init has run!");
+}
 
+/*
 async function init() {
 
   //Grab Snowflake contract deployed at this address
@@ -146,6 +151,6 @@ async function itemfeature(snowflakeAddress) {
 
 }
 
-
+*/
 
 
