@@ -12,6 +12,7 @@ class Flattener {
   constructor(logSetting = Logger.state.NORMAL) {
     this.log = new Logger(logSetting);
     this.compiler = new Compiler(logSetting);
+    console.log("Flattener log setting: " + logSetting);
   }
 
   //Files is essentially an array of filepaths to be passed, e.g. (['./contracts/meme.sol'])

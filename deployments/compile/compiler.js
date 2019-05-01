@@ -13,6 +13,7 @@ class Compiler {
   
   constructor(logSetting = Logger.state.NORMAL) {
     this.log = new Logger(logSetting);
+    console.log("Compiler log setting: " + this.log.setting);
   }
 
 

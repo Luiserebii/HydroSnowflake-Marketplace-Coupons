@@ -2,11 +2,11 @@
 
 //DEPLOYMENT:
 
+const Logger = require('./logging/logger.js')
 const Compiler = require('./compile/compiler');
-const compiler = new Compiler();
+const compiler = new Compiler(Logger.state.MASTER);
 const Deployer = require('./deploy/deployer');
 const defaultConfig = require('./config/default-config')
-const Logger = require('./logging/logger.js')
 
 const fs = require('fs');
 const path = require('path');
@@ -21,7 +21,7 @@ const minimist = require('minimist');
 const args = minimist(process.argv.slice(2));
 
 const Flattener = require('./compile/flattener')
-const flattener = new Flattener(Logger.state.NORMAL);
+const flattener = new Flattener(Logger.state.MASTER);
 
 
 const provider = new HDWalletProvider(
@@ -49,7 +49,8 @@ async function run() {
   const stage = args['stage'];
 
   switch(stage) {
-    case Stage.CALCULATOR: 
+    case Stage.CALCULATOR:
+      console.log("BEGINNING TO DEPLOY CALC")
       await deployer.deploy("Calculator");
 
       break;

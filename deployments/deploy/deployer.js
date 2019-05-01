@@ -2,6 +2,7 @@ const deployutil = require('./deploy-util')
 const DeployUtil = new deployutil();
 const PrettyPrint = require('../styling/pretty-print');
 const pp = new PrettyPrint();
+const ora = require('ora');
 
 class Deployer {
 
@@ -33,6 +34,7 @@ class Deployer {
   async deployContract(contract, args, sendOptions){
 
     console.log(pp.miniheadline("Deploying " + contract.name));
+    const spinner = ora().start();
     //console.log("Args: " + args);
     //console.log("Send options: ");
     //console.log(sendOptions);
@@ -59,7 +61,8 @@ class Deployer {
             //resolve();
           }
         })
-        .on('error', (err) => { console.log(err); }));
+        .on('error', (err) => { console.log(err); spinner.fail(); }));
+    spinner.succeed();
     return contractWeb3;
   }
 
