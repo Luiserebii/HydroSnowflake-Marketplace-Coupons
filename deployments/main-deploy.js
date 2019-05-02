@@ -41,8 +41,16 @@ const config = require('./config/deploy-config');
 console.log(config);
 
 const minimist = require('minimist');
-const args = minimist(process.argv.slice(2));
-
+//!!! It seems it is necessary to explicitly named these arguments in order to be treated as strings, unfortunately. Darn.
+const args = minimist(process.argv.slice(2), { 
+  'string': [ 
+    'CouponMarketplaceViaAddress',
+    'CouponFeatureAddress',
+    'ItemFeatureAddress'
+  ]
+});
+console.log("ZOT ZOT ZOT")
+console.log(util.inspect(process.argv))
 const provider = new HDWalletProvider(
    config.mnemonic, 
    `https://rinkeby.infura.io/v3/${config.infuraKey}`,
