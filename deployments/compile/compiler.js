@@ -13,7 +13,6 @@ class Compiler {
   
   constructor(logSetting = Logger.state.NORMAL) {
     this.log = new Logger(logSetting);
-    console.log("Compiler log setting: " + this.log.setting);
   }
 
 
@@ -25,12 +24,8 @@ class Compiler {
       "\n"
     );
 
-    let spinner;
-    if(this.log.setting < Logger.state.SUPER) {
-      spinner = ora('Compiling...').start();
-    } else {
-      this.log.print(Logger.state.SUPER, "Compiling...\n");
-    }
+    //this.log.print(Logger.state.NORMAL, "Compiling...\n");
+    const spinner = ora('Compiling...\n').start();
     const output = JSON.parse(solc.compile(JSON.stringify(solcInput))); 
     //Logic on what to show post-compilation (regarding the output post-compilation)
     if(this.log.setting >= Logger.state.SUPER) {
@@ -46,9 +41,7 @@ class Compiler {
       );
       throw "Failed to compile!";
     }
-    if(this.log.setting < Logger.state.SUPER) {
-      spinner.succeed();
-    }
+    spinner.stop();
     return output;
   }
 

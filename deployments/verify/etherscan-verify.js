@@ -37,7 +37,6 @@ class EtherscanVerify {
 
   //Takes the following: (contractObj, addr, solFile);
   async verifyContract(contract, address, filepath) {
-
     let data = {
       apikey: config.etherscan.apiKey,
       module: 'contract',
@@ -45,9 +44,9 @@ class EtherscanVerify {
       contractaddress: address,
       sourceCode: fs.readFileSync(filepath, 'utf8'),
       contractname: contract.name,
-      compilerversion: 'v0.5.7+commit.6da8b019',
-      optimizationUsed: 1,
-      runs: 200    
+      compilerversion: contract.compilerVersion,
+      optimizationUsed: contract.optimizer.enabled === true ? 0 : 1,
+      runs: contract.optimizer.runs    
     }
 
     console.log(util.inspect(data))
