@@ -28,7 +28,7 @@ const flattener = new Flattener(defaultState);
 const inquirer = require('inquirer');
 const LogUtil = require('./logging/util')
 const logutil = new LogUtil();
-const PrettyPrint = require('../styling/pretty-print');
+const PrettyPrint = require('./styling/pretty-print');
 const pp = new PrettyPrint();
 
 const fs = require('fs');
@@ -116,7 +116,7 @@ async function run() {
       let couponFeatureAddress = args['CouponFeatureAddress'];
       let itemFeatureAddress = args['ItemFeatureAddress'];
       log.print(Logger.state.NORMAL, 
-        pp.miniheadline('Arguments passed:'),
+        pp.miniheadline('\nArguments passed:'),
         pp.arrow('CouponMarketplaceViaAddress: ' + couponMarketplaceViaAddress),
         pp.arrow('CouponFeatureAddress: ' + couponFeatureAddress),
         pp.arrow('ItemFeatureAddress: ' + itemFeatureAddress)
@@ -133,7 +133,7 @@ async function run() {
       let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
       log.print(Logger.state.NORMAL,
-        pp.miniheadline('Arguments passed:'),
+        pp.miniheadline('\nArguments passed:'),
         pp.arrow('CouponMarketplaceViaAddress: ' + couponMarketplaceViaAddress),
         pp.arrow('CouponMarketplaceResolverAddress: ' + couponMarketplaceResolverAddress)
       );
@@ -147,7 +147,7 @@ async function run() {
     case Stage.COUPON_DISTRIBUTION: {
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
       log.print(Logger.state.NORMAL,
-        pp.miniheadline('Arguments passed:'),
+        pp.miniheadline('\nArguments passed:'),
         pp.arrow('CouponMarketplaceResolverAddress: ' + couponMarketplaceResolverAddress)
       );
 
