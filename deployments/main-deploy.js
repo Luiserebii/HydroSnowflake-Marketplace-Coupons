@@ -15,9 +15,13 @@ const inquirer = require('inquirer')
 
 const Logger = require('./logging/logger')
 const defaultState = Logger.state.NORMAL;
+const log = new Logger(defaultState);
+
 const Compiler = require('./compile/compiler');
 const compiler = new Compiler(defaultState);
 const Deployer = require('./deploy/deployer');
+const deployutil = require('./deploy/deploy-util');
+const DeployUtil = new deployutil();
 const defaultConfig = require('./config/default-config');
 const Flattener = require('./compile/flattener');
 const flattener = new Flattener(defaultState);
@@ -37,10 +41,6 @@ console.log(config);
 
 const minimist = require('minimist');
 const args = minimist(process.argv.slice(2));
-
-const Flattener = require('./compile/flattener');
-const flattener = new Flattener(Logger.state.MASTER);
-
 
 const provider = new HDWalletProvider(
    config.mnemonic, 
