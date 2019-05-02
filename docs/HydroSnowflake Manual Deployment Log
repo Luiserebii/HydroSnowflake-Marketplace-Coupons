@@ -1,0 +1,34 @@
+deployment.sh 
+(INIT and ITEMFEATURE)
+
+node main-deploy.js --stage 3
+(COUPON_FEATURE)*
+
+node main-deploy.js --stage 4
+(COUPON_MARKETPLACE_VIA)
+
+
+node main-deploy.js --stage 5 --CouponMarketplaceViaAddress 0x6e9b4938652bc36f666e05f8cea14253cd8b2b9b --CouponFeatureAddress 0x3e18ce2718105b0bce9104a9a9f66a406c59667b --ItemFeatureAddress 0xaaa1096c570ab17b560177b0eef1b6ed01531f4c
+
+
+*must be exited and manually call the next
+
+
+ItemFeature: https://rinkeby.etherscan.io/tx/0x85f7ac89cc167708506c40a13858b24066d0a8383b9141a3354421f5fbfe3217
+Contract Address: 0xaaa1096c570ab17b560177b0eef1b6ed01531f4c
+
+
+CouponFeature: https://rinkeby.etherscan.io/tx/0x6daf349b5f54ff0b7329a0526c6068b55a5bf153156e179b9be19cdb62588185 
+Contract Address: 0x3e18ce2718105b0bce9104a9a9f66a406c59667b
+
+
+CouponMarketplaceVia: https://rinkeby.etherscan.io/tx/0x34faecc90552c861b73c88926919f83e0e03abb38cc65c0353ff6aad7f3f4627
+Contract Address: 0x6e9b4938652bc36f666e05f8cea14253cd8b2b9b
+
+
+
+
+
+
+
+

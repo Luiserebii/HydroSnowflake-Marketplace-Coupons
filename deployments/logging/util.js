@@ -15,6 +15,8 @@ class LogUtil {
       } else {
         process.exit(0);
       }
+    } else {
+      return x; 
     }
   }
 

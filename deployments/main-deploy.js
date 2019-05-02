@@ -28,7 +28,8 @@ const flattener = new Flattener(defaultState);
 const inquirer = require('inquirer');
 const LogUtil = require('./logging/util')
 const logutil = new LogUtil();
-
+const PrettyPrint = require('../styling/pretty-print');
+const pp = new PrettyPrint();
 
 const fs = require('fs');
 const path = require('path');
@@ -114,6 +115,12 @@ async function run() {
       let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
       let couponFeatureAddress = args['CouponFeatureAddress'];
       let itemFeatureAddress = args['ItemFeatureAddress'];
+      log.print(Logger.state.NORMAL, 
+        pp.miniheadline('Arguments passed:'),
+        pp.arrow('CouponMarketplaceViaAddress: ' + couponMarketplaceViaAddress),
+        pp.arrow('CouponFeatureAddress: ' + couponFeatureAddress),
+        pp.arrow('ItemFeatureAddress: ' + itemFeatureAddress)
+      );
       couponMarketplaceViaAddress = await logutil.promptExistence('CouponMarketplaceViaAddress', couponMarketplaceViaAddress);
       couponFeatureAddress = await logutil.promptExistence('CouponFeatureAddress', couponFeatureAddress);
       itemFeatureAddress = await logutil.promptExistence('ItemFeatureAddress', itemFeatureAddress);
@@ -125,6 +132,11 @@ async function run() {
     case Stage.SET_1: {
       let couponMarketplaceViaAddress = args['CouponMarketplaceViaAddress'];
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
+      log.print(Logger.state.NORMAL,
+        pp.miniheadline('Arguments passed:'),
+        pp.arrow('CouponMarketplaceViaAddress: ' + couponMarketplaceViaAddress),
+        pp.arrow('CouponMarketplaceResolverAddress: ' + couponMarketplaceResolverAddress)
+      );
       couponMarketplaceViaAddress = await logutil.promptExistence('CouponMarketplaceViaAddress', couponMarketplaceViaAddress);
       couponMarketplaceResolverAddress = await logutil.promptExistence('CouponMarketplaceResolverAddress', couponMarketplaceResolverAddress);
 
@@ -134,6 +146,11 @@ async function run() {
  
     case Stage.COUPON_DISTRIBUTION: {
       let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
+      log.print(Logger.state.NORMAL,
+        pp.miniheadline('Arguments passed:'),
+        pp.arrow('CouponMarketplaceResolverAddress: ' + couponMarketplaceResolverAddress)
+      );
+
       couponMarketplaceResolverAddress = await logutil.promptExistence('CouponMarketplaceResolverAddress', couponMarketplaceResolverAddress);
       await coupondistribution(couponMarketplaceResolverAddress, snowflakeAddress);
       process.exit(0);}
@@ -196,7 +213,7 @@ async function couponfeature(snowflakeAddress) {
 
   let compiledCouponFeature = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'CouponFeature.sol'), true);
   let deployerCouponFeature = await Deployer.build(web3, compiledCouponFeature);
-  await deployerCouponFeature.deploy("ItemFeature", [snowflakeAddress], { from: seller.address });
+  await deployerCouponFeature.deploy("CouponFeature", [snowflakeAddress], { from: seller.address });
   console.log("End of Stage COUPON_FEATURE")
 
   return true; 
@@ -207,7 +224,7 @@ async function couponmarketplacevia(snowflakeAddress) {
 
   let compiledCMV = await flattener.flattenAndCompile(path.resolve('../contracts', 'CouponMarketplaceVia.sol'), true);
   let deployerCMV = await Deployer.build(web3, compiledCMV);
-  await deployerCMV.deploy("ItemFeature", [snowflakeAddress], { from: seller.address });
+  await deployerCMV.deploy("CouponMarketplaceVia", [snowflakeAddress], { from: seller.address });
   console.log("End of Stage COUPON_MARKETPLACE_VIA")
 
   return true;   
