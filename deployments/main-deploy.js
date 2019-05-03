@@ -46,10 +46,12 @@ const args = minimist(process.argv.slice(2), {
   'string': [ 
     'CouponMarketplaceViaAddress',
     'CouponFeatureAddress',
-    'ItemFeatureAddress'
+    'ItemFeatureAddress',
+    'CouponMarketplaceResolverAddress',
+    'CouponDistributionAddress'
   ]
 });
-console.log("ZOT ZOT ZOT")
+console.log("Arguments as defined in process.argv: ")
 console.log(util.inspect(process.argv))
 const provider = new HDWalletProvider(
    config.mnemonic, 
@@ -165,6 +167,14 @@ async function run() {
       break;
 
     case Stage.FINISH:
+      let couponMarketplaceResolverAddress = args['CouponMarketplaceResolverAddress'];
+      let couponDistributionAddress = args['CouponDistributionAddress'];
+      log.print(Logger.state.NORMAL,
+        pp.miniheadline('\nArguments passed:'),
+        pp.arrow('CouponMarketplaceResolverAddress: ' + couponMarketplaceResolverAddress),
+        pp.arrow('CouponDistributionAddress: ' + couponDistributionAddress)
+      );
+
       await finish(couponMarketplaceResolverAddress, couponDistributionAddress);
       process.exit(0);
       break;

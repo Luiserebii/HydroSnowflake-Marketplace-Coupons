@@ -11,13 +11,13 @@ node main-deploy.js --stage 4
 node main-deploy.js --stage 5 --CouponMarketplaceViaAddress '0x6e9b4938652bc36f666e05f8cea14253cd8b2b9b' --CouponFeatureAddress '0x3e18ce2718105b0bce9104a9a9f66a406c59667b' --ItemFeatureAddress '0xaaa1096c570ab17b560177b0eef1b6ed01531f4c'
 (COUPON_MARKETPLACE_RESOLVER)*
 
-node main-deploy.js --stage 6 --CouponMarketplaceViaAddress  --CouponMarketplaceResolverAddress
+node main-deploy.js --stage 6 --CouponMarketplaceViaAddress 0x6e9b4938652bc36f666e05f8cea14253cd8b2b9b --CouponMarketplaceResolverAddress 0x5181d8ad751731e7b90ad5d8cfdba93cddf3c8be
 (SET_1)
 
-node main-deploy.js --stage 7 --CouponMarketplaceResolverAddress 
+node main-deploy.js --stage 7 --CouponMarketplaceResolverAddress 0x5181d8ad751731e7b90ad5d8cfdba93cddf3c8be
 (COUPON_DISTRIBUTION)
 
-node main-deploy.js --stage 8
+node main-deploy.js --stage 8 --CouponMarketplaceResolverAddress 0x5181d8ad751731e7b90ad5d8cfdba93cddf3c8be --CouponDistributionAddress 0xd25649f1f4b71c839fcc1ed4204b18c674ba4b52
 (FINISH)
 
 *must be exited and manually call the next
@@ -36,12 +36,15 @@ Contract Address: 0x6e9b4938652bc36f666e05f8cea14253cd8b2b9b
 
 
 CouponMarketplaceResolver: https://rinkeby.etherscan.io/tx/0x9c027fd7e4db8edc01de9807a2ad5a1e6da3fc9dcd2d00f937eacfbd653c73e0
-Contract Address: 
+Contract Address: 0x5181d8ad751731e7b90ad5d8cfdba93cddf3c8be
 
 
-CouponDistribution: 
-Contract Address: 
+CouponDistribution: https://rinkeby.etherscan.io/tx/0x8ab49d84c94c9cca596ea1d02708930316aee12ca0da60e4521bcf478bbf267d
+Contract Address: 0xd25649f1f4b71c839fcc1ed4204b18c674ba4b52
 
+
+
+FINISHED!!!
 
 
 
