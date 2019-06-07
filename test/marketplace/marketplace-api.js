@@ -87,7 +87,7 @@ class MarketplaceAPI {
   */
 
    async getItemDelivery(Items, id) {
-     let deliveryLength = await Items.getItemDeliveryLength.call(id)
+/*     let deliveryLength = await Items.getItemDeliveryLength.call(id)
      let deliveryArr = [];
 
      if(deliveryLength != 0) {
@@ -95,7 +95,11 @@ class MarketplaceAPI {
          deliveryArr.push(await Items.getItemDelivery.call(id, i));
        }
      }
-     return deliveryArr;
+     return deliveryArr;*/
+     let res = await Items.getItemDeliveryNeo.call(id);
+     console.log("RESULT OF GET ITEM DELIVERY");
+     console.log(res);
+     return res;
    }
 
     async getItemTags(Items, id) {
@@ -108,6 +112,7 @@ class MarketplaceAPI {
        }
      }
      return tagsArr;
+     
    }
 
    async itemStructIsEqual(Items, id, intObj) {
