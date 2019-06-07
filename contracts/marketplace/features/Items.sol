@@ -78,6 +78,20 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
 
     //Arguably, these functions below could be refactored via enums, but probably overkill
 
+    function getItemDeliveryNeo(uint id) public view returns (uint[] memory) {
+        uint[] memory deliveryArr = new uint[](itemListings[id].delivery.length);
+        for(uint i = 0; i < itemListings[id].delivery.length; i++){
+            deliveryArr[i] = itemListings[id].delivery[i];
+        }
+        return deliveryArr;
+    }
+ 
+    //Refactor this down the line
+    function storageUintArrToMemory(uint[] arr) internal returns (uint[memory]) {
+       
+
+    }
+
     function getItemDelivery(uint id, uint index) public view returns (uint) { 
         return itemListings[id].delivery[index]; 
     }
