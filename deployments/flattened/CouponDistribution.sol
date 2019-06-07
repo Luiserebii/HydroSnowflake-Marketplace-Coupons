@@ -1363,7 +1363,7 @@ interface CouponInterface {
     enum CouponType { AMOUNT_OFF, PERCENTAGE_OFF, BUY_X_QTY_GET_Y_FREE, BUY_X_QTY_FOR_Y_AMNT }
 /*
     function getCoupon(uint id) external view returns (CouponType couponType, string memory title, string memory description, uint256 amountOff, uint expirationDate);*/
-    function getCouponItemApplicable(uint id, uint index) external view returns (uint);
+    function getCouponItemsApplicable(uint id) external view returns (uint[] memory);
     function getCouponDistributionAddress(uint id) external view returns (address);
 
 }
@@ -1450,13 +1450,26 @@ contract Coupons is SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSno
     }
 
 
-    function getCouponItemApplicable(uint id, uint index) public view returns (uint) { 
-        return availableCoupons[id].itemsApplicable[index]; 
+    function getCouponItemsApplicable(uint id) public view returns (uint[] memory) {
+        return storageUintArrToMemory(availableCoupons[id].itemsApplicable);
     }
 
-    function getCouponItemsApplicableLength(uint id) public view returns (uint) {
-        return availableCoupons[id].itemsApplicable.length;
+    //Refactor this down the line
+    /**
+     *====================
+     * GENERIC FUNCTION
+     *====================
+     * 
+     * PLEASE REFACTOR!!!!!!!!!!!!
+     */
+    function storageUintArrToMemory(uint[] storage arr) internal view returns (uint[] memory) {
+        uint[] memory memArr = new uint[](arr.length);
+        for(uint i = 0; i < arr.length; i++){
+            memArr[i] = arr[i];
+        }
+        return memArr;
     }
+
 
 
     function getCouponDistributionAddress(uint id) public view returns (address) {

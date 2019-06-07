@@ -1,0 +1,29 @@
+deployment.sh 
+(INIT and ITEMFEATURE)
+
+node main-deploy.js --stage 3
+(COUPON_FEATURE)*
+
+node main-deploy.js --stage 4
+(COUPON_MARKETPLACE_VIA)*
+
+
+node main-deploy.js --stage 5 --CouponMarketplaceViaAddress '0x37741F2D5bef9e73839Aa7085a5E03e7ED379F6d' --CouponFeatureAddress '0x69A292d0477e989114ae9b3f9023686e8C784503' --ItemFeatureAddress '0x4b74b8395190e6f769BA8E28670735C10c4729cc'
+(COUPON_MARKETPLACE_RESOLVER)*
+
+node main-deploy.js --stage 6 --CouponMarketplaceViaAddress 0x37741F2D5bef9e73839Aa7085a5E03e7ED379F6d --CouponMarketplaceResolverAddress 0x26F6591F2Fbd263D735AC313ED73c71ed5c97C26
+(SET_1)
+
+node main-deploy.js --stage 7 --CouponMarketplaceResolverAddress 0x26F6591F2Fbd263D735AC313ED73c71ed5c97C26
+(COUPON_DISTRIBUTION)
+
+node main-deploy.js --stage 8 --CouponMarketplaceResolverAddress 0x26F6591F2Fbd263D735AC313ED73c71ed5c97C26 --CouponDistributionAddress 0x89b62BCf0398Dc2334CdCC27916DEe6351AdC326
+(FINISH)
+
+*must be exited and manually call the next
+
+
+FINISHED!!!
+
+
+

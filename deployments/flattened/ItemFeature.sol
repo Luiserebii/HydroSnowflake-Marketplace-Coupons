@@ -1216,8 +1216,8 @@ interface ItemInterface {
     //For convenience, so as not to return the whole tuple
     function getItemPrice(uint id) external view returns (uint256);
 
-    function getItemDelivery(uint id, uint index) external view returns (uint);
-    function getItemTag(uint id, uint index) external view returns (uint); 
+    function getItemDelivery(uint id) external view returns (uint[] memory);
+    function getItemTags(uint id) external view returns (uint[] memory); 
 
 }
 
@@ -1300,22 +1300,28 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
         return itemListings[id].price;
     }
 
-    //Arguably, these functions below could be refactored via enums, but probably overkill
-
-    function getItemDelivery(uint id, uint index) public view returns (uint) { 
-        return itemListings[id].delivery[index]; 
+    function getItemDelivery(uint id) public view returns (uint[] memory) {
+        return storageUintArrToMemory(itemListings[id].delivery);
+    }
+ 
+    function getItemTags(uint id) public view returns (uint[] memory) {
+        return storageUintArrToMemory(itemListings[id].tags);
     }
 
-    function getItemTag(uint id, uint index) public view returns (uint) {
-        return itemListings[id].tags[index];
-    }
-
-    function getItemDeliveryLength(uint id) public view returns (uint) {
-        return itemListings[id].delivery.length;
-    }
-
-    function getItemTagsLength(uint id) public view returns (uint) {
-        return itemListings[id].tags.length;
+    //Refactor this down the line
+    /**
+     *====================
+     * GENERIC FUNCTION
+     *====================
+     * 
+     * PLEASE REFACTOR!!!!!!!!!!!!
+     */
+    function storageUintArrToMemory(uint[] storage arr) internal view returns (uint[] memory) {
+        uint[] memory memArr = new uint[](arr.length);
+        for(uint i = 0; i < arr.length; i++){
+            memArr[i] = arr[i];
+        }
+        return memArr;
     }
 
 
