@@ -96,14 +96,11 @@ class MarketplaceAPI {
        }
      }
      return deliveryArr;*/
-     let res = await Items.getItemDeliveryNeo.call(id);
-     console.log("RESULT OF GET ITEM DELIVERY");
-     console.log(res);
-     return res;
+     return await Items.getItemDeliveryNeo.call(id);
    }
 
     async getItemTags(Items, id) {
-     let tagsLength = await Items.getItemTagsLength.call(id)
+/*     let tagsLength = await Items.getItemTagsLength.call(id)
      let tagsArr = [];
 
      if(tagsLength != 0) {
@@ -112,7 +109,8 @@ class MarketplaceAPI {
        }
      }
      return tagsArr;
-     
+*/
+     return await Items.getItemTagsNeo.call(id);     
    }
 
    async itemStructIsEqual(Items, id, intObj) {
