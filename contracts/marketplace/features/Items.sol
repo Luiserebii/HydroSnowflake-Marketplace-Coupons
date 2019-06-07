@@ -92,7 +92,7 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
      * 
      * PLEASE REFACTOR!!!!!!!!!!!!
      */
-    function storageUintArrToMemory(uint[] storage arr) internal returns (uint[] memory) {
+    function storageUintArrToMemory(uint[] storage arr) internal view returns (uint[] memory) {
         uint[] memory memArr = new uint[](arr.length);
         for(uint i = 0; i < arr.length; i++){
             memArr[i] = arr[i];

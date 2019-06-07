@@ -1,0 +1,229 @@
+{
+  "contractName": "NumberInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "number",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"number\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/main-contracts/interfaces/NumberInterface.sol\":\"NumberInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/main-contracts/interfaces/NumberInterface.sol\":{\"keccak256\":\"0x463a8b5db6f07128889255dc346824e4fdcc0a40d7b3da628755eaa899520a07\",\"urls\":[\"bzzr://a8170d05b6b1c580af2a95cb045013b9461d3193f2e3ec12b7760d49550fe7d5\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\n/*\n * Simple NumberInterface contract. A contract implementing this interface can be assumed to be \"quantifiable\", and thus expose a number for manipulation\n *\n */\n\ninterface NumberInterface {\n    function number() external view returns (uint256);\n}\n",
+  "sourcePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/main-contracts/interfaces/NumberInterface.sol",
+  "ast": {
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/main-contracts/interfaces/NumberInterface.sol",
+    "exportedSymbols": {
+      "NumberInterface": [
+        8289
+      ]
+    },
+    "id": 8290,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8283,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:39"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 8289,
+        "linearizedBaseContracts": [
+          8289
+        ],
+        "name": "NumberInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8288,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "number",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8284,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "237:2:39"
+            },
+            "returnParameters": {
+              "id": 8287,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8286,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8288,
+                  "src": "263:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8285,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "263:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "262:9:39"
+            },
+            "scope": 8289,
+            "src": "222:50:39",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8290,
+        "src": "190:84:39"
+      }
+    ],
+    "src": "0:275:39"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/luiserebii/github/HydroSnowflake-Marketplace-Coupons/contracts/main-contracts/interfaces/NumberInterface.sol",
+    "exportedSymbols": {
+      "NumberInterface": [
+        8289
+      ]
+    },
+    "id": 8290,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8283,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:39"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 8289,
+        "linearizedBaseContracts": [
+          8289
+        ],
+        "name": "NumberInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8288,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "number",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8284,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "237:2:39"
+            },
+            "returnParameters": {
+              "id": 8287,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8286,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8288,
+                  "src": "263:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8285,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "263:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "262:9:39"
+            },
+            "scope": 8289,
+            "src": "222:50:39",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8290,
+        "src": "190:84:39"
+      }
+    ],
+    "src": "0:275:39"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.7+commit.6da8b019.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-06-07T02:04:39.477Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
