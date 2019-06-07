@@ -133,7 +133,7 @@ class MarketplaceAPI {
   */
 
    async getCouponItemsApplicable(Coupons, id) {
-     let length = await Coupons.getCouponItemsApplicableLength.call(id);
+/*     let length = await Coupons.getCouponItemsApplicableLength.call(id);
      let arr = [];
 
      if(length != 0) {
@@ -141,7 +141,9 @@ class MarketplaceAPI {
          arr.push(await Coupons.getCouponItemApplicable.call(id, i));
        }
      }
-     return arr;
+     return arr;*/
+     console.log("zoot zoot")
+     return await Coupons.getCouponItemsApplicableNeo.call(id);
    }
 
   async couponStructIsEqual(Coupons, id, intObj) {
