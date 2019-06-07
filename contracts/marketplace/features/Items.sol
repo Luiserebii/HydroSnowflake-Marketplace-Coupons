@@ -76,11 +76,11 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
         return itemListings[id].price;
     }
 
-    function getItemDeliveryNeo(uint id) public view returns (uint[] memory) {
+    function getItemDelivery(uint id) public view returns (uint[] memory) {
         return storageUintArrToMemory(itemListings[id].delivery);
     }
  
-    function getItemTagsNeo(uint id) public view returns (uint[] memory) {
+    function getItemTags(uint id) public view returns (uint[] memory) {
         return storageUintArrToMemory(itemListings[id].tags);
     }
 
@@ -98,25 +98,6 @@ contract Items is SnowflakeERC721, SnowflakeERC721Burnable, SnowflakeERC721Minta
             memArr[i] = arr[i];
         }
         return memArr;
-    }
-
-
-
-    //Arguably, these functions below could be refactored via enums, but probably overkill
-    function getItemDelivery(uint id, uint index) public view returns (uint) { 
-        return itemListings[id].delivery[index]; 
-    }
-
-    function getItemTag(uint id, uint index) public view returns (uint) {
-        return itemListings[id].tags[index];
-    }
-
-    function getItemDeliveryLength(uint id) public view returns (uint) {
-        return itemListings[id].delivery.length;
-    }
-
-    function getItemTagsLength(uint id) public view returns (uint) {
-        return itemListings[id].tags.length;
     }
 
 

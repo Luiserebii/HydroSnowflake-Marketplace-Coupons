@@ -87,30 +87,11 @@ class MarketplaceAPI {
   */
 
    async getItemDelivery(Items, id) {
-/*     let deliveryLength = await Items.getItemDeliveryLength.call(id)
-     let deliveryArr = [];
-
-     if(deliveryLength != 0) {
-       for(let i = 0; i < deliveryLength; i++) {
-         deliveryArr.push(await Items.getItemDelivery.call(id, i));
-       }
-     }
-     return deliveryArr;*/
-     return await Items.getItemDeliveryNeo.call(id);
+     return await Items.getItemDelivery.call(id);
    }
 
-    async getItemTags(Items, id) {
-/*     let tagsLength = await Items.getItemTagsLength.call(id)
-     let tagsArr = [];
-
-     if(tagsLength != 0) {
-       for(let i = 0; i < tagsLength; i++) {
-         deliveryArr.push(await Items.getItemTag.call(id, i));
-       }
-     }
-     return tagsArr;
-*/
-     return await Items.getItemTagsNeo.call(id);     
+   async getItemTags(Items, id) {
+     return await Items.getItemTags.call(id);     
    }
 
    async itemStructIsEqual(Items, id, intObj) {
@@ -132,19 +113,9 @@ class MarketplaceAPI {
     ============
   */
 
-   async getCouponItemsApplicable(Coupons, id) {
-/*     let length = await Coupons.getCouponItemsApplicableLength.call(id);
-     let arr = [];
-
-     if(length != 0) {
-       for(let i = 0; i < length; i++) {
-         arr.push(await Coupons.getCouponItemApplicable.call(id, i));
-       }
-     }
-     return arr;*/
-     console.log("zoot zoot")
-     return await Coupons.getCouponItemsApplicableNeo.call(id);
-   }
+  async getCouponItemsApplicable(Coupons, id) {
+    return await Coupons.getCouponItemsApplicable.call(id);
+  }
 
   async couponStructIsEqual(Coupons, id, intObj) {
     assert.ok(this.structIsEqual(intObj, await Coupons.availableCoupons.call(id)));
