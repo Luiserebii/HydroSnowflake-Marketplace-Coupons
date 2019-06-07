@@ -82,6 +82,10 @@ contract Coupons is SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSno
     }
 
 
+    function getItemsApplicableNeo(uint id) internal view returns (uint[] memory) {
+        return storageUintArrToMemory(availableCoupons[id].itemsApplicable);
+    }
+
     function getCouponItemApplicable(uint id, uint index) public view returns (uint) { 
         return availableCoupons[id].itemsApplicable[index]; 
     }
@@ -89,6 +93,23 @@ contract Coupons is SnowflakeERC721Burnable, SnowflakeERC721Mintable, AddressSno
     function getCouponItemsApplicableLength(uint id) public view returns (uint) {
         return availableCoupons[id].itemsApplicable.length;
     }
+
+    //Refactor this down the line
+    /**
+     *====================
+     * GENERIC FUNCTION
+     *====================
+     * 
+     * PLEASE REFACTOR!!!!!!!!!!!!
+     */
+    function storageUintArrToMemory(uint[] storage arr) internal view returns (uint[] memory) {
+        uint[] memory memArr = new uint[](arr.length);
+        for(uint i = 0; i < arr.length; i++){
+            memArr[i] = arr[i];
+        }
+        return memArr;
+    }
+
 
 
     function getCouponDistributionAddress(uint id) public view returns (address) {
