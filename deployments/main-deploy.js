@@ -1,19 +1,9 @@
 /////////////////////////////////////////////////////
 
 //DEPLOYMENT:
-/*
-const Compiler = require('./compile/compiler');
-const compiler = new Compiler();
-const Deployer = require('./deploy/deployer');
-const deployutil = require('./deploy/deploy-util');
-const DeployUtil = new deployutil();
-const defaultConfig = require('./config/default-config');
-const Logger = require('./logging/logger');
-const log = new Logger(Logger.state.MASTER);
-const inquirer = require('inquirer')
-*/
 
 const SolidityDeploy = require('solidity-deploy');
+const config = require('./config');
 
 const Logger = SolidityDeploy.Logger;
 const defaultState = Logger.state.NORMAL;
@@ -21,20 +11,21 @@ const log = new Logger(defaultState);
 
 const solidityDeploy = new SolidityDeploy(defaultState);
 
-
+/*
 const Compiler = require('./compile/compiler');
-const compiler = new Compiler(defaultState);
+const compiler = SolidityDeploy.createDeployer
 const Deployer = require('./deploy/deployer');
 const deployutil = require('./deploy/deploy-util');
 const DeployUtil = new deployutil();
-const defaultConfig = require('./config/default-config');
 const Flattener = require('./compile/flattener');
-const flattener = new Flattener(defaultState);
+const flattener = new Flattener(defaultState);*/
+const compiler = solidityDeploy.createCompiler();
+const flattener = solidityDeploy.createFlattener();
+const DeployUtil = new SolidityDeploy.DeployUtil();
+
 const inquirer = require('inquirer');
-const LogUtil = require('./logging/util')
-const logutil = new LogUtil();
-const PrettyPrint = require('./styling/pretty-print');
-const pp = new PrettyPrint();
+const logutil = new SolidityDeploy.LogUtil();
+const pp = new SolidityDeploy.PrettyPrint();
 
 const fs = require('fs');
 const path = require('path');
@@ -42,7 +33,6 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const util = require('util');
 
-const config = require('./config/deploy-config');
 console.log(config);
 
 const minimist = require('minimist');
@@ -81,6 +71,7 @@ const instances = {};
 
 let deployer;
 let accounts;
+
 //Set up "settings"
 const seller = {};
  
@@ -95,7 +86,7 @@ run();
 async function run() {
  
   log.print(Logger.state.SUPER, "Building deployer...")
-  let deployer = await Deployer.build(web3, compiled);
+  let deployer = await solidityDeploy.createDeployer(web3, compiled);
   accounts = deployer.accounts;
 
   seller.address = accounts[0];
@@ -223,7 +214,7 @@ async function init() {
 async function itemfeature(snowflakeAddress) {
 
   let compiledItemFeature = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'ItemFeature.sol'), true);
-  let deployerItemFeature = await Deployer.build(web3, compiledItemFeature);
+  let deployerItemFeature = await solidityDeploy.createDeployer(web3, compiledItemFeature);
   await deployerItemFeature.deploy("ItemFeature", [snowflakeAddress], { from: seller.address });
   console.log("End of Stage ITEM_FEATURE")
 
@@ -235,7 +226,7 @@ async function itemfeature(snowflakeAddress) {
 async function couponfeature(snowflakeAddress) {
 
   let compiledCouponFeature = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'CouponFeature.sol'), true);
-  let deployerCouponFeature = await Deployer.build(web3, compiledCouponFeature);
+  let deployerCouponFeature = await solidityDeploy.createDeployer(web3, compiledCouponFeature);
   await deployerCouponFeature.deploy("CouponFeature", [snowflakeAddress], { from: seller.address });
   console.log("End of Stage COUPON_FEATURE")
 
@@ -246,7 +237,7 @@ async function couponfeature(snowflakeAddress) {
 async function couponmarketplacevia(snowflakeAddress) {
 
   let compiledCMV = await flattener.flattenAndCompile(path.resolve('../contracts', 'CouponMarketplaceVia.sol'), true);
-  let deployerCMV = await Deployer.build(web3, compiledCMV);
+  let deployerCMV = await solidityDeploy.createDeployer(web3, compiledCMV);
   await deployerCMV.deploy("CouponMarketplaceVia", [snowflakeAddress], { from: seller.address });
   console.log("End of Stage COUPON_MARKETPLACE_VIA")
 
@@ -257,7 +248,7 @@ async function couponmarketplacevia(snowflakeAddress) {
 async function couponmarketplaceresolver(snowflakeAddress, paymentAddress, couponMarketplaceViaAddress, couponFeatureAddress, itemFeatureAddress) {
 
   let compiledCMR = await flattener.flattenAndCompile(path.resolve('../contracts/', 'resolvers', 'CouponMarketplaceResolver.sol'), true);
-  let deployerCMR = await Deployer.build(web3, compiledCMR);
+  let deployerCMR = await solidityDeploy.createDeployer(web3, compiledCMR);
   await deployerCMR.deploy("CouponMarketplaceResolver", ["Coupon-Marketplace-Resolver", "A test Coupon Marketplace Resolver built on top of Hydro Snowflake", snowflakeAddress, false, false, paymentAddress, couponMarketplaceViaAddress, couponFeatureAddress, itemFeatureAddress], { from: seller.address });
   console.log("End of Stage COUPON_MARKETPLACE_RESOLVER")
 
@@ -275,7 +266,7 @@ async function set1(couponMarketplaceViaAddress, couponMarketplaceResolverAddres
 async function coupondistribution(couponMarketplaceResolverAddress, snowflakeAddress) {
 
   let compiledCouponDistribution = await flattener.flattenAndCompile(path.resolve('../contracts', 'marketplace', 'features', 'coupon_distribution', 'CouponDistribution.sol'), true);
-  let deployerCouponDistribution = await Deployer.build(web3, compiledCouponDistribution);
+  let deployerCouponDistribution = await solidityDeploy.createDeployer(web3, compiledCouponDistribution);
   await deployerCouponDistribution.deploy("CouponDistribution", [couponMarketplaceResolverAddress, snowflakeAddress], { from: seller.address });
   console.log("End of Stage COUPON_DISTRIBUTION")
 }
