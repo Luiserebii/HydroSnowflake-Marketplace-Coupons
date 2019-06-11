@@ -8,14 +8,9 @@ const gasPrice = 2000000000 // 2 gwei
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
-//Old config code; remove soon
-//const config = require('./config/config');
 
 //Setup dotenv here
 const config = require('dotenv').config();
-
-//const infuraKey = config.infuraKey;
-//const mnemonic = config.mnemonic;
 
 const infuraKey = process.env.INFURA_KEY;
 const mnemonic = process.env.MNEMONIC;
