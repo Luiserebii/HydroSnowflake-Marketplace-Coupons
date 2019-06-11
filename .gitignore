@@ -4,3 +4,4 @@ node_modules
 config
 *.env
 *config.js
+!sample-config.js
