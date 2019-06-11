@@ -13,9 +13,14 @@ const log = new Logger(Logger.state.MASTER);
 const inquirer = require('inquirer')
 */
 
-const Logger = require('./logging/logger')
+const SolidityDeploy = require('solidity-deploy');
+
+const Logger = SolidityDeploy.Logger;
 const defaultState = Logger.state.NORMAL;
 const log = new Logger(defaultState);
+
+const solidityDeploy = new SolidityDeploy(defaultState);
+
 
 const Compiler = require('./compile/compiler');
 const compiler = new Compiler(defaultState);
