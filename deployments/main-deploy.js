@@ -5,7 +5,7 @@
 const SolidityDeploy = require('solidity-deploy');
 const config = require('./config');
 
-const Logger = SolidityDeploy.Logger;
+const Logger = SolidityDeploy.logging.Logger;
 const defaultState = Logger.state.NORMAL;
 const log = new Logger(defaultState);
 
@@ -21,11 +21,11 @@ const Flattener = require('./compile/flattener');
 const flattener = new Flattener(defaultState);*/
 const compiler = solidityDeploy.createCompiler();
 const flattener = solidityDeploy.createFlattener();
-const DeployUtil = new SolidityDeploy.DeployUtil();
+const DeployUtil = new SolidityDeploy.deploy.DeployUtil();
 
 const inquirer = require('inquirer');
-const logutil = new SolidityDeploy.LogUtil();
-const pp = new SolidityDeploy.PrettyPrint();
+const logutil = new SolidityDeploy.logging.LogUtil();
+const pp = new SolidityDeploy.styling.PrettyPrint();
 
 const fs = require('fs');
 const path = require('path');
@@ -76,7 +76,7 @@ let accounts;
 const seller = {};
  
 //Total compiled material, for ABI usage
-const compiled = config.root ? compiler.compileDirectory(config.root) : compiler.compileDirectory(defaultConfig.root);
+const compiled = compiler.compileDirectory(config.root);
  
 
 //===========|MAIN|============//
