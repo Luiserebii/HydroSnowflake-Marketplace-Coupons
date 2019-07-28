@@ -6,8 +6,6 @@
  * 
  */
 
-const path = require('path');
-
 const deploymentConfig = {
 
   root: "[PATH-TO-REPO]/HydroSnowflake-Marketplace-Coupons/contracts",
