@@ -23,11 +23,10 @@ const compiler = solidityDeploy.createCompiler();
 const flattener = solidityDeploy.createFlattener();
 const DeployUtil = new SolidityDeploy.deploy.DeployUtil();
 
-const inquirer = require('inquirer');
+//const inquirer = require('inquirer');
 const logutil = new SolidityDeploy.logging.LogUtil();
 const pp = new SolidityDeploy.styling.PrettyPrint();
 
-const fs = require('fs');
 const path = require('path');
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
@@ -46,8 +45,8 @@ const args = minimist(process.argv.slice(2), {
     'CouponDistributionAddress'
   ]
 });
-console.log("Arguments as defined in process.argv: ")
-console.log(util.inspect(process.argv))
+console.log("Arguments as defined in process.argv: ");
+console.log(util.inspect(process.argv));
 const provider = new HDWalletProvider(
    config.mnemonic, 
    `https://rinkeby.infura.io/v3/${config.infuraKey}`,
@@ -64,12 +63,11 @@ const Stage = {
   SET_1: 6,
   COUPON_DISTRIBUTION: 7,
   FINISH: 8
-}
+};
 
 const snowflakeAddress = '0xB0D5a36733886a4c5597849a05B315626aF5222E';
 const instances = {};
 
-let deployer;
 let accounts;
 
 //Set up "settings"
@@ -85,7 +83,7 @@ run();
 
 async function run() {
  
-  log.print(Logger.state.SUPER, "Building deployer...")
+  log.print(Logger.state.SUPER, "Building deployer...");
   let deployer = await solidityDeploy.createDeployer(web3, compiled);
   accounts = deployer.accounts;
 
