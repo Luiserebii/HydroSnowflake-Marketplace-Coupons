@@ -1,6 +1,8 @@
 # Hydro Snowflake - Marketplace Coupons
 [![Build Status](https://travis-ci.org/Luiserebii/HydroSnowflake-Marketplace-Coupons.svg?branch=master)](https://travis-ci.org/Luiserebii/HydroSnowflake-Marketplace-Coupons)
 [![Coverage Status](https://coveralls.io/repos/github/Luiserebii/HydroSnowflake-Marketplace-Coupons/badge.svg?branch=master)](https://coveralls.io/github/Luiserebii/HydroSnowflake-Marketplace-Coupons?branch=master)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Luiserebii/HydroSnowflake-Marketplace-Coupons.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Luiserebii/HydroSnowflake-Marketplace-Coupons/context:javascript)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Luiserebii/HydroSnowflake-Marketplace-Coupons.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Luiserebii/HydroSnowflake-Marketplace-Coupons/alerts/)
 [![Known Vulnerabilities](https://snyk.io/test/github/Luiserebii/HydroSnowflake-Marketplace-Coupons/badge.svg)](https://snyk.io/test/github/Luiserebii/HydroSnowflake-Marketplace-Coupons)
 
 ## Introduction
