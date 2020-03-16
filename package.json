@@ -33,7 +33,7 @@
     "ethereumjs-util": "^6.0.0",
     "ganache-cli": "^6.2.3",
     "inquirer": "^6.3.1",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "ora": "^3.4.0",
     "solc": "0.5.7",
     "solidity-deploy": "0.0.2",
