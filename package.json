@@ -10,7 +10,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cover": "rm -f coverage.json && rm -rf coverage && npx solidity-coverage",
     "chain-cover": "npx testrpc-sc --port 8555 -l 0xfffffffffff -g 0x01 --allowUnlimitedContractSize --seed hydro",
-    "test-cover": "npx truffle test --network coverage"
+    "test-cover": "npx truffle test --network coverage",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "Luiserebii",
@@ -40,6 +42,8 @@
     "truffle": "^5.0.0-beta.2",
     "truffle-flattener": "1.3.0",
     "truffle-hdwallet-provider": "^1.0.8",
-    "web3": "1.0.0-beta.36"
-  }
+    "web3": "1.0.0-beta.36",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
