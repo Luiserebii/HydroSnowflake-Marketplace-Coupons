@@ -31,7 +31,7 @@
   "dependencies": {
     "dotenv": "^7.0.0",
     "ethereumjs-util": "^6.0.0",
-    "ganache-cli": "^6.2.3",
+    "ganache-cli": "^6.5.1",
     "inquirer": "^6.3.1",
     "minimist": "^1.2.0",
     "ora": "^3.4.0",
